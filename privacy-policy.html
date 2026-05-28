@@ -14,7 +14,6 @@
             min-height: 100vh;
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, #0D0B1E 0%, #1A0A2E 100%);
             border-bottom: 1px solid rgba(180, 80, 255, 0.2);
@@ -26,7 +25,7 @@
         }
 
         .header-inner {
-            max-width: 800px;
+            max-width: 860px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -64,7 +63,6 @@
             background-clip: text;
         }
 
-        /* Language switcher */
         .lang-switcher {
             display: flex;
             gap: 6px;
@@ -97,9 +95,8 @@
             background: rgba(255,255,255,0.07);
         }
 
-        /* Content */
         .content {
-            max-width: 800px;
+            max-width: 860px;
             margin: 0 auto;
             padding: 40px 24px 80px;
         }
@@ -121,8 +118,8 @@
         }
 
         .intro-box {
-            background: linear-gradient(135deg, rgba(139, 47, 201, 0.12), rgba(217, 70, 239, 0.08));
-            border: 1px solid rgba(180, 80, 255, 0.25);
+            background: linear-gradient(135deg, rgba(139,47,201,0.12), rgba(217,70,239,0.08));
+            border: 1px solid rgba(180,80,255,0.25);
             border-radius: 16px;
             padding: 20px 24px;
             margin-bottom: 36px;
@@ -131,9 +128,7 @@
             color: rgba(255,255,255,0.75);
         }
 
-        .section {
-            margin-bottom: 32px;
-        }
+        .section { margin-bottom: 32px; }
 
         .section-title {
             font-size: 18px;
@@ -194,9 +189,45 @@
             margin-top: 1px;
         }
 
-        .data-list strong {
-            color: rgba(255,255,255,0.85);
+        .data-list strong { color: rgba(255,255,255,0.85); }
+
+        .third-party-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
+
+        .third-party-item {
+            background: rgba(139,47,201,0.08);
+            border: 1px solid rgba(180,80,255,0.15);
+            border-radius: 12px;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .third-party-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #C084FC;
+        }
+
+        .third-party-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.5;
+        }
+
+        .third-party-link {
+            font-size: 12px;
+            color: #E879F9;
+            text-decoration: none;
+            margin-top: 2px;
+            display: inline-block;
+        }
+
+        .third-party-link:hover { text-decoration: underline; }
 
         .rights-grid {
             display: grid;
@@ -205,8 +236,8 @@
         }
 
         .right-item {
-            background: rgba(139, 47, 201, 0.1);
-            border: 1px solid rgba(180, 80, 255, 0.2);
+            background: rgba(139,47,201,0.1);
+            border: 1px solid rgba(180,80,255,0.2);
             border-radius: 10px;
             padding: 12px 14px;
             font-size: 13px;
@@ -222,9 +253,23 @@
             font-weight: 700;
         }
 
+        .gdpr-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(139,47,201,0.2), rgba(217,70,239,0.12));
+            border: 1px solid rgba(180,80,255,0.35);
+            border-radius: 10px;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: #C084FC;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
         .contact-box {
-            background: linear-gradient(135deg, rgba(139, 47, 201, 0.15), rgba(217, 70, 239, 0.1));
-            border: 1px solid rgba(180, 80, 255, 0.3);
+            background: linear-gradient(135deg, rgba(139,47,201,0.15), rgba(217,70,239,0.1));
+            border: 1px solid rgba(180,80,255,0.3);
             border-radius: 16px;
             padding: 24px;
             display: flex;
@@ -253,7 +298,6 @@
 
         .contact-row a:hover { text-decoration: underline; }
 
-        /* Footer */
         .footer {
             text-align: center;
             padding: 24px;
@@ -262,7 +306,6 @@
             font-size: 12px;
         }
 
-        /* Language content */
         .lang-content { display: none; }
         .lang-content.active { display: block; }
 
@@ -282,309 +325,435 @@
             <span class="logo-text">VJob</span>
         </div>
         <div class="lang-switcher">
-            <button class="lang-btn active" onclick="setLang('hu')">HU</button>
-            <button class="lang-btn" onclick="setLang('en')">EN</button>
-            <button class="lang-btn" onclick="setLang('de')">DE</button>
+            <button class="lang-btn active" onclick="setLang('hu', this)">HU</button>
+            <button class="lang-btn" onclick="setLang('en', this)">EN</button>
+            <button class="lang-btn" onclick="setLang('de', this)">DE</button>
         </div>
     </div>
 </header>
 
 <div class="content">
 
-    <!-- HUNGARIAN -->
-    <div class="lang-content active" id="lang-hu">
-        <h1 class="page-title">Adatkezelési tájékoztató</h1>
-        <p class="last-updated">Utoljára frissítve: 2026. május</p>
+<!-- ═══════════════ HUNGARIAN ═══════════════ -->
+<div class="lang-content active" id="lang-hu">
+    <h1 class="page-title">Adatkezelési tájékoztató</h1>
+    <p class="last-updated">Utoljára frissítve: 2026. május</p>
 
-        <div class="intro-box">
-            A VJob elkötelezett a felhasználók adatainak védelme iránt. Ez a tájékoztató leírja, hogyan gyűjtjük, használjuk és védjük az adataidat a VJob mobilalkalmazás használata során.
+    <div class="intro-box">
+        A VJob elkötelezett a felhasználók adatainak védelme iránt. Ez a tájékoztató leírja, hogyan gyűjtjük, használjuk és védjük az adataidat a VJob mobilalkalmazás használata során – függetlenül attól, hogy a világ melyik részéről használod az alkalmazást.
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">1. Gyűjtött adatok</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span><strong>Fiókadatok:</strong> név, email cím, jelszó (titkosítva)</span></li>
+                <li><span><strong>Profiladatok:</strong> profilkép, önéletrajz, munkahelyi preferenciák, készségek</span></li>
+                <li><span><strong>Videók:</strong> a felhasználók által feltöltött bemutatkozó videók</span></li>
+                <li><span><strong>Helyszín:</strong> város/régió az állásajánlatok párosításához</span></li>
+                <li><span><strong>Eszközadatok:</strong> eszköz token push értesítésekhez, operációs rendszer</span></li>
+                <li><span><strong>Használati adatok:</strong> appinterakciók, állásmegtekintések, kedvelések, skip-ek</span></li>
+                <li><span><strong>Kommunikáció:</strong> az alkalmazáson belüli üzenetek tartalma</span></li>
+            </ul>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">1. Gyűjtött adatok</h2>
-            <div class="section-content">
-                <ul class="data-list">
-                    <li><span><strong>Fiókadatok:</strong> név, email cím</span></li>
-                    <li><span><strong>Profiladatok:</strong> profilkép, önéletrajz adatok, munkahelyi preferenciák</span></li>
-                    <li><span><strong>Videók:</strong> a felhasználók által feltöltött bemutatkozó videók</span></li>
-                    <li><span><strong>Helyszín:</strong> város/régió az állásajánlatok párosításához</span></li>
-                    <li><span><strong>Eszközadatok:</strong> eszköz token push értesítésekhez</span></li>
-                    <li><span><strong>Használati adatok:</strong> appinterakciók, állásmegtekintések, kedvelések</span></li>
-                </ul>
-            </div>
+    <div class="section">
+        <h2 class="section-title">2. Az adatok felhasználása</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span>A VJob szolgáltatás nyújtása és folyamatos fejlesztése</span></li>
+                <li><span>Munkakeresők és munkaadók intelligens összekapcsolása (matching)</span></li>
+                <li><span>Push értesítések küldése matchekről, üzenetekről és frissítésekről</span></li>
+                <li><span>Felhasználói azonosság ellenőrzése és visszaélések megelőzése</span></li>
+                <li><span>Személyre szabott állásajánlatok megjelenítése</span></li>
+                <li><span>Statisztikák és analitika készítése a szolgáltatás javítása érdekében</span></li>
+            </ul>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">2. Az adatok felhasználása</h2>
-            <div class="section-content">
-                <ul class="data-list">
-                    <li><span>A VJob szolgáltatás nyújtása és fejlesztése</span></li>
-                    <li><span>Munkakeresők és munkaadók összekapcsolása</span></li>
-                    <li><span>Push értesítések küldése matchekről és üzenetekről</span></li>
-                    <li><span>Felhasználói azonosság ellenőrzése és visszaélések megelőzése</span></li>
-                </ul>
-            </div>
+    <div class="section">
+        <h2 class="section-title">3. Adattárolás</h2>
+        <div class="section-content">
+            <p>Adataidat biztonságosan tároljuk a Google Firebase szolgáltatásain keresztül (Firestore, Firebase Storage, Firebase Authentication). Az adatok a Google szervereinek biztonsági szabványaival összhangban kerülnek tárolásra, titkosított kapcsolaton keresztül.</p>
+            <p>Adataidat addig őrizzük meg, amíg fiókod aktív, vagy amíg a törlését nem kéred.</p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">3. Adattárolás</h2>
-            <div class="section-content">
-                <p>Adataidat biztonságosan tároljuk a Google Firebase szolgáltatásain keresztül (Firestore, Firebase Storage, Firebase Authentication). Az adatok a Google szervereinek biztonsági szabványaival összhangban kerülnek tárolásra.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">4. Adatmegosztás</h2>
-            <div class="section-content">
-                <p>Személyes adataidat nem adjuk el. Adatokat csak az alábbi esetekben osztunk meg:</p>
-                <ul class="data-list" style="margin-top:10px">
-                    <li><span>Munkakeresők és munkaadók között az alkalmazáson belül, párosítási célból</span></li>
-                    <li><span>A Google Firebase-szel mint infrastruktúra-szolgáltatóval</span></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">5. Adatmegőrzés</h2>
-            <div class="section-content">
-                <p>Adataidat addig őrizzük meg, amíg fiókod aktív. A fiókod bármikor törölheted az alkalmazás beállításaiban, ami minden adatodat véglegesen törli.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">6. Jogaid</h2>
-            <div class="section-content">
-                <div class="rights-grid">
-                    <div class="right-item">Hozzáférés adataidhoz</div>
-                    <div class="right-item">Pontatlan adatok javítása</div>
-                    <div class="right-item">Fiók és adatok törlése</div>
-                    <div class="right-item">Adatok exportálása</div>
+    <div class="section">
+        <h2 class="section-title">4. Harmadik féltől származó szolgáltatások</h2>
+        <div class="section-content">
+            <p style="margin-bottom:16px">Az app működéséhez az alábbi külső szolgáltatásokat vesszük igénybe. Ezek saját adatkezelési szabályzattal rendelkeznek:</p>
+            <div class="third-party-grid">
+                <div class="third-party-item">
+                    <span class="third-party-name">Google Firebase (Firestore, Storage, Auth)</span>
+                    <span class="third-party-desc">Adatbázis, fájltárolás és felhasználói hitelesítés</span>
+                    <a class="third-party-link" href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy →</a>
                 </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">7. Gyermekek adatai</h2>
-            <div class="section-content">
-                <p>A VJob nem 16 év alatti felhasználóknak szól. Tudatosan nem gyűjtünk adatokat 16 év alatti személyektől.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">8. Kapcsolat</h2>
-            <div class="contact-box">
-                <div class="contact-row">
-                    <span class="contact-label">Email:</span>
-                    <a href="mailto:info@getvjob.app">info@getvjob.app</a>
+                <div class="third-party-item">
+                    <span class="third-party-name">Firebase Cloud Messaging (FCM)</span>
+                    <span class="third-party-desc">Push értesítések küldése az eszközödre</span>
+                    <a class="third-party-link" href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy →</a>
                 </div>
-                <div class="contact-row">
-                    <span class="contact-label">Web:</span>
-                    <a href="https://getvjob.app">getvjob.app</a>
+                <div class="third-party-item">
+                    <span class="third-party-name">Google Analytics for Firebase</span>
+                    <span class="third-party-desc">Névtelen használati statisztikák gyűjtése az app fejlesztéséhez</span>
+                    <a class="third-party-link" href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy →</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ENGLISH -->
-    <div class="lang-content" id="lang-en">
-        <h1 class="page-title">Privacy Policy</h1>
-        <p class="last-updated">Last updated: May 2026</p>
-
-        <div class="intro-box">
-            VJob is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use the VJob mobile application.
+    <div class="section">
+        <h2 class="section-title">5. Sütik (Cookies)</h2>
+        <div class="section-content">
+            <p>A VJob mobilalkalmazás <strong>nem használ sütiket</strong>. Az alkalmazás kizárólag a Firebase által biztosított biztonságos munkamenet-kezelést alkalmazza, amely nem tárol sütiket a te eszközödön.</p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">1. Information We Collect</h2>
-            <div class="section-content">
-                <ul class="data-list">
-                    <li><span><strong>Account information:</strong> name, email address</span></li>
-                    <li><span><strong>Profile information:</strong> profile photo, CV data, work preferences</span></li>
-                    <li><span><strong>Videos:</strong> introduction videos uploaded by users</span></li>
-                    <li><span><strong>Location:</strong> city/region for job matching purposes</span></li>
-                    <li><span><strong>Device information:</strong> device token for push notifications</span></li>
-                    <li><span><strong>Usage data:</strong> app interactions, job views, likes</span></li>
-                </ul>
+    <div class="section">
+        <h2 class="section-title">6. Adatmegosztás</h2>
+        <div class="section-content">
+            <p>Személyes adataidat <strong>soha nem adjuk el</strong> harmadik félnek. Adatokat csak az alábbi esetekben osztunk meg:</p>
+            <ul class="data-list" style="margin-top:10px">
+                <li><span>Munkakeresők és munkaadók között az alkalmazáson belül, párosítási célból</span></li>
+                <li><span>A fent felsorolt infrastruktúra-szolgáltatókkal (Google Firebase)</span></li>
+                <li><span>Jogi kötelezettség esetén, hatósági megkeresésre</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">7. Jogaid</h2>
+        <div class="section-content">
+            <div class="rights-grid">
+                <div class="right-item">Hozzáférés adataidhoz</div>
+                <div class="right-item">Pontatlan adatok javítása</div>
+                <div class="right-item">Fiók és adatok törlése</div>
+                <div class="right-item">Adatok exportálása</div>
+                <div class="right-item">Adatkezelés korlátozása</div>
+                <div class="right-item">Tiltakozás az adatkezelés ellen</div>
             </div>
+            <p style="margin-top:14px">Jogaid érvényesítéséhez írj nekünk az alábbi elérhetőségek egyikén.</p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">2. How We Use Your Information</h2>
-            <div class="section-content">
-                <ul class="data-list">
-                    <li><span>To provide and improve the VJob service</span></li>
-                    <li><span>To match job seekers with employers</span></li>
-                    <li><span>To send push notifications about matches and messages</span></li>
-                    <li><span>To verify user identity and prevent fraud</span></li>
-                </ul>
-            </div>
+    <div class="section">
+        <h2 class="section-title">8. GDPR és globális megfelelés</h2>
+        <div class="section-content">
+            <div class="gdpr-badge">✓ GDPR megfelelő adatkezelés</div>
+            <p>Az EU-s felhasználók számára adatkezelésünk megfelel az Általános Adatvédelmi Rendeletnek (GDPR – 2016/679/EU). Ugyanezeket a védelmi szinteket alkalmazzuk a világ minden részén élő felhasználóink esetében is.</p>
+            <p style="margin-top:10px">EU-s felhasználóként panaszt tehetsz az illetékes felügyeleti hatóságnál. Magyarországon: <strong>NAIH</strong> (Nemzeti Adatvédelmi és Információszabadság Hatóság) – <a href="https://naih.hu" target="_blank" style="color:#E879F9">naih.hu</a></p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">3. Data Storage</h2>
-            <div class="section-content">
-                <p>Your data is stored securely using Google Firebase services (Firestore, Firebase Storage, Firebase Authentication). Data is stored on Google's servers in accordance with their security standards.</p>
-            </div>
+    <div class="section">
+        <h2 class="section-title">9. Gyermekek adatai</h2>
+        <div class="section-content">
+            <p>A VJob nem 16 év alatti felhasználóknak szól. Tudatosan nem gyűjtünk adatokat 16 év alatti személyektől. Ha tudomásunkra jut, hogy kiskorútól gyűjtöttünk adatot, azt haladéktalanul töröljük.</p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">4. Data Sharing</h2>
-            <div class="section-content">
-                <p>We do not sell your personal data. We share data only:</p>
-                <ul class="data-list" style="margin-top:10px">
-                    <li><span>Between job seekers and employers within the app for matching purposes</span></li>
-                    <li><span>With Google Firebase as our infrastructure provider</span></li>
-                </ul>
-            </div>
+    <div class="section">
+        <h2 class="section-title">10. Változások</h2>
+        <div class="section-content">
+            <p>Fenntartjuk a jogot a jelen tájékoztató módosítására. Lényeges változás esetén értesítést küldünk az alkalmazáson belül vagy email útján. A módosítás dátuma mindig megjelenik az oldal tetején.</p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">5. Data Retention</h2>
-            <div class="section-content">
-                <p>We retain your data as long as your account is active. You can delete your account at any time from the app settings, which will permanently delete all your data.</p>
-            </div>
+    <div class="section">
+        <h2 class="section-title">11. Kapcsolat</h2>
+        <div class="contact-box">
+            <div class="contact-row"><span class="contact-label">Email:</span><a href="mailto:info@getvjob.app">info@getvjob.app</a></div>
+            <div class="contact-row"><span class="contact-label">Web:</span><a href="https://getvjob.app">getvjob.app</a></div>
         </div>
+    </div>
+</div>
 
-        <div class="section">
-            <h2 class="section-title">6. Your Rights</h2>
-            <div class="section-content">
-                <div class="rights-grid">
-                    <div class="right-item">Access your data</div>
-                    <div class="right-item">Correct inaccurate data</div>
-                    <div class="right-item">Delete account and data</div>
-                    <div class="right-item">Export your data</div>
+<!-- ═══════════════ ENGLISH ═══════════════ -->
+<div class="lang-content" id="lang-en">
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="last-updated">Last updated: May 2026</p>
+
+    <div class="intro-box">
+        VJob is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use the VJob mobile application – regardless of where in the world you are located.
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">1. Information We Collect</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span><strong>Account information:</strong> name, email address, password (encrypted)</span></li>
+                <li><span><strong>Profile information:</strong> profile photo, CV data, work preferences, skills</span></li>
+                <li><span><strong>Videos:</strong> introduction videos uploaded by users</span></li>
+                <li><span><strong>Location:</strong> city/region for job matching purposes</span></li>
+                <li><span><strong>Device information:</strong> device token for push notifications, operating system</span></li>
+                <li><span><strong>Usage data:</strong> app interactions, job views, likes, skips</span></li>
+                <li><span><strong>Communications:</strong> in-app message content</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">2. How We Use Your Information</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span>To provide and continuously improve the VJob service</span></li>
+                <li><span>To intelligently match job seekers with employers</span></li>
+                <li><span>To send push notifications about matches, messages, and updates</span></li>
+                <li><span>To verify user identity and prevent fraud</span></li>
+                <li><span>To display personalized job recommendations</span></li>
+                <li><span>To generate statistics and analytics for service improvement</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">3. Data Storage</h2>
+        <div class="section-content">
+            <p>Your data is stored securely using Google Firebase services (Firestore, Firebase Storage, Firebase Authentication). Data is stored on Google's servers in accordance with their security standards, transmitted over encrypted connections.</p>
+            <p>We retain your data as long as your account is active, or until you request deletion.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">4. Third-Party Services</h2>
+        <div class="section-content">
+            <p style="margin-bottom:16px">To operate the app, we use the following third-party services. Each has its own privacy policy:</p>
+            <div class="third-party-grid">
+                <div class="third-party-item">
+                    <span class="third-party-name">Google Firebase (Firestore, Storage, Auth)</span>
+                    <span class="third-party-desc">Database, file storage and user authentication</span>
+                    <a class="third-party-link" href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy →</a>
                 </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">7. Children's Privacy</h2>
-            <div class="section-content">
-                <p>VJob is not intended for users under 16 years of age. We do not knowingly collect data from children under 16.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">8. Contact Us</h2>
-            <div class="contact-box">
-                <div class="contact-row">
-                    <span class="contact-label">Email:</span>
-                    <a href="mailto:info@getvjob.app">info@getvjob.app</a>
+                <div class="third-party-item">
+                    <span class="third-party-name">Firebase Cloud Messaging (FCM)</span>
+                    <span class="third-party-desc">Delivering push notifications to your device</span>
+                    <a class="third-party-link" href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy →</a>
                 </div>
-                <div class="contact-row">
-                    <span class="contact-label">Web:</span>
-                    <a href="https://getvjob.app">getvjob.app</a>
+                <div class="third-party-item">
+                    <span class="third-party-name">Google Analytics for Firebase</span>
+                    <span class="third-party-desc">Anonymous usage statistics to help improve the app</span>
+                    <a class="third-party-link" href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy →</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- GERMAN -->
-    <div class="lang-content" id="lang-de">
-        <h1 class="page-title">Datenschutzerklärung</h1>
-        <p class="last-updated">Zuletzt aktualisiert: Mai 2026</p>
-
-        <div class="intro-box">
-            VJob ist dem Schutz Ihrer Daten verpflichtet. Diese Datenschutzerklärung erläutert, wie wir Ihre Informationen bei der Nutzung der VJob-App erfassen, verwenden und schützen.
+    <div class="section">
+        <h2 class="section-title">5. Cookies</h2>
+        <div class="section-content">
+            <p>The VJob mobile application <strong>does not use cookies</strong>. The app exclusively uses Firebase's secure session management, which does not store cookies on your device.</p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">1. Erhobene Daten</h2>
-            <div class="section-content">
-                <ul class="data-list">
-                    <li><span><strong>Kontodaten:</strong> Name, E-Mail-Adresse</span></li>
-                    <li><span><strong>Profildaten:</strong> Profilfoto, Lebenslaufdaten, Arbeitspräferenzen</span></li>
-                    <li><span><strong>Videos:</strong> von Nutzern hochgeladene Vorstellungsvideos</span></li>
-                    <li><span><strong>Standort:</strong> Stadt/Region für Job-Matching</span></li>
-                    <li><span><strong>Gerätedaten:</strong> Geräte-Token für Push-Benachrichtigungen</span></li>
-                    <li><span><strong>Nutzungsdaten:</strong> App-Interaktionen, Stellenaufrufe, Likes</span></li>
-                </ul>
+    <div class="section">
+        <h2 class="section-title">6. Data Sharing</h2>
+        <div class="section-content">
+            <p>We <strong>never sell</strong> your personal data to third parties. Data is shared only in the following cases:</p>
+            <ul class="data-list" style="margin-top:10px">
+                <li><span>Between job seekers and employers within the app for matching purposes</span></li>
+                <li><span>With the infrastructure providers listed above (Google Firebase)</span></li>
+                <li><span>When required by law or in response to valid legal requests</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">7. Your Rights</h2>
+        <div class="section-content">
+            <div class="rights-grid">
+                <div class="right-item">Access your data</div>
+                <div class="right-item">Correct inaccurate data</div>
+                <div class="right-item">Delete account and data</div>
+                <div class="right-item">Export your data</div>
+                <div class="right-item">Restrict data processing</div>
+                <div class="right-item">Object to processing</div>
             </div>
+            <p style="margin-top:14px">To exercise your rights, please contact us using the details below.</p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">2. Verwendung der Daten</h2>
-            <div class="section-content">
-                <ul class="data-list">
-                    <li><span>Bereitstellung und Verbesserung des VJob-Dienstes</span></li>
-                    <li><span>Vermittlung zwischen Arbeitssuchenden und Arbeitgebern</span></li>
-                    <li><span>Versand von Push-Benachrichtigungen über Matches und Nachrichten</span></li>
-                    <li><span>Überprüfung der Benutzeridentität und Betrugsprävention</span></li>
-                </ul>
-            </div>
+    <div class="section">
+        <h2 class="section-title">8. GDPR & Global Compliance</h2>
+        <div class="section-content">
+            <div class="gdpr-badge">✓ GDPR Compliant</div>
+            <p>For users in the European Union, our data processing complies with the General Data Protection Regulation (GDPR – 2016/679/EU). We apply the same level of protection to all users worldwide, regardless of their location.</p>
+            <p style="margin-top:10px">EU users may file a complaint with their local supervisory authority. In Hungary: <strong>NAIH</strong> (National Authority for Data Protection and Freedom of Information) – <a href="https://naih.hu" target="_blank" style="color:#E879F9">naih.hu</a></p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">3. Datenspeicherung</h2>
-            <div class="section-content">
-                <p>Ihre Daten werden sicher über Google Firebase-Dienste gespeichert (Firestore, Firebase Storage, Firebase Authentication). Die Daten werden gemäß den Sicherheitsstandards von Google gespeichert.</p>
-            </div>
+    <div class="section">
+        <h2 class="section-title">9. Children's Privacy</h2>
+        <div class="section-content">
+            <p>VJob is not intended for users under 16 years of age. We do not knowingly collect data from children under 16. If we become aware that we have collected data from a minor, we will delete it immediately.</p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">4. Datenweitergabe</h2>
-            <div class="section-content">
-                <p>Wir verkaufen Ihre Daten nicht. Daten werden nur geteilt:</p>
-                <ul class="data-list" style="margin-top:10px">
-                    <li><span>Zwischen Arbeitssuchenden und Arbeitgebern innerhalb der App</span></li>
-                    <li><span>Mit Google Firebase als Infrastrukturanbieter</span></li>
-                </ul>
-            </div>
+    <div class="section">
+        <h2 class="section-title">10. Changes to This Policy</h2>
+        <div class="section-content">
+            <p>We reserve the right to update this Privacy Policy. In the event of significant changes, we will notify you via in-app notification or email. The date of the latest update is always shown at the top of this page.</p>
         </div>
+    </div>
 
-        <div class="section">
-            <h2 class="section-title">5. Datenspeicherdauer</h2>
-            <div class="section-content">
-                <p>Wir speichern Ihre Daten, solange Ihr Konto aktiv ist. Sie können Ihr Konto jederzeit in den App-Einstellungen löschen, wodurch alle Ihre Daten dauerhaft gelöscht werden.</p>
-            </div>
+    <div class="section">
+        <h2 class="section-title">11. Contact Us</h2>
+        <div class="contact-box">
+            <div class="contact-row"><span class="contact-label">Email:</span><a href="mailto:info@getvjob.app">info@getvjob.app</a></div>
+            <div class="contact-row"><span class="contact-label">Web:</span><a href="https://getvjob.app">getvjob.app</a></div>
         </div>
+    </div>
+</div>
 
-        <div class="section">
-            <h2 class="section-title">6. Ihre Rechte</h2>
-            <div class="section-content">
-                <div class="rights-grid">
-                    <div class="right-item">Zugriff auf Ihre Daten</div>
-                    <div class="right-item">Korrektur ungenauer Daten</div>
-                    <div class="right-item">Konto und Daten löschen</div>
-                    <div class="right-item">Daten exportieren</div>
+<!-- ═══════════════ GERMAN ═══════════════ -->
+<div class="lang-content" id="lang-de">
+    <h1 class="page-title">Datenschutzerklärung</h1>
+    <p class="last-updated">Zuletzt aktualisiert: Mai 2026</p>
+
+    <div class="intro-box">
+        VJob ist dem Schutz Ihrer Daten verpflichtet. Diese Datenschutzerklärung erläutert, wie wir Ihre Informationen bei der Nutzung der VJob-App erfassen, verwenden und schützen – unabhängig davon, aus welchem Teil der Welt Sie die App nutzen.
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">1. Erhobene Daten</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span><strong>Kontodaten:</strong> Name, E-Mail-Adresse, Passwort (verschlüsselt)</span></li>
+                <li><span><strong>Profildaten:</strong> Profilfoto, Lebenslaufdaten, Arbeitspräferenzen, Fähigkeiten</span></li>
+                <li><span><strong>Videos:</strong> von Nutzern hochgeladene Vorstellungsvideos</span></li>
+                <li><span><strong>Standort:</strong> Stadt/Region für Job-Matching</span></li>
+                <li><span><strong>Gerätedaten:</strong> Geräte-Token für Push-Benachrichtigungen, Betriebssystem</span></li>
+                <li><span><strong>Nutzungsdaten:</strong> App-Interaktionen, Stellenaufrufe, Likes, Skips</span></li>
+                <li><span><strong>Kommunikation:</strong> Inhalt der In-App-Nachrichten</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">2. Verwendung der Daten</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span>Bereitstellung und kontinuierliche Verbesserung des VJob-Dienstes</span></li>
+                <li><span>Intelligente Vermittlung zwischen Arbeitssuchenden und Arbeitgebern</span></li>
+                <li><span>Versand von Push-Benachrichtigungen über Matches, Nachrichten und Updates</span></li>
+                <li><span>Überprüfung der Benutzeridentität und Betrugsprävention</span></li>
+                <li><span>Anzeige personalisierter Stellenempfehlungen</span></li>
+                <li><span>Erstellung von Statistiken zur Serviceverbesserung</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">3. Datenspeicherung</h2>
+        <div class="section-content">
+            <p>Ihre Daten werden sicher über Google Firebase-Dienste gespeichert (Firestore, Firebase Storage, Firebase Authentication). Die Daten werden auf Google-Servern gemäß deren Sicherheitsstandards über verschlüsselte Verbindungen übertragen.</p>
+            <p>Wir speichern Ihre Daten, solange Ihr Konto aktiv ist oder bis Sie die Löschung beantragen.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">4. Drittanbieter-Dienste</h2>
+        <div class="section-content">
+            <p style="margin-bottom:16px">Für den Betrieb der App nutzen wir folgende Drittanbieter. Jeder verfügt über eine eigene Datenschutzerklärung:</p>
+            <div class="third-party-grid">
+                <div class="third-party-item">
+                    <span class="third-party-name">Google Firebase (Firestore, Storage, Auth)</span>
+                    <span class="third-party-desc">Datenbank, Dateispeicherung und Benutzerauthentifizierung</span>
+                    <a class="third-party-link" href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy →</a>
                 </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">7. Datenschutz für Kinder</h2>
-            <div class="section-content">
-                <p>VJob richtet sich nicht an Nutzer unter 16 Jahren. Wir erfassen wissentlich keine Daten von Kindern unter 16 Jahren.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">8. Kontakt</h2>
-            <div class="contact-box">
-                <div class="contact-row">
-                    <span class="contact-label">E-Mail:</span>
-                    <a href="mailto:info@getvjob.app">info@getvjob.app</a>
+                <div class="third-party-item">
+                    <span class="third-party-name">Firebase Cloud Messaging (FCM)</span>
+                    <span class="third-party-desc">Zustellung von Push-Benachrichtigungen an Ihr Gerät</span>
+                    <a class="third-party-link" href="https://firebase.google.com/support/privacy" target="_blank">firebase.google.com/support/privacy →</a>
                 </div>
-                <div class="contact-row">
-                    <span class="contact-label">Web:</span>
-                    <a href="https://getvjob.app">getvjob.app</a>
+                <div class="third-party-item">
+                    <span class="third-party-name">Google Analytics for Firebase</span>
+                    <span class="third-party-desc">Anonyme Nutzungsstatistiken zur Verbesserung der App</span>
+                    <a class="third-party-link" href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy →</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="section">
+        <h2 class="section-title">5. Cookies</h2>
+        <div class="section-content">
+            <p>Die VJob-App <strong>verwendet keine Cookies</strong>. Die App nutzt ausschließlich das sichere Sitzungsmanagement von Firebase, das keine Cookies auf Ihrem Gerät speichert.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">6. Datenweitergabe</h2>
+        <div class="section-content">
+            <p>Wir <strong>verkaufen Ihre Daten niemals</strong> an Dritte. Daten werden nur in folgenden Fällen weitergegeben:</p>
+            <ul class="data-list" style="margin-top:10px">
+                <li><span>Zwischen Arbeitssuchenden und Arbeitgebern innerhalb der App für Matching-Zwecke</span></li>
+                <li><span>An die oben genannten Infrastrukturanbieter (Google Firebase)</span></li>
+                <li><span>Bei gesetzlicher Verpflichtung oder auf behördliche Anfrage</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">7. Ihre Rechte</h2>
+        <div class="section-content">
+            <div class="rights-grid">
+                <div class="right-item">Zugriff auf Ihre Daten</div>
+                <div class="right-item">Korrektur ungenauer Daten</div>
+                <div class="right-item">Konto und Daten löschen</div>
+                <div class="right-item">Daten exportieren</div>
+                <div class="right-item">Verarbeitung einschränken</div>
+                <div class="right-item">Widerspruch einlegen</div>
+            </div>
+            <p style="margin-top:14px">Zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte über die unten angegebenen Kontaktdaten.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">8. DSGVO & Globale Compliance</h2>
+        <div class="section-content">
+            <div class="gdpr-badge">✓ DSGVO-konform</div>
+            <p>Für Nutzer in der Europäischen Union entspricht unsere Datenverarbeitung der Datenschutz-Grundverordnung (DSGVO – 2016/679/EU). Wir wenden dasselbe Schutzniveau für alle Nutzer weltweit an, unabhängig von ihrem Standort.</p>
+            <p style="margin-top:10px">EU-Nutzer können eine Beschwerde bei ihrer zuständigen Aufsichtsbehörde einreichen. In Ungarn: <strong>NAIH</strong> – <a href="https://naih.hu" target="_blank" style="color:#E879F9">naih.hu</a></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">9. Datenschutz für Kinder</h2>
+        <div class="section-content">
+            <p>VJob richtet sich nicht an Nutzer unter 16 Jahren. Wir erfassen wissentlich keine Daten von Kindern unter 16 Jahren. Sollten wir feststellen, dass wir Daten eines Minderjährigen erhoben haben, werden diese unverzüglich gelöscht.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">10. Änderungen dieser Erklärung</h2>
+        <div class="section-content">
+            <p>Wir behalten uns das Recht vor, diese Datenschutzerklärung zu aktualisieren. Bei wesentlichen Änderungen werden wir Sie per In-App-Benachrichtigung oder E-Mail informieren. Das Datum der letzten Aktualisierung wird stets oben auf dieser Seite angezeigt.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">11. Kontakt</h2>
+        <div class="contact-box">
+            <div class="contact-row"><span class="contact-label">E-Mail:</span><a href="mailto:info@getvjob.app">info@getvjob.app</a></div>
+            <div class="contact-row"><span class="contact-label">Web:</span><a href="https://getvjob.app">getvjob.app</a></div>
+        </div>
+    </div>
+</div>
 
 </div>
 
 <footer class="footer">
-    © 2026 VJob. All rights reserved.
+    © 2026 VJob. All rights reserved. · <a href="https://getvjob.app" style="color:rgba(255,255,255,0.2)">getvjob.app</a>
 </footer>
 
 <script>
-    function setLang(lang) {
+    function setLang(lang, btn) {
         document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
         document.getElementById('lang-' + lang).classList.add('active');
-        event.target.classList.add('active');
+        btn.classList.add('active');
     }
 </script>
 
