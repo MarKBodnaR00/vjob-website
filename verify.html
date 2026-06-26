@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Verification – VJob</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #07060E;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .bg-glow { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .glow-1 {
+    position: absolute; width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,200,120,0.08) 0%, transparent 70%);
+    top: -100px; left: 50%; transform: translateX(-50%);
+  }
+  .glow-2 {
+    position: absolute; width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(136,0,255,0.06) 0%, transparent 70%);
+    bottom: 0; right: -100px;
+  }
+
+  .card {
+    position: relative; z-index: 1;
+    background: rgba(255,255,255,0.03);
+    border-radius: 28px;
+    padding: 52px 44px;
+    max-width: 420px; width: 90%;
+    text-align: center;
+    animation: fadeUp 0.7s ease both;
+    transition: border-color 0.4s;
+  }
+  .card.success { border: 1px solid rgba(0,200,120,0.25); }
+  .card.error   { border: 1px solid rgba(239,68,68,0.25); }
+  .card.loading { border: 1px solid rgba(168,85,247,0.2); }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes pulse1 { 0%{transform:scale(1);opacity:.5} 100%{transform:scale(2.2);opacity:0} }
+  @keyframes pulse2 { 0%{transform:scale(1);opacity:.35} 100%{transform:scale(1.8);opacity:0} }
+  @keyframes pulse3 { 0%{transform:scale(1);opacity:.2} 100%{transform:scale(2.6);opacity:0} }
+  @keyframes spin    { to{transform:rotate(360deg)} }
+  @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+  @keyframes checkIn { 0%{stroke-dashoffset:60} 100%{stroke-dashoffset:0} }
+
+  .logo { font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 36px; letter-spacing: -0.5px; }
+  .logo span { color: #A855F7; }
+
+  .icon-wrap { position: relative; width: 96px; height: 96px; margin: 0 auto 32px; }
+  .pulse-ring {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1.5px solid;
+  }
+  .pulse-ring.r1 { animation: pulse1 2.2s ease-out infinite; }
+  .pulse-ring.r2 { animation: pulse2 2.2s ease-out infinite 0.4s; }
+  .pulse-ring.r3 { animation: pulse3 2.2s ease-out infinite 0.8s; border-width: 1px; }
+
+  .icon-circle {
+    position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .spinner {
+    width: 96px; height: 96px; margin: 0 auto 32px;
+    border: 2px solid rgba(168,85,247,0.2);
+    border-top-color: #A855F7;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+
+  h1 { color: #fff; font-size: 22px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.3px; }
+  p  { color: #888; font-size: 14px; line-height: 1.65; margin-bottom: 28px; }
+
+  .badge {
+    border-radius: 12px; padding: 12px 20px;
+    font-size: 13px; font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .badge.green { background: rgba(0,200,120,0.08); border: 1px solid rgba(0,200,120,0.25); color: #00C878; }
+  .badge.red   { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); color: #EF4444; }
+  .badge.purple{ background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.2); color: #A855F7; }
+
+  .dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 28px; }
+  .dot  { width: 7px; height: 7px; border-radius: 50%; background: #00C878; }
+  .dot:nth-child(1){ animation: dotPulse 1.4s ease infinite; }
+  .dot:nth-child(2){ animation: dotPulse 1.4s ease infinite 0.2s; }
+  .dot:nth-child(3){ animation: dotPulse 1.4s ease infinite 0.4s; }
+
+  .btn {
+    display: block; width: 100%; padding: 15px;
+    border-radius: 16px; border: none; cursor: pointer;
+    font-size: 15px; font-weight: 700; letter-spacing: -0.2px;
+    text-decoration: none; margin-bottom: 12px;
+    transition: opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn.purple { background: linear-gradient(135deg, #7C3AED, #A855F7); color: #fff; }
+  .btn.outline {
+    background: transparent;
+    border: 1px solid rgba(239,68,68,0.35);
+    color: #EF4444;
+  }
+  .btn.outline:hover { background: rgba(239,68,68,0.06); }
+
+  .sub { color: #555; font-size: 12px; margin-top: 8px; }
+  .sub a { color: #A855F7; text-decoration: none; }
+
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="bg-glow">
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+</div>
+
+<div class="card loading" id="stateLoading">
+  <div class="logo">V<span>Job</span></div>
+  <div class="spinner"></div>
+  <h1>Verifying your email...</h1>
+  <p>Please wait a moment.</p>
+  <div class="badge purple">Checking...</div>
+</div>
+
+<div class="card success hidden" id="stateSuccess">
+  <div class="logo">V<span>Job</span></div>
+  <div class="icon-wrap">
+    <div class="pulse-ring r1" style="border-color:rgba(0,200,120,0.5);"></div>
+    <div class="pulse-ring r2" style="border-color:rgba(0,200,120,0.35);"></div>
+    <div class="pulse-ring r3" style="border-color:rgba(0,200,120,0.2);"></div>
+    <div class="icon-circle" style="background:rgba(0,200,120,0.1);border-color:rgba(0,200,120,0.5);">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <polyline points="8,21 16,30 33,12" stroke="#00C878" stroke-width="3"
+          stroke-linecap="round" stroke-linejoin="round"
+          stroke-dasharray="60" stroke-dashoffset="0"
+          style="animation:checkIn 0.6s ease 0.3s both"/>
+      </svg>
+    </div>
+  </div>
+  <h1>Email verified!</h1>
+  <p>Your account has been successfully activated.<br>You can now log in to VJob.</p>
+  <div class="badge green">Verification successful!</div>
+  <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+  <a href="vjob://verified" class="btn purple">Open VJob app</a>
+  <div class="sub">App not opening? <a href="https://play.google.com/store/apps/details?id=com.example.vjob">Download here</a></div>
+</div>
+
+<div class="card error hidden" id="stateError">
+  <div class="logo">V<span>Job</span></div>
+  <div class="icon-wrap">
+    <div class="pulse-ring r1" style="border-color:rgba(239,68,68,0.5);"></div>
+    <div class="pulse-ring r2" style="border-color:rgba(239,68,68,0.3);"></div>
+    <div class="icon-circle" style="background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.4);">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <line x1="10" y1="10" x2="26" y2="26" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/>
+        <line x1="26" y1="10" x2="10" y2="26" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <h1 id="errorTitle">Link expired</h1>
+  <p id="errorDesc">This verification link has expired or was already used. Request a new one below.</p>
+  <div class="badge red" id="errorBadge">Verification failed</div>
+  <button class="btn outline" id="resendBtn" onclick="resendEmail()">Send new verification email</button>
+  <div class="sub" id="resendMsg"></div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const mode    = params.get('mode');
+const oobCode = params.get('oobCode');
+const apiKey  = params.get('apiKey');
+
+function show(id) {
+  ['stateLoading','stateSuccess','stateError'].forEach(s => {
+    document.getElementById(s).classList.toggle('hidden', s !== id);
+  });
+}
+
+function showError(title, desc, badge) {
+  document.getElementById('errorTitle').textContent  = title  || 'Link expired';
+  document.getElementById('errorDesc').textContent   = desc   || 'This link has expired or was already used.';
+  document.getElementById('errorBadge').textContent  = badge  || 'Verification failed';
+  show('stateError');
+}
+
+async function verifyEmail() {
+  if (mode !== 'verifyEmail' || !oobCode || !apiKey) {
+    showError('Invalid link', 'This link is not valid. Please request a new verification email.', 'Invalid link');
+    return;
+  }
+  try {
+    const res = await fetch(
+      `https://identitytoolkit.googleapis.com/v1/accounts:update?key=${apiKey}`,
+      { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ oobCode }) }
+    );
+    const data = await res.json();
+    if (data.error) {
+      const msg = data.error.message || '';
+      if (msg.includes('INVALID_OOB_CODE') || msg.includes('EXPIRED'))
+        showError('Link expired', 'This link has expired or was already used. Request a new one below.', 'Link expired');
+      else if (msg.includes('EMAIL_NOT_FOUND'))
+        showError('Account not found', 'We couldn\'t find this account. Please register again.', 'Account not found');
+      else
+        showError('Something went wrong', 'An error occurred: ' + msg, 'Error');
+    } else {
+      show('stateSuccess');
+    }
+  } catch(e) {
+    showError('Network error', 'Please check your internet connection and try again.', 'Network error');
+  }
+}
+
+async function resendEmail() {
+  const btn = document.getElementById('resendBtn');
+  const msg = document.getElementById('resendMsg');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  msg.textContent = '';
+  try {
+    await new Promise(r => setTimeout(r, 1500));
+    btn.textContent = 'Email sent!';
+    btn.style.borderColor = 'rgba(0,200,120,0.35)';
+    btn.style.color = '#00C878';
+    msg.textContent = 'Check your inbox. The link expires in 1 hour.';
+    msg.style.color = '#00C878';
+    window.location.href = 'vjob://resend-verification';
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = 'Send new verification email';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 30000);
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = 'Send new verification email';
+    msg.textContent = 'Failed to send. Please open the app and try again.';
+    msg.style.color = '#EF4444';
+  }
+}
+
+verifyEmail();
+</script>
+</body>
+</html>
