@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VJob – Terms of Service</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #07060E;
+            color: #e2e0f0;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0D0B1E 0%, #1A0A2E 100%);
+            border-bottom: 1px solid rgba(180, 80, 255, 0.2);
+            padding: 20px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 0 20px rgba(180, 80, 255, 0.4);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #C084FC, #E879F9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 6px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 7px;
+            background: transparent;
+            color: rgba(255,255,255,0.45);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            color: white;
+            box-shadow: 0 2px 10px rgba(180, 80, 255, 0.4);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.07);
+        }
+
+        .content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #C084FC, #E879F9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .last-updated {
+            color: rgba(255,255,255,0.35);
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, rgba(139,47,201,0.12), rgba(217,70,239,0.08));
+            border: 1px solid rgba(180,80,255,0.25);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 36px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.75);
+        }
+
+        .section { margin-bottom: 32px; }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #C084FC;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .section-content {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            padding: 20px 24px;
+        }
+
+        .section-content p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 10px;
+        }
+
+        .section-content p:last-child { margin-bottom: 0; }
+
+        .data-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .data-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+        }
+
+        .data-list li::before {
+            content: '▸';
+            color: #C084FC;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .data-list strong { color: rgba(255,255,255,0.85); }
+
+        .warning-box {
+            background: rgba(255, 170, 0, 0.08);
+            border: 1px solid rgba(255, 170, 0, 0.3);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: rgba(255, 200, 130, 0.9);
+            line-height: 1.6;
+        }
+
+        .gdpr-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(139,47,201,0.2), rgba(217,70,239,0.12));
+            border: 1px solid rgba(180,80,255,0.35);
+            border-radius: 10px;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: #C084FC;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, rgba(139,47,201,0.15), rgba(217,70,239,0.1));
+            border: 1px solid rgba(180,80,255,0.3);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .contact-label {
+            color: #C084FC;
+            font-weight: 600;
+            min-width: 90px;
+        }
+
+        .contact-row a {
+            color: #E879F9;
+            text-decoration: none;
+        }
+
+        .contact-row a:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.2);
+            font-size: 12px;
+        }
+
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
+        @media (max-width: 600px) {
+            .page-title { font-size: 24px; }
+            .header-inner { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <div class="logo-area">
+            <div class="logo-icon">V</div>
+            <span class="logo-text">VJob</span>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLang('hu', this)">HU</button>
+            <button class="lang-btn" onclick="setLang('en', this)">EN</button>
+            <button class="lang-btn" onclick="setLang('de', this)">DE</button>
+        </div>
+    </div>
+</header>
+
+<div class="content">
+
+<!-- ═══════════════ HUNGARIAN ═══════════════ -->
+<div class="lang-content active" id="lang-hu">
+    <h1 class="page-title">Általános Szerződési Feltételek</h1>
+    <p class="last-updated">Utoljára frissítve: 2026. július</p>
+
+    <div class="intro-box">
+        Jelen Általános Szerződési Feltételek (ÁSZF) szabályozzák a VJob mobilalkalmazás ("Szolgáltatás", "VJob") használatát. A Szolgáltatás igénybevételével elfogadod az alábbi feltételeket. Kérjük, figyelmesen olvasd el, mielőtt regisztrálsz.
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">1. A Szolgáltató adatai</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span><strong>Név:</strong> [EGYÉNI VÁLLALKOZÓ / CÉG NEVE – bejegyzés után töltendő]</span></li>
+                <li><span><strong>Székhely:</strong> [SZÉKHELY CÍME – bejegyzés után töltendő]</span></li>
+                <li><span><strong>Nyilvántartási szám:</strong> [EV NYILVÁNTARTÁSI SZÁM – bejegyzés után töltendő]</span></li>
+                <li><span><strong>Adószám:</strong> [ADÓSZÁM – bejegyzés után töltendő]</span></li>
+                <li><span><strong>Nyilvántartó hatóság:</strong> Nemzeti Adó- és Vámhivatal (egyéni vállalkozók nyilvántartása)</span></li>
+                <li><span><strong>E-mail:</strong> info@getvjob.app</span></li>
+                <li><span><strong>Weboldal:</strong> getvjob.app</span></li>
+            </ul>
+            <div class="warning-box">A fenti adatok az egyéni vállalkozói bejegyzés véglegesítése után kerülnek pontosításra. Az ÁSZF ezen szakasza a bejegyzési szám és adószám kézhezvétele után frissül.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">2. A Szolgáltatásról</h2>
+        <div class="section-content">
+            <p>A VJob egy digitális piactér, amely munkavállalókat ("Munkavállaló") és munkáltatókat ("Cég") köt össze, rövid videós bemutatkozás és profil-alapú párosítás (matching) segítségével.</p>
+            <p style="margin-top:10px"><strong>A VJob nem munkáltató, nem munkaközvetítő, és nem félje a Munkavállaló és a Cég között létrejövő munkaviszonynak vagy megbízásnak.</strong> A VJob kizárólag a felek egymásra találását segíti elő – a tényleges munkaviszony feltételeiért, létrejöttéért, teljesítéséért és jogszerűségéért a Munkavállaló és a Cég önállóan felelősek.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">3. Elfogadás és jogosultság</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span>A Szolgáltatás használatához <strong>16. életévedet be kell töltened</strong>.</span></li>
+                <li><span>A regisztrációval kijelented, hogy az általad megadott adatok valósak és pontosak.</span></li>
+                <li><span>Cégként történő regisztrációhoz jogosultnak kell lenned az adott vállalkozás képviseletére.</span></li>
+                <li><span>A Szolgáltatás igénybevétele önkéntes; a jelen ÁSZF el nem fogadása esetén a Szolgáltatás nem használható.</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">4. Fiók és regisztráció</h2>
+        <div class="section-content">
+            <p>A fiókod létrehozásakor pontos, naprakész adatokat kell megadnod, és felelős vagy a fiókod biztonságáért (jelszó titkosságáért). A fiókodon keresztül történő minden tevékenységért te vagy felelős.</p>
+            <p style="margin-top:10px">A VJob fenntartja a jogot, hogy egy fiókot felfüggesszen vagy töröljön, ha a megadott adatok valótlannak bizonyulnak, vagy jelen ÁSZF megsértését észleli.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">5. Felhasználói magatartás</h2>
+        <div class="section-content">
+            <p>A Szolgáltatás használata során tilos:</p>
+            <ul class="data-list" style="margin-top:10px">
+                <li><span>Valótlan, megtévesztő vagy másra vonatkozó profiladatot, videót megadni</span></li>
+                <li><span>Jogsértő, sértő, hátrányosan megkülönböztető, gyűlöletkeltő vagy szexuálisan explicit tartalmat feltölteni</span></li>
+                <li><span>Más felhasználót zaklatni, fenyegetni vagy zavarni</span></li>
+                <li><span>A Szolgáltatást a jelen ÁSZF-ben leírt céltól eltérő, jogellenes célra (pl. spam, csalás) felhasználni</span></li>
+                <li><span>A Szolgáltatás működését technikai eszközökkel (botok, automatizált lekérdezések) megzavarni</span></li>
+            </ul>
+            <div class="warning-box">A fenti szabályok megsértése a fiók azonnali, előzetes értesítés nélküli felfüggesztését vagy törlését vonhatja maga után.</div>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h2 class="section-title">6. A szerződéskötés menete és hibajavítás</h2>
+        <div class="section-content">
+            <p>Cégként a hirdetés-csomag megvásárlása az alábbi lépésekben történik: (1) a kívánt hirdetés-csomag és időtartam kiválasztása az alkalmazáson belül; (2) a végösszeg és a csomag adatainak áttekintése egy összefoglaló képernyőn, <strong>a fizetés véglegesítése előtt</strong>; (3) a fizetés teljesítése a Stripe fizetési szolgáltatón keresztül; (4) a sikeres fizetésről szóló visszaigazolás és a hirdetés aktiválása.</p>
+            <p style="margin-top:10px">Az összefoglaló képernyőn a Cégnek lehetősége van a kiválasztott csomag módosítására vagy a vásárlás megszakítására, mielőtt a fizetés véglegesítésre kerül – ez szolgálja az esetleges adatbeviteli hibák javításának lehetőségét.</p>
+            <p style="margin-top:10px">A szerződés nyelve magyar (illetve a felhasználó által választott EN/DE nyelv), és a szerződés elektronikus formában, a fizetési visszaigazolás formájában jön létre. A szerződés nem kerül iktatásra papíralapon, de a visszaigazolás e-mailben megőrzésre kerül és a felhasználó számára utólag is hozzáférhető.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">7. Fizetés, árak és hirdetés-csomagok</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span>A Munkavállalói oldal használata <strong>ingyenes</strong>.</span></li>
+                <li><span>A Cég oldalon az álláshirdetések közzététele fizetős, meghatározott időtartamú <strong>hirdetés-csomagok</strong> megvásárlásával lehetséges. Az árakat és időtartamokat az appon belül tüntetjük fel.</span></li>
+                <li><span>A fizetés harmadik fél (Stripe) biztonságos fizetési rendszerén keresztül történik; a VJob nem tárolja a bankkártya-adataidat.</span></li>
+                <li><span>A megvásárolt hirdetés-csomag <strong>nem automatikusan megújuló</strong> – lejáratkor a hirdetés inaktívvá válik, új csomag vásárlása szükséges a folytatáshoz.</span></li>
+                <li><span>A már közzétett és aktív hirdetésre vonatkozó díj <strong>nem visszatéríthető</strong>, kivéve, ha a Szolgáltatás technikai hibája miatt a hirdetés egyáltalán nem jelent meg a felhasználóknak.</span></li>
+                <li><span>A VJob fenntartja a jogot az árak módosítására; a módosítás a már megvásárolt, aktív csomagokat nem érinti.</span></li>
+                <li><span>Az alkalmazásban feltüntetett árak – eltérő jelölés hiányában – <strong>bruttó árak</strong>, és tartalmazzák a hatályos jogszabályok szerinti általános forgalmi adót, amennyiben az Szolgáltatót áfafizetési kötelezettség terheli.</span></li>
+                <li><span>A fizetésről a Szolgáltató számlát állít ki, amelyet elektronikus úton, a regisztrációkor megadott e-mail címre küld meg.</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">8. Elállási jog</h2>
+        <div class="section-content">
+            <p>A Szolgáltatás fizetős elemeit (hirdetés-csomagok) elsődlegesen vállalkozások (Cégek) vásárolják meg üzleti tevékenységük körében. A fogyasztók és a vállalkozások közötti szerződések részletes szabályairól szóló <strong>45/2014. (II. 26.) Korm. rendelet</strong> szerinti, fogyasztókat megillető 14 napos elállási jog <strong>kizárólag természetes személy fogyasztókra</strong> vonatkozik, akik önálló foglalkozásukon és gazdasági tevékenységükön kívül eső célból járnak el – ez a Cégként regisztrált, üzleti minőségben eljáró felhasználókra <strong>nem alkalmazandó</strong>.</p>
+            <p style="margin-top:10px">Amennyiben a vásárlást mégis természetes személy, fogyasztói minőségben eljáró felhasználó kezdeményezné, a hirdetés-csomag mint digitális tartalom a fizetés megtörténtével és a Cég kifejezett, előzetes hozzájárulásával azonnal, a szerződés teljesítése megkezdődik – ezt a felhasználó a vásárlás során tudomásul veszi, és ezzel elveszti a Korm. rendelet szerinti elállási jogát, az Ektv. és a Korm. rendelet vonatkozó kivételszabálya alapján.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">9. Szellemi tulajdon</h2>
+        <div class="section-content">
+            <p>A felhasználó által feltöltött tartalmak (videók, profiladatok, szövegek) tulajdonjoga a felhasználónál marad. A feltöltéssel a felhasználó <strong>nem kizárólagos, díjmentes felhasználási jogot</strong> biztosít a VJob számára a tartalom Szolgáltatáson belüli megjelenítésére, a Szolgáltatás rendeltetésszerű működéséhez szükséges mértékben.</p>
+            <p style="margin-top:10px">A VJob név, logó, dizájn és a Szolgáltatás szoftveres megvalósítása a VJob (illetve annak üzemeltetője) kizárólagos szellemi tulajdona.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">10. Fiók felfüggesztése és megszüntetése</h2>
+        <div class="section-content">
+            <p>Fiókodat bármikor, indoklás nélkül törölheted a beállítások menüben. A VJob fenntartja a jogot, hogy jelen ÁSZF súlyos vagy ismételt megsértése esetén a fiókot felfüggessze vagy törölje. Fiók törlése esetén az adatkezelési tájékoztatóban leírtak szerint járunk el.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">11. Felelősség korlátozása</h2>
+        <div class="section-content">
+            <p>A Szolgáltatást <strong>"ahogy van" (as is)</strong> alapon nyújtjuk, mindenféle kifejezett vagy vélelmezett garancia nélkül. A VJob nem garantálja, hogy a Szolgáltatás használata munkaviszony létrejöttéhez vezet, sem a párosítási javaslatok pontosságát vagy relevanciáját.</p>
+            <p style="margin-top:10px">A VJob – a jogszabályok által megengedett legteljesebb mértékben – nem vállal felelősséget a Munkavállaló és a Cég közötti munkaviszonyból, annak elmaradásából vagy megszűnéséből eredő közvetlen vagy közvetett károkért.</p>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h2 class="section-title">12. Panaszkezelés és vitarendezés</h2>
+        <div class="section-content">
+            <p>A Szolgáltatással kapcsolatos panaszokat a felhasználó a <strong>info@getvjob.app</strong> e-mail címen jelezheti. A Szolgáltató a panaszt a lehető legrövidebb időn, de legfeljebb 30 napon belül kivizsgálja és arra érdemben válaszol.</p>
+            <p style="margin-top:10px">Amennyiben a panasz rendezése közvetlenül nem vezet eredményre, természetes személy fogyasztói minőségben eljáró felhasználó jogosult a lakóhelye szerint illetékes <strong>békéltető testülethez</strong>, illetve az Európai Bizottság <a href="https://ec.europa.eu/consumers/odr" style="color:#E879F9">online vitarendezési platformjához</a> (ODR) fordulni. Cégek közötti (B2B) jogviták esetén a felek elsődlegesen egyeztetés útján törekednek a megoldásra, ennek eredménytelensége esetén a hatáskörrel rendelkező magyar bíróság jár el.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">13. Tárhelyszolgáltató adatai</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span><strong>Alkalmazás háttér-infrastruktúra:</strong> Google Ireland Limited (Firebase) – Gordon House, Barrow Street, Dublin 4, Írország</span></li>
+                <li><span><strong>Weboldal tárhely:</strong> GitHub, Inc. (GitHub Pages) – 88 Colin P Kelly Jr St, San Francisco, CA 94107, Egyesült Államok</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">14. Irányadó jog és vitarendezés</h2>
+        <div class="section-content">
+            <p>Jelen ÁSZF-re a magyar jog irányadó. Jogvita esetén a felek elsődlegesen békés úton törekednek a megegyezésre; ennek sikertelensége esetén a hatáskörrel és illetékességgel rendelkező magyar bíróság jár el.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">15. Az ÁSZF módosítása</h2>
+        <div class="section-content">
+            <p>A VJob fenntartja a jogot jelen ÁSZF módosítására. Lényeges módosítás esetén a felhasználókat alkalmazáson belüli értesítés vagy e-mail útján tájékoztatjuk. A módosítás hatálybalépése után a Szolgáltatás további használata a módosított feltételek elfogadását jelenti.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">16. Kapcsolat</h2>
+        <div class="contact-box">
+            <div class="contact-row"><span class="contact-label">Email:</span><a href="mailto:info@getvjob.app">info@getvjob.app</a></div>
+            <div class="contact-row"><span class="contact-label">Web:</span><a href="https://getvjob.app">getvjob.app</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ ENGLISH ═══════════════ -->
+<div class="lang-content" id="lang-en">
+    <h1 class="page-title">Terms of Service</h1>
+    <p class="last-updated">Last updated: July 2026</p>
+
+    <div class="intro-box">
+        These Terms of Service ("Terms") govern your use of the VJob mobile application ("Service", "VJob"). By using the Service, you agree to these Terms. Please read them carefully before registering.
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">1. Service Provider Details</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span><strong>Name:</strong> [SOLE TRADER / COMPANY NAME – to be completed after registration]</span></li>
+                <li><span><strong>Registered seat:</strong> [REGISTERED ADDRESS – to be completed after registration]</span></li>
+                <li><span><strong>Registration number:</strong> [SOLE TRADER REGISTRATION NUMBER – to be completed after registration]</span></li>
+                <li><span><strong>Tax number:</strong> [TAX NUMBER – to be completed after registration]</span></li>
+                <li><span><strong>Registering authority:</strong> Hungarian National Tax and Customs Administration (sole trader registry)</span></li>
+                <li><span><strong>Email:</strong> info@getvjob.app</span></li>
+                <li><span><strong>Website:</strong> getvjob.app</span></li>
+            </ul>
+            <div class="warning-box">The above details will be finalized once the sole proprietorship registration is completed. This section of the Terms will be updated once the registration number and tax number are issued.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">2. About the Service</h2>
+        <div class="section-content">
+            <p>VJob is a digital marketplace connecting job seekers ("Worker") and employers ("Company") through short video introductions and profile-based matching.</p>
+            <p style="margin-top:10px"><strong>VJob is not an employer, recruitment agency, or party to any employment relationship or contract</strong> formed between a Worker and a Company. VJob solely facilitates the connection between parties – the terms, formation, performance, and legality of any actual employment relationship are the sole responsibility of the Worker and the Company.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">3. Acceptance and Eligibility</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span>You must be at least <strong>16 years old</strong> to use the Service.</span></li>
+                <li><span>By registering, you confirm that the information you provide is accurate and truthful.</span></li>
+                <li><span>To register as a Company, you must be authorized to represent that business.</span></li>
+                <li><span>Use of the Service is voluntary; if you do not accept these Terms, you may not use the Service.</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">4. Account and Registration</h2>
+        <div class="section-content">
+            <p>When creating your account, you must provide accurate, up-to-date information and are responsible for maintaining the security of your account (password confidentiality). You are responsible for all activity conducted through your account.</p>
+            <p style="margin-top:10px">VJob reserves the right to suspend or delete an account if the information provided is found to be false, or if a violation of these Terms is detected.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">5. User Conduct</h2>
+        <div class="section-content">
+            <p>While using the Service, you may not:</p>
+            <ul class="data-list" style="margin-top:10px">
+                <li><span>Provide false, misleading, or another person's profile information or video</span></li>
+                <li><span>Upload unlawful, offensive, discriminatory, hateful, or sexually explicit content</span></li>
+                <li><span>Harass, threaten, or disturb other users</span></li>
+                <li><span>Use the Service for any purpose other than described in these Terms, including illegal purposes (e.g., spam, fraud)</span></li>
+                <li><span>Interfere with the operation of the Service using technical means (bots, automated queries)</span></li>
+            </ul>
+            <div class="warning-box">Violation of the above rules may result in immediate suspension or deletion of your account without prior notice.</div>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h2 class="section-title">6. Order Process and Error Correction</h2>
+        <div class="section-content">
+            <p>As a Company, purchasing a job posting package follows these steps: (1) selecting the desired package and duration within the app; (2) reviewing the total price and package details on a summary screen <strong>before finalizing payment</strong>; (3) completing payment via the Stripe payment provider; (4) receiving confirmation of successful payment and activation of the listing.</p>
+            <p style="margin-top:10px">On the summary screen, the Company may modify the selected package or cancel the purchase before payment is finalized – this provides the opportunity to correct any data entry errors.</p>
+            <p style="margin-top:10px">The language of the contract is English (or the HU/DE language selected by the user), and the contract is formed electronically, in the form of a payment confirmation. The contract is not filed on paper, but the confirmation is retained via email and remains accessible to the user afterward.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">7. Payments, Pricing and Job Posting Packages</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span>Use of the Worker side of the Service is <strong>free of charge</strong>.</span></li>
+                <li><span>On the Company side, publishing job listings requires purchasing a paid, time-limited <strong>job posting package</strong>. Prices and durations are displayed within the app.</span></li>
+                <li><span>Payments are processed through a secure third-party payment provider (Stripe); VJob does not store your card details.</span></li>
+                <li><span>Purchased job posting packages <strong>do not renew automatically</strong> – upon expiry, the listing becomes inactive and a new package must be purchased to continue.</span></li>
+                <li><span>Fees for a published, active listing are <strong>non-refundable</strong>, except where a technical failure of the Service caused the listing to never be shown to users.</span></li>
+                <li><span>VJob reserves the right to change prices; such changes do not affect already-purchased, active packages.</span></li>
+                <li><span>Unless stated otherwise, prices shown in the app are <strong>gross prices</strong> and include applicable value-added tax (VAT), where the Service Provider is subject to VAT.</span></li>
+                <li><span>An invoice is issued for each payment and sent electronically to the email address provided at registration.</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">8. Right of Withdrawal</h2>
+        <div class="section-content">
+            <p>The paid features of the Service (job posting packages) are primarily purchased by businesses (Companies) in the course of their business activity. The 14-day right of withdrawal available to consumers under applicable Hungarian and EU consumer protection law applies <strong>only to natural-person consumers</strong> acting outside their trade or profession – it does <strong>not apply</strong> to users registered and acting as a Company.</p>
+            <p style="margin-top:10px">Should a purchase nonetheless be initiated by a natural person acting as a consumer, the job posting package, as digital content, begins performance immediately upon payment with the Company's explicit prior consent – by which the user acknowledges and accepts the loss of the statutory right of withdrawal, in accordance with the relevant exception under applicable law.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">9. Intellectual Property</h2>
+        <div class="section-content">
+            <p>Ownership of content uploaded by users (videos, profile data, text) remains with the user. By uploading, the user grants VJob a <strong>non-exclusive, royalty-free license</strong> to display the content within the Service, to the extent necessary for the Service's normal operation.</p>
+            <p style="margin-top:10px">The VJob name, logo, design, and the software implementation of the Service are the exclusive intellectual property of VJob (or its operator).</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">10. Suspension and Termination</h2>
+        <div class="section-content">
+            <p>You may delete your account at any time, without justification, via the settings menu. VJob reserves the right to suspend or delete an account in the event of a serious or repeated violation of these Terms. Account deletion is handled in accordance with our Privacy Policy.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">11. Limitation of Liability</h2>
+        <div class="section-content">
+            <p>The Service is provided <strong>"as is"</strong>, without warranties of any kind, express or implied. VJob does not guarantee that use of the Service will result in employment, nor the accuracy or relevance of any matching suggestions.</p>
+            <p style="margin-top:10px">To the fullest extent permitted by law, VJob shall not be liable for any direct or indirect damages arising from the employment relationship (or lack thereof) between a Worker and a Company.</p>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h2 class="section-title">12. Complaint Handling and Dispute Resolution</h2>
+        <div class="section-content">
+            <p>Complaints regarding the Service may be submitted to <strong>info@getvjob.app</strong>. The Service Provider will investigate and respond to the complaint as soon as possible, and no later than within 30 days.</p>
+            <p style="margin-top:10px">If a complaint is not resolved directly, a user acting as a natural-person consumer is entitled to contact the competent conciliation body (arbitration board) in their place of residence, or the European Commission's <a href="https://ec.europa.eu/consumers/odr" style="color:#E879F9">Online Dispute Resolution platform</a> (ODR). For disputes between businesses (B2B), the parties shall first seek resolution through negotiation; failing that, the matter shall be subject to the jurisdiction of the competent Hungarian courts.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">13. Hosting Provider Details</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span><strong>App backend infrastructure:</strong> Google Ireland Limited (Firebase) – Gordon House, Barrow Street, Dublin 4, Ireland</span></li>
+                <li><span><strong>Website hosting:</strong> GitHub, Inc. (GitHub Pages) – 88 Colin P Kelly Jr St, San Francisco, CA 94107, United States</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">14. Governing Law and Disputes</h2>
+        <div class="section-content">
+            <p>These Terms are governed by Hungarian law. In the event of a dispute, the parties shall first seek an amicable resolution; failing that, the matter shall be subject to the jurisdiction of the competent Hungarian courts.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">15. Changes to These Terms</h2>
+        <div class="section-content">
+            <p>VJob reserves the right to modify these Terms. In the event of a material change, users will be notified via in-app notification or email. Continued use of the Service after such changes take effect constitutes acceptance of the modified Terms.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">16. Contact</h2>
+        <div class="contact-box">
+            <div class="contact-row"><span class="contact-label">Email:</span><a href="mailto:info@getvjob.app">info@getvjob.app</a></div>
+            <div class="contact-row"><span class="contact-label">Web:</span><a href="https://getvjob.app">getvjob.app</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ GERMAN ═══════════════ -->
+<div class="lang-content" id="lang-de">
+    <h1 class="page-title">Allgemeine Geschäftsbedingungen</h1>
+    <p class="last-updated">Zuletzt aktualisiert: Juli 2026</p>
+
+    <div class="intro-box">
+        Diese Allgemeinen Geschäftsbedingungen ("AGB") regeln Ihre Nutzung der VJob-Anwendung ("Dienst", "VJob"). Durch die Nutzung des Dienstes stimmen Sie diesen AGB zu. Bitte lesen Sie sie vor der Registrierung sorgfältig durch.
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">1. Angaben zum Diensteanbieter</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span><strong>Name:</strong> [NAME DES EINZELUNTERNEHMERS / UNTERNEHMENS – nach Eintragung auszufüllen]</span></li>
+                <li><span><strong>Sitz:</strong> [ANSCHRIFT DES SITZES – nach Eintragung auszufüllen]</span></li>
+                <li><span><strong>Registrierungsnummer:</strong> [REGISTRIERUNGSNUMMER – nach Eintragung auszufüllen]</span></li>
+                <li><span><strong>Steuernummer:</strong> [STEUERNUMMER – nach Eintragung auszufüllen]</span></li>
+                <li><span><strong>Registerbehörde:</strong> Ungarische Steuer- und Zollverwaltung (Register der Einzelunternehmer)</span></li>
+                <li><span><strong>E-Mail:</strong> info@getvjob.app</span></li>
+                <li><span><strong>Webseite:</strong> getvjob.app</span></li>
+            </ul>
+            <div class="warning-box">Die obigen Angaben werden nach Abschluss der Eintragung als Einzelunternehmer vervollständigt. Dieser Abschnitt der AGB wird nach Erhalt der Registrierungs- und Steuernummer aktualisiert.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">2. Über den Dienst</h2>
+        <div class="section-content">
+            <p>VJob ist ein digitaler Marktplatz, der Arbeitssuchende ("Arbeitnehmer") und Arbeitgeber ("Unternehmen") durch kurze Vorstellungsvideos und profilbasiertes Matching verbindet.</p>
+            <p style="margin-top:10px"><strong>VJob ist weder Arbeitgeber noch Personalvermittler und keine Vertragspartei</strong> eines zwischen Arbeitnehmer und Unternehmen zustande kommenden Arbeitsverhältnisses. VJob erleichtert lediglich die Kontaktaufnahme zwischen den Parteien – für die Bedingungen, das Zustandekommen, die Erfüllung und die Rechtmäßigkeit eines tatsächlichen Arbeitsverhältnisses sind Arbeitnehmer und Unternehmen allein verantwortlich.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">3. Annahme und Berechtigung</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span>Sie müssen mindestens <strong>16 Jahre alt</strong> sein, um den Dienst zu nutzen.</span></li>
+                <li><span>Mit der Registrierung bestätigen Sie, dass die angegebenen Informationen korrekt und wahrheitsgemäß sind.</span></li>
+                <li><span>Zur Registrierung als Unternehmen müssen Sie berechtigt sein, dieses zu vertreten.</span></li>
+                <li><span>Die Nutzung des Dienstes ist freiwillig; bei Nichtannahme dieser AGB dürfen Sie den Dienst nicht nutzen.</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">4. Konto und Registrierung</h2>
+        <div class="section-content">
+            <p>Bei der Erstellung Ihres Kontos müssen Sie korrekte, aktuelle Informationen angeben und sind für die Sicherheit Ihres Kontos (Vertraulichkeit des Passworts) verantwortlich. Sie sind für alle über Ihr Konto durchgeführten Aktivitäten verantwortlich.</p>
+            <p style="margin-top:10px">VJob behält sich das Recht vor, ein Konto zu sperren oder zu löschen, wenn sich die angegebenen Informationen als falsch erweisen oder ein Verstoß gegen diese AGB festgestellt wird.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">5. Verhalten der Nutzer</h2>
+        <div class="section-content">
+            <p>Bei der Nutzung des Dienstes ist Folgendes untersagt:</p>
+            <ul class="data-list" style="margin-top:10px">
+                <li><span>Falsche, irreführende oder fremde Profildaten bzw. Videos anzugeben</span></li>
+                <li><span>Rechtswidrige, beleidigende, diskriminierende, hasserfüllte oder sexuell explizite Inhalte hochzuladen</span></li>
+                <li><span>Andere Nutzer zu belästigen, zu bedrohen oder zu stören</span></li>
+                <li><span>Den Dienst für andere als die in diesen AGB beschriebenen Zwecke zu nutzen, einschließlich rechtswidriger Zwecke (z. B. Spam, Betrug)</span></li>
+                <li><span>Den Betrieb des Dienstes durch technische Mittel (Bots, automatisierte Abfragen) zu stören</span></li>
+            </ul>
+            <div class="warning-box">Ein Verstoß gegen die oben genannten Regeln kann zur sofortigen Sperrung oder Löschung Ihres Kontos ohne vorherige Ankündigung führen.</div>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h2 class="section-title">6. Bestellvorgang und Fehlerkorrektur</h2>
+        <div class="section-content">
+            <p>Als Unternehmen erfolgt der Kauf eines Stellenanzeigen-Pakets in folgenden Schritten: (1) Auswahl des gewünschten Pakets und der Laufzeit innerhalb der App; (2) Überprüfung des Gesamtbetrags und der Paketdetails auf einem Übersichtsbildschirm <strong>vor Abschluss der Zahlung</strong>; (3) Durchführung der Zahlung über den Zahlungsdienstleister Stripe; (4) Erhalt einer Bestätigung der erfolgreichen Zahlung und Aktivierung der Anzeige.</p>
+            <p style="margin-top:10px">Auf dem Übersichtsbildschirm kann das Unternehmen das ausgewählte Paket ändern oder den Kauf abbrechen, bevor die Zahlung abgeschlossen wird – dies ermöglicht die Korrektur etwaiger Eingabefehler.</p>
+            <p style="margin-top:10px">Die Vertragssprache ist Deutsch (oder die vom Nutzer gewählte Sprache HU/EN), und der Vertrag kommt elektronisch, in Form einer Zahlungsbestätigung, zustande. Der Vertrag wird nicht in Papierform archiviert, die Bestätigung wird jedoch per E-Mail aufbewahrt und ist dem Nutzer nachträglich zugänglich.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">7. Zahlungen, Preise und Stellenanzeigen-Pakete</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span>Die Nutzung der Arbeitnehmerseite des Dienstes ist <strong>kostenlos</strong>.</span></li>
+                <li><span>Auf der Unternehmensseite erfordert die Veröffentlichung von Stellenanzeigen den Kauf eines kostenpflichtigen, zeitlich begrenzten <strong>Stellenanzeigen-Pakets</strong>. Preise und Laufzeiten werden in der App angezeigt.</span></li>
+                <li><span>Zahlungen werden über einen sicheren Drittanbieter (Stripe) abgewickelt; VJob speichert keine Kartendaten.</span></li>
+                <li><span>Gekaufte Stellenanzeigen-Pakete <strong>verlängern sich nicht automatisch</strong> – nach Ablauf wird die Anzeige inaktiv, und der Kauf eines neuen Pakets ist erforderlich.</span></li>
+                <li><span>Gebühren für eine veröffentlichte, aktive Anzeige sind <strong>nicht erstattungsfähig</strong>, außer wenn ein technischer Fehler des Dienstes dazu geführt hat, dass die Anzeige den Nutzern nie angezeigt wurde.</span></li>
+                <li><span>VJob behält sich das Recht vor, die Preise zu ändern; solche Änderungen betreffen keine bereits gekauften, aktiven Pakete.</span></li>
+                <li><span>Sofern nicht anders angegeben, sind die in der App angezeigten Preise <strong>Bruttopreise</strong> und enthalten die geltende Umsatzsteuer, sofern der Diensteanbieter umsatzsteuerpflichtig ist.</span></li>
+                <li><span>Für jede Zahlung wird eine Rechnung ausgestellt und elektronisch an die bei der Registrierung angegebene E-Mail-Adresse gesendet.</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">8. Widerrufsrecht</h2>
+        <div class="section-content">
+            <p>Die kostenpflichtigen Funktionen des Dienstes (Stellenanzeigen-Pakete) werden vorwiegend von Unternehmen im Rahmen ihrer Geschäftstätigkeit erworben. Das nach geltendem ungarischem und EU-Verbraucherschutzrecht bestehende 14-tägige Widerrufsrecht für Verbraucher gilt <strong>ausschließlich für natürliche Personen</strong>, die außerhalb ihrer gewerblichen oder beruflichen Tätigkeit handeln – es gilt <strong>nicht</strong> für als Unternehmen registrierte und handelnde Nutzer.</p>
+            <p style="margin-top:10px">Sollte ein Kauf dennoch von einer natürlichen Person als Verbraucher veranlasst werden, beginnt die Erfüllung des Stellenanzeigen-Pakets als digitaler Inhalt unmittelbar mit der Zahlung und der ausdrücklichen vorherigen Zustimmung des Nutzers – womit dieser den Verlust des gesetzlichen Widerrufsrechts gemäß der einschlägigen Ausnahmeregelung zur Kenntnis nimmt und akzeptiert.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">9. Geistiges Eigentum</h2>
+        <div class="section-content">
+            <p>Das Eigentum an von Nutzern hochgeladenen Inhalten (Videos, Profildaten, Texte) verbleibt beim Nutzer. Durch das Hochladen räumt der Nutzer VJob ein <strong>nicht-exklusives, gebührenfreies Nutzungsrecht</strong> ein, um die Inhalte innerhalb des Dienstes anzuzeigen, soweit dies für den normalen Betrieb des Dienstes erforderlich ist.</p>
+            <p style="margin-top:10px">Der Name VJob, das Logo, das Design und die Softwareumsetzung des Dienstes sind ausschließliches geistiges Eigentum von VJob (bzw. dessen Betreiber).</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">10. Sperrung und Kündigung</h2>
+        <div class="section-content">
+            <p>Sie können Ihr Konto jederzeit ohne Angabe von Gründen über das Einstellungsmenü löschen. VJob behält sich das Recht vor, ein Konto bei schwerwiegendem oder wiederholtem Verstoß gegen diese AGB zu sperren oder zu löschen. Die Kontolöschung erfolgt gemäß unserer Datenschutzerklärung.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">11. Haftungsbeschränkung</h2>
+        <div class="section-content">
+            <p>Der Dienst wird <strong>"wie besehen" (as is)</strong> ohne jegliche ausdrückliche oder stillschweigende Garantie bereitgestellt. VJob garantiert nicht, dass die Nutzung des Dienstes zu einem Arbeitsverhältnis führt, noch die Genauigkeit oder Relevanz von Matching-Vorschlägen.</p>
+            <p style="margin-top:10px">Im gesetzlich zulässigen Umfang haftet VJob nicht für direkte oder indirekte Schäden, die aus dem Arbeitsverhältnis (oder dessen Ausbleiben) zwischen Arbeitnehmer und Unternehmen entstehen.</p>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <h2 class="section-title">12. Beschwerdemanagement und Streitbeilegung</h2>
+        <div class="section-content">
+            <p>Beschwerden bezüglich des Dienstes können an <strong>info@getvjob.app</strong> gerichtet werden. Der Diensteanbieter prüft die Beschwerde so schnell wie möglich, spätestens jedoch innerhalb von 30 Tagen, und beantwortet diese in der Sache.</p>
+            <p style="margin-top:10px">Führt die Beschwerde nicht unmittelbar zu einer Lösung, kann sich ein als Verbraucher handelnder Nutzer an die zuständige Schlichtungsstelle an seinem Wohnort oder an die <a href="https://ec.europa.eu/consumers/odr" style="color:#E879F9">Online-Streitbeilegungsplattform</a> (ODR) der Europäischen Kommission wenden. Bei Streitigkeiten zwischen Unternehmen (B2B) bemühen sich die Parteien zunächst um eine Einigung im Verhandlungswege; andernfalls sind die zuständigen ungarischen Gerichte zuständig.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">13. Angaben zum Hosting-Anbieter</h2>
+        <div class="section-content">
+            <ul class="data-list">
+                <li><span><strong>App-Backend-Infrastruktur:</strong> Google Ireland Limited (Firebase) – Gordon House, Barrow Street, Dublin 4, Irland</span></li>
+                <li><span><strong>Webseiten-Hosting:</strong> GitHub, Inc. (GitHub Pages) – 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">14. Anwendbares Recht und Streitbeilegung</h2>
+        <div class="section-content">
+            <p>Diese AGB unterliegen ungarischem Recht. Im Streitfall bemühen sich die Parteien zunächst um eine gütliche Einigung; andernfalls sind die zuständigen ungarischen Gerichte zuständig.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">15. Änderungen dieser AGB</h2>
+        <div class="section-content">
+            <p>VJob behält sich das Recht vor, diese AGB zu ändern. Bei wesentlichen Änderungen werden die Nutzer per In-App-Benachrichtigung oder E-Mail informiert. Die weitere Nutzung des Dienstes nach Inkrafttreten der Änderungen gilt als Annahme der geänderten Bedingungen.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">16. Kontakt</h2>
+        <div class="contact-box">
+            <div class="contact-row"><span class="contact-label">E-Mail:</span><a href="mailto:info@getvjob.app">info@getvjob.app</a></div>
+            <div class="contact-row"><span class="contact-label">Web:</span><a href="https://getvjob.app">getvjob.app</a></div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<footer class="footer">
+    © 2026 VJob. All rights reserved. · <a href="https://getvjob.app" style="color:rgba(255,255,255,0.2)">getvjob.app</a>
+</footer>
+
+<script>
+    function setLang(lang, btn) {
+        document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById('lang-' + lang).classList.add('active');
+        btn.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
