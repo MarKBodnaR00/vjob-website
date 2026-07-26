@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VJob – Hirdetés-csomagok</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #07060E;
+            color: #e2e0f0;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0D0B1E 0%, #1A0A2E 100%);
+            border-bottom: 1px solid rgba(180, 80, 255, 0.2);
+            padding: 20px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 0 20px rgba(180, 80, 255, 0.4);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #C084FC, #E879F9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 6px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 7px;
+            background: transparent;
+            color: rgba(255,255,255,0.45);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            color: white;
+            box-shadow: 0 2px 10px rgba(180, 80, 255, 0.4);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.07);
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(139,47,201,0.2), rgba(217,70,239,0.12));
+            border: 1px solid rgba(180,80,255,0.35);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 12px;
+            color: #C084FC;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-size: 34px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #C084FC, #E879F9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+            color: rgba(255,255,255,0.55);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card.featured {
+            background: linear-gradient(160deg, rgba(139,47,201,0.18), rgba(217,70,239,0.1));
+            border: 2px solid rgba(217,70,239,0.5);
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 8px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 11px;
+            background: rgba(139,47,201,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+
+        .card.featured .card-icon {
+            background: rgba(217,70,239,0.22);
+        }
+
+        .card-name {
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 600;
+        }
+
+        .card-price {
+            font-size: 26px;
+            font-weight: 800;
+            color: #fff;
+            margin: 8px 0 2px;
+        }
+
+        .card-duration {
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 18px;
+        }
+
+        .card-cta {
+            margin-top: auto;
+            display: block;
+            text-align: center;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 10px 12px;
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .card.featured .card-cta {
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            border: none;
+            color: white;
+            box-shadow: 0 4px 16px rgba(180,80,255,0.35);
+        }
+
+        .card-cta:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .card.featured .card-cta:hover {
+            opacity: 0.9;
+        }
+
+        .highlight-bar {
+            background: rgba(139,47,201,0.08);
+            border: 1px solid rgba(180,80,255,0.15);
+            border-radius: 16px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .highlight-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.75);
+        }
+
+        .highlight-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .highlight-price span {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 400;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .download-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(180,80,255,0.35);
+            transition: transform 0.2s;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .secure-note {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.2);
+            font-size: 12px;
+        }
+
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
+        @media (max-width: 600px) {
+            .hero-title { font-size: 26px; }
+            .header-inner { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <div class="logo-area">
+            <div class="logo-icon">V</div>
+            <span class="logo-text">VJob</span>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLang('hu', this)">HU</button>
+            <button class="lang-btn" onclick="setLang('en', this)">EN</button>
+            <button class="lang-btn" onclick="setLang('de', this)">DE</button>
+        </div>
+    </div>
+</header>
+
+<div class="content">
+
+<!-- ═══════════════ HUNGARIAN ═══════════════ -->
+<div class="lang-content active" id="lang-hu">
+    <div class="hero">
+        <div class="hero-badge">HIRDETÉS-CSOMAGOK</div>
+        <div class="hero-title">Válaszd ki a csomagod</div>
+        <div class="hero-subtitle">Add fel a hirdetésed percek alatt, fizess biztonságosan Barionnal</div>
+    </div>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon">🔥</div>
+            <div class="card-name">Sürgős</div>
+            <div class="card-price">3 000 Ft</div>
+            <div class="card-duration">24 óra aktív</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">Jelentkezz az appban</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">⏱️</div>
+            <div class="card-name">Rövid</div>
+            <div class="card-price">9 000 Ft</div>
+            <div class="card-duration">7 nap aktív</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">Jelentkezz az appban</a>
+        </div>
+        <div class="card featured">
+            <div class="featured-badge">Legnépszerűbb</div>
+            <div class="card-icon">⭐</div>
+            <div class="card-name">Közepes</div>
+            <div class="card-price">15 000 Ft</div>
+            <div class="card-duration">14 nap aktív</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">Jelentkezz az appban</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">👑</div>
+            <div class="card-name">Teljes</div>
+            <div class="card-price">24 000 Ft</div>
+            <div class="card-duration">30 nap aktív</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">Jelentkezz az appban</a>
+        </div>
+    </div>
+
+    <div class="highlight-bar">
+        <span class="highlight-label">✨ Kiemelés — extra láthatóság bármelyik csomag mellé</span>
+        <span class="highlight-price">+2 990 Ft <span>/ 7 nap</span></span>
+    </div>
+
+    <div class="download-section">
+        <div class="download-title">Töltsd le a VJob alkalmazást</div>
+        <div class="download-buttons">
+            <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.vjob.app">Google Play</a>
+            <a class="store-btn" href="https://apps.apple.com/app/vjob/idXXXXXXXXX">App Store</a>
+        </div>
+    </div>
+
+    <div class="secure-note">🔒 Biztonságos fizetés a Barion rendszerén keresztül · Az árak bruttó árak</div>
+</div>
+
+<!-- ═══════════════ ENGLISH ═══════════════ -->
+<div class="lang-content" id="lang-en">
+    <div class="hero">
+        <div class="hero-badge">JOB POSTING PACKAGES</div>
+        <div class="hero-title">Choose your package</div>
+        <div class="hero-subtitle">Post your job listing in minutes, pay securely with Barion</div>
+    </div>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon">🔥</div>
+            <div class="card-name">Urgent</div>
+            <div class="card-price">3,000 HUF</div>
+            <div class="card-duration">Active for 24 hours</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">Apply in the app</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">⏱️</div>
+            <div class="card-name">Short</div>
+            <div class="card-price">9,000 HUF</div>
+            <div class="card-duration">Active for 7 days</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">Apply in the app</a>
+        </div>
+        <div class="card featured">
+            <div class="featured-badge">Most popular</div>
+            <div class="card-icon">⭐</div>
+            <div class="card-name">Medium</div>
+            <div class="card-price">15,000 HUF</div>
+            <div class="card-duration">Active for 14 days</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">Apply in the app</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">👑</div>
+            <div class="card-name">Full</div>
+            <div class="card-price">24,000 HUF</div>
+            <div class="card-duration">Active for 30 days</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">Apply in the app</a>
+        </div>
+    </div>
+
+    <div class="highlight-bar">
+        <span class="highlight-label">✨ Highlight — extra visibility for any package</span>
+        <span class="highlight-price">+2,990 HUF <span>/ 7 days</span></span>
+    </div>
+
+    <div class="download-section">
+        <div class="download-title">Download the VJob app</div>
+        <div class="download-buttons">
+            <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.vjob.app">Google Play</a>
+            <a class="store-btn" href="https://apps.apple.com/app/vjob/idXXXXXXXXX">App Store</a>
+        </div>
+    </div>
+
+    <div class="secure-note">🔒 Secure payment via Barion · Prices shown are gross (VAT included, where applicable)</div>
+</div>
+
+<!-- ═══════════════ GERMAN ═══════════════ -->
+<div class="lang-content" id="lang-de">
+    <div class="hero">
+        <div class="hero-badge">STELLENANZEIGEN-PAKETE</div>
+        <div class="hero-title">Wähle dein Paket</div>
+        <div class="hero-subtitle">Veröffentliche deine Stellenanzeige in Minuten, bezahle sicher mit Barion</div>
+    </div>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon">🔥</div>
+            <div class="card-name">Dringend</div>
+            <div class="card-price">3.000 Ft</div>
+            <div class="card-duration">24 Stunden aktiv</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">In der App bewerben</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">⏱️</div>
+            <div class="card-name">Kurz</div>
+            <div class="card-price">9.000 Ft</div>
+            <div class="card-duration">7 Tage aktiv</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">In der App bewerben</a>
+        </div>
+        <div class="card featured">
+            <div class="featured-badge">Am beliebtesten</div>
+            <div class="card-icon">⭐</div>
+            <div class="card-name">Mittel</div>
+            <div class="card-price">15.000 Ft</div>
+            <div class="card-duration">14 Tage aktiv</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">In der App bewerben</a>
+        </div>
+        <div class="card">
+            <div class="card-icon">👑</div>
+            <div class="card-name">Voll</div>
+            <div class="card-price">24.000 Ft</div>
+            <div class="card-duration">30 Tage aktiv</div>
+            <a class="card-cta" href="https://play.google.com/store/apps/details?id=com.vjob.app">In der App bewerben</a>
+        </div>
+    </div>
+
+    <div class="highlight-bar">
+        <span class="highlight-label">✨ Hervorhebung — zusätzliche Sichtbarkeit für jedes Paket</span>
+        <span class="highlight-price">+2.990 Ft <span>/ 7 Tage</span></span>
+    </div>
+
+    <div class="download-section">
+        <div class="download-title">Lade die VJob-App herunter</div>
+        <div class="download-buttons">
+            <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.vjob.app">Google Play</a>
+            <a class="store-btn" href="https://apps.apple.com/app/vjob/idXXXXXXXXX">App Store</a>
+        </div>
+    </div>
+
+    <div class="secure-note">🔒 Sichere Zahlung über Barion · Die Preise sind Bruttopreise</div>
+</div>
+
+</div>
+
+<footer class="footer">
+    © 2026 VJob. All rights reserved. · <a href="https://getvjob.app" style="color:rgba(255,255,255,0.2)">getvjob.app</a>
+</footer>
+
+<script>
+    function setLang(lang, btn) {
+        document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById('lang-' + lang).classList.add('active');
+        btn.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
