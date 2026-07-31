@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VJob – Fizetés eredménye</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #07060E;
+    color: #e2e0f0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.card {
+    max-width: 420px;
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(170,68,255,0.2);
+    border-radius: 24px;
+    padding: 40px 32px;
+    text-align: center;
+}
+.icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+.icon-wrap.loading { background: rgba(170,68,255,0.1); border: 2px solid rgba(170,68,255,0.3); }
+.icon-wrap.success { background: rgba(0,200,120,0.1); border: 2px solid rgba(0,200,120,0.4); }
+.icon-wrap.error { background: rgba(255,68,68,0.1); border: 2px solid rgba(255,68,68,0.4); }
+.spinner {
+    width: 28px; height: 28px;
+    border: 3px solid rgba(170,68,255,0.25);
+    border-top-color: #AA44FF;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+h1 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 6px; }
+.detail-box {
+    background: rgba(170,68,255,0.06);
+    border: 1px solid rgba(170,68,255,0.2);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    display: none;
+}
+.detail-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; }
+.detail-label { color: rgba(255,255,255,0.45); }
+.detail-value { color: #fff; font-weight: 700; }
+.cta {
+    display: inline-block;
+    margin-top: 12px;
+    background: linear-gradient(135deg, #4830B2, #AA44FF);
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 28px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.logo { font-size: 18px; font-weight: 900; margin-bottom: 28px; }
+.logo span { color: #AA44FF; }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="logo">V<span>Job</span></div>
+
+    <div id="state-loading">
+        <div class="icon-wrap loading"><div class="spinner"></div></div>
+        <h1>Fizetés feldolgozása...</h1>
+        <p>Ez néhány másodpercet vehet igénybe, kérjük ne zárd be ezt az oldalt.</p>
+    </div>
+
+    <div id="state-success" style="display:none">
+        <div class="icon-wrap success">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00C878" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h1>Sikeres fizetés!</h1>
+        <p>A hirdetésed mostantól élesben elérhető a munkakeresők számára.</p>
+        <div class="detail-box" id="detail-box">
+            <div class="detail-row"><span class="detail-label">Vásárlás típusa</span><span class="detail-value" id="detail-tipus">–</span></div>
+            <div class="detail-row"><span class="detail-label">Időtartam</span><span class="detail-value" id="detail-napok">–</span></div>
+            <div class="detail-row"><span class="detail-label">Fizetett összeg</span><span class="detail-value" id="detail-osszeg">–</span></div>
+        </div>
+        <a href="vjob://hirdeteseim" class="cta">Vissza az alkalmazásba</a>
+    </div>
+
+    <div id="state-error" style="display:none">
+        <div class="icon-wrap error">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <h1>A fizetés nem sikerült</h1>
+        <p>A tranzakció megszakadt vagy elutasításra került. Nem történt terhelés. Próbáld meg újra az alkalmazásból.</p>
+        <a href="vjob://hirdeteseim" class="cta">Vissza az alkalmazásba</a>
+    </div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const paymentId = params.get('paymentId');
+
+const CSOMAG_NEVEK = { surgos: 'Sürgős', rovid: 'Rövid', kozepes: 'Közepes', teljes: 'Teljes', kiemeles: 'Kiemelés' };
+
+function showState(state) {
+    document.getElementById('state-loading').style.display = state === 'loading' ? 'block' : 'none';
+    document.getElementById('state-success').style.display = state === 'success' ? 'block' : 'none';
+    document.getElementById('state-error').style.display = state === 'error' ? 'block' : 'none';
+}
+
+async function checkStatus(attempt) {
+    if (!paymentId) { showState('error'); return; }
+    try {
+        const res = await fetch(`https://europe-west1-vjob-549b5.cloudfunctions.net/paymentStatusPublic?paymentId=${paymentId}`);
+        const data = await res.json();
+
+        if (data.statusz === 'processed') {
+            document.getElementById('detail-tipus').textContent = CSOMAG_NEVEK[data.csomagNev] || data.csomagNev || '–';
+            document.getElementById('detail-napok').textContent = data.napok ? `${data.napok} nap` : '–';
+            document.getElementById('detail-osszeg').textContent = data.osszeg ? `${data.osszeg.toLocaleString('hu-HU')} Ft` : '–';
+            document.getElementById('detail-box').style.display = 'block';
+            showState('success');
+            return;
+        }
+        if (data.statusz === 'sikertelen') {
+            showState('error');
+            return;
+        }
+        // Még "started" – próbáljuk újra egy kicsit később
+        if (attempt < 8) {
+            setTimeout(() => checkStatus(attempt + 1), 1500);
+        } else {
+            showState('error');
+        }
+    } catch (e) {
+        if (attempt < 8) {
+            setTimeout(() => checkStatus(attempt + 1), 1500);
+        } else {
+            showState('error');
+        }
+    }
+}
+
+checkStatus(0);
+</script>
+
+</body>
+</html>
