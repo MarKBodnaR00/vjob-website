@@ -387,7 +387,7 @@ bp('init', 'addBarionPixelId', window['barion_pixel_id']);
                 <li><span><strong>Eszközadatok:</strong> eszköz token push értesítésekhez, operációs rendszer</span></li>
                 <li><span><strong>Használati adatok:</strong> appinterakciók, állásmegtekintések, kedvelések, skip-ek</span></li>
                 <li><span><strong>Kommunikáció:</strong> az alkalmazáson belüli üzenetek tartalma</span></li>
-                <li><span><strong>Fizetési adatok (Cégek esetén):</strong> a hirdetés-csomag vásárláshoz szükséges tranzakciós adatokat a Barion Payment Zrt. kezeli; a VJob ezekhez nem fér hozzá és nem tárolja őket</span></li>
+                <li><span><strong>Fizetési adatok (Cégek esetén):</strong> a hirdetés-csomag vásárlásához szükséges számlázási adatokat (cégnév, székhely, adószám) a Számlázz.hu Zrt. NAV-regisztrált számlázási rendszerén keresztül kezeljük; a fizetés banki átutalással történik közvetlenül a VJob bankszámlájára</span></li>
             </ul>
         </div>
     </div>
@@ -438,9 +438,9 @@ bp('init', 'addBarionPixelId', window['barion_pixel_id']);
                     <a class="third-party-link" href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy →</a>
                 </div>
                 <div class="third-party-item">
-                    <span class="third-party-name">Barion Payment Zrt.</span>
-                    <span class="third-party-desc">Fizetési tranzakciók feldolgozása Cégek hirdetés-vásárlásai esetén; a Barion a Magyar Nemzeti Bank felügyelete alatt álló, engedéllyel rendelkező elektronikuspénz-kibocsátó intézmény</span>
-                    <a class="third-party-link" href="https://www.barion.com/hu/adatvedelmi-tajekoztato/" target="_blank">barion.com adatvédelmi tájékoztató →</a>
+                    <span class="third-party-name">Számlázz.hu (KBOSS.hu Kft.)</span>
+                    <span class="third-party-desc">Számlázási és díjbekérő-kiállítási szolgáltatás Cégek hirdetés-vásárlásai esetén, NAV Online Számla integrációval</span>
+                    <a class="third-party-link" href="https://www.szamlazz.hu/adatvedelem/" target="_blank">szamlazz.hu adatvédelmi tájékoztató →</a>
                 </div>
             </div>
         </div>
@@ -450,7 +450,7 @@ bp('init', 'addBarionPixelId', window['barion_pixel_id']);
         <h2 class="section-title">6. Sütik (Cookies)</h2>
         <div class="section-content">
             <p>A VJob mobilalkalmazás <strong>nem használ sütiket</strong>. Az alkalmazás kizárólag a Firebase által biztosított biztonságos munkamenet-kezelést alkalmazza, amely nem tárol sütiket a te eszközödön.</p>
-            <p style="margin-top:10px">A weboldalon (<strong>getvjob.app</strong>) a Barion Pixel (Alap Verzió) kerül alkalmazásra, amely csalásmegelőzési célból, a látogató eszközének digitális ujjlenyomata és böngészési szokásai alapján gyűjt adatokat. Ez az adatkezelés a Szolgáltató jogos érdekén alapul (a fizetési tranzakciók biztonságának biztosítása). A Barion Pixelről és a kapcsolódó adatkezelésről bővebb tájékoztatás a Barion saját <a href="https://www.barion.com/hu/suti-tajekoztato/" target="_blank" style="color:#E879F9">süti tájékoztatójában</a> érhető el.</p>
+            <li><span><strong>Payment data (for Companies):</strong> billing data (company name, registered address, tax number) required for purchasing job posting packages is processed via Számlázz.hu's NAV-registered invoicing system; payment is made by bank transfer directly to VJob's bank account</span></li>
         </div>
     </div>
 
@@ -598,9 +598,9 @@ bp('init', 'addBarionPixelId', window['barion_pixel_id']);
                     <a class="third-party-link" href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy →</a>
                 </div>
                 <div class="third-party-item">
-                    <span class="third-party-name">Barion Payment Zrt.</span>
-                    <span class="third-party-desc">Processes payment transactions for Companies purchasing job posting packages; Barion is a licensed electronic money institution supervised by the National Bank of Hungary</span>
-                    <a class="third-party-link" href="https://www.barion.com/en/privacy-policy/" target="_blank">barion.com privacy policy →</a>
+                    <span class="third-party-name">Számlázz.hu (KBOSS.hu Kft.)</span>
+                    <span class="third-party-desc">Invoicing and pro-forma billing service for Companies purchasing job posting packages, with NAV Online Számla integration</span>
+                    <a class="third-party-link" href="https://www.szamlazz.hu/adatvedelem/" target="_blank">szamlazz.hu privacy policy →</a>
                 </div>
             </div>
         </div>
@@ -610,7 +610,7 @@ bp('init', 'addBarionPixelId', window['barion_pixel_id']);
         <h2 class="section-title">6. Cookies</h2>
         <div class="section-content">
             <p>The VJob mobile application <strong>does not use cookies</strong>. The app exclusively uses Firebase's secure session management, which does not store cookies on your device.</p>
-            <p style="margin-top:10px">On the website (<strong>getvjob.app</strong>), the Barion Pixel (Basic Version) is used, which collects data based on the visitor's device fingerprint and browsing behavior for fraud prevention purposes. This processing is based on the Service Provider's legitimate interest (ensuring the security of payment transactions). Further information about the Barion Pixel and the related data processing is available in Barion's own <a href="https://www.barion.com/en/cookie-policy/" target="_blank" style="color:#E879F9">cookie policy</a>.</p>
+
         </div>
     </div>
 
@@ -707,7 +707,7 @@ bp('init', 'addBarionPixelId', window['barion_pixel_id']);
                 <li><span><strong>Gerätedaten:</strong> Geräte-Token für Push-Benachrichtigungen, Betriebssystem</span></li>
                 <li><span><strong>Nutzungsdaten:</strong> App-Interaktionen, Stellenaufrufe, Likes, Skips</span></li>
                 <li><span><strong>Kommunikation:</strong> Inhalt der In-App-Nachrichten</span></li>
-                <li><span><strong>Zahlungsdaten (für Unternehmen):</strong> die für den Kauf von Stellenanzeigen-Paketen erforderlichen Transaktionsdaten werden von Barion Payment Zrt. verarbeitet; VJob hat keinen Zugriff auf diese Daten und speichert sie nicht</span></li>
+                <li><span><strong>Zahlungsdaten (für Unternehmen):</strong> die für den Kauf von Stellenanzeigen-Paketen erforderlichen Rechnungsdaten (Firmenname, Sitz, Steuernummer) werden über das NAV-registrierte Rechnungssystem von Számlázz.hu verarbeitet; die Zahlung erfolgt per Banküberweisung direkt auf das Bankkonto von VJob</span></li>
             </ul>
         </div>
     </div>
@@ -758,9 +758,9 @@ bp('init', 'addBarionPixelId', window['barion_pixel_id']);
                     <a class="third-party-link" href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy →</a>
                 </div>
                 <div class="third-party-item">
-                    <span class="third-party-name">Barion Payment Zrt.</span>
-                    <span class="third-party-desc">Verarbeitet Zahlungstransaktionen für Unternehmen, die Stellenanzeigen-Pakete kaufen; Barion ist ein von der Ungarischen Nationalbank beaufsichtigtes, lizenziertes E-Geld-Institut</span>
-                    <a class="third-party-link" href="https://www.barion.com/en/privacy-policy/" target="_blank">barion.com Datenschutzerklärung →</a>
+                    <span class="third-party-name">Számlázz.hu (KBOSS.hu Kft.)</span>
+                    <span class="third-party-desc">Rechnungsstellung und Zahlungsaufforderungen für Unternehmen, die Stellenanzeigen-Pakete kaufen, mit NAV Online Számla-Integration</span>
+                    <a class="third-party-link" href="https://www.szamlazz.hu/adatvedelem/" target="_blank">szamlazz.hu Datenschutzerklärung →</a>
                 </div>
             </div>
         </div>
@@ -770,7 +770,7 @@ bp('init', 'addBarionPixelId', window['barion_pixel_id']);
         <h2 class="section-title">6. Cookies</h2>
         <div class="section-content">
             <p>Die VJob-App <strong>verwendet keine Cookies</strong>. Die App nutzt ausschließlich das sichere Sitzungsmanagement von Firebase, das keine Cookies auf Ihrem Gerät speichert.</p>
-            <p style="margin-top:10px">Auf der Webseite (<strong>getvjob.app</strong>) wird der Barion Pixel (Basisversion) eingesetzt, der zum Zweck der Betrugsprävention Daten anhand des digitalen Fingerabdrucks und des Browserverhaltens des Besuchers erhebt. Diese Verarbeitung stützt sich auf das berechtigte Interesse des Diensteanbieters (Gewährleistung der Sicherheit von Zahlungstransaktionen). Weitere Informationen zum Barion Pixel und der damit verbundenen Datenverarbeitung finden Sie in der eigenen <a href="https://www.barion.com/en/cookie-policy/" target="_blank" style="color:#E879F9">Cookie-Richtlinie von Barion</a>.</p>
+       
         </div>
     </div>
 
