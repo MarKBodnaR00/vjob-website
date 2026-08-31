@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VJob – Fiók és adatok törlése</title>
+  <meta name="description" content="Információk a VJob fiók és a kapcsolódó adatok törléséről." />
+  <style>
+    :root {
+      --bg: #07060e;
+      --panel: #0d0a1e;
+      --panel2: #151127;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,.68);
+      --soft: rgba(255,255,255,.48);
+      --line: rgba(255,255,255,.14);
+      --purple1: #8800ff;
+      --purple2: #dd00bb;
+      --red: #ff5555;
+      --green: #00c878;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Segoe UI Variable Display", "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(136,0,255,.32), transparent 32rem),
+        radial-gradient(circle at 90% 10%, rgba(221,0,187,.18), transparent 28rem),
+        linear-gradient(145deg, #0e0820, var(--bg) 52%, #03040a);
+      line-height: 1.6;
+    }
+    .page {
+      width: min(920px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 42px 0 56px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: -.04em;
+      text-decoration: none;
+      color: white;
+    }
+    .logo {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--purple1), var(--purple2));
+    }
+    .brand em {
+      color: #aa44ff;
+      font-style: normal;
+    }
+    .lang-switch {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .lang-switch button {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: var(--soft);
+      font: inherit;
+      font-weight: 800;
+      font-size: 12.5px;
+      letter-spacing: .04em;
+      padding: 8px 15px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .lang-switch button.active {
+      color: white;
+      background: linear-gradient(135deg, var(--purple1), var(--purple2));
+    }
+    .hero,
+    .card {
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 88% 0%, rgba(136,0,255,.18), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+      box-shadow: 0 24px 70px rgba(0,0,0,.28);
+    }
+    .hero {
+      padding: clamp(26px, 5vw, 46px);
+      border-radius: 32px;
+      margin-bottom: 18px;
+    }
+    .tag {
+      width: fit-content;
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: var(--red);
+      background: rgba(255,85,85,.10);
+      border: 1px solid rgba(255,85,85,.28);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: .98;
+      letter-spacing: -.065em;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 26px;
+      line-height: 1.12;
+      letter-spacing: -.04em;
+    }
+    li { margin: 7px 0; }
+    a {
+      color: white;
+      text-decoration-color: rgba(170,68,255,.8);
+      text-underline-offset: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .card {
+      padding: 24px;
+      border-radius: 24px;
+    }
+    .full { grid-column: 1 / -1; }
+    .callout {
+      padding: 16px;
+      border-radius: 18px;
+      color: rgba(255,255,255,.82);
+      background: rgba(255,170,0,.08);
+      border: 1px solid rgba(255,170,0,.24);
+      margin-top: 14px;
+    }
+    .ok {
+      color: var(--green);
+      background: rgba(0,200,120,.10);
+      border-color: rgba(0,200,120,.28);
+    }
+    .footer {
+      margin-top: 24px;
+      color: var(--soft);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .lang-block { display: none; }
+    .lang-block.active { display: block; }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .full { grid-column: auto; }
+      .footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <div class="topbar">
+      <a class="brand" href="/">
+        <span class="logo">V</span>
+        <span>V<em>job</em></span>
+      </a>
+      <div class="lang-switch" role="group" aria-label="Nyelv / Language / Sprache">
+        <button type="button" data-lang="hu" class="active">HU</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+    </div>
+
+    <!-- ============ MAGYAR ============ -->
+    <div class="lang-block active" data-lang-block="hu">
+      <section class="hero">
+        <div class="tag">Fiók törlése</div>
+        <h1>Fiók és adatok törlése</h1>
+        <p>Ezen az oldalon összefoglaljuk, hogyan tudod törölni a VJob fiókodat, milyen adatok kerülnek törlésre, és milyen adatok maradhatnak meg jogszabályi kötelezettség miatt.</p>
+      </section>
+      <section class="grid">
+        <article class="card">
+          <h2>Hogyan törölheted a fiókodat?</h2>
+          <ol>
+            <li>Nyisd meg a VJob alkalmazást.</li>
+            <li>Lépj be a fiókodba.</li>
+            <li>Nyisd meg a Profil menüt.</li>
+            <li>Válaszd a Fiók törlése lehetőséget.</li>
+            <li>Erősítsd meg a törlést a jelszavaddal.</li>
+          </ol>
+          <div class="callout ok">A fióktörlés az appon belül közvetlenül elérhető. Ha nem tudsz belépni, írj nekünk az alábbi email címre.</div>
+        </article>
+        <article class="card">
+          <h2>Törlés kérése emailben</h2>
+          <p>Ha nem férsz hozzá a fiókodhoz, emailben is kérheted a fiók törlését:</p>
+          <p><a href="mailto:info@getvjob.app">info@getvjob.app</a></p>
+          <p>Lehetőség szerint arról az email-címről írj, amelyik a VJob-fiókodhoz tartozik, hogy biztonságosan azonosítani tudjuk a fiókot.</p>
+        </article>
+        <article class="card">
+          <h2>Milyen adatok törlődnek?</h2>
+          <ul>
+            <li>bejelentkezési fiók és azonosító adatok,</li>
+            <li>profiladatok és beállítások,</li>
+            <li>munkavállalói CV-adatok, bemutatkozó szöveg, profilkép és bemutatkozó videó,</li>
+            <li>céges profiladatok, céglogó, bemutatkozó videó és hirdetések,</li>
+            <li>matchek, érdeklődések, értesítések és kapcsolódó beszélgetési adatok,</li>
+            <li>az appban tárolt helyi gyorsítótár és munkamenet-adatok.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Meddig tart a törlés?</h2>
+          <p>A törlési kérelem beérkezése után a fiókod és a hozzá tartozó adatok legkésőbb 30 napon belül véglegesen törlésre kerülnek. A folyamat visszavonhatatlan — ha meggondolod magad, csak egy új regisztrációval tudsz visszatérni.</p>
+        </article>
+        <article class="card full">
+          <h2>Megőrzött adatok</h2>
+          <p>A törlés visszavonhatatlan. A személyes profiladatokat a törlési folyamat során töröljük vagy anonimizáljuk, legfeljebb 30 napon belül.</p>
+          <p>Bizonyos adatokat jogszabályi kötelezettség miatt tovább is megőrizhetünk. Ilyenek lehetnek például a számlázási, számviteli, fizetési, adózási vagy biztonsági visszaélés-megelőzési adatok. Ezeket csak a szükséges célra és a jogszabályban előírt ideig kezeljük.</p>
+        </article>
+        <article class="card full">
+          <h2>Kapcsolat</h2>
+          <p>
+            Adatkezelő: Infinity Gold Kft.<br>
+            Székhely: 3571 Alsózsolca, Dózsa György út 56., Magyarország<br>
+            Email: <a href="mailto:info@getvjob.app">info@getvjob.app</a>
+          </p>
+        </article>
+      </section>
+      <footer class="footer">
+        <span>© 2026 VJob · getvjob.app</span>
+        <span>Utolsó frissítés: 2026-08-31</span>
+      </footer>
+    </div>
+
+    <!-- ============ ENGLISH ============ -->
+    <div class="lang-block" data-lang-block="en">
+      <section class="hero">
+        <div class="tag">Account deletion</div>
+        <h1>Delete your account and data</h1>
+        <p>This page explains how you can delete your VJob account, what data is deleted, and what data may be retained where required by law.</p>
+      </section>
+      <section class="grid">
+        <article class="card">
+          <h2>How to delete your account</h2>
+          <ol>
+            <li>Open the VJob app.</li>
+            <li>Log in to your account.</li>
+            <li>Open the Profile menu.</li>
+            <li>Select Delete account.</li>
+            <li>Confirm the deletion with your password.</li>
+          </ol>
+          <div class="callout ok">Account deletion is available directly inside the app. If you can't log in, write to us at the email address below.</div>
+        </article>
+        <article class="card">
+          <h2>Request deletion by email</h2>
+          <p>If you cannot access your account, you can request account deletion by email:</p>
+          <p><a href="mailto:info@getvjob.app">info@getvjob.app</a></p>
+          <p>Please write from the email address connected to your VJob account where possible, so we can identify the account safely.</p>
+        </article>
+        <article class="card">
+          <h2>What data is deleted?</h2>
+          <ul>
+            <li>login account and account identifiers,</li>
+            <li>profile data and settings,</li>
+            <li>worker CV data, introduction text, profile picture and introduction video,</li>
+            <li>company profile data, company logo, introduction video and job ads,</li>
+            <li>matches, interests, notifications and related conversation data,</li>
+            <li>local app cache and session data stored on the device.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>How long does deletion take?</h2>
+          <p>Once a deletion request is received, your account and associated data are permanently deleted within 30 days at the latest. The process is irreversible — if you change your mind, you can only return by creating a new account.</p>
+        </article>
+        <article class="card full">
+          <h2>Retained data</h2>
+          <p>Deletion is irreversible. Personal profile data is deleted or anonymised during the deletion process, within a maximum of 30 days.</p>
+          <p>Some records may be retained where required by law, including billing, accounting, payment, tax or security/fraud-prevention records. These are only processed for the necessary purpose and for the period prescribed by law.</p>
+        </article>
+        <article class="card full">
+          <h2>Contact</h2>
+          <p>
+            Data controller: Infinity Gold Kft.<br>
+            Registered office: 3571 Alsózsolca, Dózsa György út 56., Hungary<br>
+            Email: <a href="mailto:info@getvjob.app">info@getvjob.app</a>
+          </p>
+        </article>
+      </section>
+      <footer class="footer">
+        <span>© 2026 VJob · getvjob.app</span>
+        <span>Last updated: 2026-08-31</span>
+      </footer>
+    </div>
+
+    <!-- ============ DEUTSCH ============ -->
+    <div class="lang-block" data-lang-block="de">
+      <section class="hero">
+        <div class="tag">Kontolöschung</div>
+        <h1>Konto und Daten löschen</h1>
+        <p>Diese Seite erklärt, wie du dein VJob-Konto löschen kannst, welche Daten gelöscht werden und welche Daten aus gesetzlichen Gründen möglicherweise aufbewahrt werden müssen.</p>
+      </section>
+      <section class="grid">
+        <article class="card">
+          <h2>So löschst du dein Konto</h2>
+          <ol>
+            <li>Öffne die VJob-App.</li>
+            <li>Melde dich in deinem Konto an.</li>
+            <li>Öffne das Profilmenü.</li>
+            <li>Wähle „Konto löschen“.</li>
+            <li>Bestätige die Löschung mit deinem Passwort.</li>
+          </ol>
+          <div class="callout ok">Die Kontolöschung ist direkt in der App verfügbar. Falls du dich nicht anmelden kannst, schreibe uns an die untenstehende E-Mail-Adresse.</div>
+        </article>
+        <article class="card">
+          <h2>Löschung per E-Mail beantragen</h2>
+          <p>Falls du keinen Zugriff auf dein Konto hast, kannst du die Kontolöschung per E-Mail beantragen:</p>
+          <p><a href="mailto:info@getvjob.app">info@getvjob.app</a></p>
+          <p>Bitte schreibe nach Möglichkeit von der mit deinem VJob-Konto verknüpften E-Mail-Adresse, damit wir das Konto sicher identifizieren können.</p>
+        </article>
+        <article class="card">
+          <h2>Welche Daten werden gelöscht?</h2>
+          <ul>
+            <li>Anmeldekonto und Kontokennungen,</li>
+            <li>Profildaten und Einstellungen,</li>
+            <li>Lebenslaufdaten des Arbeitnehmers, Vorstellungstext, Profilbild und Vorstellungsvideo,</li>
+            <li>Firmenprofildaten, Firmenlogo, Vorstellungsvideo und Stellenanzeigen,</li>
+            <li>Matches, Interessensbekundungen, Benachrichtigungen und zugehörige Gesprächsdaten,</li>
+            <li>lokaler App-Cache und Sitzungsdaten auf dem Gerät.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Wie lange dauert die Löschung?</h2>
+          <p>Nach Eingang einer Löschanfrage werden dein Konto und die zugehörigen Daten spätestens innerhalb von 30 Tagen endgültig gelöscht. Der Vorgang ist unwiderruflich — solltest du es dir anders überlegen, kannst du nur mit einer neuen Registrierung zurückkehren.</p>
+        </article>
+        <article class="card full">
+          <h2>Aufbewahrte Daten</h2>
+          <p>Die Löschung ist unwiderruflich. Persönliche Profildaten werden im Rahmen des Löschvorgangs innerhalb von maximal 30 Tagen gelöscht oder anonymisiert.</p>
+          <p>Bestimmte Daten können aus gesetzlichen Gründen weiterhin aufbewahrt werden, z. B. Abrechnungs-, Buchhaltungs-, Zahlungs-, Steuer- oder Betrugspräventionsdaten. Diese werden nur für den erforderlichen Zweck und für die gesetzlich vorgeschriebene Dauer verarbeitet.</p>
+        </article>
+        <article class="card full">
+          <h2>Kontakt</h2>
+          <p>
+            Verantwortlicher: Infinity Gold Kft.<br>
+            Sitz: 3571 Alsózsolca, Dózsa György út 56., Ungarn<br>
+            E-Mail: <a href="mailto:info@getvjob.app">info@getvjob.app</a>
+          </p>
+        </article>
+      </section>
+      <footer class="footer">
+        <span>© 2026 VJob · getvjob.app</span>
+        <span>Zuletzt aktualisiert: 2026-08-31</span>
+      </footer>
+    </div>
+
+  </main>
+
+  <script>
+    var htmlEl = document.documentElement;
+    var langMeta = { hu: 'hu', en: 'en', de: 'de' };
+    document.querySelectorAll('.lang-switch button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lang = btn.getAttribute('data-lang');
+
+        document.querySelectorAll('.lang-switch button').forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+        });
+        document.querySelectorAll('.lang-block').forEach(function (block) {
+          block.classList.toggle('active', block.getAttribute('data-lang-block') === lang);
+        });
+        htmlEl.setAttribute('lang', langMeta[lang] || 'hu');
+      });
+    });
+  </script>
+</body>
+</html>
