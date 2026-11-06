@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>VJob – Hirdetés vásárlása</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        [hidden] { display: none !important; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #07060E;
+            color: #e2e0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a { color: #C084FC; }
+
+        .header {
+            background: linear-gradient(135deg, #0D0B1E 0%, #1A0A2E 100%);
+            border-bottom: 1px solid rgba(180, 80, 255, 0.2);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        .header-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            border-radius: 11px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; font-weight: 900; color: white;
+            box-shadow: 0 0 20px rgba(180, 80, 255, 0.4);
+        }
+        .logo-text {
+            font-size: 21px; font-weight: 800;
+            background: linear-gradient(135deg, #C084FC, #E879F9);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .header-right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .who { font-size: 13px; color: #b5b2cc; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .who-name { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .link-btn {
+            background: none; border: none; color: #C084FC; cursor: pointer;
+            font: inherit; font-size: 13px; text-decoration: underline; padding: 4px 0;
+        }
+        .lang-switcher {
+            display: flex; gap: 4px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px; padding: 3px;
+        }
+        .lang-btn {
+            padding: 6px 12px; border: none; border-radius: 7px; background: transparent;
+            color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 600; cursor: pointer;
+        }
+        .lang-btn.active {
+            background: linear-gradient(135deg, #8B2FC9, #D946EF); color: white;
+            box-shadow: 0 2px 10px rgba(180, 80, 255, 0.4);
+        }
+        .lang-btn:hover:not(.active) { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.07); }
+
+        main { flex: 1; width: 100%; max-width: 980px; margin: 0 auto; padding: 36px 24px 60px; }
+
+        h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; color: #fff; }
+        .sub { font-size: 14px; color: rgba(255,255,255,0.58); line-height: 1.55; margin-bottom: 22px; }
+
+        .center-card {
+            max-width: 430px; margin: 24px auto 0;
+            background: #0D0B1A; border: 1px solid rgba(136, 0, 255, 0.25);
+            border-radius: 20px; padding: 30px 28px;
+        }
+        .center-card h1 { font-size: 22px; }
+        label { display: block; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.55); margin: 16px 0 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        input[type="email"], input[type="password"], input[type="text"] {
+            width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 10px; padding: 13px 14px; color: #fff; font-size: 16px; font-family: inherit; outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus { border-color: rgba(170, 68, 255, 0.7); }
+
+        .btn {
+            width: 100%; margin-top: 20px; padding: 14px; border: none; border-radius: 12px;
+            background: linear-gradient(135deg, #8800FF, #DD00BB); color: #fff;
+            font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity 0.2s;
+        }
+        .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+        .btn:hover:not(:disabled) { opacity: 0.92; }
+        .btn.secondary {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.88);
+        }
+        .row-links { margin-top: 16px; text-align: center; }
+
+        .error-box {
+            background: rgba(255, 68, 85, 0.1); border: 1px solid rgba(255, 68, 85, 0.35); border-radius: 10px;
+            padding: 12px 14px; color: #FF9AA6; font-size: 13.5px; margin-top: 16px; line-height: 1.5;
+        }
+        .ok-box {
+            background: rgba(0, 200, 120, 0.1); border: 1px solid rgba(0, 200, 120, 0.35); border-radius: 10px;
+            padding: 12px 14px; color: #6FE3B2; font-size: 13.5px; margin-top: 16px; line-height: 1.5;
+        }
+        .warn-box {
+            background: rgba(255, 176, 32, 0.09); border: 1px solid rgba(255, 176, 32, 0.4); border-radius: 12px;
+            padding: 14px 16px; color: #FFD27A; font-size: 13.5px; line-height: 1.55; margin-bottom: 18px;
+        }
+        .warn-box b { color: #FFE2A6; }
+
+        .spinner {
+            width: 38px; height: 38px; border: 3px solid rgba(170, 68, 255, 0.2); border-top-color: #AA44FF;
+            border-radius: 50%; margin: 60px auto 16px; animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .center-text { text-align: center; color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6; }
+        .center-text .btn { max-width: 260px; margin-left: auto; margin-right: auto; display: block; }
+
+        /* ── Vásárlás ── */
+        .layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; align-items: start; }
+        .step { font-size: 11.5px; font-weight: 800; letter-spacing: 1.3px; color: #C084FC; text-transform: uppercase; margin: 22px 0 10px; }
+        .step.first { margin-top: 4px; }
+        .topline { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+
+        .opt {
+            display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+            border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); color: inherit;
+            border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; font: inherit; font-size: 14px; cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .opt:hover { border-color: rgba(180,80,255,0.4); }
+        .opt.sel { border-color: #C084FC; background: rgba(139,47,201,0.16); }
+        .rad { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); flex-shrink: 0; }
+        .sel .rad { border-color: #E879F9; background: radial-gradient(#E879F9 45%, transparent 50%); }
+        .opt-main { flex: 1; min-width: 0; }
+        .opt-title { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+        .badge { font-size: 12px; padding: 3px 9px; border-radius: 12px; white-space: nowrap; }
+        .b-active { color: #00eda0; background: rgba(0,200,120,0.14); }
+        .b-inactive { color: #ff7a5c; background: rgba(255,68,0,0.14); }
+        .b-pending { color: #ffb020; background: rgba(255,176,32,0.14); }
+
+        .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .pkg {
+            border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); color: inherit;
+            border-radius: 12px; padding: 14px 8px; text-align: center; font: inherit; cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .pkg:hover { border-color: rgba(180,80,255,0.4); }
+        .pkg.sel { border-color: #C084FC; background: rgba(139,47,201,0.16); }
+        .pkg .n { font-weight: 800; font-size: 14px; }
+        .pkg .d { font-size: 12px; color: rgba(255,255,255,0.55); margin: 3px 0 7px; }
+        .pkg .pr { font-weight: 800; font-size: 15px; color: #E879F9; }
+
+        .modes { display: flex; gap: 8px; margin: 18px 0 0; flex-wrap: wrap; }
+        .mode {
+            padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.14); background: transparent;
+            color: rgba(255,255,255,0.65); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+        }
+        .mode.sel { background: rgba(139,47,201,0.25); border-color: #C084FC; color: #fff; }
+
+        .open-box {
+            border: 1px solid rgba(255,176,32,0.4); background: rgba(255,176,32,0.07); border-radius: 12px;
+            padding: 12px 14px; margin: 10px 0; font-size: 13.5px;
+        }
+        .open-box .t { font-weight: 700; color: #FFD27A; margin-bottom: 4px; }
+        .open-box .m { color: rgba(255,255,255,0.7); line-height: 1.5; }
+        .open-box .btn { margin-top: 10px; padding: 10px; font-size: 13.5px; }
+
+        .sum { position: sticky; top: 92px; border: 1px solid rgba(180,80,255,0.28); background: #150C26; border-radius: 16px; padding: 20px; }
+        .sum h3 { font-size: 15px; margin-bottom: 14px; color: #fff; }
+        .sum-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; color: #cfcde0; margin-bottom: 9px; }
+        .sum-row span:last-child { white-space: nowrap; }
+        .sum-ad { font-weight: 600; color: #fff; overflow-wrap: anywhere; }
+        .tot { border-top: 1px solid rgba(255,255,255,0.14); margin-top: 12px; padding-top: 14px; display: flex; justify-content: space-between; font-weight: 800; font-size: 18px; color: #fff; }
+        .fine { font-size: 11.5px; color: rgba(255,255,255,0.5); line-height: 1.55; margin-top: 14px; }
+        .note { font-size: 12.5px; color: rgba(255,255,255,0.62); line-height: 1.5; margin-top: 10px; }
+
+        /* ── Átutalási adatok ── */
+        .bank-wrap { max-width: 640px; margin: 0 auto; }
+        .status-pill {
+            display: inline-block; font-size: 12.5px; font-weight: 700; color: #ffb020; background: rgba(255,176,32,0.1);
+            border: 1px solid rgba(255,176,32,0.4); padding: 5px 12px; border-radius: 20px; margin-bottom: 14px;
+        }
+        .kv { border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; overflow: hidden; margin-top: 16px; }
+        .kv-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; font-size: 14.5px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .kv-row:last-child { border-bottom: none; }
+        .kv-k { color: rgba(255,255,255,0.55); flex-shrink: 0; }
+        .kv-v { font-weight: 700; text-align: right; overflow-wrap: anywhere; display: flex; align-items: center; gap: 10px; justify-content: flex-end; }
+        .kv-v.big { font-size: 20px; color: #E879F9; }
+        .copy {
+            border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.85);
+            border-radius: 8px; padding: 5px 10px; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; flex-shrink: 0;
+        }
+        .copy:hover { border-color: rgba(180,80,255,0.5); }
+        .copy.done { color: #6FE3B2; border-color: rgba(0,200,120,0.5); }
+        .bank-wrap .btn { max-width: 320px; }
+
+        .footer { text-align: center; padding: 22px 24px; border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.35); font-size: 12px; line-height: 1.8; }
+        .footer a { color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 820px) {
+            .layout { grid-template-columns: minmax(0, 1fr); }
+            .sum { position: static; }
+        }
+        @media (max-width: 600px) {
+            main { padding: 24px 16px 48px; }
+            .header { padding: 14px 16px; }
+            .grid4 { grid-template-columns: repeat(2, 1fr); }
+            h1 { font-size: 22px; }
+            .center-card { padding: 24px 18px; }
+            .kv-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .kv-v { text-align: left; justify-content: flex-start; }
+            .opt { flex-wrap: wrap; }
+            .opt-main { flex: 1 1 calc(100% - 40px); }
+            .badges { flex: 1 0 100%; justify-content: flex-start; padding-left: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <a class="logo-area" href="https://getvjob.app">
+            <div class="logo-icon">V</div>
+            <span class="logo-text">VJob</span>
+        </a>
+        <div class="header-right">
+            <div class="who" id="who" hidden>
+                <span class="who-name" id="who-name"></span>
+                <button class="link-btn" id="logout-btn" type="button"></button>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn" type="button" data-lang="hu">HU</button>
+                <button class="lang-btn" type="button" data-lang="en">EN</button>
+                <button class="lang-btn" type="button" data-lang="de">DE</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main id="app" aria-live="polite"></main>
+<noscript><p class="center-text" style="padding:40px 24px">Az oldal használatához engedélyezze a JavaScriptet. · Please enable JavaScript to use this page.</p></noscript>
+
+<footer class="footer">
+    <span id="footer-text"></span><br>
+    <a href="terms.html" id="footer-terms"></a> · <a href="privacy-policy.html" id="footer-privacy"></a> · <a href="csomagok.html" id="footer-packages"></a>
+</footer>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import {
+        getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-functions.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDsQ_0jpIyuy04SGQCn8VMEx3-0qzZxQdc",
+        authDomain: "vjob-549b5.firebaseapp.com",
+        projectId: "vjob-549b5",
+        storageBucket: "vjob-549b5.firebasestorage.app",
+        messagingSenderId: "593534123411",
+        appId: "1:593534123411:web:33c5f42d4d1a35bc6dfc66"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const functions = getFunctions(app, "europe-west1");
+    const call = (name, data) => httpsCallable(functions, name, { timeout: 60000 })(data).then((r) => r.data);
+
+    const DAY = 24 * 60 * 60 * 1000;
+    const LANGS = ["hu", "en", "de"];
+    const LOCALE = { hu: "hu-HU", en: "en-GB", de: "de-DE" };
+    const CURRENCY = { hu: "Ft", en: "HUF", de: "Ft" };
+
+    // ───────────────────────── Szövegek ─────────────────────────
+    // Cégeknek szóló szöveg: magyarul magázás, németül Sie-forma.
+    const T = {
+        hu: {
+            pageTitle: "VJob – Hirdetés vásárlása",
+            loading: "Betöltés…",
+            logout: "Kijelentkezés",
+            refresh: "Frissítés",
+            loginTitle: "Bejelentkezés",
+            loginSub: "Jelentkezzen be ugyanazzal a fiókkal, amellyel a VJob alkalmazást használja. A hirdetési csomagokat itt vásárolhatja meg.",
+            email: "E-mail cím",
+            password: "Jelszó",
+            loginBtn: "Bejelentkezés",
+            loggingIn: "Bejelentkezés…",
+            forgot: "Elfelejtett jelszó?",
+            forgotTitle: "Jelszó-visszaállítás",
+            forgotSub: "Az e-mail címére elküldjük a jelszó-visszaállítás hivatkozását.",
+            sendReset: "Hivatkozás küldése",
+            sending: "Küldés…",
+            resetSent: "Ha ehhez az e-mail címhez tartozik fiók, elküldtük a jelszó-visszaállító levelet.",
+            backToLogin: "Vissza a bejelentkezéshez",
+            errFill: "Kérjük, adja meg az e-mail címét és a jelszavát.",
+            errCreds: "Hibás e-mail cím vagy jelszó.",
+            errTooMany: "Túl sok próbálkozás. Kérjük, próbálja újra később.",
+            errNetwork: "Nincs internetkapcsolat, vagy a szolgáltatás nem érhető el.",
+            errEmail: "Kérjük, adjon meg érvényes e-mail címet.",
+            errGeneric: "Váratlan hiba történt. Kérjük, próbálja újra.",
+            loadError: "Nem sikerült betölteni a hirdetéseit.",
+            retry: "Újrapróbálom",
+            noAdsTitle: "Még nincs hirdetése",
+            noAdsText: "Hirdetést a VJob alkalmazás Hirdetések fülén adhat fel. Utána itt vásárolhatja meg a hozzá tartozó csomagot, ugyanezzel a fiókkal.",
+            shopTitle: "Hirdetés aktiválása",
+            shopSub: "Válassza ki a hirdetést és a csomagot. A fizetés banki átutalással történik.",
+            step1: "1. Hirdetés",
+            step2: "2. Hirdetési csomag",
+            step3: "3. Kiemelés (nem kötelező)",
+            step2hl: "2. Kiemelés",
+            statusActive: "Aktív",
+            statusInactive: "Inaktív",
+            daysLeft: (n) => `${n} nap van hátra`,
+            pending: "Fizetésre vár",
+            modePack: "Csomag",
+            modeHl: "Csak kiemelés",
+            none: "Nincs",
+            hoursLabel: "24 óra",
+            unitDays: () => "nap",
+            openTitle: "Folyamatban lévő fizetés",
+            openText: (what, sum) => `${what} · még fizetendő: ${sum}`,
+            openShow: "Fizetési adatok megnyitása",
+            allOpen: "Ehhez a hirdetéshez már van nyitott fizetése. Kérjük, utalja át az összeget, vagy várja meg a fizetési határidő lejártát.",
+            hlNeedsActive: "Kiemelést csak aktív hirdetéshez lehet vásárolni. Ehhez a hirdetéshez előbb csomagot kell vásárolni.",
+            summary: "Összegzés",
+            packageLine: (name, dur) => `${name} csomag (${dur})`,
+            highlightLine: (dur) => `Kiemelés (${dur})`,
+            total: "Összesen",
+            reqBtn: "Fizetési adatok kérése",
+            reqBusy: "Fizetési adatok kérése…",
+            extendNote: (n) => `A hirdetés hátralévő ${n} napja hozzáadódik az új csomag idejéhez.`,
+            hlCapNote: "A csomaggal együtt vásárolt kiemelés legfeljebb a hirdetés lejáratáig tart.",
+            fine: "Bruttó ár, az alkalmazandó ÁFÁ-t tartalmazza. A befizetés beérkezése után a hirdetés automatikusan aktiválódik. Aktiválás után a csomag nem téríthető vissza.",
+            missingTitle: "Hiányzó számlázási adatok",
+            missingText: (list) => `A díjbekérő kiállításához a következő adatok szükségesek: ${list}. Kérjük, egészítse ki őket az alkalmazásban a cégprofilnál, majd frissítse ezt az oldalt.`,
+            fields: { companyName: "cégnév", taxId: "adószám", szamlazasiIranyitoszam: "számlázási irányítószám", szamlazasiVaros: "számlázási város", szamlazasiCim: "számlázási cím", contactEmail: "kapcsolattartó e-mail cím" },
+            bankTitle: "Utalja át az összeget",
+            waiting: (n) => `Fizetésre vár · ${n} nap van hátra`,
+            amount: "Összeg",
+            alreadyPaid: "Már befizetve",
+            remaining: "Még fizetendő",
+            beneficiary: "Kedvezményezett",
+            bankName: "Bank",
+            account: "Számlaszám",
+            reference: "Közlemény (kötelező)",
+            deadline: "Fizetési határidő",
+            refMust: "A közlemény megadása kötelező, enélkül nem tudjuk azonosítani a befizetést.",
+            afterPay: "A befizetés beérkezése után a hirdetés automatikusan aktiválódik, és e-mailben értesítjük.",
+            copy: "Másolás",
+            copied: "Másolva",
+            backToAds: "Vissza a hirdetésekhez",
+            pBilling: "Hiányoznak a számlázási adatok. Kérjük, ellenőrizze a cégprofil adatait az alkalmazásban.",
+            pNotVerified: "Az uniós adószámának ellenőrzése még nem fejeződött be. Kérjük, próbálja újra később.",
+            pNeedsActive: "Kiemelést csak aktív hirdetéshez lehet vásárolni.",
+            pAlreadyOpen: "Ehhez a hirdetéshez már van nyitott fizetése. Az oldal frissült, a fizetési adatait a hirdetésnél nyithatja meg.",
+            pTooMany: "Egyszerre legfeljebb 10 nyitott fizetése lehet. Kérjük, fizesse ki a régieket, vagy várja meg a lejáratukat.",
+            pTemp: "Átmeneti hiba történt. Kérjük, próbálja újra néhány perc múlva.",
+            pFailed: "Nem sikerült elindítani a fizetést. Kérjük, próbálja újra.",
+            pNotFound: "A hirdetés nem található.",
+            pInvalid: "Érvénytelen csomag vagy adat.",
+            pTimeout: "A szerver nem válaszolt időben. Kérjük, ellenőrizze az internetkapcsolatot, és próbálja újra.",
+            pSession: "A munkamenet lejárt. Kérjük, jelentkezzen be újra.",
+            footer: "© 2026 VJob · getvjob.app",
+            terms: "Általános szerződési feltételek",
+            privacy: "Adatkezelési tájékoztató",
+            packages: "Csomagok és árak",
+            packNames: { surgos: "Sürgős", rovid: "Rövid", kozepes: "Közepes", teljes: "Teljes" }
+        },
+        en: {
+            pageTitle: "VJob – Purchase a job ad package",
+            loading: "Loading…",
+            logout: "Log out",
+            refresh: "Refresh",
+            loginTitle: "Log in",
+            loginSub: "Log in with the same account you use in the VJob app. You can purchase advertising packages here.",
+            email: "Email address",
+            password: "Password",
+            loginBtn: "Log in",
+            loggingIn: "Logging in…",
+            forgot: "Forgot password?",
+            forgotTitle: "Reset password",
+            forgotSub: "We will send the password reset link to your email address.",
+            sendReset: "Send link",
+            sending: "Sending…",
+            resetSent: "If an account exists for this email address, we have sent the password reset email.",
+            backToLogin: "Back to log in",
+            errFill: "Please enter your email address and password.",
+            errCreds: "Incorrect email address or password.",
+            errTooMany: "Too many attempts. Please try again later.",
+            errNetwork: "No internet connection, or the service is unavailable.",
+            errEmail: "Please enter a valid email address.",
+            errGeneric: "An unexpected error occurred. Please try again.",
+            loadError: "Your job ads could not be loaded.",
+            retry: "Try again",
+            noAdsTitle: "You have no job ads yet",
+            noAdsText: "You can post a job ad on the Ads tab of the VJob app. After that, you can purchase its package here, with the same account.",
+            shopTitle: "Activate a job ad",
+            shopSub: "Choose the ad and the package. Payment is by bank transfer.",
+            step1: "1. Job ad",
+            step2: "2. Ad package",
+            step3: "3. Highlight (optional)",
+            step2hl: "2. Highlight",
+            statusActive: "Active",
+            statusInactive: "Inactive",
+            daysLeft: (n) => `${n} ${n === 1 ? "day" : "days"} left`,
+            pending: "Payment pending",
+            modePack: "Package",
+            modeHl: "Highlight only",
+            none: "None",
+            hoursLabel: "24 hours",
+            unitDays: (n) => (n === 1 ? "day" : "days"),
+            openTitle: "Payment in progress",
+            openText: (what, sum) => `${what} · amount still due: ${sum}`,
+            openShow: "Show payment details",
+            allOpen: "This ad already has an open payment. Please transfer the amount, or wait until the payment deadline has passed.",
+            hlNeedsActive: "A highlight can only be purchased for an active ad. For this ad, a package has to be purchased first.",
+            summary: "Summary",
+            packageLine: (name, dur) => `${name} package (${dur})`,
+            highlightLine: (dur) => `Highlight (${dur})`,
+            total: "Total",
+            reqBtn: "Get payment details",
+            reqBusy: "Getting payment details…",
+            extendNote: (n) => `The ad's remaining ${n} ${n === 1 ? "day is" : "days are"} added to the duration of the new package.`,
+            hlCapNote: "A highlight purchased together with a package lasts at most until the ad expires.",
+            fine: "Gross price, including VAT where applicable. The ad is activated automatically once the payment has arrived. Non-refundable after activation.",
+            missingTitle: "Missing billing details",
+            missingText: (list) => `The following details are needed to issue the proforma invoice: ${list}. Please complete them in the app, in the company profile, and then refresh this page.`,
+            fields: { companyName: "company name", taxId: "tax number", szamlazasiIranyitoszam: "billing postal code", szamlazasiVaros: "billing city", szamlazasiCim: "billing address", contactEmail: "contact email address" },
+            bankTitle: "Transfer the amount",
+            waiting: (n) => `Payment pending · ${n} ${n === 1 ? "day" : "days"} left`,
+            amount: "Amount",
+            alreadyPaid: "Already paid",
+            remaining: "Still due",
+            beneficiary: "Beneficiary",
+            bankName: "Bank",
+            account: "Account number",
+            reference: "Payment reference (required)",
+            deadline: "Payment deadline",
+            refMust: "The payment reference is required. Without it, we cannot identify your payment.",
+            afterPay: "Once the payment has arrived, the ad is activated automatically and we will notify you by email.",
+            copy: "Copy",
+            copied: "Copied",
+            backToAds: "Back to your ads",
+            pBilling: "Billing details are missing. Please check your company profile in the app.",
+            pNotVerified: "The verification of your EU tax number has not been completed yet. Please try again later.",
+            pNeedsActive: "A highlight can only be purchased for an active ad.",
+            pAlreadyOpen: "This ad already has an open payment. The page has been refreshed; you can open the payment details at the ad.",
+            pTooMany: "You can have at most 10 open payments at a time. Please pay the old ones, or wait until they expire.",
+            pTemp: "A temporary error occurred. Please try again in a few minutes.",
+            pFailed: "The payment could not be started. Please try again.",
+            pNotFound: "The ad could not be found.",
+            pInvalid: "Invalid package or data.",
+            pTimeout: "The server did not respond in time. Please check your internet connection and try again.",
+            pSession: "Your session has expired. Please log in again.",
+            footer: "© 2026 VJob · getvjob.app",
+            terms: "Terms and conditions",
+            privacy: "Privacy policy",
+            packages: "Packages and prices",
+            packNames: { surgos: "Urgent", rovid: "Short", kozepes: "Medium", teljes: "Full" }
+        },
+        de: {
+            pageTitle: "VJob – Anzeigenpaket kaufen",
+            loading: "Wird geladen…",
+            logout: "Abmelden",
+            refresh: "Aktualisieren",
+            loginTitle: "Anmelden",
+            loginSub: "Melden Sie sich mit demselben Konto an, das Sie in der VJob-App verwenden. Hier können Sie Anzeigenpakete kaufen.",
+            email: "E-Mail-Adresse",
+            password: "Passwort",
+            loginBtn: "Anmelden",
+            loggingIn: "Anmeldung läuft…",
+            forgot: "Passwort vergessen?",
+            forgotTitle: "Passwort zurücksetzen",
+            forgotSub: "Wir senden den Link zum Zurücksetzen des Passworts an Ihre E-Mail-Adresse.",
+            sendReset: "Link senden",
+            sending: "Wird gesendet…",
+            resetSent: "Falls zu dieser E-Mail-Adresse ein Konto existiert, haben wir die E-Mail zum Zurücksetzen des Passworts gesendet.",
+            backToLogin: "Zurück zur Anmeldung",
+            errFill: "Bitte geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein.",
+            errCreds: "Falsche E-Mail-Adresse oder falsches Passwort.",
+            errTooMany: "Zu viele Versuche. Bitte versuchen Sie es später erneut.",
+            errNetwork: "Keine Internetverbindung, oder der Dienst ist nicht erreichbar.",
+            errEmail: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+            errGeneric: "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+            loadError: "Ihre Stellenanzeigen konnten nicht geladen werden.",
+            retry: "Erneut versuchen",
+            noAdsTitle: "Sie haben noch keine Stellenanzeige",
+            noAdsText: "Eine Stellenanzeige können Sie im Tab „Anzeigen“ der VJob-App aufgeben. Danach können Sie hier mit demselben Konto das passende Paket kaufen.",
+            shopTitle: "Stellenanzeige aktivieren",
+            shopSub: "Wählen Sie die Anzeige und das Paket. Die Zahlung erfolgt per Banküberweisung.",
+            step1: "1. Stellenanzeige",
+            step2: "2. Anzeigenpaket",
+            step3: "3. Hervorhebung (optional)",
+            step2hl: "2. Hervorhebung",
+            statusActive: "Aktiv",
+            statusInactive: "Inaktiv",
+            daysLeft: (n) => `noch ${n} ${n === 1 ? "Tag" : "Tage"}`,
+            pending: "Zahlung ausstehend",
+            modePack: "Paket",
+            modeHl: "Nur Hervorhebung",
+            none: "Keine",
+            hoursLabel: "24 Stunden",
+            unitDays: (n) => (n === 1 ? "Tag" : "Tage"),
+            openTitle: "Laufende Zahlung",
+            openText: (what, sum) => `${what} · noch zu zahlen: ${sum}`,
+            openShow: "Zahlungsdaten anzeigen",
+            allOpen: "Für diese Anzeige gibt es bereits eine offene Zahlung. Bitte überweisen Sie den Betrag oder warten Sie, bis die Zahlungsfrist abgelaufen ist.",
+            hlNeedsActive: "Eine Hervorhebung kann nur für eine aktive Anzeige gekauft werden. Für diese Anzeige muss zuerst ein Paket gekauft werden.",
+            summary: "Zusammenfassung",
+            packageLine: (name, dur) => `Paket ${name} (${dur})`,
+            highlightLine: (dur) => `Hervorhebung (${dur})`,
+            total: "Gesamt",
+            reqBtn: "Zahlungsdaten anfordern",
+            reqBusy: "Zahlungsdaten werden angefordert…",
+            extendNote: (n) => `Die verbleibenden ${n} ${n === 1 ? "Tag" : "Tage"} der Anzeige werden zur Laufzeit des neuen Pakets addiert.`,
+            hlCapNote: "Eine zusammen mit einem Paket gekaufte Hervorhebung gilt höchstens bis zum Ablauf der Anzeige.",
+            fine: "Bruttopreis, einschließlich Mehrwertsteuer, soweit anwendbar. Nach Zahlungseingang wird die Anzeige automatisch aktiviert. Nach der Aktivierung nicht erstattungsfähig.",
+            missingTitle: "Fehlende Rechnungsdaten",
+            missingText: (list) => `Für die Ausstellung der Proforma-Rechnung werden folgende Angaben benötigt: ${list}. Bitte ergänzen Sie diese in der App im Unternehmensprofil und aktualisieren Sie dann diese Seite.`,
+            fields: { companyName: "Firmenname", taxId: "Steuernummer", szamlazasiIranyitoszam: "Postleitzahl der Rechnungsadresse", szamlazasiVaros: "Ort der Rechnungsadresse", szamlazasiCim: "Rechnungsadresse", contactEmail: "Kontakt-E-Mail-Adresse" },
+            bankTitle: "Überweisen Sie den Betrag",
+            waiting: (n) => `Zahlung ausstehend · noch ${n} ${n === 1 ? "Tag" : "Tage"}`,
+            amount: "Betrag",
+            alreadyPaid: "Bereits bezahlt",
+            remaining: "Noch zu zahlen",
+            beneficiary: "Empfänger",
+            bankName: "Bank",
+            account: "Kontonummer",
+            reference: "Verwendungszweck (erforderlich)",
+            deadline: "Zahlungsfrist",
+            refMust: "Der Verwendungszweck ist erforderlich. Ohne ihn können wir Ihre Zahlung nicht zuordnen.",
+            afterPay: "Nach Zahlungseingang wird die Anzeige automatisch aktiviert, und wir benachrichtigen Sie per E-Mail.",
+            copy: "Kopieren",
+            copied: "Kopiert",
+            backToAds: "Zurück zu Ihren Anzeigen",
+            pBilling: "Die Rechnungsdaten fehlen. Bitte prüfen Sie Ihr Unternehmensprofil in der App.",
+            pNotVerified: "Die Überprüfung Ihrer EU-Steuernummer ist noch nicht abgeschlossen. Bitte versuchen Sie es später erneut.",
+            pNeedsActive: "Eine Hervorhebung kann nur für eine aktive Anzeige gekauft werden.",
+            pAlreadyOpen: "Für diese Anzeige gibt es bereits eine offene Zahlung. Die Seite wurde aktualisiert; die Zahlungsdaten können Sie bei der Anzeige öffnen.",
+            pTooMany: "Sie können höchstens 10 offene Zahlungen gleichzeitig haben. Bitte begleichen Sie die älteren oder warten Sie, bis sie ablaufen.",
+            pTemp: "Es ist ein vorübergehender Fehler aufgetreten. Bitte versuchen Sie es in einigen Minuten erneut.",
+            pFailed: "Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es erneut.",
+            pNotFound: "Die Anzeige wurde nicht gefunden.",
+            pInvalid: "Ungültiges Paket oder ungültige Daten.",
+            pTimeout: "Der Server hat nicht rechtzeitig geantwortet. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
+            pSession: "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
+            footer: "© 2026 VJob · getvjob.app",
+            terms: "Allgemeine Geschäftsbedingungen",
+            privacy: "Datenschutzerklärung",
+            packages: "Pakete und Preise",
+            packNames: { surgos: "Dringend", rovid: "Kurz", kozepes: "Mittel", teljes: "Voll" }
+        }
+    };
+
+    // ───────────────────────── Állapot ─────────────────────────
+    function startLang() {
+        const q = new URLSearchParams(location.search).get("lang");
+        if (LANGS.includes(q)) return q;
+        try {
+            const mentett = localStorage.getItem("vjob_lang");
+            if (LANGS.includes(mentett)) return mentett;
+        } catch (e) { /* a böngésző nem engedi a tárolást: nem baj */ }
+        const bongeszo = (navigator.language || "").slice(0, 2).toLowerCase();
+        return LANGS.includes(bongeszo) ? bongeszo : "hu";
+    }
+
+    const S = {
+        lang: startLang(),
+        view: "loading",     // loading | login | forgot | shop | bank | empty | error
+        user: null,
+        data: null,          // a listazCegHirdeteseit válasza
+        adId: null,
+        mode: "csomag",      // csomag | kiemeles
+        pack: null,
+        hl: "",
+        busy: false,
+        msg: null,           // { tipus: "hiba"|"ok", szoveg }
+        bank: null,
+        loginEmail: "",
+        eloValasztottHirdetes: new URLSearchParams(location.search).get("hirdetes")
+    };
+
+    const t = () => T[S.lang];
+
+    // ───────────────────────── Segédek ─────────────────────────
+    const $ = (id) => document.getElementById(id);
+
+    /** Elemet épít; a szöveg MINDIG szövegcsomópontként kerül be (a felhasználói adat nem értelmeződik HTML-ként). */
+    function h(tag, props, ...kids) {
+        const e = document.createElement(tag);
+        if (props) {
+            for (const [k, v] of Object.entries(props)) {
+                if (v === false || v === null || v === undefined) continue;
+                if (k === "class") e.className = v;
+                else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+                else e.setAttribute(k, v === true ? "" : v);
+            }
+        }
+        for (const kid of kids.flat()) {
+            if (kid === null || kid === undefined || kid === false) continue;
+            e.append(typeof kid === "object" ? kid : document.createTextNode(String(kid)));
+        }
+        return e;
+    }
+
+    // Ezreselválasztó minden 4 jegyű számnál is (az Intl a magyarnál a 4 jegyűt nem tagolja: "3000"), mint a csomagok oldalán: "3 000 Ft".
+    const THOUSANDS = { hu: "\u00a0", en: ",", de: "." };
+    function money(n) {
+        const szam = String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, THOUSANDS[S.lang]);
+        return `${szam}\u00a0${CURRENCY[S.lang]}`;
+    }
+
+    function durationText(nap) {
+        return nap === 1 ? t().hoursLabel : `${nap} ${t().unitDays(nap)}`;
+    }
+
+    function packName(kod) {
+        return t().packNames[kod] || kod;
+    }
+
+    function dateText(ms) {
+        return new Date(ms).toLocaleDateString(LOCALE[S.lang], { year: "numeric", month: "long", day: "numeric" });
+    }
+
+    function daysUntil(ms) {
+        return Math.max(1, Math.ceil((ms - Date.now()) / DAY));
+    }
+
+    const ar = (lista, kod) => (lista || []).find((x) => x.kod === kod) || null;
+
+    function ad() {
+        return (S.data && S.data.hirdetesek.find((x) => x.id === S.adId)) || null;
+    }
+
+    /** Mit lehet venni a hirdetéshez (ugyanazok a szabályok, mint az appban és a szerveren). */
+    function adInfo(x) {
+        const now = Date.now();
+        const nyitottak = x.nyitottFizetesek || [];
+        const csomagNyitott = nyitottak.some((f) => f.vasarlasTipus !== "kiemeles");
+        const kiemelesNyitott = nyitottak.some((f) => f.vasarlasTipus === "kiemeles" || f.kiemelesKod);
+        const hatralevoNap = x.lejaratMs > now ? Math.ceil((x.lejaratMs - now) / DAY) : 0;
+        return {
+            nyitottak,
+            hatralevoNap,
+            csomagElerheto: !csomagNyitott,
+            kiemelesElerheto: x.aktiv === true && !kiemelesNyitott
+        };
+    }
+
+    function ensureSelection() {
+        const d = S.data;
+        if (!d || d.hirdetesek.length === 0) return;
+        if (!ad()) {
+            const kert = S.eloValasztottHirdetes && d.hirdetesek.find((x) => x.id === S.eloValasztottHirdetes);
+            const fizetesreSzorulo = d.hirdetesek.find((x) => !(x.aktiv && x.lejaratMs > Date.now()));
+            S.adId = (kert || fizetesreSzorulo || d.hirdetesek[0]).id;
+            S.eloValasztottHirdetes = null;
+        }
+        const info = adInfo(ad());
+        if (S.mode === "csomag" && !info.csomagElerheto) S.mode = "kiemeles";
+        if (S.mode === "kiemeles" && !info.kiemelesElerheto && info.csomagElerheto) S.mode = "csomag";
+        if (!ar(d.arak.csomagok, S.pack)) {
+            S.pack = (ar(d.arak.csomagok, "kozepes") || d.arak.csomagok[0] || {}).kod || null;
+        }
+        if (S.hl && !ar(d.arak.kiemelesek, S.hl)) S.hl = "";
+        if (S.mode === "kiemeles" && !S.hl) S.hl = (d.arak.kiemelesek[0] || {}).kod || "";
+    }
+
+    function setMsg(tipus, szoveg) {
+        S.msg = szoveg ? { tipus, szoveg } : null;
+    }
+
+    function payError(e) {
+        const m = (e && e.message) || "";
+        const code = (e && e.code) || "";
+        const L = t();
+        const map = {
+            BILLING_DETAILS_MISSING: L.pBilling,
+            COMPANY_NOT_VERIFIED: L.pNotVerified,
+            HIGHLIGHT_NEEDS_ACTIVE_AD: L.pNeedsActive,
+            PAYMENT_ALREADY_OPEN: L.pAlreadyOpen,
+            TOO_MANY_OPEN_PAYMENTS: L.pTooMany,
+            TEMPORARY_ERROR_TRY_AGAIN: L.pTemp,
+            PAYMENT_START_FAILED: L.pFailed
+        };
+        if (map[m]) return map[m];
+        if (code === "functions/unauthenticated") return L.pSession;
+        if (code === "functions/not-found") return L.pNotFound;
+        if (code === "functions/invalid-argument") return L.pInvalid;
+        if (code === "functions/deadline-exceeded" || code === "functions/unavailable") return L.pTimeout;
+        return L.pFailed;
+    }
+
+    // ───────────────────────── Nézetek ─────────────────────────
+    function render() {
+        const L = t();
+        document.documentElement.lang = S.lang;
+        document.title = L.pageTitle;
+        document.querySelectorAll(".lang-btn").forEach((b) => b.classList.toggle("active", b.dataset.lang === S.lang));
+        $("logout-btn").textContent = L.logout;
+        $("footer-text").textContent = L.footer;
+        $("footer-terms").textContent = L.terms;
+        $("footer-privacy").textContent = L.privacy;
+        $("footer-packages").textContent = L.packages;
+        const bejelentkezve = !!S.user && S.view !== "login" && S.view !== "forgot";
+        $("who").hidden = !bejelentkezve;
+        $("who-name").textContent = (S.data && S.data.cegNev) || (S.user && S.user.email) || "";
+
+        const app = $("app");
+        app.replaceChildren();
+        const nezetek = { loading: viewLoading, login: viewLogin, forgot: viewForgot, shop: viewShop, bank: viewBank, empty: viewEmpty, error: viewError };
+        app.append((nezetek[S.view] || viewLoading)());
+    }
+
+    function show(view) {
+        S.view = view;
+        render();
+        window.scrollTo(0, 0);
+    }
+
+    function msgBox() {
+        if (!S.msg) return null;
+        return h("div", { class: S.msg.tipus === "ok" ? "ok-box" : "error-box", role: "alert" }, S.msg.szoveg);
+    }
+
+    function viewLoading() {
+        return h("div", null, h("div", { class: "spinner" }), h("p", { class: "center-text" }, t().loading));
+    }
+
+    function viewLogin() {
+        const L = t();
+        const email = h("input", { type: "email", id: "login-email", autocomplete: "username", inputmode: "email", value: S.loginEmail });
+        email.addEventListener("input", () => { S.loginEmail = email.value; });
+        const pw = h("input", { type: "password", id: "login-pw", autocomplete: "current-password" });
+        const btn = h("button", { class: "btn", type: "submit", disabled: S.busy }, S.busy ? L.loggingIn : L.loginBtn);
+        const form = h("form", { novalidate: true },
+            h("label", { for: "login-email" }, L.email), email,
+            h("label", { for: "login-pw" }, L.password), pw,
+            msgBox(),
+            btn,
+            h("div", { class: "row-links" },
+                h("button", { class: "link-btn", type: "button", onclick: () => { setMsg(null); show("forgot"); } }, L.forgot))
+        );
+        form.addEventListener("submit", async (ev) => {
+            ev.preventDefault();
+            const e = email.value.trim();
+            if (!e || !pw.value) { setMsg("hiba", L.errFill); render(); return; }
+            S.busy = true; setMsg(null); render();
+            try {
+                await signInWithEmailAndPassword(auth, e, pw.value);
+                S.busy = false; // a folytatást az onAuthStateChanged végzi
+            } catch (err) {
+                S.busy = false;
+                const k = (err && err.code) || "";
+                const szoveg =
+                    k === "auth/too-many-requests" ? L.errTooMany :
+                    k === "auth/network-request-failed" ? L.errNetwork :
+                    k === "auth/invalid-email" ? L.errEmail :
+                    (k === "auth/invalid-credential" || k === "auth/wrong-password" || k === "auth/user-not-found") ? L.errCreds :
+                    L.errGeneric;
+                setMsg("hiba", szoveg);
+                render();
+            }
+        });
+        return h("div", { class: "center-card" }, h("h1", null, L.loginTitle), h("p", { class: "sub" }, L.loginSub), form);
+    }
+
+    function viewForgot() {
+        const L = t();
+        const email = h("input", { type: "email", id: "forgot-email", autocomplete: "username", inputmode: "email", value: S.loginEmail });
+        email.addEventListener("input", () => { S.loginEmail = email.value; });
+        const form = h("form", { novalidate: true },
+            h("label", { for: "forgot-email" }, L.email), email,
+            msgBox(),
+            h("button", { class: "btn", type: "submit", disabled: S.busy }, S.busy ? L.sending : L.sendReset),
+            h("div", { class: "row-links" },
+                h("button", { class: "link-btn", type: "button", onclick: () => { setMsg(null); show("login"); } }, L.backToLogin))
+        );
+        form.addEventListener("submit", async (ev) => {
+            ev.preventDefault();
+            const e = email.value.trim();
+            if (!e) { setMsg("hiba", L.errEmail); render(); return; }
+            S.busy = true; setMsg(null); render();
+            try {
+                await call("kuldJelszoVisszaallitasEmail", { email: e });
+                setMsg("ok", L.resetSent);
+            } catch (err) {
+                setMsg("hiba", (err && err.code === "functions/invalid-argument") ? L.errEmail : L.errGeneric);
+            }
+            S.busy = false;
+            render();
+        });
+        return h("div", { class: "center-card" }, h("h1", null, L.forgotTitle), h("p", { class: "sub" }, L.forgotSub), form);
+    }
+
+    function viewError() {
+        const L = t();
+        return h("div", { class: "center-text", style: "padding-top:60px" },
+            h("p", null, L.loadError),
+            h("button", { class: "btn", type: "button", onclick: loadData }, L.retry));
+    }
+
+    function viewEmpty() {
+        const L = t();
+        return h("div", { class: "center-text", style: "padding-top:50px" },
+            h("h1", null, L.noAdsTitle),
+            h("p", { class: "sub", style: "max-width:520px;margin:10px auto 22px" }, L.noAdsText),
+            h("button", { class: "btn secondary", type: "button", onclick: loadData }, L.refresh));
+    }
+
+    function describePurchase(vasarlasTipus, csomagKod, kiemelesKod) {
+        const L = t();
+        const d = S.data;
+        const reszek = [];
+        if (vasarlasTipus !== "kiemeles" && csomagKod) {
+            const c = ar(d.arak.csomagok, csomagKod);
+            reszek.push(L.packageLine(packName(csomagKod), c ? durationText(c.nap) : ""));
+        }
+        if (kiemelesKod) {
+            const k = ar(d.arak.kiemelesek, kiemelesKod);
+            reszek.push(L.highlightLine(k ? durationText(k.nap) : kiemelesKod));
+        }
+        return reszek.join(" + ");
+    }
+
+    function viewShop() {
+        const L = t();
+        const d = S.data;
+        const kivalasztott = ad();
+        const info = adInfo(kivalasztott);
+        const hianyzik = d.hianyzoAdatok || [];
+
+        // 1. Hirdetés
+        const hirdetesLista = h("div", { role: "radiogroup", "aria-label": L.step1 },
+            d.hirdetesek.map((x) => {
+                const xi = adInfo(x);
+                const aktivMost = x.aktiv && x.lejaratMs > Date.now();
+                return h("button", {
+                    class: "opt" + (x.id === S.adId ? " sel" : ""), type: "button", role: "radio",
+                    "aria-checked": x.id === S.adId ? "true" : "false",
+                    onclick: () => { S.adId = x.id; S.mode = "csomag"; S.hl = ""; setMsg(null); ensureSelection(); render(); }
+                },
+                    h("span", { class: "rad" }),
+                    h("span", { class: "opt-main" },
+                        h("span", { class: "opt-title", style: "display:block" }, [x.pozicio || "—", x.helyszin ? ` – ${x.helyszin}` : ""].join(""))),
+                    h("span", { class: "badges" },
+                        aktivMost
+                            ? h("span", { class: "badge b-active" }, `${L.statusActive} · ${L.daysLeft(xi.hatralevoNap)}`)
+                            : h("span", { class: "badge b-inactive" }, L.statusInactive),
+                        xi.nyitottak.length ? h("span", { class: "badge b-pending" }, L.pending) : null));
+            }));
+
+        // Folyamatban lévő fizetések a kiválasztott hirdetésnél
+        const nyitottBlokkok = info.nyitottak.map((f) => h("div", { class: "open-box" },
+            h("div", { class: "t" }, L.openTitle),
+            h("div", { class: "m" }, L.openText(describePurchase(f.vasarlasTipus, f.csomagKod, f.kiemelesKod), money(f.hatralevo > 0 ? f.hatralevo : f.osszeg))),
+            h("button", { class: "btn secondary", type: "button", onclick: () => openBank(f, kivalasztott) }, L.openShow)));
+
+        // Mód: csomag / csak kiemelés
+        const lehetoseg = [];
+        if (info.csomagElerheto) lehetoseg.push("csomag");
+        if (info.kiemelesElerheto) lehetoseg.push("kiemeles");
+        const modok = lehetoseg.length > 1
+            ? h("div", { class: "modes", role: "tablist" }, lehetoseg.map((m) => h("button", {
+                class: "mode" + (S.mode === m ? " sel" : ""), type: "button", role: "tab", "aria-selected": S.mode === m ? "true" : "false",
+                onclick: () => { S.mode = m; if (m === "kiemeles" && !S.hl) S.hl = (d.arak.kiemelesek[0] || {}).kod || ""; setMsg(null); render(); }
+            }, m === "csomag" ? L.modePack : L.modeHl)))
+            : null;
+
+        let vasarlasResz;
+        if (lehetoseg.length === 0) {
+            vasarlasResz = h("div", { class: "note" }, info.nyitottak.length ? L.allOpen : L.hlNeedsActive);
+        } else {
+            const csomagGrid = h("div", { class: "grid4" }, d.arak.csomagok.map((c) => h("button", {
+                class: "pkg" + (S.pack === c.kod ? " sel" : ""), type: "button", "aria-pressed": S.pack === c.kod ? "true" : "false",
+                onclick: () => { S.pack = c.kod; setMsg(null); render(); }
+            }, h("div", { class: "n" }, packName(c.kod)), h("div", { class: "d" }, durationText(c.nap)), h("div", { class: "pr" }, money(c.ar)))));
+            const hlOpciok = [];
+            if (S.mode === "csomag") {
+                hlOpciok.push(h("button", {
+                    class: "pkg" + (S.hl === "" ? " sel" : ""), type: "button", "aria-pressed": S.hl === "" ? "true" : "false",
+                    onclick: () => { S.hl = ""; setMsg(null); render(); }
+                }, h("div", { class: "n" }, L.none), h("div", { class: "d" }, " "), h("div", { class: "pr" }, money(0))));
+            }
+            d.arak.kiemelesek.forEach((k) => hlOpciok.push(h("button", {
+                class: "pkg" + (S.hl === k.kod ? " sel" : ""), type: "button", "aria-pressed": S.hl === k.kod ? "true" : "false",
+                onclick: () => { S.hl = k.kod; setMsg(null); render(); }
+            }, h("div", { class: "n" }, durationText(k.nap)), h("div", { class: "d" }, " "), h("div", { class: "pr" }, money(k.ar)))));
+            vasarlasResz = h("div", null,
+                S.mode === "csomag" ? [h("div", { class: "step" }, L.step2), csomagGrid] : null,
+                h("div", { class: "step" }, S.mode === "csomag" ? L.step3 : L.step2hl),
+                h("div", { class: "grid4" }, hlOpciok));
+        }
+
+        // Összegzés
+        const csomag = lehetoseg.length > 0 && S.mode === "csomag" ? ar(d.arak.csomagok, S.pack) : null;
+        const kiemeles = lehetoseg.length > 0 && S.hl ? ar(d.arak.kiemelesek, S.hl) : null;
+        const lehetVenni = lehetoseg.length > 0 && hianyzik.length === 0 && (S.mode === "csomag" ? !!csomag : !!kiemeles);
+        const osszeg = (csomag ? csomag.ar : 0) + (kiemeles ? kiemeles.ar : 0);
+        const sorok = [h("div", { class: "sum-row" }, h("span", { class: "sum-ad" }, [kivalasztott.pozicio || "—", kivalasztott.helyszin ? ` – ${kivalasztott.helyszin}` : ""].join("")))];
+        if (csomag) sorok.push(h("div", { class: "sum-row" }, h("span", null, L.packageLine(packName(csomag.kod), durationText(csomag.nap))), h("span", null, money(csomag.ar))));
+        if (kiemeles) sorok.push(h("div", { class: "sum-row" }, h("span", null, L.highlightLine(durationText(kiemeles.nap))), h("span", null, money(kiemeles.ar))));
+        const jegyzetek = [];
+        if (csomag && info.hatralevoNap > 0) jegyzetek.push(h("div", { class: "note" }, L.extendNote(info.hatralevoNap)));
+        if (csomag && kiemeles && kiemeles.nap > csomag.nap + info.hatralevoNap) jegyzetek.push(h("div", { class: "note" }, L.hlCapNote));
+
+        const osszegzes = h("aside", { class: "sum" },
+            h("h3", null, L.summary), sorok,
+            h("div", { class: "tot" }, h("span", null, L.total), h("span", null, money(osszeg))),
+            jegyzetek,
+            msgBox(),
+            h("button", { class: "btn", type: "button", disabled: !lehetVenni || S.busy, onclick: requestPayment }, S.busy ? L.reqBusy : L.reqBtn),
+            h("p", { class: "fine" }, L.fine));
+
+        return h("div", null,
+            h("div", { class: "topline" },
+                h("div", null, h("h1", null, L.shopTitle), h("p", { class: "sub" }, L.shopSub)),
+                h("button", { class: "link-btn", type: "button", onclick: loadData }, L.refresh)),
+            hianyzik.length ? h("div", { class: "warn-box" }, h("b", null, L.missingTitle), h("br"),
+                L.missingText(hianyzik.map((k) => L.fields[k] || k).join(", "))) : null,
+            h("div", { class: "layout" },
+                h("div", null,
+                    h("div", { class: "step first" }, L.step1), hirdetesLista,
+                    nyitottBlokkok, modok, vasarlasResz),
+                osszegzes));
+    }
+
+    function kv(kulcs, ertek, opts = {}) {
+        const masol = opts.masol;
+        const gomb = masol ? h("button", { class: "copy", type: "button" }, t().copy) : null;
+        if (gomb) {
+            gomb.addEventListener("click", async () => {
+                let ok = false;
+                try { await navigator.clipboard.writeText(ertek); ok = true; } catch (e) {
+                    try {
+                        const ta = h("textarea", { style: "position:fixed;opacity:0" }); ta.value = ertek;
+                        document.body.append(ta); ta.select(); ok = document.execCommand("copy"); ta.remove();
+                    } catch (e2) { ok = false; }
+                }
+                if (ok) { gomb.textContent = t().copied; gomb.classList.add("done"); setTimeout(() => { gomb.textContent = t().copy; gomb.classList.remove("done"); }, 1800); }
+            });
+        }
+        return h("div", { class: "kv-row" },
+            h("span", { class: "kv-k" }, kulcs),
+            h("span", { class: "kv-v" + (opts.nagy ? " big" : "") }, ertek, gomb));
+    }
+
+    function viewBank() {
+        const L = t();
+        const b = S.bank;
+        const fizetendo = b.hatralevo > 0 ? b.hatralevo : b.osszeg;
+        const sorok = b.befizetve > 0
+            ? [kv(L.alreadyPaid, money(b.befizetve)), kv(L.remaining, money(fizetendo), { nagy: true })]
+            : [kv(L.amount, money(fizetendo), { nagy: true })];
+        sorok.push(
+            kv(L.beneficiary, "Infinity Gold Kft."),
+            kv(L.bankName, b.bankNev),
+            kv(L.account, b.bankszamlaszam, { masol: true }),
+            kv(L.reference, b.kozlemeny, { masol: true }),
+            kv(L.deadline, dateText(b.lejarMs)));
+        return h("div", { class: "bank-wrap" },
+            h("span", { class: "status-pill" }, L.waiting(daysUntil(b.lejarMs))),
+            h("h1", null, L.bankTitle),
+            h("p", { class: "sub" }, [b.hirdetesCim, describePurchase(b.vasarlasTipus, b.csomagKod, b.kiemelesKod)].filter(Boolean).join(" · ")),
+            h("div", { class: "kv" }, sorok),
+            h("p", { class: "note" }, L.refMust),
+            h("p", { class: "note" }, L.afterPay),
+            h("button", { class: "btn", type: "button", onclick: () => { setMsg(null); show("shop"); } }, L.backToAds));
+    }
+
+    function openBank(f, hirdetes) {
+        S.bank = {
+            hirdetesCim: [hirdetes.pozicio, hirdetes.helyszin].filter(Boolean).join(" – "),
+            vasarlasTipus: f.vasarlasTipus, csomagKod: f.csomagKod, kiemelesKod: f.kiemelesKod,
+            osszeg: f.osszeg, befizetve: f.befizetve || 0, hatralevo: f.hatralevo,
+            bankNev: f.bankNev, bankszamlaszam: f.bankszamlaszam, kozlemeny: f.kozlemeny, lejarMs: f.lejarMs
+        };
+        show("bank");
+    }
+
+    // ───────────────────────── Műveletek ─────────────────────────
+    async function requestPayment() {
+        const hirdetes = ad();
+        if (!hirdetes || S.busy) return;
+        const csomagKod = S.mode === "csomag" ? S.pack : null;
+        const kiemelesKod = S.hl || null;
+        S.busy = true; setMsg(null); render();
+        try {
+            const r = await call("createAtutalasosFizetes", { hirdetesId: hirdetes.id, csomagKod, kiemelesKod });
+            S.bank = {
+                hirdetesCim: [hirdetes.pozicio, hirdetes.helyszin].filter(Boolean).join(" – "),
+                vasarlasTipus: csomagKod ? "alapcsomag" : "kiemeles", csomagKod, kiemelesKod,
+                osszeg: r.osszeg, befizetve: 0, hatralevo: r.osszeg,
+                bankNev: r.bankNev, bankszamlaszam: r.bankszamlaszam, kozlemeny: r.kozlemeny, lejarMs: r.lejar || Date.now() + 10 * DAY
+            };
+            S.busy = false;
+            show("bank");
+            refreshQuietly();
+        } catch (e) {
+            S.busy = false;
+            setMsg("hiba", payError(e));
+            render();
+            const m = (e && e.message) || "";
+            if (m === "PAYMENT_ALREADY_OPEN" || m === "HIGHLIGHT_NEEDS_ACTIVE_AD") refreshQuietly(true);
+        }
+    }
+
+    /** A lista újratöltése a háttérben (a nézet marad). */
+    async function refreshQuietly(rajzol) {
+        try {
+            S.data = await call("listazCegHirdeteseit");
+            ensureSelection();
+            if (rajzol || S.view === "shop") render();
+        } catch (e) { /* a következő megnyitáskor úgyis újratölt */ }
+    }
+
+    async function loadData() {
+        show("loading");
+        try {
+            S.data = await call("listazCegHirdeteseit");
+            if (S.data.hirdetesek.length === 0) { show("empty"); return; }
+            ensureSelection();
+            show("shop");
+        } catch (e) {
+            if (e && e.code === "functions/unauthenticated") { await signOut(auth); return; }
+            show("error");
+        }
+    }
+
+    // ───────────────────────── Indítás ─────────────────────────
+    document.querySelectorAll(".lang-btn").forEach((b) => b.addEventListener("click", () => {
+        S.lang = b.dataset.lang;
+        try { localStorage.setItem("vjob_lang", S.lang); } catch (e) { /* nem baj */ }
+        render();
+    }));
+    $("logout-btn").addEventListener("click", async () => {
+        try { await signOut(auth); } catch (e) { /* az onAuthStateChanged úgyis kezeli */ }
+    });
+
+    onAuthStateChanged(auth, (user) => {
+        S.user = user;
+        S.busy = false;
+        if (!user) {
+            S.data = null; S.adId = null; S.bank = null; setMsg(null);
+            show("login");
+            return;
+        }
+        loadData();
+    });
+
+    render();
+</script>
+
+</body>
+</html>
