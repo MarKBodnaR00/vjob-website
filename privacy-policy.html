@@ -340,10 +340,10 @@
 <!-- ═══════════════ HUNGARIAN ═══════════════ -->
 <div class="lang-content active" id="lang-hu">
     <h1 class="page-title">Adatkezelési tájékoztató</h1>
-    <p class="last-updated">Utoljára frissítve: 2026. május</p>
+    <p class="last-updated">Utoljára frissítve: 2026. november</p>
 
     <div class="intro-box">
-        A VJob elkötelezett a felhasználók adatainak védelme iránt. Ez a tájékoztató leírja, hogyan gyűjtjük, használjuk és védjük az adataidat a VJob mobilalkalmazás használata során – függetlenül attól, hogy a világ melyik részéről használod az alkalmazást.
+        A VJob elkötelezett a felhasználók adatainak védelme iránt. Ez a tájékoztató leírja, hogyan gyűjtjük, használjuk és védjük az adataidat a VJob mobilalkalmazás és a getvjob.app weboldal használata során – függetlenül attól, hogy a világ melyik részéről használod az alkalmazást.
     </div>
 
     <div class="section">
@@ -372,6 +372,8 @@
                 <li><span><strong>Használati adatok:</strong> appinterakciók, állásmegtekintések, kedvelések, skip-ek</span></li>
                 <li><span><strong>Kommunikáció:</strong> az alkalmazáson belüli üzenetek tartalma</span></li>
                 <li><span><strong>Fizetési adatok (Cégek esetén):</strong> a hirdetés-csomag vásárlásához szükséges számlázási adatokat (cégnév, székhely, adószám) a Számlázz.hu Zrt. NAV-regisztrált számlázási rendszerén keresztül kezeljük; a fizetés banki átutalással történik közvetlenül a VJob bankszámlájára</span></li>
+                <li><span><strong>Weboldali vásárlás (Cégek esetén):</strong> a hirdetési csomagok a getvjob.app weboldalon is megvásárolhatók, az alkalmazásban használt fiókkal (e-mail cím és jelszó) belépve. A weboldal megjeleníti a céges fiók hirdetéseit és fizetéseit, és rögzíti a fizetési kérelmet (összeg, közleménykód, fizetési határidő).</span></li>
+                <li><span><strong>Szolgáltatási e-mailek:</strong> a cég kapcsolattartási e-mail-címére (ennek hiányában a bejelentkezési címére) a szolgáltatáshoz kapcsolódó értesítéseket küldünk (pl. hirdetés elkészülte, átutalási adatok, aktiválás, lejárat). Ezek nem hírlevelek.</span></li>
             </ul>
         </div>
     </div>
@@ -388,6 +390,8 @@
                 <li><span>Személyre szabott állásajánlatok megjelenítése <strong>(jogalap: szerződés teljesítése)</strong></span></li>
                 <li><span>Statisztikák és analitika készítése a szolgáltatás javítása érdekében <strong>(jogalap: jogos érdek)</strong></span></li>
                 <li><span>Cégek hirdetés-vásárlásainak feldolgozása és számlázás <strong>(jogalap: szerződés teljesítése, jogi kötelezettség)</strong></span></li>
+                <li><span>A weboldalas vásárlás kiszolgálása és szolgáltatási e-mailek küldése <strong>(jogalap: szerződés teljesítése)</strong></span></li>
+                <li><span>A bejelentkezett állapot és a választott nyelv megjegyzése a weboldalon <strong>(jogalap: jogos érdek)</strong></span></li>
             </ul>
         </div>
     </div>
@@ -398,6 +402,7 @@
             <p>Adataidat biztonságosan tároljuk a Google Firebase szolgáltatásain keresztül (Firestore, Firebase Storage, Firebase Authentication). Az adatok a Google szervereinek biztonsági szabványaival összhangban kerülnek tárolásra, titkosított kapcsolaton keresztül.</p>
             <p style="margin-top:10px">Előfordulhat, hogy adataid az Európai Gazdasági Térségen (EGT) kívüli szerverekre kerülnek továbbításra (pl. a Google/Firebase infrastruktúrája esetén). Ilyen esetekben a Google az Európai Bizottság által jóváhagyott általános szerződési feltételeket (Standard Contractual Clauses) alkalmazza a megfelelő védelem biztosítása érdekében.</p>
             <p style="margin-top:10px">Adataidat addig őrizzük meg, amíg fiókod aktív, vagy amíg a törlését nem kéred.</p>
+            <p style="margin-top:10px">A számlázási és számviteli adatokat a vonatkozó jogszabályok (pl. a számviteli törvény) által előírt ideig őrizzük meg, ez a törlési kérelem esetén is így van.</p>
         </div>
     </div>
 
@@ -426,6 +431,11 @@
                     <span class="third-party-desc">Számlázási és díjbekérő-kiállítási szolgáltatás Cégek hirdetés-vásárlásai esetén, NAV Online Számla integrációval</span>
                     <a class="third-party-link" href="https://www.szamlazz.hu/adatvedelem/" target="_blank">szamlazz.hu adatvédelmi tájékoztató →</a>
                 </div>
+                <div class="third-party-item">
+                    <span class="third-party-name">Resend (Resend, Inc.)</span>
+                    <span class="third-party-desc">Szolgáltatási e-mailek küldése (pl. jelszó-visszaállítás, hirdetési és fizetési értesítők). Az adatok az USA-ban tárolódhatnak; az EGT-n kívüli továbbítás alapja az általános szerződési feltételek (SCC) és az EU–USA adatvédelmi keretrendszer</span>
+                    <a class="third-party-link" href="https://resend.com/legal/privacy-policy" target="_blank">resend.com/legal/privacy-policy →</a>
+                </div>
             </div>
         </div>
     </div>
@@ -434,6 +444,8 @@
         <h2 class="section-title">6. Sütik (Cookies)</h2>
         <div class="section-content">
             <p>A VJob mobilalkalmazás <strong>nem használ sütiket</strong>. Az alkalmazás kizárólag a Firebase által biztosított biztonságos munkamenet-kezelést alkalmazza, amely nem tárol sütiket a te eszközödön.</p>
+            <p style="margin-top:10px">A getvjob.app weboldal <strong>nem használ nyomkövető, analitikai vagy marketing sütiket</strong>. A vásárlási oldalon a bejelentkezett állapot fenntartásához a Firebase Authentication a böngésző helyi tárhelyét használja, a választott nyelvet pedig a böngésző helyi tárhelye (<code>vjob_lang</code>) őrzi meg. Ezek az oldal működéséhez szükségesek, a kijelentkezéssel, illetve a böngészőadatok törlésével eltávolíthatók.</p>
+            <p style="margin-top:10px">A főoldal a Google Fonts betűtípust, a vásárlási és a jelszó-visszaállítási oldal a Firebase szoftverkönyvtárakat a Google szervereiről tölti be. Ennek során a böngésződ kapcsolódik a Google szervereihez, és az IP-címed oda átkerülhet.</p>
         </div>
     </div>
 
@@ -443,7 +455,7 @@
             <p>Személyes adataidat <strong>soha nem adjuk el</strong> harmadik félnek. Adatokat csak az alábbi esetekben osztunk meg:</p>
             <ul class="data-list" style="margin-top:10px">
                 <li><span>Munkakeresők és munkaadók között az alkalmazáson belül, párosítási célból</span></li>
-                <li><span>A fent felsorolt infrastruktúra- és számlázási szolgáltatókkal (Google Firebase, Számlázz.hu)</span></li>
+                <li><span>A fent felsorolt infrastruktúra- és számlázási szolgáltatókkal (Google Firebase, Számlázz.hu, Resend)</span></li>
                 <li><span>Jogi kötelezettség esetén, hatósági megkeresésre</span></li>
             </ul>
         </div>
@@ -499,10 +511,10 @@
 <!-- ═══════════════ ENGLISH ═══════════════ -->
 <div class="lang-content" id="lang-en">
     <h1 class="page-title">Privacy Policy</h1>
-    <p class="last-updated">Last updated: May 2026</p>
+    <p class="last-updated">Last updated: November 2026</p>
 
     <div class="intro-box">
-        VJob is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use the VJob mobile application – regardless of where in the world you are located.
+        VJob is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your information when you use the VJob mobile application and the getvjob.app website – regardless of where in the world you are located.
     </div>
 
     <div class="section">
@@ -531,6 +543,8 @@
                 <li><span><strong>Usage data:</strong> app interactions, job views, likes, skips</span></li>
                 <li><span><strong>Communications:</strong> in-app message content</span></li>
                 <li><span><strong>Payment data (for Companies):</strong> billing data (company name, registered address, tax number) required for purchasing job posting packages is processed via Számlázz.hu's NAV-registered invoicing system; payment is made by bank transfer directly to VJob's bank account</span></li>
+                <li><span><strong>Website purchases (for Companies):</strong> job posting packages can also be purchased on the getvjob.app website, after signing in with the account used in the app (email address and password). The website displays the company account's job postings and payments and records the payment request (amount, payment reference, payment deadline).</span></li>
+                <li><span><strong>Service emails:</strong> we send service-related notifications (e.g. posting created, bank transfer details, activation, expiry) to the company's contact email address (or, if none is set, its sign-in address). These are not newsletters.</span></li>
             </ul>
         </div>
     </div>
@@ -547,6 +561,8 @@
                 <li><span>To display personalized job recommendations <strong>(legal basis: performance of a contract)</strong></span></li>
                 <li><span>To generate statistics and analytics for service improvement <strong>(legal basis: legitimate interest)</strong></span></li>
                 <li><span>To process Companies' job posting purchases and issue invoices <strong>(legal basis: performance of a contract, legal obligation)</strong></span></li>
+                <li><span>To handle purchases made on the website and to send service emails <strong>(legal basis: performance of a contract)</strong></span></li>
+                <li><span>To remember the signed-in state and the chosen language on the website <strong>(legal basis: legitimate interest)</strong></span></li>
             </ul>
         </div>
     </div>
@@ -557,6 +573,7 @@
             <p>Your data is stored securely using Google Firebase services (Firestore, Firebase Storage, Firebase Authentication). Data is stored on Google's servers in accordance with their security standards, transmitted over encrypted connections.</p>
             <p style="margin-top:10px">Your data may be transferred to servers located outside the European Economic Area (EEA) (e.g. as part of Google/Firebase's infrastructure). In such cases, Google applies Standard Contractual Clauses approved by the European Commission to ensure an adequate level of protection.</p>
             <p style="margin-top:10px">We retain your data as long as your account is active, or until you request deletion.</p>
+            <p style="margin-top:10px">Invoicing and accounting data are retained for the period required by the applicable laws (e.g. the Hungarian Accounting Act), even if you request deletion.</p>
         </div>
     </div>
 
@@ -585,6 +602,11 @@
                     <span class="third-party-desc">Invoicing and pro-forma billing service for Companies purchasing job posting packages, with NAV Online Számla integration</span>
                     <a class="third-party-link" href="https://www.szamlazz.hu/adatvedelem/" target="_blank">szamlazz.hu privacy policy →</a>
                 </div>
+                <div class="third-party-item">
+                    <span class="third-party-name">Resend (Resend, Inc.)</span>
+                    <span class="third-party-desc">Sending service emails (e.g. password reset, posting and payment notifications). Data may be stored in the USA; transfers outside the EEA rely on Standard Contractual Clauses (SCCs) and the EU-US Data Privacy Framework</span>
+                    <a class="third-party-link" href="https://resend.com/legal/privacy-policy" target="_blank">resend.com/legal/privacy-policy →</a>
+                </div>
             </div>
         </div>
     </div>
@@ -593,6 +615,8 @@
         <h2 class="section-title">6. Cookies</h2>
         <div class="section-content">
             <p>The VJob mobile application <strong>does not use cookies</strong>. The app exclusively uses Firebase's secure session management, which does not store cookies on your device.</p>
+            <p style="margin-top:10px">The getvjob.app website <strong>does not use tracking, analytics or marketing cookies</strong>. On the purchase page, Firebase Authentication uses your browser's local storage to keep you signed in, and your chosen language is kept in your browser's local storage (<code>vjob_lang</code>). These are necessary for the site to work and can be removed by signing out or clearing your browser data.</p>
+            <p style="margin-top:10px">The home page loads the Google Fonts typeface, and the purchase and password-reset pages load the Firebase software libraries, from Google's servers. In doing so, your browser connects to Google's servers and your IP address may be transmitted to them.</p>
 
         </div>
     </div>
@@ -603,7 +627,7 @@
             <p>We <strong>never sell</strong> your personal data to third parties. Data is shared only in the following cases:</p>
             <ul class="data-list" style="margin-top:10px">
                 <li><span>Between job seekers and employers within the app for matching purposes</span></li>
-                <li><span>With the infrastructure and invoicing providers listed above (Google Firebase, Számlázz.hu)</span></li>
+                <li><span>With the infrastructure and invoicing providers listed above (Google Firebase, Számlázz.hu, Resend)</span></li>
                 <li><span>When required by law or in response to valid legal requests</span></li>
             </ul>
         </div>
@@ -659,10 +683,10 @@
 <!-- ═══════════════ GERMAN ═══════════════ -->
 <div class="lang-content" id="lang-de">
     <h1 class="page-title">Datenschutzerklärung</h1>
-    <p class="last-updated">Zuletzt aktualisiert: Mai 2026</p>
+    <p class="last-updated">Zuletzt aktualisiert: November 2026</p>
 
     <div class="intro-box">
-        VJob ist dem Schutz Ihrer Daten verpflichtet. Diese Datenschutzerklärung erläutert, wie wir Ihre Informationen bei der Nutzung der VJob-App erfassen, verwenden und schützen – unabhängig davon, aus welchem Teil der Welt Sie die App nutzen.
+        VJob ist dem Schutz Ihrer Daten verpflichtet. Diese Datenschutzerklärung erläutert, wie wir Ihre Informationen bei der Nutzung der VJob-App und der Website getvjob.app erfassen, verwenden und schützen – unabhängig davon, aus welchem Teil der Welt Sie die App nutzen.
     </div>
 
     <div class="section">
@@ -691,6 +715,8 @@
                 <li><span><strong>Nutzungsdaten:</strong> App-Interaktionen, Stellenaufrufe, Likes, Skips</span></li>
                 <li><span><strong>Kommunikation:</strong> Inhalt der In-App-Nachrichten</span></li>
                 <li><span><strong>Zahlungsdaten (für Unternehmen):</strong> die für den Kauf von Stellenanzeigen-Paketen erforderlichen Rechnungsdaten (Firmenname, Sitz, Steuernummer) werden über das NAV-registrierte Rechnungssystem von Számlázz.hu verarbeitet; die Zahlung erfolgt per Banküberweisung direkt auf das Bankkonto von VJob</span></li>
+                <li><span><strong>Kauf über die Website (für Unternehmen):</strong> Stellenanzeigen-Pakete können auch auf der Website getvjob.app gekauft werden, nach Anmeldung mit dem in der App verwendeten Konto (E-Mail-Adresse und Passwort). Die Website zeigt die Anzeigen und Zahlungen des Unternehmenskontos an und speichert die Zahlungsanforderung (Betrag, Verwendungszweck, Zahlungsfrist).</span></li>
+                <li><span><strong>Service-E-Mails:</strong> An die Kontakt-E-Mail-Adresse des Unternehmens (ersatzweise die Anmeldeadresse) senden wir Benachrichtigungen zum Dienst (z. B. Anzeige erstellt, Überweisungsdaten, Aktivierung, Ablauf). Dies sind keine Newsletter.</span></li>
             </ul>
         </div>
     </div>
@@ -707,6 +733,8 @@
                 <li><span>Anzeige personalisierter Stellenempfehlungen <strong>(Rechtsgrundlage: Vertragserfüllung)</strong></span></li>
                 <li><span>Erstellung von Statistiken zur Serviceverbesserung <strong>(Rechtsgrundlage: berechtigtes Interesse)</strong></span></li>
                 <li><span>Bearbeitung der Käufe von Stellenanzeigen-Paketen durch Unternehmen und Rechnungsstellung <strong>(Rechtsgrundlage: Vertragserfüllung, gesetzliche Verpflichtung)</strong></span></li>
+                <li><span>Abwicklung des Kaufs über die Website und Versand von Service-E-Mails <strong>(Rechtsgrundlage: Vertragserfüllung)</strong></span></li>
+                <li><span>Speicherung des Anmeldestatus und der gewählten Sprache auf der Website <strong>(Rechtsgrundlage: berechtigtes Interesse)</strong></span></li>
             </ul>
         </div>
     </div>
@@ -717,6 +745,7 @@
             <p>Ihre Daten werden sicher über Google Firebase-Dienste gespeichert (Firestore, Firebase Storage, Firebase Authentication). Die Daten werden auf Google-Servern gemäß deren Sicherheitsstandards über verschlüsselte Verbindungen übertragen.</p>
             <p style="margin-top:10px">Ihre Daten können auf Server außerhalb des Europäischen Wirtschaftsraums (EWR) übertragen werden (z. B. im Rahmen der Infrastruktur von Google/Firebase). In solchen Fällen wendet Google von der Europäischen Kommission genehmigte Standardvertragsklauseln an, um ein angemessenes Schutzniveau zu gewährleisten.</p>
             <p style="margin-top:10px">Wir speichern Ihre Daten, solange Ihr Konto aktiv ist oder bis Sie die Löschung beantragen.</p>
+            <p style="margin-top:10px">Rechnungs- und Buchhaltungsdaten bewahren wir für die nach den einschlägigen Gesetzen (z. B. dem ungarischen Rechnungslegungsgesetz) vorgeschriebene Dauer auf, auch wenn Sie die Löschung beantragen.</p>
         </div>
     </div>
 
@@ -745,6 +774,11 @@
                     <span class="third-party-desc">Rechnungsstellung und Zahlungsaufforderungen für Unternehmen, die Stellenanzeigen-Pakete kaufen, mit NAV Online Számla-Integration</span>
                     <a class="third-party-link" href="https://www.szamlazz.hu/adatvedelem/" target="_blank">szamlazz.hu Datenschutzerklärung →</a>
                 </div>
+                <div class="third-party-item">
+                    <span class="third-party-name">Resend (Resend, Inc.)</span>
+                    <span class="third-party-desc">Versand von Service-E-Mails (z. B. Passwort-Zurücksetzung, Anzeigen- und Zahlungsbenachrichtigungen). Die Daten können in den USA gespeichert werden; für Übermittlungen außerhalb des EWR gelten Standardvertragsklauseln (SCC) und das EU-US Data Privacy Framework</span>
+                    <a class="third-party-link" href="https://resend.com/legal/privacy-policy" target="_blank">resend.com/legal/privacy-policy →</a>
+                </div>
             </div>
         </div>
     </div>
@@ -753,6 +787,8 @@
         <h2 class="section-title">6. Cookies</h2>
         <div class="section-content">
             <p>Die VJob-App <strong>verwendet keine Cookies</strong>. Die App nutzt ausschließlich das sichere Sitzungsmanagement von Firebase, das keine Cookies auf Ihrem Gerät speichert.</p>
+            <p style="margin-top:10px">Die Website getvjob.app <strong>verwendet keine Tracking-, Analyse- oder Marketing-Cookies</strong>. Auf der Kaufseite nutzt Firebase Authentication den lokalen Speicher Ihres Browsers, um Ihre Anmeldung aufrechtzuerhalten, und die gewählte Sprache wird im lokalen Speicher Ihres Browsers (<code>vjob_lang</code>) gespeichert. Diese sind für den Betrieb der Seite erforderlich und können durch Abmelden bzw. Löschen der Browserdaten entfernt werden.</p>
+            <p style="margin-top:10px">Die Startseite lädt die Schriftart Google Fonts, die Kauf- und die Passwort-Zurücksetzen-Seite laden die Firebase-Softwarebibliotheken von Google-Servern. Dabei verbindet sich Ihr Browser mit den Google-Servern, und Ihre IP-Adresse kann dorthin übertragen werden.</p>
        
         </div>
     </div>
@@ -763,7 +799,7 @@
             <p>Wir <strong>verkaufen Ihre Daten niemals</strong> an Dritte. Daten werden nur in folgenden Fällen weitergegeben:</p>
             <ul class="data-list" style="margin-top:10px">
                 <li><span>Zwischen Arbeitssuchenden und Arbeitgebern innerhalb der App für Matching-Zwecke</span></li>
-                <li><span>An die oben genannten Infrastruktur- und Rechnungsanbieter (Google Firebase, Számlázz.hu)</span></li>
+                <li><span>An die oben genannten Infrastruktur- und Rechnungsanbieter (Google Firebase, Számlázz.hu, Resend)</span></li>
                 <li><span>Bei gesetzlicher Verpflichtung oder auf behördliche Anfrage</span></li>
             </ul>
         </div>
