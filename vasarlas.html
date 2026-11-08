@@ -53,8 +53,18 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .header-right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-        .who { font-size: 13px; color: #b5b2cc; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-        .who-name { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .who { font-size: 13px; color: #b5b2cc; display: flex; align-items: center; gap: 10px; }
+        .who.acc { padding: 4px 14px 4px 4px; border: 1px solid rgba(255,255,255,0.14); border-radius: 30px; background: rgba(255,255,255,0.04); }
+        .who-name { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; color: #fff; }
+        .av {
+            width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; overflow: hidden;
+            display: inline-flex; align-items: center; justify-content: center;
+            background: rgba(192,132,252,0.18); color: #E9D5FF; font-weight: 800; font-size: 12px;
+            border: 2px solid rgba(192,132,252,0.55);
+        }
+        .av.has-img { background: #fff; }
+        .av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .av.big-av { width: 68px; height: 68px; border-radius: 16px; font-size: 24px; }
         .link-btn {
             background: none; border: none; color: #C084FC; cursor: pointer;
             font: inherit; font-size: 13px; text-decoration: underline; padding: 4px 0;
@@ -179,7 +189,8 @@
         .open-box .m { color: rgba(255,255,255,0.7); line-height: 1.5; }
         .open-box .btn { margin-top: 10px; padding: 10px; font-size: 13.5px; }
 
-        .sum { position: sticky; top: 92px; border: 1px solid rgba(180,80,255,0.28); background: #150C26; border-radius: 16px; padding: 20px; }
+        .side { position: sticky; top: 92px; }
+        .sum { border: 1px solid rgba(180,80,255,0.28); background: #150C26; border-radius: 16px; padding: 20px; }
         .sum h3 { font-size: 15px; margin-bottom: 14px; color: #fff; }
         .sum-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; color: #cfcde0; margin-bottom: 9px; }
         .sum-row span:last-child { white-space: nowrap; }
@@ -208,12 +219,93 @@
         .copy.done { color: #6FE3B2; border-color: rgba(0,200,120,0.5); }
         .bank-wrap .btn { max-width: 320px; }
 
+        /* ── Fiók: fülek ── */
+        .nav { border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .nav-inner { position: relative; max-width: 980px; margin: 0 auto; padding: 0 8px; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+        .nav-inner::-webkit-scrollbar { display: none; }
+        .tab {
+            display: flex; align-items: center; gap: 7px; padding: 15px 16px; background: none; border: none;
+            border-bottom: 2px solid transparent; color: rgba(255,255,255,0.55); font: inherit; font-size: 14px; font-weight: 600;
+            cursor: pointer; white-space: nowrap;
+        }
+        .tab:hover { color: rgba(255,255,255,0.85); }
+        .tab.active { color: #fff; border-bottom-color: #D946EF; }
+        .tab-badge { background: rgba(255,176,32,0.16); color: #ffb020; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+
+        /* ── Fiók: 3 lépéses sáv és bizalmi sor ── */
+        .flow { display: flex; border: 1px solid rgba(180,80,255,0.28); background: #110A20; border-radius: 16px; overflow: hidden; margin: 0 0 26px; }
+        .flow-st { flex: 1; padding: 16px 18px; display: flex; gap: 13px; align-items: flex-start; }
+        .flow-st + .flow-st { border-left: 1px solid rgba(255,255,255,0.08); }
+        .flow-num {
+            width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #8B2FC9, #D946EF); color: #fff; font-weight: 800; font-size: 14px;
+        }
+        .flow-st.last .flow-num { background: linear-gradient(135deg, #0DAA70, #00EDA0); color: #04210F; }
+        .flow-st b { display: block; color: #fff; font-size: 14px; margin-bottom: 3px; }
+        .flow-st .d { font-size: 12.5px; color: rgba(255,255,255,0.62); line-height: 1.45; }
+        .trust { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+        .tr { display: flex; gap: 9px; align-items: flex-start; font-size: 12.5px; color: rgba(255,255,255,0.72); line-height: 1.4; }
+        .ck {
+            width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center;
+            background: rgba(0,200,120,0.16); color: #00eda0; font-size: 10px; font-weight: 900;
+        }
+        .empty-box { border: 1px dashed rgba(255,255,255,0.18); border-radius: 14px; padding: 26px 22px; text-align: center; color: rgba(255,255,255,0.62); font-size: 14px; line-height: 1.6; }
+        .empty-box b { display: block; color: #fff; font-size: 16px; margin-bottom: 6px; }
+
+        /* ── Fiók: listák (hirdetések, fizetések) ── */
+        .card { border: 1px solid rgba(180,80,255,0.25); background: #110A20; border-radius: 16px; padding: 4px 22px; }
+        .lrow { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .lrow:last-child { border-bottom: none; }
+        .lrow-main { min-width: 0; flex: 1; }
+        .lrow-v { font-size: 14.5px; font-weight: 600; color: #fff; overflow-wrap: anywhere; }
+        .lrow-meta { font-size: 12.5px; color: rgba(255,255,255,0.55); margin-top: 3px; line-height: 1.45; overflow-wrap: anywhere; }
+        .lrow-side { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+        .amt { font-weight: 800; font-size: 14.5px; color: #fff; white-space: nowrap; }
+        .mono { font-family: Consolas, Menlo, monospace; letter-spacing: 0.4px; }
+        .mbtn {
+            padding: 9px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.07);
+            color: #e2e0f0; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap;
+        }
+        .mbtn:hover { border-color: rgba(180,80,255,0.5); }
+        .mbtn.primary { background: linear-gradient(135deg, #8800FF, #DD00BB); border-color: transparent; color: #fff; }
+        .b-expired { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); }
+        .info-note {
+            display: flex; gap: 10px; margin-top: 16px; padding: 13px 15px; border-radius: 12px; font-size: 13px; line-height: 1.5;
+            color: rgba(255,255,255,0.65); background: rgba(192,132,252,0.08); border: 1px solid rgba(192,132,252,0.25);
+        }
+
+        /* ── Fiók: cégadatok ── */
+        .hero { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .hero-name { font-size: 19px; font-weight: 800; color: #fff; overflow-wrap: anywhere; }
+        .hero-main { min-width: 0; flex: 1 1 160px; }
+        .ok-line { color: #00eda0; font-size: 12.5px; font-weight: 700; }
+        .miss-line { color: #ffb020; font-size: 12.5px; font-weight: 700; }
+        .fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+        .frow { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); min-width: 0; }
+        .fk { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 3px; }
+        .fv { font-size: 14.5px; font-weight: 600; color: #fff; overflow-wrap: anywhere; }
+        .fv.miss { color: #ffb48f; }
+
+        /* ── Munkavállalói fiók ── */
+        .worker-card { max-width: 520px; margin: 30px auto 0; text-align: center; border: 1px solid rgba(180,80,255,0.28); background: #150C26; border-radius: 20px; padding: 38px 34px; }
+        .worker-ic {
+            width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center;
+            background: rgba(192,132,252,0.14); border: 1px solid rgba(192,132,252,0.5); font-size: 26px;
+        }
+        .worker-card h1 { font-size: 22px; margin-bottom: 12px; }
+        .worker-card p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+        .worker-card p.small { font-size: 13px; color: rgba(255,255,255,0.5); }
+        .worker-card .btn { max-width: 260px; margin-left: auto; margin-right: auto; display: block; }
+
         .footer { text-align: center; padding: 22px 24px; border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.35); font-size: 12px; line-height: 1.8; }
         .footer a { color: rgba(255,255,255,0.5); }
 
         @media (max-width: 820px) {
             .layout { grid-template-columns: minmax(0, 1fr); }
-            .sum { position: static; }
+            .side { position: static; }
+            .flow { flex-direction: column; }
+            .flow-st + .flow-st { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
+            .fgrid { grid-template-columns: minmax(0, 1fr); }
         }
         @media (max-width: 600px) {
             main { padding: 24px 16px 48px; }
@@ -226,6 +318,17 @@
             .opt { flex-wrap: wrap; }
             .opt-main { flex: 1 1 calc(100% - 40px); }
             .badges { flex: 1 0 100%; justify-content: flex-start; padding-left: 28px; }
+            .nav-inner { padding: 0; }
+            .tab { padding: 14px 12px; font-size: 13.5px; }
+            .header-right { display: contents; }
+            .logo-area { order: 1; }
+            .lang-switcher { order: 2; }
+            .who { order: 3; width: 100%; }
+            .who .who-name { flex: 1; max-width: none; }
+            .card { padding: 2px 16px; }
+            .lrow { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .lrow-side { justify-content: flex-start; }
+            .worker-card { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -238,7 +341,8 @@
             <span class="logo-text">VJob</span>
         </a>
         <div class="header-right">
-            <div class="who" id="who" hidden>
+            <div class="who acc" id="who" hidden>
+                <span id="who-av"></span>
                 <span class="who-name" id="who-name"></span>
                 <button class="link-btn" id="logout-btn" type="button"></button>
             </div>
@@ -250,6 +354,8 @@
         </div>
     </div>
 </header>
+
+<nav class="nav" id="nav" hidden></nav>
 
 <main id="app" aria-live="polite"></main>
 <noscript><p class="center-text" style="padding:40px 24px">Az oldal használatához engedélyezze a JavaScriptet. · Please enable JavaScript to use this page.</p></noscript>
@@ -374,6 +480,61 @@
             pInvalid: "Érvénytelen csomag vagy adat.",
             pTimeout: "A szerver nem válaszolt időben. Kérjük, ellenőrizze az internetkapcsolatot, és próbálja újra.",
             pSession: "A munkamenet lejárt. Kérjük, jelentkezzen be újra.",
+            // ── Fiók-felület ──
+            tabsLabel: "Fiók menü",
+            tabBuy: "Csomagvásárlás",
+            tabAds: "Hirdetéseim",
+            tabPay: "Fizetések",
+            tabCo: "Cégadatok",
+            openBadge: (n) => `${n} nyitott`,
+            flow1T: "Csomag kiválasztása",
+            flow1D: "Válassza ki a hirdetést és a hirdetési csomagot.",
+            flow2T: "Banki átutalás",
+            flow2D: "Az átutalási adatok a képernyőn jelennek meg, és a Fizetések fülön később is megtekinthetők.",
+            flow3T: "Automatikus aktiválás",
+            flow3D: "A befizetés beérkezése után a hirdetés automatikusan aktiválódik.",
+            trust1: "Biztonságos banki átutalás – bankkártya-adatot nem kérünk",
+            trust2: "Az aktiválás a befizetés beérkezése után automatikus",
+            trust3: "Szolgáltató: Infinity Gold Kft. · Kérdés esetén: info@getvjob.app",
+            adsTitle: "Hirdetéseim",
+            adsSub: "A hirdetések állapota és lejárata. Hosszabbítani vagy kiemelni a gombokkal tud.",
+            adExpires: (d) => `Lejár: ${d}`,
+            adHlUntil: (d) => `Kiemelés vége: ${d}`,
+            adExpiredOn: (d) => `Lejárt: ${d}`,
+            adNeverPaid: "Még nincs fizetett ideje",
+            adTransfer: (k, d) => `Átutalás várható a ${k} közleménnyel, határidő: ${d}`,
+            adStatus: { active: "Aktív", paused: "Szüneteltetve", expired: "Lejárt", inactive: "Inaktív" },
+            btnBuyPack: "Csomag vásárlása",
+            btnExtend: "Hosszabbítás",
+            btnHighlight: "Kiemelés",
+            btnTransfer: "Átutalási adatok",
+            payTitle: "Fizetések",
+            paySub: "A korábbi és a folyamatban lévő fizetései.",
+            payEmptyTitle: "Még nincs fizetése",
+            payEmptyText: "Ha csomagot vásárol, a fizetés itt jelenik meg.",
+            payStatus: { varakozik: "Várakozik", reszleges: "Részben kifizetve", sikeres: "Teljesítve", lezarva: "Lemondva", lejart: "Lejárt" },
+            deletedAd: "Törölt hirdetés",
+            payDeadline: (d) => `határidő: ${d}`,
+            payNote: "Az átutalási adatok (összeg, számlaszám, közlemény) a nyitott fizetésnél bármikor megtekinthetők. A fizetési határidő 10 nap.",
+            coTitle: "Cégadatok",
+            coSub: "Ezek az adatok szerepelnek a díjbekérőn és a számlán. Kérjük, ellenőrizze őket vásárlás előtt.",
+            coAllOk: "✓ Minden szükséges adat megvan",
+            coSomeMissing: (n) => `Hiányzó adatok: ${n}`,
+            coContact: (e) => `Kapcsolattartó: ${e}`,
+            coName: "Cégnév",
+            coTax: "Adószám",
+            coEuTax: "Közösségi adószám",
+            coAddress: "Számlázási cím",
+            coCountry: "Ország",
+            coEmail: "Kapcsolattartói e-mail",
+            coLogin: "Bejelentkezési e-mail",
+            coMissing: "hiányzik",
+            coNote: "Az adatok módosítása a VJob alkalmazásban, a cégprofilban lehetséges. A módosítás után itt frissítheti az oldalt. Már kiállított díjbekérő adatai nem módosíthatók.",
+            backAdsTab: "Vissza a hirdetéseimhez",
+            backPayTab: "Vissza a fizetésekhez",
+            workerTitle: "Ez az oldal hirdető cégeknek készült",
+            workerText: "Munkavállalói fiókkal itt nincs teendője. A VJob szolgáltatásait a mobilalkalmazásban érheti el, ugyanezzel a fiókkal.",
+            workerHint: "Ha cégként szeretne belépni, kérjük, jelentkezzen ki, és használja a cége fiókját.",
             footer: "© 2026 VJob · getvjob.app",
             terms: "Általános szerződési feltételek",
             privacy: "Adatkezelési tájékoztató",
@@ -466,6 +627,61 @@
             pInvalid: "Invalid package or data.",
             pTimeout: "The server did not respond in time. Please check your internet connection and try again.",
             pSession: "Your session has expired. Please log in again.",
+            // ── Account area ──
+            tabsLabel: "Account menu",
+            tabBuy: "Buy a package",
+            tabAds: "My job ads",
+            tabPay: "Payments",
+            tabCo: "Company details",
+            openBadge: (n) => `${n} open`,
+            flow1T: "Choose a package",
+            flow1D: "Choose the job ad and the advertising package.",
+            flow2T: "Bank transfer",
+            flow2D: "The transfer details appear on the screen and can be viewed again later on the Payments tab.",
+            flow3T: "Automatic activation",
+            flow3D: "Once the payment has arrived, the job ad is activated automatically.",
+            trust1: "Secure bank transfer – we do not ask for any card details",
+            trust2: "Activation is automatic once the payment has arrived",
+            trust3: "Provider: Infinity Gold Kft. · Questions: info@getvjob.app",
+            adsTitle: "My job ads",
+            adsSub: "The status and expiry of your job ads. Use the buttons to extend or highlight an ad.",
+            adExpires: (d) => `Expires: ${d}`,
+            adHlUntil: (d) => `Highlight ends: ${d}`,
+            adExpiredOn: (d) => `Expired: ${d}`,
+            adNeverPaid: "No paid time yet",
+            adTransfer: (k, d) => `Transfer expected with reference ${k}, deadline: ${d}`,
+            adStatus: { active: "Active", paused: "Paused", expired: "Expired", inactive: "Inactive" },
+            btnBuyPack: "Buy a package",
+            btnExtend: "Extend",
+            btnHighlight: "Highlight",
+            btnTransfer: "Transfer details",
+            payTitle: "Payments",
+            paySub: "Your past and current payments.",
+            payEmptyTitle: "No payments yet",
+            payEmptyText: "When you purchase a package, the payment appears here.",
+            payStatus: { varakozik: "Pending", reszleges: "Partly paid", sikeres: "Completed", lezarva: "Cancelled", lejart: "Expired" },
+            deletedAd: "Deleted job ad",
+            payDeadline: (d) => `deadline: ${d}`,
+            payNote: "The transfer details (amount, account number, payment reference) can be viewed at any time for an open payment. The payment deadline is 10 days.",
+            coTitle: "Company details",
+            coSub: "These details appear on the proforma invoice and the invoice. Please check them before purchasing.",
+            coAllOk: "✓ All required details are present",
+            coSomeMissing: (n) => `Missing details: ${n}`,
+            coContact: (e) => `Contact: ${e}`,
+            coName: "Company name",
+            coTax: "Tax number",
+            coEuTax: "EU VAT number",
+            coAddress: "Billing address",
+            coCountry: "Country",
+            coEmail: "Contact email",
+            coLogin: "Login email",
+            coMissing: "missing",
+            coNote: "The details can be changed in the VJob app, in the company profile. After changing them, you can refresh this page here. The details of a proforma invoice that has already been issued cannot be changed.",
+            backAdsTab: "Back to my job ads",
+            backPayTab: "Back to payments",
+            workerTitle: "This page is for advertising companies",
+            workerText: "With a job seeker account there is nothing to do here. You can use VJob's services in the mobile app, with the same account.",
+            workerHint: "If you want to log in as a company, please log out and use your company's account.",
             footer: "© 2026 VJob · getvjob.app",
             terms: "Terms and conditions",
             privacy: "Privacy policy",
@@ -558,6 +774,61 @@
             pInvalid: "Ungültiges Paket oder ungültige Daten.",
             pTimeout: "Der Server hat nicht rechtzeitig geantwortet. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
             pSession: "Ihre Sitzung ist abgelaufen. Bitte melden Sie sich erneut an.",
+            // ── Kontobereich ──
+            tabsLabel: "Kontomenü",
+            tabBuy: "Paket kaufen",
+            tabAds: "Meine Anzeigen",
+            tabPay: "Zahlungen",
+            tabCo: "Firmendaten",
+            openBadge: (n) => `${n} offen`,
+            flow1T: "Paket auswählen",
+            flow1D: "Wählen Sie die Stellenanzeige und das Anzeigenpaket.",
+            flow2T: "Banküberweisung",
+            flow2D: "Die Überweisungsdaten werden auf dem Bildschirm angezeigt und sind später auch im Tab „Zahlungen“ einsehbar.",
+            flow3T: "Automatische Aktivierung",
+            flow3D: "Nach Zahlungseingang wird die Stellenanzeige automatisch aktiviert.",
+            trust1: "Sichere Banküberweisung – wir verlangen keine Kartendaten",
+            trust2: "Die Aktivierung erfolgt nach Zahlungseingang automatisch",
+            trust3: "Anbieter: Infinity Gold Kft. · Fragen: info@getvjob.app",
+            adsTitle: "Meine Anzeigen",
+            adsSub: "Status und Ablauf Ihrer Stellenanzeigen. Mit den Schaltflächen können Sie eine Anzeige verlängern oder hervorheben.",
+            adExpires: (d) => `Läuft ab: ${d}`,
+            adHlUntil: (d) => `Hervorhebung endet: ${d}`,
+            adExpiredOn: (d) => `Abgelaufen: ${d}`,
+            adNeverPaid: "Noch keine bezahlte Laufzeit",
+            adTransfer: (k, d) => `Überweisung erwartet mit Verwendungszweck ${k}, Frist: ${d}`,
+            adStatus: { active: "Aktiv", paused: "Pausiert", expired: "Abgelaufen", inactive: "Inaktiv" },
+            btnBuyPack: "Paket kaufen",
+            btnExtend: "Verlängern",
+            btnHighlight: "Hervorheben",
+            btnTransfer: "Überweisungsdaten",
+            payTitle: "Zahlungen",
+            paySub: "Ihre bisherigen und laufenden Zahlungen.",
+            payEmptyTitle: "Noch keine Zahlungen",
+            payEmptyText: "Sobald Sie ein Paket kaufen, erscheint die Zahlung hier.",
+            payStatus: { varakozik: "Ausstehend", reszleges: "Teilweise bezahlt", sikeres: "Abgeschlossen", lezarva: "Storniert", lejart: "Abgelaufen" },
+            deletedAd: "Gelöschte Anzeige",
+            payDeadline: (d) => `Frist: ${d}`,
+            payNote: "Die Überweisungsdaten (Betrag, Kontonummer, Verwendungszweck) können Sie bei einer offenen Zahlung jederzeit einsehen. Die Zahlungsfrist beträgt 10 Tage.",
+            coTitle: "Firmendaten",
+            coSub: "Diese Angaben stehen auf der Proforma-Rechnung und der Rechnung. Bitte prüfen Sie sie vor dem Kauf.",
+            coAllOk: "✓ Alle erforderlichen Angaben sind vorhanden",
+            coSomeMissing: (n) => `Fehlende Angaben: ${n}`,
+            coContact: (e) => `Kontakt: ${e}`,
+            coName: "Firmenname",
+            coTax: "Steuernummer",
+            coEuTax: "EU-Umsatzsteuer-ID",
+            coAddress: "Rechnungsadresse",
+            coCountry: "Land",
+            coEmail: "Kontakt-E-Mail",
+            coLogin: "Anmelde-E-Mail",
+            coMissing: "fehlt",
+            coNote: "Die Angaben können in der VJob-App im Unternehmensprofil geändert werden. Nach der Änderung können Sie diese Seite hier aktualisieren. Die Angaben einer bereits ausgestellten Proforma-Rechnung können nicht geändert werden.",
+            backAdsTab: "Zurück zu meinen Anzeigen",
+            backPayTab: "Zurück zu den Zahlungen",
+            workerTitle: "Diese Seite ist für werbende Unternehmen gedacht",
+            workerText: "Mit einem Arbeitnehmerkonto gibt es hier nichts zu tun. Die Leistungen von VJob stehen Ihnen in der mobilen App zur Verfügung, mit demselben Konto.",
+            workerHint: "Wenn Sie sich als Unternehmen anmelden möchten, melden Sie sich bitte ab und verwenden Sie das Konto Ihres Unternehmens.",
             footer: "© 2026 VJob · getvjob.app",
             terms: "Allgemeine Geschäftsbedingungen",
             privacy: "Datenschutzerklärung",
@@ -580,7 +851,8 @@
 
     const S = {
         lang: startLang(),
-        view: "loading",     // loading | login | forgot | shop | bank | empty | error
+        view: "loading",     // loading | login | forgot | account | bank | worker | error
+        tab: "buy",          // buy | ads | pay | co (az "account" és "bank" nézetben)
         user: null,
         data: null,          // a listazCegHirdeteseit válasza
         adId: null,
@@ -680,6 +952,71 @@
         if (S.mode === "kiemeles" && !S.hl) S.hl = (d.arak.kiemelesek[0] || {}).kod || "";
     }
 
+    const TABS = ["buy", "ads", "pay", "co"];
+    const TAB_LABEL = { buy: "tabBuy", ads: "tabAds", pay: "tabPay", co: "tabCo" };
+
+    /** Hány nyitott (még kifizetésre váró, le nem járt) fizetése van a cégnek. */
+    function openPaymentCount() {
+        return S.data ? S.data.hirdetesek.reduce((n, x) => n + (x.nyitottFizetesek || []).length, 0) : 0;
+    }
+
+    /** A közlemény alapján megkeresi a nyitott fizetést és a hirdetést, amelyikhez tartozik. */
+    function findOpenPayment(kozlemeny) {
+        for (const x of S.data.hirdetesek) {
+            const f = (x.nyitottFizetesek || []).find((p) => p.kozlemeny === kozlemeny);
+            if (f) return { f, hirdetes: x };
+        }
+        return null;
+    }
+
+    function adTitle(x) {
+        return [x.pozicio || "—", x.helyszin ? ` – ${x.helyszin}` : ""].join("");
+    }
+
+    /** active | paused (szüneteltetett, de van még ideje) | expired | inactive (még nem fizetett) */
+    function adState(x, now) {
+        if (x.aktiv && x.lejaratMs > now) return "active";
+        if (x.lejaratMs > now) return "paused";
+        if (x.lejaratMs > 0) return "expired";
+        return "inactive";
+    }
+
+    function initials() {
+        const nev = (S.data && S.data.cegNev) || "";
+        const szavak = nev.split(/\s+/).filter((w) => /\p{L}/u.test(w));
+        let betuk = szavak.slice(0, 2).map((w) => Array.from(w.replace(/^[^\p{L}]+/u, ""))[0] || "").join("");
+        if (!betuk) betuk = Array.from(((S.user && S.user.email) || "").trim())[0] || "V";
+        return betuk.toUpperCase();
+    }
+
+    /** Kerek (vagy nagy lekerekített) jelvény: a cég logója, és ha nincs vagy nem tölt be, a cégnév kezdőbetűi. */
+    function avatar(extra) {
+        const box = h("span", { class: "av" + (extra ? ` ${extra}` : ""), "aria-hidden": "true" }, initials());
+        const logo = S.data && typeof S.data.logoUrl === "string" && S.data.logoUrl.startsWith("https://") ? S.data.logoUrl : "";
+        if (logo) {
+            const img = h("img", { src: logo, alt: "", referrerpolicy: "no-referrer", decoding: "async" });
+            img.addEventListener("load", () => { box.classList.add("has-img"); box.replaceChildren(img); });
+        }
+        return box;
+    }
+
+    function goTab(k) {
+        S.tab = k;
+        setMsg(null);
+        show("account");
+    }
+
+    /** A Hirdetéseim fülről a vásárláshoz ugrik, a hirdetés és a mód előválasztásával. */
+    function goBuy(hirdetes, mod) {
+        S.adId = hirdetes.id;
+        S.mode = mod;
+        S.hl = "";
+        setMsg(null);
+        ensureSelection();
+        S.tab = "buy";
+        show("account");
+    }
+
     function setMsg(tipus, szoveg) {
         S.msg = szoveg ? { tipus, szoveg } : null;
     }
@@ -719,11 +1056,34 @@
         const bejelentkezve = !!S.user && S.view !== "login" && S.view !== "forgot";
         $("who").hidden = !bejelentkezve;
         $("who-name").textContent = (S.data && S.data.cegNev) || (S.user && S.user.email) || "";
+        $("who-av").replaceChildren(bejelentkezve ? avatar() : "");
+        renderNav();
 
         const app = $("app");
         app.replaceChildren();
-        const nezetek = { loading: viewLoading, login: viewLogin, forgot: viewForgot, shop: viewShop, bank: viewBank, empty: viewEmpty, error: viewError };
+        const nezetek = { loading: viewLoading, login: viewLogin, forgot: viewForgot, account: viewAccount, bank: viewBank, worker: viewWorker, error: viewError };
         app.append((nezetek[S.view] || viewLoading)());
+    }
+
+    /** A fülsor csak a céges fiók nézeteiben látszik (munkavállalónak és belépés előtt nem). */
+    function renderNav() {
+        const L = t();
+        const nav = $("nav");
+        const lathato = !!S.data && !S.data.munkavallalo && (S.view === "account" || S.view === "bank");
+        nav.hidden = !lathato;
+        nav.replaceChildren();
+        if (!lathato) return;
+        const nyitott = openPaymentCount();
+        nav.append(h("div", { class: "nav-inner", role: "tablist", "aria-label": L.tabsLabel },
+            TABS.map((k) => h("button", {
+                class: "tab" + (S.tab === k ? " active" : ""), type: "button", role: "tab",
+                "aria-selected": S.tab === k ? "true" : "false", "data-tab": k,
+                onclick: () => goTab(k)
+            }, L[TAB_LABEL[k]], k === "pay" && nyitott > 0 ? h("span", { class: "tab-badge" }, L.openBadge(nyitott)) : null))));
+        // Keskeny képernyőn a fülsor görgethető: az aktív fület a látható sávba hozzuk.
+        const sor = nav.firstChild;
+        const aktiv = sor && sor.querySelector(".tab.active");
+        if (aktiv) sor.scrollLeft = Math.max(0, aktiv.offsetLeft - (sor.clientWidth - aktiv.offsetWidth) / 2);
     }
 
     function show(view) {
@@ -814,12 +1174,25 @@
             h("button", { class: "btn", type: "button", onclick: loadData }, L.retry));
     }
 
-    function viewEmpty() {
+    function topline(cim, alcim) {
+        return h("div", { class: "topline" },
+            h("div", null, h("h1", null, cim), h("p", { class: "sub" }, alcim)),
+            h("button", { class: "link-btn", type: "button", onclick: loadData }, t().refresh));
+    }
+
+    function viewAccount() {
+        const fulek = { buy: tabBuy, ads: tabAds, pay: tabPay, co: tabCo };
+        return h("div", { role: "tabpanel", id: "panel" }, (fulek[S.tab] || tabBuy)());
+    }
+
+    function viewWorker() {
         const L = t();
-        return h("div", { class: "center-text", style: "padding-top:50px" },
-            h("h1", null, L.noAdsTitle),
-            h("p", { class: "sub", style: "max-width:520px;margin:10px auto 22px" }, L.noAdsText),
-            h("button", { class: "btn secondary", type: "button", onclick: loadData }, L.refresh));
+        return h("div", { class: "worker-card" },
+            h("div", { class: "worker-ic", "aria-hidden": "true" }, "👤"),
+            h("h1", null, L.workerTitle),
+            h("p", null, L.workerText),
+            h("p", { class: "small" }, L.workerHint),
+            h("button", { class: "btn", type: "button", onclick: logout }, L.logout));
     }
 
     function describePurchase(vasarlasTipus, csomagKod, kiemelesKod) {
@@ -837,9 +1210,27 @@
         return reszek.join(" + ");
     }
 
-    function viewShop() {
+    function flowStrip() {
+        const L = t();
+        return h("div", { class: "flow" },
+            h("div", { class: "flow-st" }, h("div", { class: "flow-num" }, "1"), h("div", null, h("b", null, L.flow1T), h("span", { class: "d" }, L.flow1D))),
+            h("div", { class: "flow-st" }, h("div", { class: "flow-num" }, "2"), h("div", null, h("b", null, L.flow2T), h("span", { class: "d" }, L.flow2D))),
+            h("div", { class: "flow-st last" }, h("div", { class: "flow-num" }, "✓"), h("div", null, h("b", null, L.flow3T), h("span", { class: "d" }, L.flow3D))));
+    }
+
+    function trustLines() {
+        const L = t();
+        return h("div", { class: "trust" },
+            [L.trust1, L.trust2, L.trust3].map((sor) => h("div", { class: "tr" }, h("div", { class: "ck", "aria-hidden": "true" }, "✓"), h("div", null, sor))));
+    }
+
+    function tabBuy() {
         const L = t();
         const d = S.data;
+        if (d.hirdetesek.length === 0) {
+            return h("div", null, topline(L.shopTitle, L.shopSub), flowStrip(),
+                h("div", { class: "empty-box" }, h("b", null, L.noAdsTitle), L.noAdsText));
+        }
         const kivalasztott = ad();
         const info = adInfo(kivalasztott);
         const hianyzik = d.hianyzoAdatok || [];
@@ -918,7 +1309,7 @@
         if (csomag && info.hatralevoNap > 0) jegyzetek.push(h("div", { class: "note" }, L.extendNote(info.hatralevoNap)));
         if (csomag && kiemeles && kiemeles.nap > csomag.nap + info.hatralevoNap) jegyzetek.push(h("div", { class: "note" }, L.hlCapNote));
 
-        const osszegzes = h("aside", { class: "sum" },
+        const osszegzes = h("div", { class: "sum" },
             h("h3", null, L.summary), sorok,
             h("div", { class: "tot" }, h("span", null, L.total), h("span", null, money(osszeg))),
             jegyzetek,
@@ -927,16 +1318,139 @@
             h("p", { class: "fine" }, L.fine));
 
         return h("div", null,
-            h("div", { class: "topline" },
-                h("div", null, h("h1", null, L.shopTitle), h("p", { class: "sub" }, L.shopSub)),
-                h("button", { class: "link-btn", type: "button", onclick: loadData }, L.refresh)),
+            topline(L.shopTitle, L.shopSub),
+            flowStrip(),
             hianyzik.length ? h("div", { class: "warn-box" }, h("b", null, L.missingTitle), h("br"),
                 L.missingText(hianyzik.map((k) => L.fields[k] || k).join(", "))) : null,
             h("div", { class: "layout" },
                 h("div", null,
                     h("div", { class: "step first" }, L.step1), hirdetesLista,
                     nyitottBlokkok, modok, vasarlasResz),
-                osszegzes));
+                h("aside", { class: "side" }, osszegzes, trustLines())));
+    }
+
+    function emptyBox(cim, szoveg) {
+        return h("div", { class: "empty-box" }, h("b", null, cim), szoveg);
+    }
+
+    // ── Hirdetéseim fül ──
+    function tabAds() {
+        const L = t();
+        const d = S.data;
+        const now = Date.now();
+        const tartalom = d.hirdetesek.length === 0
+            ? emptyBox(L.noAdsTitle, L.noAdsText)
+            : h("div", { class: "card" }, d.hirdetesek.map((x) => {
+                const info = adInfo(x);
+                const allapot = adState(x, now);
+                const nyitott = info.nyitottak[0] || null;
+                const hasIdeje = x.lejaratMs > now;
+
+                const elso = [];
+                if (allapot === "active" || allapot === "paused") {
+                    elso.push(L.adExpires(dateText(x.lejaratMs)));
+                    if (allapot === "active" && x.kiemelesLejaratMs > now) elso.push(L.adHlUntil(dateText(x.kiemelesLejaratMs)));
+                } else if (allapot === "expired") {
+                    elso.push(L.adExpiredOn(dateText(x.lejaratMs)));
+                } else if (!nyitott) {
+                    elso.push(L.adNeverPaid);
+                }
+
+                const gombok = [];
+                if (info.csomagElerheto) {
+                    gombok.push(h("button", {
+                        class: "mbtn" + (hasIdeje ? "" : " primary"), type: "button", onclick: () => goBuy(x, "csomag")
+                    }, hasIdeje ? L.btnExtend : L.btnBuyPack));
+                }
+                if (allapot === "active" && info.kiemelesElerheto) {
+                    gombok.push(h("button", { class: "mbtn", type: "button", onclick: () => goBuy(x, "kiemeles") }, L.btnHighlight));
+                }
+                if (nyitott) {
+                    gombok.push(h("button", { class: "mbtn", type: "button", onclick: () => openBank(nyitott, x) }, L.btnTransfer));
+                }
+
+                return h("div", { class: "lrow" },
+                    h("div", { class: "lrow-main" },
+                        h("div", { class: "lrow-v" }, adTitle(x)),
+                        elso.length ? h("div", { class: "lrow-meta" }, elso.join(" · ")) : null,
+                        nyitott ? h("div", { class: "lrow-meta" }, L.adTransfer(nyitott.kozlemeny, dateText(nyitott.lejarMs))) : null),
+                    h("div", { class: "lrow-side" },
+                        h("span", { class: "badge " + (allapot === "active" ? "b-active" : allapot === "paused" ? "b-expired" : "b-inactive") }, L.adStatus[allapot]),
+                        nyitott ? h("span", { class: "badge b-pending" }, L.pending) : null,
+                        gombok));
+            }));
+        return h("div", null, topline(L.adsTitle, L.adsSub), tartalom);
+    }
+
+    // ── Fizetések fül ──
+    const PAY_BADGE = { varakozik: "b-pending", reszleges: "b-pending", sikeres: "b-active", lezarva: "b-expired", lejart: "b-expired" };
+
+    function tabPay() {
+        const L = t();
+        const d = S.data;
+        const now = Date.now();
+        const lista = d.fizetesek || [];
+        const tartalom = lista.length === 0
+            ? emptyBox(L.payEmptyTitle, L.payEmptyText)
+            : h("div", { class: "card" }, lista.map((p) => {
+                // Ha a határidő már lejárt, de a rendszer még nem zárta le, a cégnek már lejártként mutatjuk.
+                const statusz = p.statusz === "varakozik" && p.lejarMs > 0 && p.lejarMs <= now ? "lejart" : p.statusz;
+                const nyitott = statusz === "varakozik" || statusz === "reszleges" ? findOpenPayment(p.kozlemeny) : null;
+                const mit = describePurchase(p.vasarlasTipus, p.csomagKod, p.kiemelesKod);
+                const cim = [p.pozicio ? adTitle(p) : L.deletedAd, mit].filter(Boolean).join(" · ");
+                const metaReszek = [];
+                if (p.letrehozvaMs > 0) metaReszek.push(dateText(p.letrehozvaMs));
+                if (nyitott) metaReszek.push(L.payDeadline(dateText(nyitott.f.lejarMs)));
+                return h("div", { class: "lrow" },
+                    h("div", { class: "lrow-main" },
+                        h("div", { class: "lrow-v" }, cim),
+                        h("div", { class: "lrow-meta" }, h("span", { class: "mono" }, p.kozlemeny), metaReszek.length ? ` · ${metaReszek.join(" · ")}` : ""),
+                        statusz === "reszleges" && p.befizetve > 0 ? h("div", { class: "lrow-meta" }, `${L.alreadyPaid}: ${money(p.befizetve)}`) : null),
+                    h("div", { class: "lrow-side" },
+                        h("span", { class: "amt" }, money(p.osszeg)),
+                        h("span", { class: "badge " + (PAY_BADGE[statusz] || "b-expired") }, L.payStatus[statusz] || statusz),
+                        nyitott ? h("button", { class: "mbtn", type: "button", onclick: () => openBank(nyitott.f, nyitott.hirdetes) }, L.btnTransfer) : null));
+            }));
+        return h("div", null, topline(L.payTitle, L.paySub), tartalom,
+            lista.length ? h("div", { class: "info-note" }, h("span", { "aria-hidden": "true" }, "ⓘ"), h("span", null, L.payNote)) : null);
+    }
+
+    // ── Cégadatok fül (csak megjelenítés; a módosítás az appban történik) ──
+    function tabCo() {
+        const L = t();
+        const d = S.data;
+        const c = d.cegAdatok || {};
+        const hianyzik = d.hianyzoAdatok || [];
+        const hiany = (...kulcsok) => kulcsok.some((k) => hianyzik.includes(k));
+        const mezo = (cimke, ertek, hianyzo) => h("div", { class: "frow" },
+            h("div", { class: "fk" }, cimke),
+            hianyzo ? h("div", { class: "fv miss" }, L.coMissing) : h("div", { class: "fv" }, ertek || "—"));
+        const szamlazasiCim = [[c.iranyitoszam, c.varos].filter(Boolean).join(" "), c.cim].filter(Boolean).join(", ");
+        const email = (S.user && S.user.email) || "";
+        const mezok = [
+            mezo(L.coName, c.cegNev, hiany("companyName")),
+            mezo(L.coTax, c.adoszam, hiany("taxId")),
+            c.kozossegiAdoszam ? mezo(L.coEuTax, c.kozossegiAdoszam, false) : null,
+            mezo(L.coAddress, szamlazasiCim, hiany("szamlazasiIranyitoszam", "szamlazasiVaros", "szamlazasiCim")),
+            mezo(L.coCountry, c.orszag, false),
+            mezo(L.coEmail, c.kapcsolatiEmail, hiany("contactEmail")),
+            mezo(L.coLogin, email, false)
+        ];
+        return h("div", null,
+            topline(L.coTitle, L.coSub),
+            hianyzik.length ? h("div", { class: "warn-box" }, h("b", null, L.missingTitle), h("br"),
+                L.missingText(hianyzik.map((k) => L.fields[k] || k).join(", "))) : null,
+            h("div", { class: "card" },
+                h("div", { class: "hero" },
+                    avatar("big-av"),
+                    h("div", { class: "hero-main" },
+                        h("div", { class: "hero-name" }, c.cegNev || "—"),
+                        c.kapcsolatiEmail ? h("div", { class: "lrow-meta" }, L.coContact(c.kapcsolatiEmail)) : null),
+                    hianyzik.length === 0
+                        ? h("div", { class: "ok-line" }, L.coAllOk)
+                        : h("div", { class: "miss-line" }, L.coSomeMissing(hianyzik.length))),
+                h("div", { class: "fgrid" }, mezok)),
+            h("div", { class: "info-note" }, h("span", { "aria-hidden": "true" }, "ⓘ"), h("span", null, L.coNote)));
     }
 
     function kv(kulcs, ertek, opts = {}) {
@@ -979,7 +1493,8 @@
             h("div", { class: "kv" }, sorok),
             h("p", { class: "note" }, L.refMust),
             h("p", { class: "note" }, L.afterPay),
-            h("button", { class: "btn", type: "button", onclick: () => { setMsg(null); show("shop"); } }, L.backToAds));
+            h("button", { class: "btn", type: "button", onclick: () => goTab(b.from || "buy") },
+                b.from === "ads" ? L.backAdsTab : b.from === "pay" ? L.backPayTab : L.backToAds));
     }
 
     function openBank(f, hirdetes) {
@@ -987,7 +1502,8 @@
             hirdetesCim: [hirdetes.pozicio, hirdetes.helyszin].filter(Boolean).join(" – "),
             vasarlasTipus: f.vasarlasTipus, csomagKod: f.csomagKod, kiemelesKod: f.kiemelesKod,
             osszeg: f.osszeg, befizetve: f.befizetve || 0, hatralevo: f.hatralevo,
-            bankNev: f.bankNev, bankszamlaszam: f.bankszamlaszam, kozlemeny: f.kozlemeny, lejarMs: f.lejarMs
+            bankNev: f.bankNev, bankszamlaszam: f.bankszamlaszam, kozlemeny: f.kozlemeny, lejarMs: f.lejarMs,
+            from: S.tab
         };
         show("bank");
     }
@@ -1005,7 +1521,8 @@
                 hirdetesCim: [hirdetes.pozicio, hirdetes.helyszin].filter(Boolean).join(" – "),
                 vasarlasTipus: csomagKod ? "alapcsomag" : "kiemeles", csomagKod, kiemelesKod,
                 osszeg: r.osszeg, befizetve: 0, hatralevo: r.osszeg,
-                bankNev: r.bankNev, bankszamlaszam: r.bankszamlaszam, kozlemeny: r.kozlemeny, lejarMs: r.lejar || Date.now() + 10 * DAY
+                bankNev: r.bankNev, bankszamlaszam: r.bankszamlaszam, kozlemeny: r.kozlemeny, lejarMs: r.lejar || Date.now() + 10 * DAY,
+                from: "buy"
             };
             S.busy = false;
             show("bank");
@@ -1024,7 +1541,7 @@
         try {
             S.data = await call("listazCegHirdeteseit");
             ensureSelection();
-            if (rajzol || S.view === "shop") render();
+            if (rajzol || S.view === "account") render(); else renderNav();
         } catch (e) { /* a következő megnyitáskor úgyis újratölt */ }
     }
 
@@ -1032,9 +1549,9 @@
         show("loading");
         try {
             S.data = await call("listazCegHirdeteseit");
-            if (S.data.hirdetesek.length === 0) { show("empty"); return; }
+            if (S.data.munkavallalo) { show("worker"); return; }
             ensureSelection();
-            show("shop");
+            show("account");
         } catch (e) {
             if (e && e.code === "functions/unauthenticated") { await signOut(auth); return; }
             show("error");
@@ -1047,15 +1564,16 @@
         try { localStorage.setItem("vjob_lang", S.lang); } catch (e) { /* nem baj */ }
         render();
     }));
-    $("logout-btn").addEventListener("click", async () => {
+    async function logout() {
         try { await signOut(auth); } catch (e) { /* az onAuthStateChanged úgyis kezeli */ }
-    });
+    }
+    $("logout-btn").addEventListener("click", logout);
 
     onAuthStateChanged(auth, (user) => {
         S.user = user;
         S.busy = false;
         if (!user) {
-            S.data = null; S.adId = null; S.bank = null; setMsg(null);
+            S.data = null; S.adId = null; S.bank = null; S.tab = "buy"; setMsg(null);
             show("login");
             return;
         }
