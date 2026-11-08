@@ -173,6 +173,10 @@ h2{font-size:clamp(24px,4vw,44px);font-weight:800;letter-spacing:-1px;margin-bot
 .feats{list-style:none;display:flex;flex-direction:column;gap:7px}
 .feats li{font-size:12px;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:7px}
 .feats li::before{content:'✓';font-weight:700;color:#00C878;flex-shrink:0}
+.clinks{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,200,120,0.15)}
+.clinks a{font-size:13px;font-weight:700;color:#00C878;text-decoration:none}
+.clinks a:hover,.clinks a:focus-visible{text-decoration:underline}
+.flinks a.flink-biz{color:#C9A6FF;font-weight:700}
 .priv{background:linear-gradient(135deg,rgba(170,68,255,0.06),transparent);border:1px solid rgba(170,68,255,0.18);border-radius:20px;padding:40px;display:flex;gap:32px;align-items:center;flex-wrap:wrap}
 .priv h3{font-size:24px;font-weight:800;margin-bottom:9px}
 .priv p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:480px}
@@ -183,7 +187,7 @@ h2{font-size:clamp(24px,4vw,44px);font-weight:800;letter-spacing:-1px;margin-bot
 footer{border-top:1px solid rgba(170,68,255,0.15);padding:32px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .fl{font-size:17px;font-weight:900}
 .fl span{color:#AA44FF}
-.flinks{display:flex;gap:20px}
+.flinks{display:flex;flex-wrap:wrap;gap:8px 20px}
 .flinks a{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none}
 .fcopy{font-size:11px;color:rgba(255,255,255,0.15)}
 
@@ -343,6 +347,7 @@ footer{border-top:1px solid rgba(170,68,255,0.15);padding:32px 36px;display:flex
       <h3>Cégeknek</h3>
       <p>Böngészd a jelöltek videós bemutatkozóit és csak azokhoz fordulj akik tényleg illenek a pozícióhoz.</p>
       <ul class="feats"><li>Videós jelölt böngészés a feedben</li><li>Match % alapú egyezés jelzés</li><li>Hirdetés feladás és kezelés</li><li>Közvetlen chat + interjú meghívó küldés</li><li>Valós idejű statisztikák</li></ul>
+      <div class="clinks"><a href="/csomagok.html?lang=hu">Hirdetési csomagok és árak →</a><a href="/business/?lang=hu">Belépés a céges fiókba →</a></div>
     </div>
   </div>
 </section>
@@ -363,7 +368,7 @@ footer{border-top:1px solid rgba(170,68,255,0.15);padding:32px 36px;display:flex
 
 <footer>
   <div class="fl">V<span>Job</span></div>
-  <div class="flinks"><a href="/privacy-policy.html">Adatvédelem</a><a href="/terms.html">ÁSZF</a><a href="/delete-account.html">Fiók törlése</a><a href="mailto:info@getvjob.app">Kapcsolat</a></div>
+  <div class="flinks"><a href="/business/?lang=hu" class="flink-biz">Cégeknek</a><a href="/privacy-policy.html">Adatvédelem</a><a href="/terms.html">ÁSZF</a><a href="/delete-account.html">Fiók törlése</a><a href="mailto:info@getvjob.app">Kapcsolat</a></div>
   <div class="fcopy">© 2026 VJob</div>
 </footer>
 
@@ -516,6 +521,7 @@ footer{border-top:1px solid rgba(170,68,255,0.15);padding:32px 36px;display:flex
       <h3>For companies</h3>
       <p>Browse candidates' video introductions and reach out only to those who truly fit the role.</p>
       <ul class="feats"><li>Browse video candidates in the feed</li><li>Match % compatibility indicator</li><li>Post and manage job listings</li><li>Direct chat + interview invitations</li><li>Real-time statistics</li></ul>
+      <div class="clinks"><a href="/csomagok.html?lang=en">Packages and prices →</a><a href="/business/?lang=en">Sign in to your company account →</a></div>
     </div>
   </div>
 </section>
@@ -536,7 +542,7 @@ footer{border-top:1px solid rgba(170,68,255,0.15);padding:32px 36px;display:flex
 
 <footer>
   <div class="fl">V<span>Job</span></div>
-  <div class="flinks"><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/delete-account.html">Delete account</a><a href="mailto:info@getvjob.app">Contact</a></div>
+  <div class="flinks"><a href="/business/?lang=en" class="flink-biz">For companies</a><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/delete-account.html">Delete account</a><a href="mailto:info@getvjob.app">Contact</a></div>
   <div class="fcopy">© 2026 VJob</div>
 </footer>
 
@@ -689,6 +695,7 @@ footer{border-top:1px solid rgba(170,68,255,0.15);padding:32px 36px;display:flex
       <h3>Für Unternehmen</h3>
       <p>Durchsuche die Video-Vorstellungen der Kandidaten und wende dich nur an die, die wirklich zur Stelle passen.</p>
       <ul class="feats"><li>Video-Kandidaten im Feed durchsuchen</li><li>Match-%-Übereinstimmungsanzeige</li><li>Stellenanzeigen veröffentlichen und verwalten</li><li>Direkter Chat + Einladungen</li><li>Echtzeit-Statistiken</li></ul>
+      <div class="clinks"><a href="/csomagok.html?lang=de">Pakete und Preise →</a><a href="/business/?lang=de">Zum Unternehmenskonto →</a></div>
     </div>
   </div>
 </section>
@@ -709,7 +716,7 @@ footer{border-top:1px solid rgba(170,68,255,0.15);padding:32px 36px;display:flex
 
 <footer>
   <div class="fl">V<span>Job</span></div>
-  <div class="flinks"><a href="/privacy-policy.html">Datenschutz</a><a href="/terms.html">AGB</a><a href="/delete-account.html">Konto löschen</a><a href="mailto:info@getvjob.app">Kontakt</a></div>
+  <div class="flinks"><a href="/business/?lang=de" class="flink-biz">Für Unternehmen</a><a href="/privacy-policy.html">Datenschutz</a><a href="/terms.html">AGB</a><a href="/delete-account.html">Konto löschen</a><a href="mailto:info@getvjob.app">Kontakt</a></div>
   <div class="fcopy">© 2026 VJob</div>
 </footer>
 

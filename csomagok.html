@@ -350,12 +350,125 @@
             font-size: 12px;
         }
 
+        .highlight-levels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+        }
+
+        .hl-chip {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .hl-chip span {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 400;
+        }
+
+        .how { margin-bottom: 36px; }
+
+        .how-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .how-step {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 16px;
+            padding: 18px;
+        }
+
+        .how-n {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8B2FC9, #D946EF);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .how-step h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .how-step p {
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.68);
+        }
+
+        .how-cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .good-to-know {
+            margin-top: 22px;
+            background: rgba(139,47,201,0.06);
+            border: 1px solid rgba(180,80,255,0.15);
+            border-radius: 16px;
+            padding: 18px 22px;
+        }
+
+        .good-to-know h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .good-to-know ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .good-to-know li {
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            gap: 8px;
+        }
+
+        .good-to-know li::before {
+            content: '•';
+            color: #E879F9;
+            flex-shrink: 0;
+        }
+
+        .good-to-know a { color: #C084FC; }
+
         .lang-content { display: none; }
         .lang-content.active { display: block; }
 
         @media (max-width: 600px) {
             .hero-title { font-size: 26px; }
             .header-inner { flex-direction: column; align-items: flex-start; }
+            .how-steps { grid-template-columns: 1fr; }
         }
     </style>
 
@@ -385,8 +498,8 @@
 <div class="lang-content active" id="lang-hu">
     <div class="hero">
         <div class="hero-badge">HIRDETÉS-CSOMAGOK</div>
-        <div class="hero-title">Válaszd ki a csomagod</div>
-        <div class="hero-subtitle">Add fel a hirdetésed percek alatt, fizess biztonságosan banki átutalással</div>
+        <div class="hero-title">Válassza ki a csomagját</div>
+        <div class="hero-subtitle">Adja fel hirdetését percek alatt, fizessen biztonságosan banki átutalással</div>
     </div>
 
     <div class="cards-grid">
@@ -423,11 +536,21 @@
 
     <div class="highlight-bar">
         <span class="highlight-label"><svg viewBox="0 0 24 24" fill="#E879F9" stroke="none"><path d="M12 2.5l1.9 5.8a2.2 2.2 0 0 0 1.4 1.4l5.8 1.9-5.8 1.9a2.2 2.2 0 0 0-1.4 1.4L12 21.5l-1.9-5.8a2.2 2.2 0 0 0-1.4-1.4L2.9 12.4l5.8-1.9a2.2 2.2 0 0 0 1.4-1.4L12 2.5z"></path><path d="M5 3v3.5M3.25 4.75h3.5" stroke="#C084FC" stroke-width="1.5" stroke-linecap="round"></path><path d="M19 16.5v3.5M17.25 18.25h3.5" stroke="#C084FC" stroke-width="1.5" stroke-linecap="round"></path></svg>Kiemelés — extra láthatóság bármelyik csomag mellé</span>
-        <span class="highlight-price">+2 990 Ft <span>/ 7 nap</span></span>
+        <span class="highlight-levels"><span class="hl-chip">+2 990 Ft <span>/ 7 nap</span></span><span class="hl-chip">+4 990 Ft <span>/ 14 nap</span></span><span class="hl-chip">+8 990 Ft <span>/ 30 nap</span></span></span>
+    </div>
+
+    <div class="how">
+        <div class="how-title">Hogyan történik a vásárlás?</div>
+        <div class="how-steps"><div class="how-step"><div class="how-n">1</div><h3>Csomag kiválasztása</h3><p>Lépjen be ugyanazzal a fiókkal, mint az alkalmazásban, és válassza ki a hirdetést, a csomagot és – ha szeretné – a kiemelést. A végösszeget a fizetés előtt látja.</p></div><div class="how-step"><div class="how-n">2</div><h3>Banki átutalás</h3><p>Az átutalási adatokat a képernyőn és e-mailben is megkapja. A fizetési határidő 10 nap, a közlemény megadása kötelező.</p></div><div class="how-step"><div class="how-n">3</div><h3>Automatikus aktiválás</h3><p>A befizetés beérkezése után a hirdetés automatikusan aktiválódik, és e-mailben értesítjük.</p></div></div>
+        <div class="how-cta"><a class="store-btn" href="business/?lang=hu">Belépés és vásárlás</a></div>
+        <div class="good-to-know">
+            <h3>Jó tudni</h3>
+            <ul><li><span>A csomag nem automatikusan megújuló: lejáratkor a hirdetés inaktívvá válik. Hosszabbításnál a hirdetés hátralévő ideje hozzáadódik az új csomag idejéhez.</span></li><li><span>A kiemelés a csomaggal együtt, vagy aktív hirdetéshez külön is megvásárolható. A csomaggal együtt vett kiemelés legfeljebb a hirdetés lejáratáig tart.</span></li><li><span>Az aktivált csomag díja nem téríthető vissza (kivéve a Szolgáltatás technikai hibája esetén). Részletek: <a href="terms.html">ÁSZF</a> 10–11. pont.</span></li></ul>
+        </div>
     </div>
 
     <div class="download-section">
-        <div class="download-title">Töltsd le a VJob alkalmazást</div>
+        <div class="download-title">Töltse le a VJob alkalmazást</div>
         <div class="download-buttons">
             <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.vjob.app">Google Play</a>
             <a class="store-btn" href="https://apps.apple.com/app/vjob/idXXXXXXXXX">App Store</a>
@@ -479,7 +602,17 @@
 
     <div class="highlight-bar">
         <span class="highlight-label"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"></path></svg>Highlight — extra visibility for any package</span>
-        <span class="highlight-price">+2,990 HUF <span>/ 7 days</span></span>
+        <span class="highlight-levels"><span class="hl-chip">+2,990 HUF <span>/ 7 days</span></span><span class="hl-chip">+4,990 HUF <span>/ 14 days</span></span><span class="hl-chip">+8,990 HUF <span>/ 30 days</span></span></span>
+    </div>
+
+    <div class="how">
+        <div class="how-title">How does purchasing work?</div>
+        <div class="how-steps"><div class="how-step"><div class="how-n">1</div><h3>Choose a package</h3><p>Sign in with the same account you use in the app, then choose the job ad, the package and, if you wish, a highlight. You see the total before you pay.</p></div><div class="how-step"><div class="how-n">2</div><h3>Bank transfer</h3><p>You receive the transfer details on screen and by e-mail. The payment deadline is 10 days, and the payment reference is required.</p></div><div class="how-step"><div class="how-n">3</div><h3>Automatic activation</h3><p>Once the payment arrives, the ad is activated automatically and we notify you by e-mail.</p></div></div>
+        <div class="how-cta"><a class="store-btn" href="business/?lang=en">Sign in and purchase</a></div>
+        <div class="good-to-know">
+            <h3>Good to know</h3>
+            <ul><li><span>A package does not renew automatically: when it expires, the ad becomes inactive. When you extend, the ad's remaining time is added to the new package.</span></li><li><span>A highlight can be bought together with a package, or separately for an active ad. A highlight bought together with a package lasts at most until the ad expires.</span></li><li><span>The fee for an activated package is non-refundable (except in case of a technical fault of the Service). Details: <a href="terms.html">Terms</a>, sections 10–11.</span></li></ul>
+        </div>
     </div>
 
     <div class="download-section">
@@ -497,8 +630,8 @@
 <div class="lang-content" id="lang-de">
     <div class="hero">
         <div class="hero-badge">STELLENANZEIGEN-PAKETE</div>
-        <div class="hero-title">Wähle dein Paket</div>
-        <div class="hero-subtitle">Veröffentliche deine Stellenanzeige in Minuten, bezahle sicher per Banküberweisung</div>
+        <div class="hero-title">Wählen Sie Ihr Paket</div>
+        <div class="hero-subtitle">Veröffentlichen Sie Ihre Stellenanzeige in Minuten, bezahlen Sie sicher per Banküberweisung</div>
     </div>
 
     <div class="cards-grid">
@@ -535,11 +668,21 @@
 
     <div class="highlight-bar">
         <span class="highlight-label"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"></path></svg>Hervorhebung — zusätzliche Sichtbarkeit für jedes Paket</span>
-        <span class="highlight-price">+2.990 Ft <span>/ 7 Tage</span></span>
+        <span class="highlight-levels"><span class="hl-chip">+2.990 Ft <span>/ 7 Tage</span></span><span class="hl-chip">+4.990 Ft <span>/ 14 Tage</span></span><span class="hl-chip">+8.990 Ft <span>/ 30 Tage</span></span></span>
+    </div>
+
+    <div class="how">
+        <div class="how-title">Wie läuft der Kauf ab?</div>
+        <div class="how-steps"><div class="how-step"><div class="how-n">1</div><h3>Paket wählen</h3><p>Melden Sie sich mit demselben Konto wie in der App an und wählen Sie die Stellenanzeige, das Paket und – falls gewünscht – eine Hervorhebung. Den Gesamtbetrag sehen Sie vor der Zahlung.</p></div><div class="how-step"><div class="how-n">2</div><h3>Banküberweisung</h3><p>Die Überweisungsdaten erhalten Sie auf dem Bildschirm und per E-Mail. Die Zahlungsfrist beträgt 10 Tage, der Verwendungszweck ist erforderlich.</p></div><div class="how-step"><div class="how-n">3</div><h3>Automatische Aktivierung</h3><p>Nach Zahlungseingang wird die Anzeige automatisch aktiviert, und wir benachrichtigen Sie per E-Mail.</p></div></div>
+        <div class="how-cta"><a class="store-btn" href="business/?lang=de">Anmelden und kaufen</a></div>
+        <div class="good-to-know">
+            <h3>Gut zu wissen</h3>
+            <ul><li><span>Ein Paket verlängert sich nicht automatisch: Nach Ablauf wird die Anzeige inaktiv. Bei einer Verlängerung wird die verbleibende Laufzeit der Anzeige zum neuen Paket addiert.</span></li><li><span>Eine Hervorhebung kann zusammen mit einem Paket oder separat für eine aktive Anzeige gekauft werden. Eine zusammen mit einem Paket gekaufte Hervorhebung gilt höchstens bis zum Ablauf der Anzeige.</span></li><li><span>Das Entgelt für ein aktiviertes Paket ist nicht erstattungsfähig (außer bei einem technischen Fehler des Dienstes). Einzelheiten: <a href="terms.html">AGB</a>, Abschnitte 10–11.</span></li></ul>
+        </div>
     </div>
 
     <div class="download-section">
-        <div class="download-title">Lade die VJob-App herunter</div>
+        <div class="download-title">Laden Sie die VJob-App herunter</div>
         <div class="download-buttons">
             <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.vjob.app">Google Play</a>
             <a class="store-btn" href="https://apps.apple.com/app/vjob/idXXXXXXXXX">App Store</a>
