@@ -363,6 +363,14 @@
         .mbtn:hover { border-color: rgba(180,80,255,0.5); }
         .mbtn.primary { background: linear-gradient(135deg, #8800FF, #DD00BB); border-color: transparent; color: #fff; }
         .b-expired { color: var(--mut); background: var(--chip); }
+        .pdfbtn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; white-space: nowrap;
+            border: 1px solid var(--chip-bd); background: var(--chip); color: var(--tx); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+        }
+        .pdfbtn:hover { border-color: rgba(180,80,255,0.5); }
+        .pdfbtn:disabled { opacity: 0.65; cursor: progress; }
+        .pdftag { font-size: 10px; font-weight: 800; letter-spacing: 0.6px; color: var(--ic-r); background: var(--ic-rbg); border-radius: 4px; padding: 2px 5px; }
+        .error-box + .card, .ok-box + .card { margin-top: 16px; }
         .info-note {
             display: flex; gap: 10px; margin-top: 16px; padding: 13px 15px; border-radius: 12px; font-size: 13px; line-height: 1.5;
             color: var(--mut3); background: var(--note-bg); border: 1px solid var(--note-bd);
@@ -629,6 +637,13 @@
             backOvTab: "Vissza az áttekintéshez",
             tabBuy: "Csomagvásárlás",
             tabAds: "Hirdetéseim",
+            pdfDijbekero: "Díjbekérő",
+            pdfSzamla: "Számla",
+            pdfBusy: "Letöltés…",
+            paySubPdf: "A számlák és a díjbekérők a könyveléshez PDF-ben letölthetők.",
+            pdfNotAvailable: "Ez a dokumentum most nem érhető el. Kérjük, próbálja újra később, vagy írjon nekünk: info@getvjob.app.",
+            pdfUnavailable: "A dokumentum letöltése most nem sikerült. Kérjük, próbálja újra néhány perc múlva.",
+            pdfTooMany: "Rövid idő alatt túl sok letöltést kért. Kérjük, próbálja újra később.",
             tabPay: "Fizetések",
             tabCo: "Cégadatok",
             openBadge: (n) => `${n} nyitott`,
@@ -811,6 +826,13 @@
             backOvTab: "Back to the overview",
             tabBuy: "Buy a package",
             tabAds: "My job ads",
+            pdfDijbekero: "Proforma invoice",
+            pdfSzamla: "Invoice",
+            pdfBusy: "Downloading…",
+            paySubPdf: "Invoices and proforma invoices can be downloaded as PDF for your bookkeeping.",
+            pdfNotAvailable: "This document is not available right now. Please try again later, or write to us: info@getvjob.app.",
+            pdfUnavailable: "The document could not be downloaded right now. Please try again in a few minutes.",
+            pdfTooMany: "You have requested too many downloads in a short time. Please try again later.",
             tabPay: "Payments",
             tabCo: "Company details",
             openBadge: (n) => `${n} open`,
@@ -993,6 +1015,13 @@
             backOvTab: "Zurück zur Übersicht",
             tabBuy: "Paket kaufen",
             tabAds: "Meine Anzeigen",
+            pdfDijbekero: "Proforma-Rechnung",
+            pdfSzamla: "Rechnung",
+            pdfBusy: "Wird heruntergeladen…",
+            paySubPdf: "Rechnungen und Proforma-Rechnungen können für Ihre Buchhaltung als PDF heruntergeladen werden.",
+            pdfNotAvailable: "Dieses Dokument ist derzeit nicht verfügbar. Bitte versuchen Sie es später erneut oder schreiben Sie uns: info@getvjob.app.",
+            pdfUnavailable: "Das Dokument konnte derzeit nicht heruntergeladen werden. Bitte versuchen Sie es in einigen Minuten erneut.",
+            pdfTooMany: "Sie haben in kurzer Zeit zu viele Downloads angefordert. Bitte versuchen Sie es später erneut.",
             tabPay: "Zahlungen",
             tabCo: "Firmendaten",
             openBadge: (n) => `${n} offen`,
@@ -1082,6 +1111,7 @@
         busy: false,
         msg: null,           // { tipus: "hiba"|"ok", szoveg }
         bank: null,
+        pdfBusy: null,       // a most letöltés alatt álló PDF kulcsa: "<közlemény>|<típus>"
         loginEmail: "",
         eloValasztottHirdetes: new URLSearchParams(location.search).get("hirdetes")
     };
@@ -1264,6 +1294,44 @@
         if (code === "functions/invalid-argument") return L.pInvalid;
         if (code === "functions/deadline-exceeded" || code === "functions/unavailable") return L.pTimeout;
         return L.pFailed;
+    }
+
+    function pdfError(e) {
+        const m = (e && e.message) || "";
+        const code = (e && e.code) || "";
+        const L = t();
+        if (m === "TOO_MANY_DOWNLOADS" || code === "functions/resource-exhausted") return L.pdfTooMany;
+        if (m === "DOCUMENT_NOT_AVAILABLE" || code === "functions/not-found") return L.pdfNotAvailable;
+        if (code === "functions/unauthenticated") return L.pSession;
+        return L.pdfUnavailable;
+    }
+
+    /** A szervertől kapott base64 PDF mentése a böngészőben (a fájlnevet még egyszer megtisztítjuk). */
+    function savePdf(fajlnev, base64) {
+        const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+        const url = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" }));
+        const nev = String(fajlnev || "").replace(/[^A-Za-z0-9._-]+/g, "_").replace(/^[._]+/, "").slice(0, 80) || "dokumentum.pdf";
+        const a = h("a", { href: url, download: nev, style: "display:none" });
+        document.body.append(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 30000);
+    }
+
+    async function downloadPdf(kozlemeny, tipus) {
+        if (S.pdfBusy) return; // egyszerre egy letöltés
+        S.pdfBusy = `${kozlemeny}|${tipus}`;
+        setMsg(null);
+        render();
+        try {
+            const r = await call("letoltCegDokumentumot", { kozlemeny, tipus });
+            savePdf(r && r.fajlnev, r && r.pdfBase64);
+        } catch (e) {
+            if (e && e.code === "functions/unauthenticated") { S.pdfBusy = null; await signOut(auth); return; }
+            setMsg("hiba", pdfError(e));
+        }
+        S.pdfBusy = null;
+        if (S.view === "account" && S.tab === "pay") render();
     }
 
     // ───────────────────────── Nézetek ─────────────────────────
@@ -1635,7 +1703,14 @@
         if (kiemeles) sorok.push(h("div", { class: "sum-row" }, h("span", null, L.highlightLine(durationText(kiemeles.nap))), h("span", null, money(kiemeles.ar))));
         const jegyzetek = [];
         if (csomag && info.hatralevoNap > 0) jegyzetek.push(h("div", { class: "note" }, L.extendNote(info.hatralevoNap)));
-        if (csomag && kiemeles && kiemeles.nap > csomag.nap + info.hatralevoNap) jegyzetek.push(h("div", { class: "note" }, L.hlCapNote));
+        // A szerver ugyanígy számol (szamoldAktivalast): a kiemelés vége = a mostani kiemelés vége és a MA közül a későbbi + a kiemelés napjai,
+        // de a csomaggal együtt vett kiemelés nem tarthat tovább az új lejáratnál (= a mostani lejárat és a MA közül a későbbi + a csomag napjai).
+        if (csomag && kiemeles) {
+            const most = Date.now();
+            const ujLejaratMs = Math.max(kivalasztott.lejaratMs || 0, most) + csomag.nap * DAY;
+            const ujKiemelesMs = Math.max(kivalasztott.kiemelesLejaratMs || 0, most) + kiemeles.nap * DAY;
+            if (ujKiemelesMs > ujLejaratMs) jegyzetek.push(h("div", { class: "note" }, L.hlCapNote));
+        }
 
         const osszegzes = h("div", { class: "sum" },
             h("h3", null, L.summary), sorok,
@@ -1726,6 +1801,13 @@
                 const nyitott = statusz === "varakozik" || statusz === "reszleges" ? findOpenPayment(p.kozlemeny) : null;
                 const mit = describePurchase(p.vasarlasTipus, p.csomagKod, p.kiemelesKod);
                 const cim = [p.pozicio ? adTitle(p) : L.deletedAd, mit].filter(Boolean).join(" · ");
+                const pdfGomb = (tipus, felirat) => {
+                    const foglalt = S.pdfBusy === `${p.kozlemeny}|${tipus}`;
+                    return h("button", {
+                        class: "pdfbtn", type: "button", disabled: !!S.pdfBusy, "aria-label": `${felirat} PDF`,
+                        onclick: () => downloadPdf(p.kozlemeny, tipus)
+                    }, h("span", { class: "pdftag", "aria-hidden": "true" }, "PDF"), foglalt ? L.pdfBusy : felirat);
+                };
                 const metaReszek = [];
                 if (p.letrehozvaMs > 0) metaReszek.push(dateText(p.letrehozvaMs));
                 if (nyitott) metaReszek.push(L.payDeadline(dateText(nyitott.f.lejarMs)));
@@ -1737,9 +1819,13 @@
                     h("div", { class: "lrow-side" },
                         h("span", { class: "amt" }, money(p.osszeg)),
                         h("span", { class: "badge " + (PAY_BADGE[statusz] || "b-expired") }, L.payStatus[statusz] || statusz),
+                        p.szamlaPdf === true ? pdfGomb("szamla", L.pdfSzamla) : null,
+                        // A határidő után már lejártként mutatott fizetés díjbekérője hamarosan törlődik: nem kínáljuk fel.
+                        p.dijbekeroPdf === true && statusz !== "lejart" ? pdfGomb("dijbekero", L.pdfDijbekero) : null,
                         nyitott ? h("button", { class: "mbtn", type: "button", onclick: () => openBank(nyitott.f, nyitott.hirdetes) }, L.btnTransfer) : null));
             }));
-        return h("div", null, topline(L.payTitle, L.paySub), tartalom,
+        const vanPdf = lista.some((p) => p.szamlaPdf === true || p.dijbekeroPdf === true);
+        return h("div", null, topline(L.payTitle, vanPdf ? `${L.paySub} ${L.paySubPdf}` : L.paySub), msgBox(), tartalom,
             lista.length ? h("div", { class: "info-note" }, h("span", { "aria-hidden": "true" }, "ⓘ"), h("span", null, L.payNote)) : null);
     }
 
