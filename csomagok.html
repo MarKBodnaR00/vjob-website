@@ -326,6 +326,54 @@
             transform: translateY(-2px);
         }
 
+        .price-note {
+            font-size: 12.5px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.55;
+            text-align: center;
+            margin: -22px auto 36px;
+            max-width: 640px;
+        }
+
+        .prog-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+
+        .prog-card {
+            background: rgba(139,47,201,0.08);
+            border: 1px solid rgba(180,80,255,0.2);
+            border-radius: 16px;
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .prog-card.founder {
+            background: rgba(0,200,120,0.07);
+            border-color: rgba(0,200,120,0.3);
+        }
+
+        .prog-card h3 { font-size: 16px; font-weight: 800; color: #fff; line-height: 1.35; }
+        .prog-card p { font-size: 13.5px; color: rgba(255,255,255,0.68); line-height: 1.6; }
+        .prog-card .fine { font-size: 12px; color: rgba(255,255,255,0.45); }
+        .prog-card .fine a { color: #C084FC; }
+        .prog-card .prog-cta { margin-top: auto; }
+
+        .live { font-size: 13px; font-weight: 700; color: #00eda0; }
+        .slots { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; }
+        .slots[hidden], .live[hidden] { display: none; }
+        .slot { aspect-ratio: 1; border-radius: 6px; border: 1.5px dashed rgba(255,255,255,0.18); }
+        .slot.taken { border: 1.5px solid transparent; background: linear-gradient(135deg, #8B2FC9, #D946EF); }
+
+        @media (max-width: 700px) {
+            .prog-grid { grid-template-columns: 1fr; }
+            .price-note { margin-top: -26px; }
+        }
+
         .secure-note {
             text-align: center;
             font-size: 12px;
@@ -506,14 +554,14 @@
         <a class="card" href="business/?lang=hu">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3-2 4-2 7a4 4 0 0 0 8 0c0-3-2-4-2-6 0 2-1 3-2 3 0-2 0-3-2-4z"></path><path d="M9 16a3 3 0 0 0 6 0c0-1.5-1-2.5-1-4-1 1-1.5 1.5-2 1.5-.5-1.5-1-2-1-3-1.5 1-2 3-2 5.5z"></path></svg></div>
             <div class="card-name">Sürgős</div>
-            <div class="card-price">3 000 Ft</div>
+            <div class="card-price">3 900 Ft</div>
             <div class="card-duration">24 óra aktív</div>
             <div class="card-cta">Vásárlás</div>
         </a>
         <a class="card" href="business/?lang=hu">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg></div>
             <div class="card-name">Rövid</div>
-            <div class="card-price">9 000 Ft</div>
+            <div class="card-price">10 900 Ft</div>
             <div class="card-duration">7 nap aktív</div>
             <div class="card-cta">Vásárlás</div>
         </a>
@@ -521,14 +569,14 @@
             <div class="featured-badge">Legnépszerűbb</div>
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
             <div class="card-name">Közepes</div>
-            <div class="card-price">15 000 Ft</div>
+            <div class="card-price">18 900 Ft</div>
             <div class="card-duration">14 nap aktív</div>
             <div class="card-cta">Vásárlás</div>
         </a>
         <a class="card" href="business/?lang=hu">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l4 3 6-7 6 7 4-3-2 11H4L2 9z"></path></svg></div>
             <div class="card-name">Teljes</div>
-            <div class="card-price">24 000 Ft</div>
+            <div class="card-price">29 900 Ft</div>
             <div class="card-duration">30 nap aktív</div>
             <div class="card-cta">Vásárlás</div>
         </a>
@@ -536,7 +584,25 @@
 
     <div class="highlight-bar">
         <span class="highlight-label"><svg viewBox="0 0 24 24" fill="#E879F9" stroke="none"><path d="M12 2.5l1.9 5.8a2.2 2.2 0 0 0 1.4 1.4l5.8 1.9-5.8 1.9a2.2 2.2 0 0 0-1.4 1.4L12 21.5l-1.9-5.8a2.2 2.2 0 0 0-1.4-1.4L2.9 12.4l5.8-1.9a2.2 2.2 0 0 0 1.4-1.4L12 2.5z"></path><path d="M5 3v3.5M3.25 4.75h3.5" stroke="#C084FC" stroke-width="1.5" stroke-linecap="round"></path><path d="M19 16.5v3.5M17.25 18.25h3.5" stroke="#C084FC" stroke-width="1.5" stroke-linecap="round"></path></svg>Kiemelés — extra láthatóság bármelyik csomag mellé</span>
-        <span class="highlight-levels"><span class="hl-chip">+2 990 Ft <span>/ 7 nap</span></span><span class="hl-chip">+4 990 Ft <span>/ 14 nap</span></span><span class="hl-chip">+8 990 Ft <span>/ 30 nap</span></span></span>
+        <span class="highlight-levels"><span class="hl-chip">+3 490 Ft <span>/ 7 nap</span></span><span class="hl-chip">+5 990 Ft <span>/ 14 nap</span></span><span class="hl-chip">+10 990 Ft <span>/ 30 nap</span></span></span>
+    </div>
+
+    <div class="price-note">Az árak bruttó árak, a 27% ÁFÁ-t tartalmazzák. Másik uniós tagállami, közösségi adószámmal rendelkező cégnél ugyanezek nettó összege a fizetendő (fordított adózás).</div>
+
+    <div class="prog-grid">
+        <div class="prog-card founder">
+            <h3>Alapító program: az első hirdetése 30 napig ingyenes</h3>
+            <p>Az első 30 cég az első hirdetését 30 napig ingyen használhatja (az ingyenes időszak az aktiváláskor indul, adószámonként egyszer vehető igénybe). Minden új cég 15% üdvözlő kedvezményt kap az első hirdetési csomagjára (az alapítók az ingyenes időszak végétől, a többiek a regisztrációtól számított 30 napig).</p>
+            <div class="live" data-live-text="Szabad alapító helyek: {szabad} / {osszes}" data-live-full="Az alapító helyek elfogytak." hidden></div>
+            <div class="slots" data-slots hidden></div>
+            <p class="fine">A részletes feltételeket az <a href="terms.html">ÁSZF</a> tartalmazza.</p>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=hu">Belépés és aktiválás</a></div>
+        </div>
+        <div class="prog-card">
+            <h3>Hívjon meg egy céget, és kapjon kupont</h3>
+            <p>Amikor a meghívott cég megvásárolja az első hirdetési csomagját, Ön 2 db 15%-os kupont kap (3 hónapig érvényes, rendelésenként egy kedvezmény használható). A meghívó linkjét belépés után a Meghívás fülön találja.</p>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=hu">Belépés</a></div>
+        </div>
     </div>
 
     <div class="how">
@@ -572,14 +638,14 @@
         <a class="card" href="business/?lang=en">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3-2 4-2 7a4 4 0 0 0 8 0c0-3-2-4-2-6 0 2-1 3-2 3 0-2 0-3-2-4z"></path><path d="M9 16a3 3 0 0 0 6 0c0-1.5-1-2.5-1-4-1 1-1.5 1.5-2 1.5-.5-1.5-1-2-1-3-1.5 1-2 3-2 5.5z"></path></svg></div>
             <div class="card-name">Urgent</div>
-            <div class="card-price">3,000 HUF</div>
+            <div class="card-price">3,900 HUF</div>
             <div class="card-duration">Active for 24 hours</div>
             <div class="card-cta">Buy</div>
         </a>
         <a class="card" href="business/?lang=en">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg></div>
             <div class="card-name">Short</div>
-            <div class="card-price">9,000 HUF</div>
+            <div class="card-price">10,900 HUF</div>
             <div class="card-duration">Active for 7 days</div>
             <div class="card-cta">Buy</div>
         </a>
@@ -587,14 +653,14 @@
             <div class="featured-badge">Most popular</div>
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
             <div class="card-name">Medium</div>
-            <div class="card-price">15,000 HUF</div>
+            <div class="card-price">18,900 HUF</div>
             <div class="card-duration">Active for 14 days</div>
             <div class="card-cta">Buy</div>
         </a>
         <a class="card" href="business/?lang=en">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l4 3 6-7 6 7 4-3-2 11H4L2 9z"></path></svg></div>
             <div class="card-name">Full</div>
-            <div class="card-price">24,000 HUF</div>
+            <div class="card-price">29,900 HUF</div>
             <div class="card-duration">Active for 30 days</div>
             <div class="card-cta">Buy</div>
         </a>
@@ -602,7 +668,25 @@
 
     <div class="highlight-bar">
         <span class="highlight-label"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"></path></svg>Highlight — extra visibility for any package</span>
-        <span class="highlight-levels"><span class="hl-chip">+2,990 HUF <span>/ 7 days</span></span><span class="hl-chip">+4,990 HUF <span>/ 14 days</span></span><span class="hl-chip">+8,990 HUF <span>/ 30 days</span></span></span>
+        <span class="highlight-levels"><span class="hl-chip">+3,490 HUF <span>/ 7 days</span></span><span class="hl-chip">+5,990 HUF <span>/ 14 days</span></span><span class="hl-chip">+10,990 HUF <span>/ 30 days</span></span></span>
+    </div>
+
+    <div class="price-note">Prices are gross prices and include 27% VAT. For companies from another EU member state with an EU VAT number, the same amount net of VAT is payable (reverse charge).</div>
+
+    <div class="prog-grid">
+        <div class="prog-card founder">
+            <h3>Founder programme: your first ad is free for 30 days</h3>
+            <p>The first 30 companies can use their first ad free of charge for 30 days (the free period starts at activation and can be used once per tax number). Every new company gets a 15% welcome discount on its first advertising package (founders from the end of the free period, everyone else for 30 days from registration).</p>
+            <div class="live" data-live-text="Founder places left: {szabad} / {osszes}" data-live-full="All founder places are taken." hidden></div>
+            <div class="slots" data-slots hidden></div>
+            <p class="fine">The detailed conditions are in the <a href="terms.html">Terms</a></p>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=en">Sign in and activate</a></div>
+        </div>
+        <div class="prog-card">
+            <h3>Invite a company and get coupons</h3>
+            <p>When the invited company buys its first advertising package, you get 2 coupons worth 15% each (valid for 3 months, one discount per order). You can find your invite link in the Invite tab after signing in.</p>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=en">Sign in</a></div>
+        </div>
     </div>
 
     <div class="how">
@@ -638,14 +722,14 @@
         <a class="card" href="business/?lang=de">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3-2 4-2 7a4 4 0 0 0 8 0c0-3-2-4-2-6 0 2-1 3-2 3 0-2 0-3-2-4z"></path><path d="M9 16a3 3 0 0 0 6 0c0-1.5-1-2.5-1-4-1 1-1.5 1.5-2 1.5-.5-1.5-1-2-1-3-1.5 1-2 3-2 5.5z"></path></svg></div>
             <div class="card-name">Dringend</div>
-            <div class="card-price">3.000 Ft</div>
+            <div class="card-price">3.900 Ft</div>
             <div class="card-duration">24 Stunden aktiv</div>
             <div class="card-cta">Kaufen</div>
         </a>
         <a class="card" href="business/?lang=de">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg></div>
             <div class="card-name">Kurz</div>
-            <div class="card-price">9.000 Ft</div>
+            <div class="card-price">10.900 Ft</div>
             <div class="card-duration">7 Tage aktiv</div>
             <div class="card-cta">Kaufen</div>
         </a>
@@ -653,14 +737,14 @@
             <div class="featured-badge">Am beliebtesten</div>
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
             <div class="card-name">Mittel</div>
-            <div class="card-price">15.000 Ft</div>
+            <div class="card-price">18.900 Ft</div>
             <div class="card-duration">14 Tage aktiv</div>
             <div class="card-cta">Kaufen</div>
         </a>
         <a class="card" href="business/?lang=de">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l4 3 6-7 6 7 4-3-2 11H4L2 9z"></path></svg></div>
             <div class="card-name">Voll</div>
-            <div class="card-price">24.000 Ft</div>
+            <div class="card-price">29.900 Ft</div>
             <div class="card-duration">30 Tage aktiv</div>
             <div class="card-cta">Kaufen</div>
         </a>
@@ -668,7 +752,25 @@
 
     <div class="highlight-bar">
         <span class="highlight-label"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"></path></svg>Hervorhebung — zusätzliche Sichtbarkeit für jedes Paket</span>
-        <span class="highlight-levels"><span class="hl-chip">+2.990 Ft <span>/ 7 Tage</span></span><span class="hl-chip">+4.990 Ft <span>/ 14 Tage</span></span><span class="hl-chip">+8.990 Ft <span>/ 30 Tage</span></span></span>
+        <span class="highlight-levels"><span class="hl-chip">+3.490 Ft <span>/ 7 Tage</span></span><span class="hl-chip">+5.990 Ft <span>/ 14 Tage</span></span><span class="hl-chip">+10.990 Ft <span>/ 30 Tage</span></span></span>
+    </div>
+
+    <div class="price-note">Die Preise sind Bruttopreise und enthalten 27 % MwSt. Für Unternehmen aus einem anderen EU-Mitgliedstaat mit EU-Umsatzsteuer-ID ist derselbe Betrag netto zu zahlen (Reverse-Charge-Verfahren).</div>
+
+    <div class="prog-grid">
+        <div class="prog-card founder">
+            <h3>Gründerprogramm: Ihre erste Anzeige ist 30 Tage kostenlos</h3>
+            <p>Die ersten 30 Unternehmen können ihre erste Anzeige 30 Tage lang kostenlos nutzen (der kostenlose Zeitraum beginnt mit der Aktivierung und ist pro Steuernummer einmal nutzbar). Jedes neue Unternehmen erhält 15 % Willkommensrabatt auf sein erstes Anzeigenpaket (Gründer ab Ende des kostenlosen Zeitraums, alle anderen 30 Tage ab der Registrierung).</p>
+            <div class="live" data-live-text="Freie Gründerplätze: {szabad} / {osszes}" data-live-full="Alle Gründerplätze sind vergeben." hidden></div>
+            <div class="slots" data-slots hidden></div>
+            <p class="fine">Die genauen Bedingungen stehen in den <a href="terms.html">AGB</a></p>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=de">Anmelden und aktivieren</a></div>
+        </div>
+        <div class="prog-card">
+            <h3>Laden Sie ein Unternehmen ein und erhalten Sie Gutscheine</h3>
+            <p>Sobald das eingeladene Unternehmen sein erstes Anzeigenpaket kauft, erhalten Sie 2 Gutscheine über je 15 % (3 Monate gültig, ein Rabatt pro Bestellung). Ihren Einladungslink finden Sie nach der Anmeldung im Tab „Einladen“.</p>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=de">Anmelden</a></div>
+        </div>
     </div>
 
     <div class="how">
@@ -716,6 +818,39 @@
         });
         if (gomb) setLang(lang, gomb);
     })();
+</script>
+
+<script type="module">
+    // Élő, valós számláló az alapító helyekről. Ha nem érhető el, a kártya számok nélkül, a statikus szöveggel marad.
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-functions.js";
+    try {
+        const app = initializeApp({
+            apiKey: "AIzaSyDsQ_0jpIyuy04SGQCn8VMEx3-0qzZxQdc",
+            authDomain: "vjob-549b5.firebaseapp.com",
+            projectId: "vjob-549b5",
+            appId: "1:593534123411:web:33c5f42d4d1a35bc6dfc66"
+        });
+        const fn = httpsCallable(getFunctions(app, "europe-west1"), "nyilvanosSzamlalok", { timeout: 15000 });
+        const r = (await fn()).data;
+        const a = r && r.alapito;
+        if (a && Number.isFinite(a.osszes) && a.osszes > 0) {
+            document.querySelectorAll(".live").forEach((el) => {
+                el.textContent = a.szabad > 0
+                    ? el.dataset.liveText.replace("{szabad}", a.szabad).replace("{osszes}", a.osszes)
+                    : el.dataset.liveFull;
+                el.hidden = false;
+            });
+            document.querySelectorAll("[data-slots]").forEach((el) => {
+                for (let i = 0; i < a.osszes; i++) {
+                    const n = document.createElement("span");
+                    n.className = "slot" + (i < a.foglalt ? " taken" : "");
+                    el.append(n);
+                }
+                el.hidden = false;
+            });
+        }
+    } catch (e) { /* a számláló nélkül is teljes az oldal */ }
 </script>
 
 </body>

@@ -399,6 +399,91 @@
         .worker-card p.small { font-size: 13px; color: var(--mut2); }
         .worker-card .btn { max-width: 260px; margin-left: auto; margin-right: auto; display: block; }
 
+        /* ── Program: ár-részletezés, kedvezmény, alapító kártya, értesítő sávok, meghívás, nyilvános számlálók ── */
+        .pkg .pn { font-size: 11px; color: var(--mut2); margin-top: 2px; }
+        .sum-sub { font-size: 11.5px; font-weight: 700; letter-spacing: 0.4px; color: var(--mut2); text-transform: uppercase; margin: 12px 0 8px; }
+        .sum-row.neg, .sum-row.neg span:last-child { color: var(--ok); font-weight: 700; }
+        .sum-row.muted { color: var(--mut3); }
+        .sum-div { border-top: 1px dashed var(--line3); margin: 12px 0 10px; }
+        .sum-load { font-size: 12.5px; color: var(--mut2); margin: 8px 0 0; }
+        .disc-toggle {
+            display: flex; gap: 10px; align-items: flex-start; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer;
+            border: 1px solid var(--okb-bd); background: var(--okb-bg); border-radius: 12px; padding: 11px 12px; margin: 0 0 14px;
+        }
+        .disc-toggle.off { border-color: var(--line3); background: transparent; }
+        .disc-toggle b { display: block; color: var(--h); font-size: 13.5px; margin-bottom: 2px; }
+        .disc-toggle .s { display: block; font-size: 12px; color: var(--mut3); line-height: 1.45; }
+        .cb {
+            width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; border-radius: 5px; border: 2px solid var(--mut2);
+            display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; color: transparent;
+        }
+        .disc-toggle.on .cb { background: var(--ok); border-color: var(--ok); color: #04210F; }
+        html[data-theme="light"] .disc-toggle.on .cb { color: #fff; }
+
+        .founder { border: 1px solid var(--okb-bd); background: var(--okb-bg); border-radius: 16px; padding: 18px 20px; margin: 0 0 20px; }
+        .founder .sec { color: var(--ok); margin-bottom: 8px; }
+        .founder h3 { font-size: 17px; color: var(--h); margin-bottom: 6px; }
+        .founder p { font-size: 13.5px; color: var(--mut3); line-height: 1.55; }
+        .founder .btn { margin-top: 14px; max-width: 320px; }
+        .founder-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .founder-actions .btn { width: auto; flex: 1 1 160px; }
+        .founder .error-box { margin-top: 12px; }
+
+        .banners { display: grid; gap: 12px; margin-bottom: 24px; }
+        .banner { display: flex; gap: 14px; align-items: flex-start; border: 1px solid var(--cardb2); background: var(--card2); border-radius: 16px; padding: 16px 18px; }
+        .banner.ok { border-color: var(--okb-bd); background: var(--okb-bg); }
+        .banner.warn { border-color: var(--warn-bd); background: var(--wb-bg); }
+        .banner.pro { border-color: var(--note-bd); background: var(--note-bg); }
+        .bi { width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; background: rgba(192,132,252,0.16); color: var(--acc); }
+        .banner.ok .bi { background: var(--ok-bg); color: var(--ok); }
+        .banner.warn .bi { background: var(--ic-wbg); color: var(--ic-w); }
+        .bb { min-width: 0; flex: 1; }
+        .bt { font-size: 14.5px; font-weight: 800; color: var(--h); overflow-wrap: anywhere; }
+        .bm { font-size: 13px; color: var(--mut3); line-height: 1.5; margin-top: 3px; }
+        .bar { height: 8px; border-radius: 6px; background: var(--line2); overflow: hidden; margin-top: 12px; }
+        .bar i { display: block; height: 100%; border-radius: 6px; background: linear-gradient(90deg, #8B2FC9, #D946EF); }
+        .banner.ok .bar i { background: linear-gradient(90deg, #0DAA70, #00EDA0); }
+        .banner.warn .bar i { background: linear-gradient(90deg, #ffb020, #ff7a5c); }
+        .bx { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+        .ok-box + .tiles, .error-box + .tiles { margin-top: 16px; }
+        .todo-btns { display: flex; gap: 8px; flex-wrap: wrap; flex-shrink: 0; }
+        .tab-badge.ok { background: var(--ok-bg); color: var(--ok); }
+
+        .tiles.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .tile.static { cursor: default; }
+        .tile.static::after { content: none; }
+        .tile.static:hover { border-color: var(--cardb); }
+        .inv-link { margin-bottom: 22px; }
+        .inv-steps { margin-top: 0; }
+        .invite-card { display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 18px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--note-bd); background: var(--note-bg); }
+        .invite-card b { display: block; color: var(--h); font-size: 14px; margin-bottom: 2px; }
+        .invite-card span { font-size: 12.5px; color: var(--mut3); line-height: 1.45; }
+        .info-note a { color: var(--acc); }
+
+        .ref-box { max-width: 430px; margin: 24px auto 0; border: 1px solid var(--note-bd); background: var(--note-bg); border-radius: 20px; padding: 22px 24px; }
+        .ref-box + .center-card { margin-top: 16px; }
+        .ref-box b { color: var(--h); font-size: 16px; }
+        .ref-box p { font-size: 13.5px; color: var(--mut3); line-height: 1.55; margin-top: 6px; }
+        .ref-box .kv { margin-top: 12px; }
+        .pub-card { max-width: 430px; margin: 18px auto 0; border: 1px solid var(--cardb3); background: var(--card3); border-radius: 20px; padding: 22px 24px; }
+        .pub-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
+        .pub-t { text-align: center; border: 1px solid var(--line2); background: var(--surf); border-radius: 12px; padding: 12px 6px; min-width: 0; }
+        .pv { font-size: 24px; font-weight: 800; color: var(--h); line-height: 1.1; }
+        .pk { font-size: 11.5px; color: var(--mut2); margin-top: 4px; overflow-wrap: anywhere; }
+        .pf-h { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; font-weight: 700; color: var(--h); margin-bottom: 10px; }
+        .pf-n { color: var(--price); font-weight: 800; }
+        .slots { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; }
+        .slot { aspect-ratio: 1; border-radius: 6px; border: 1.5px dashed var(--line3); }
+        .slot.taken { border: 1.5px solid transparent; background: linear-gradient(135deg, #8B2FC9, #D946EF); }
+        .pf-t { font-size: 12.5px; color: var(--mut3); line-height: 1.5; margin-top: 12px; }
+        @media (max-width: 600px) {
+            .ref-box, .pub-card { padding: 18px 16px; }
+            .banner { padding: 14px; gap: 12px; }
+            .pv { font-size: 20px; }
+            .tiles.three .tv { font-size: 22px; }
+            .tiles.three .tk { padding-right: 0; }
+        }
+
         .footer { text-align: center; padding: 22px 24px 26px; border-top: 1px solid var(--line); color: var(--foot); font-size: 12px; line-height: 1.8; }
         .footer b { color: var(--foot-b); font-weight: 700; }
         .footer a { color: var(--foot); }
@@ -573,7 +658,7 @@
             reqBusy: "Fizetési adatok kérése…",
             extendNote: (n) => `A hirdetés hátralévő ${n} napja hozzáadódik az új csomag idejéhez.`,
             hlCapNote: "A csomaggal együtt vásárolt kiemelés legfeljebb a hirdetés lejáratáig tart.",
-            fine: "Bruttó ár, az alkalmazandó ÁFÁ-t tartalmazza. A befizetés beérkezése után a hirdetés automatikusan aktiválódik. Aktiválás után a csomag nem téríthető vissza.",
+            fine: "Az „Összesen” a fizetendő összeg. A befizetés beérkezése után a hirdetés automatikusan aktiválódik. Aktiválás után a csomag nem téríthető vissza.",
             missingTitle: "Hiányzó számlázási adatok",
             missingText: (list) => `A díjbekérő kiállításához a következő adatok szükségesek: ${list}. Kérjük, egészítse ki őket az alkalmazásban a cégprofilnál, majd frissítse ezt az oldalt.`,
             fields: { companyName: "cégnév", taxId: "adószám", szamlazasiIranyitoszam: "számlázási irányítószám", szamlazasiVaros: "számlázási város", szamlazasiCim: "számlázási cím", contactEmail: "kapcsolattartó e-mail cím" },
@@ -704,7 +789,95 @@
             terms: "Általános szerződési feltételek",
             privacy: "Adatkezelési tájékoztató",
             packages: "Csomagok és árak",
-            packNames: { surgos: "Sürgős", rovid: "Rövid", kozepes: "Közepes", teljes: "Teljes" }
+            packNames: { surgos: "Sürgős", rovid: "Rövid", kozepes: "Közepes", teljes: "Teljes" },
+            // ── Program: ár-részletezés, kedvezmények, alapító program, meghívás ──
+            net: "Nettó",
+            vatLine: (p) => `ÁFA (${p}%)`,
+            vatReverse: "ÁFA (0%, fordított adózás)",
+            itemsGross: "Tételek (bruttó)",
+            itemsNet: "Tételek (nettó)",
+            grossSuffix: "bruttó",
+            netSuffix: "nettó",
+            listPrice: (net) => (net ? "Listaár (nettó)" : "Listaár (bruttó)"),
+            euNote: "Másik uniós tagállami cégként a csomag nettó ára ugyanannyi, mint a magyar cégeké. Az ÁFÁ-t a fordított adózás szabályai szerint Ön számolja el.",
+            previewWait: "Az összeg számítása…",
+            previewFail: "Az összeg részletezése most nem tölthető be. A fizetendő összeget a díjbekérő tartalmazza; kedvezmény nélkül indul a fizetés.",
+            previewRetry: "Újrapróbálás",
+            discWelcome: "Üdvözlő kedvezmény",
+            discCoupon: "Meghívási kupon",
+            discLine: (nev, sz) => `${nev} – ${sz}%`,
+            discToggleTitle: (nev, sz) => `${nev}: −${sz}% felhasználása`,
+            discExpires: (d) => `Lejárat: ${d}`,
+            discFirstPack: "az első hirdetési csomagra érvényes",
+            discMore: (n) => `még ${n} további kedvezménye van`,
+            discOffHint: "Ha kikapcsolja, a kedvezmény megmarad a lejáratáig.",
+            discBadge: (sz) => `−${sz}% kedvezmény`,
+            pDiscGone: "A kedvezmény időközben már nem érhető el (lejárt, vagy másik fizetéshez van lefoglalva). Az oldal frissült: kérjük, nézze át az új összeget, és kérje újra a fizetési adatokat.",
+            pFounderUsed: "Az ingyenes időszakot ez a cég (adószám) már igénybe vette.",
+            pFounderFull: "Az alapító helyek sajnos elfogytak. A hirdetését a szokásos áron aktiválhatja.",
+            pFounderAd: "Ingyenesen csak olyan hirdetés aktiválható, amely még sosem volt aktív, és nem kapott fizetett időt.",
+            pFounderCo: "Az alapító program céges fiókoknak szól.",
+            pTooFast: "Rövid idő alatt túl sok kérés érkezett. Kérjük, próbálja újra néhány perc múlva.",
+            founderTitle: (nap) => `Ingyenes aktiválás (${nap} nap)`,
+            founderLeft: (szabad, osszes) => `Szabad alapító helyek: ${szabad} / ${osszes}`,
+            founderText: (nap) => `Alapító cégként az első hirdetését ${nap} napig ingyen használhatja. Az ingyenes időszak az aktiváláskor indul. Utána a hirdetés hosszabbítása fizetős. Egy adószámmal egyszer vehető igénybe.`,
+            founderBtn: "Ingyenes aktiválás",
+            founderConfirm: (nap) => `Az ingyenes időszak az aktiválás pillanatában elindul, és ${nap} napig tart. Biztosan aktiválja most ezt a hirdetést?`,
+            founderConfirmBtn: "Igen, aktiválom",
+            founderCancel: "Mégsem",
+            founderBusy: "Aktiválás…",
+            founderDone: (d) => `A hirdetése aktív. Az ingyenes időszak vége: ${d}`,
+            bnFreeTitle: (n) => `Ingyenes időszak: még ${n} nap`,
+            bnFreeMeta: (vege, sz, udv) => `Az ingyenes időszak vége: ${vege} Utána a hosszabbítás fizetős.${udv ? ` Az első csomagjára ${sz}% üdvözlő kedvezményt kap, lejárata: ${udv}` : ""}`,
+            bnWelcomeTitle: (sz, n) => `${sz}% üdvözlő kedvezmény: még ${n} nap`,
+            bnWelcomeMeta: (d) => `Az első hirdetési csomagja árából a vásárlásnál felajánljuk. Lejárat: ${d}`,
+            bnCouponTitle: (db, sz) => `${db} db ${sz}%-os meghívási kuponja van`,
+            bnCouponMeta: (d, n) => `A legkorábbi kupon lejárata: ${d} (még ${n} nap). Hosszabbításra és kiemelésre is felhasználható.`,
+            bnCouponSoon: (db) => `Használja fel a következő vásárlásánál, és hívjon meg gyorsan még egy céget: minden sikeres meghívásért újabb ${db} kupont kap.`,
+            bnInviteTitle: "Hívjon meg egy céget, és kapjon kupont",
+            bnInviteText: (db, sz) => `Amikor a meghívott cég megvásárolja az első hirdetési csomagját, Ön ${db} db ${sz}%-os kupont kap.`,
+            bnFounderTitle: (nap) => `Alapító program: az első hirdetése ${nap} napig ingyenes`,
+            bnFounderTextAd: "Aktiválja most az első hirdetését.",
+            bnFounderTextNoAd: "Hozza létre az első hirdetését a VJob alkalmazásban, utána itt ingyen aktiválhatja.",
+            btnInvite: "Meghívás",
+            btnShop: "Vásárlás",
+            btnActivateFree: "Ingyenes aktiválás",
+            tabInv: "Meghívás",
+            invTitle: "Meghívás",
+            invSub: (db, sz) => `Hívjon meg másik céget a VJobra. Amikor a meghívott cég megvásárolja az első hirdetési csomagját, Ön ${db} db ${sz}%-os kupont kap.`,
+            invLinkKey: "Meghívó link",
+            invCodeKey: "Meghívó kód",
+            invHowTitle: "Hogyan működik?",
+            invSteps: (db, sz, ho) => [
+                ["Elküldi a linket", "Küldje el a meghívó linkjét a meghívni kívánt cégnek."],
+                ["A cég regisztrál", "A cég a VJob alkalmazásban hozza létre a céges fiókját, és megadja az Ön meghívó kódját."],
+                ["Ön kupont kap", `Amikor a meghívott cég megvásárolja az első hirdetési csomagját, Ön ${db} db ${sz}%-os kupont kap, ${ho} hónapig érvényeset.`]
+            ],
+            invRules: "Egy cég csak egyszer lehet meghívott (adószám alapján), saját magát nem hívhatja meg. A kupon a rendelés végösszegéből vonódik le; rendelésenként egy kedvezmény használható, a kedvezmények nem vonhatók össze. A kupon hosszabbításra és kiemelésre is felhasználható. A részletes feltételeket az ÁSZF tartalmazza:",
+            invStatInvited: "Meghívott cég",
+            invStatPaid: "Fizető meghívott",
+            invStatCoupons: "Felhasználható kupon",
+            invCouponsTitle: "Az Ön kuponjai",
+            invCouponsEmpty: "Még nincs kuponja. Az első kupont akkor kapja meg, amikor egy meghívott cég megvásárolja az első hirdetési csomagját.",
+            invCouponName: (sz) => `${sz}% kedvezmény`,
+            invCouponFrom: (nev) => `meghívott cég: ${nev}`,
+            invCouponState: { elerheto: "Felhasználható", foglalt: "Nyitott fizetésen", felhasznalva: "Felhasználva" },
+            invListTitle: "Meghívott cégek",
+            invListEmpty: "Még senki nem regisztrált az Ön kódjával.",
+            invListState: { regisztralt: "Regisztrált", fizetett: "Fizetett" },
+            invLoadErr: "A meghívási adatok most nem tölthetők be. Kérjük, próbálja meg később, vagy frissítse az oldalt.",
+            bDiscount: (sz) => `Kedvezmény (−${sz}%)`,
+            pubTitle: "A VJob közössége",
+            pubCompanies: "Cég",
+            pubWorkers: "Munkavállaló",
+            pubAds: "Aktív hirdetés",
+            pubFounderTitle: "Alapító helyek",
+            pubFounderOpen: (szabad, osszes, nap) => `Szabad helyek: ${szabad} / ${osszes}. Az első ${osszes} cég az első hirdetését ${nap} napig ingyen használhatja.`,
+            pubFounderFull: "Az alapító helyek elfogytak.",
+            pubFounderAria: (f, o) => `${o} alapító helyből ${f} foglalt`,
+            refTitle: "Meghívót kapott a VJobra",
+            refText: "Egy cég meghívta Önt. A céges regisztráció a VJob alkalmazásban történik: a fiók létrehozásakor adja meg ezt a kódot a „Meghívó kód (nem kötelező)” mezőben.",
+            refLogin: "Ha már van fiókja, jelentkezzen be lent."
         },
         en: {
             pageTitle: "VJob Business – Company account",
@@ -762,7 +935,7 @@
             reqBusy: "Getting payment details…",
             extendNote: (n) => `The ad's remaining ${n} ${n === 1 ? "day is" : "days are"} added to the duration of the new package.`,
             hlCapNote: "A highlight purchased together with a package lasts at most until the ad expires.",
-            fine: "Gross price, including VAT where applicable. The ad is activated automatically once the payment has arrived. Non-refundable after activation.",
+            fine: "The total is the amount to be paid. The ad is activated automatically once the payment has arrived. Non-refundable after activation.",
             missingTitle: "Missing billing details",
             missingText: (list) => `The following details are needed to issue the proforma invoice: ${list}. Please complete them in the app, in the company profile, and then refresh this page.`,
             fields: { companyName: "company name", taxId: "tax number", szamlazasiIranyitoszam: "billing postal code", szamlazasiVaros: "billing city", szamlazasiCim: "billing address", contactEmail: "contact email address" },
@@ -893,7 +1066,95 @@
             terms: "Terms and conditions",
             privacy: "Privacy policy",
             packages: "Packages and prices",
-            packNames: { surgos: "Urgent", rovid: "Short", kozepes: "Medium", teljes: "Full" }
+            packNames: { surgos: "Urgent", rovid: "Short", kozepes: "Medium", teljes: "Full" },
+            // ── Program: price breakdown, discounts, founder programme, invitations ──
+            net: "Net",
+            vatLine: (p) => `VAT (${p}%)`,
+            vatReverse: "VAT (0%, reverse charge)",
+            itemsGross: "Items (gross)",
+            itemsNet: "Items (net)",
+            grossSuffix: "gross",
+            netSuffix: "net",
+            listPrice: (net) => (net ? "List price (net)" : "List price (gross)"),
+            euNote: "As a company from another EU member state, the net price of a package is the same as for Hungarian companies. VAT is accounted for by you under the reverse-charge rules.",
+            previewWait: "Calculating the amount…",
+            previewFail: "The price breakdown cannot be loaded right now. The amount payable is shown on the proforma invoice; the payment will start without a discount.",
+            previewRetry: "Try again",
+            discWelcome: "Welcome discount",
+            discCoupon: "Referral coupon",
+            discLine: (nev, sz) => `${nev} – ${sz}%`,
+            discToggleTitle: (nev, sz) => `Use the ${nev.toLowerCase()}: −${sz}%`,
+            discExpires: (d) => `Expires: ${d}`,
+            discFirstPack: "valid for your first advertising package",
+            discMore: (n) => `${n} more ${n === 1 ? "discount is" : "discounts are"} available`,
+            discOffHint: "If you switch it off, the discount stays available until it expires.",
+            discBadge: (sz) => `−${sz}% discount`,
+            pDiscGone: "The discount is no longer available (it has expired or is reserved for another payment). The page has been refreshed: please check the new amount and request the payment details again.",
+            pFounderUsed: "This company (tax number) has already used the free period.",
+            pFounderFull: "Unfortunately the founder places are all taken. You can activate your ad at the regular price.",
+            pFounderAd: "Only an ad that has never been active and has never received paid time can be activated for free.",
+            pFounderCo: "The founder programme is for company accounts.",
+            pTooFast: "Too many requests in a short time. Please try again in a few minutes.",
+            founderTitle: (nap) => `Free activation (${nap} days)`,
+            founderLeft: (szabad, osszes) => `Founder places left: ${szabad} / ${osszes}`,
+            founderText: (nap) => `As a founder company you can use your first ad free of charge for ${nap} days. The free period starts at activation. After that, extending the ad is paid. It can be used once per tax number.`,
+            founderBtn: "Activate for free",
+            founderConfirm: (nap) => `The free period starts the moment you activate and lasts ${nap} days. Do you really want to activate this ad now?`,
+            founderConfirmBtn: "Yes, activate",
+            founderCancel: "Cancel",
+            founderBusy: "Activating…",
+            founderDone: (d) => `Your ad is now active. The free period ends on ${d}.`,
+            bnFreeTitle: (n) => `Free period: ${n} ${n === 1 ? "day" : "days"} left`,
+            bnFreeMeta: (vege, sz, udv) => `The free period ends on ${vege}. After that, extending the ad is paid.${udv ? ` You get a ${sz}% welcome discount on your first package, valid until ${udv}.` : ""}`,
+            bnWelcomeTitle: (sz, n) => `${sz}% welcome discount: ${n} ${n === 1 ? "day" : "days"} left`,
+            bnWelcomeMeta: (d) => `It is offered at checkout on the price of your first advertising package. Expires: ${d}.`,
+            bnCouponTitle: (db, sz) => `You have ${db} referral ${db === 1 ? "coupon" : "coupons"} (${sz}%)`,
+            bnCouponMeta: (d, n) => `The earliest coupon expires on ${d} (${n} ${n === 1 ? "day" : "days"} left). It can be used for extensions and highlights too.`,
+            bnCouponSoon: (db) => `Use it on your next purchase, and quickly invite another company: you get ${db} new coupons for every successful invitation.`,
+            bnInviteTitle: "Invite a company and get coupons",
+            bnInviteText: (db, sz) => `When the invited company buys its first advertising package, you get ${db} coupons worth ${sz}% each.`,
+            bnFounderTitle: (nap) => `Founder programme: your first ad is free for ${nap} days`,
+            bnFounderTextAd: "Activate your first ad now.",
+            bnFounderTextNoAd: "Create your first ad in the VJob app, then activate it here for free.",
+            btnInvite: "Invite",
+            btnShop: "Buy",
+            btnActivateFree: "Activate for free",
+            tabInv: "Invite",
+            invTitle: "Invite a company",
+            invSub: (db, sz) => `Invite another company to VJob. When the invited company buys its first advertising package, you get ${db} coupons worth ${sz}% each.`,
+            invLinkKey: "Invite link",
+            invCodeKey: "Invite code",
+            invHowTitle: "How does it work?",
+            invSteps: (db, sz, ho) => [
+                ["Send the link", "Send your invite link to the company you want to invite."],
+                ["The company registers", "The company creates its company account in the VJob app and enters your invite code."],
+                ["You get coupons", `When the invited company buys its first advertising package, you get ${db} coupons worth ${sz}% each, valid for ${ho} months.`]
+            ],
+            invRules: "A company can only be invited once (by tax number), and you cannot invite yourself. The coupon is deducted from the order total; one discount can be used per order and discounts cannot be combined. A coupon can also be used for extensions and highlights. The detailed conditions are in the Terms and Conditions:",
+            invStatInvited: "Invited companies",
+            invStatPaid: "Paying invitees",
+            invStatCoupons: "Coupons available",
+            invCouponsTitle: "Your coupons",
+            invCouponsEmpty: "You have no coupons yet. You get the first coupon when an invited company buys its first advertising package.",
+            invCouponName: (sz) => `${sz}% discount`,
+            invCouponFrom: (nev) => `invited company: ${nev}`,
+            invCouponState: { elerheto: "Available", foglalt: "On an open payment", felhasznalva: "Used" },
+            invListTitle: "Invited companies",
+            invListEmpty: "Nobody has registered with your code yet.",
+            invListState: { regisztralt: "Registered", fizetett: "Paid" },
+            invLoadErr: "The invitation data cannot be loaded right now. Please try again later or refresh the page.",
+            bDiscount: (sz) => `Discount (−${sz}%)`,
+            pubTitle: "The VJob community",
+            pubCompanies: "Companies",
+            pubWorkers: "Job seekers",
+            pubAds: "Active listings",
+            pubFounderTitle: "Founder places",
+            pubFounderOpen: (szabad, osszes, nap) => `Places left: ${szabad} / ${osszes}. The first ${osszes} companies can use their first ad free for ${nap} days.`,
+            pubFounderFull: "All founder places are taken.",
+            pubFounderAria: (f, o) => `${f} of ${o} founder places taken`,
+            refTitle: "You have been invited to VJob",
+            refText: "A company has invited you. Company registration is done in the VJob app: when creating your account, enter this code in the “Invite code (optional)” field.",
+            refLogin: "If you already have an account, log in below."
         },
         de: {
             pageTitle: "VJob Business – Firmenkonto",
@@ -951,7 +1212,7 @@
             reqBusy: "Zahlungsdaten werden angefordert…",
             extendNote: (n) => `Die verbleibenden ${n} ${n === 1 ? "Tag" : "Tage"} der Anzeige werden zur Laufzeit des neuen Pakets addiert.`,
             hlCapNote: "Eine zusammen mit einem Paket gekaufte Hervorhebung gilt höchstens bis zum Ablauf der Anzeige.",
-            fine: "Bruttopreis, einschließlich Mehrwertsteuer, soweit anwendbar. Nach Zahlungseingang wird die Anzeige automatisch aktiviert. Nach der Aktivierung nicht erstattungsfähig.",
+            fine: "Die Gesamtsumme ist der zu zahlende Betrag. Nach Zahlungseingang wird die Anzeige automatisch aktiviert. Nach der Aktivierung nicht erstattungsfähig.",
             missingTitle: "Fehlende Rechnungsdaten",
             missingText: (list) => `Für die Ausstellung der Proforma-Rechnung werden folgende Angaben benötigt: ${list}. Bitte ergänzen Sie diese in der App im Unternehmensprofil und aktualisieren Sie dann diese Seite.`,
             fields: { companyName: "Firmenname", taxId: "Steuernummer", szamlazasiIranyitoszam: "Postleitzahl der Rechnungsadresse", szamlazasiVaros: "Ort der Rechnungsadresse", szamlazasiCim: "Rechnungsadresse", contactEmail: "Kontakt-E-Mail-Adresse" },
@@ -1082,7 +1343,95 @@
             terms: "Allgemeine Geschäftsbedingungen",
             privacy: "Datenschutzerklärung",
             packages: "Pakete und Preise",
-            packNames: { surgos: "Dringend", rovid: "Kurz", kozepes: "Mittel", teljes: "Voll" }
+            packNames: { surgos: "Dringend", rovid: "Kurz", kozepes: "Mittel", teljes: "Voll" },
+            // ── Programm: Preisaufschlüsselung, Rabatte, Gründerprogramm, Einladungen ──
+            net: "Netto",
+            vatLine: (p) => `MwSt. (${p}%)`,
+            vatReverse: "MwSt. (0%, Reverse-Charge-Verfahren)",
+            itemsGross: "Positionen (brutto)",
+            itemsNet: "Positionen (netto)",
+            grossSuffix: "brutto",
+            netSuffix: "netto",
+            listPrice: (net) => (net ? "Listenpreis (netto)" : "Listenpreis (brutto)"),
+            euNote: "Als Unternehmen aus einem anderen EU-Mitgliedstaat zahlen Sie für ein Paket denselben Nettopreis wie ungarische Unternehmen. Die Mehrwertsteuer rechnen Sie nach den Regeln des Reverse-Charge-Verfahrens selbst ab.",
+            previewWait: "Betrag wird berechnet…",
+            previewFail: "Die Aufschlüsselung des Betrags kann derzeit nicht geladen werden. Der zu zahlende Betrag steht auf der Proforma-Rechnung; die Zahlung wird ohne Rabatt gestartet.",
+            previewRetry: "Erneut versuchen",
+            discWelcome: "Willkommensrabatt",
+            discCoupon: "Einladungs-Gutschein",
+            discLine: (nev, sz) => `${nev} – ${sz}%`,
+            discToggleTitle: (nev, sz) => `${nev} verwenden: −${sz}%`,
+            discExpires: (d) => `Gültig bis: ${d}`,
+            discFirstPack: "gilt für das erste Anzeigenpaket",
+            discMore: (n) => `${n} weitere${n === 1 ? "r Rabatt ist" : " Rabatte sind"} verfügbar`,
+            discOffHint: "Wenn Sie ihn ausschalten, bleibt der Rabatt bis zum Ablauf erhalten.",
+            discBadge: (sz) => `−${sz}% Rabatt`,
+            pDiscGone: "Der Rabatt ist inzwischen nicht mehr verfügbar (abgelaufen oder für eine andere Zahlung reserviert). Die Seite wurde aktualisiert: Bitte prüfen Sie den neuen Betrag und fordern Sie die Zahlungsdaten erneut an.",
+            pFounderUsed: "Dieses Unternehmen (Steuernummer) hat den kostenlosen Zeitraum bereits in Anspruch genommen.",
+            pFounderFull: "Die Gründerplätze sind leider vergeben. Sie können Ihre Anzeige zum regulären Preis aktivieren.",
+            pFounderAd: "Kostenlos kann nur eine Anzeige aktiviert werden, die noch nie aktiv war und noch keine bezahlte Laufzeit erhalten hat.",
+            pFounderCo: "Das Gründerprogramm richtet sich an Unternehmenskonten.",
+            pTooFast: "Zu viele Anfragen in kurzer Zeit. Bitte versuchen Sie es in einigen Minuten erneut.",
+            founderTitle: (nap) => `Kostenlose Aktivierung (${nap} Tage)`,
+            founderLeft: (szabad, osszes) => `Freie Gründerplätze: ${szabad} / ${osszes}`,
+            founderText: (nap) => `Als Gründerunternehmen können Sie Ihre erste Anzeige ${nap} Tage lang kostenlos nutzen. Der kostenlose Zeitraum beginnt mit der Aktivierung. Danach ist die Verlängerung der Anzeige kostenpflichtig. Pro Steuernummer nur einmal nutzbar.`,
+            founderBtn: "Kostenlos aktivieren",
+            founderConfirm: (nap) => `Der kostenlose Zeitraum beginnt im Moment der Aktivierung und dauert ${nap} Tage. Möchten Sie diese Anzeige jetzt wirklich aktivieren?`,
+            founderConfirmBtn: "Ja, aktivieren",
+            founderCancel: "Abbrechen",
+            founderBusy: "Wird aktiviert…",
+            founderDone: (d) => `Ihre Anzeige ist aktiv. Der kostenlose Zeitraum endet am ${d}.`,
+            bnFreeTitle: (n) => `Kostenloser Zeitraum: noch ${n} ${n === 1 ? "Tag" : "Tage"}`,
+            bnFreeMeta: (vege, sz, udv) => `Der kostenlose Zeitraum endet am ${vege}. Danach ist die Verlängerung kostenpflichtig.${udv ? ` Für Ihr erstes Paket erhalten Sie ${sz}% Willkommensrabatt, gültig bis ${udv}.` : ""}`,
+            bnWelcomeTitle: (sz, n) => `${sz}% Willkommensrabatt: noch ${n} ${n === 1 ? "Tag" : "Tage"}`,
+            bnWelcomeMeta: (d) => `Er wird beim Kauf auf den Preis Ihres ersten Anzeigenpakets angeboten. Gültig bis: ${d}.`,
+            bnCouponTitle: (db, sz) => `Sie haben ${db} ${db === 1 ? "Einladungs-Gutschein" : "Einladungs-Gutscheine"} (${sz}%)`,
+            bnCouponMeta: (d, n) => `Der früheste Gutschein läuft am ${d} ab (noch ${n} ${n === 1 ? "Tag" : "Tage"}). Er kann auch für Verlängerungen und Hervorhebungen verwendet werden.`,
+            bnCouponSoon: (db) => `Nutzen Sie ihn bei Ihrem nächsten Kauf und laden Sie schnell noch ein Unternehmen ein: Für jede erfolgreiche Einladung erhalten Sie ${db} neue Gutscheine.`,
+            bnInviteTitle: "Laden Sie ein Unternehmen ein und erhalten Sie Gutscheine",
+            bnInviteText: (db, sz) => `Sobald das eingeladene Unternehmen sein erstes Anzeigenpaket kauft, erhalten Sie ${db} Gutscheine über je ${sz}%.`,
+            bnFounderTitle: (nap) => `Gründerprogramm: Ihre erste Anzeige ist ${nap} Tage kostenlos`,
+            bnFounderTextAd: "Aktivieren Sie jetzt Ihre erste Anzeige.",
+            bnFounderTextNoAd: "Erstellen Sie Ihre erste Anzeige in der VJob-App und aktivieren Sie sie danach hier kostenlos.",
+            btnInvite: "Einladen",
+            btnShop: "Kaufen",
+            btnActivateFree: "Kostenlos aktivieren",
+            tabInv: "Einladen",
+            invTitle: "Unternehmen einladen",
+            invSub: (db, sz) => `Laden Sie ein anderes Unternehmen zu VJob ein. Sobald das eingeladene Unternehmen sein erstes Anzeigenpaket kauft, erhalten Sie ${db} Gutscheine über je ${sz}%.`,
+            invLinkKey: "Einladungslink",
+            invCodeKey: "Einladungscode",
+            invHowTitle: "So funktioniert es",
+            invSteps: (db, sz, ho) => [
+                ["Link senden", "Senden Sie Ihren Einladungslink an das Unternehmen, das Sie einladen möchten."],
+                ["Das Unternehmen registriert sich", "Das Unternehmen erstellt sein Unternehmenskonto in der VJob-App und gibt Ihren Einladungscode ein."],
+                ["Sie erhalten Gutscheine", `Sobald das eingeladene Unternehmen sein erstes Anzeigenpaket kauft, erhalten Sie ${db} Gutscheine über je ${sz}%, gültig für ${ho} Monate.`]
+            ],
+            invRules: "Ein Unternehmen kann nur einmal eingeladen werden (nach Steuernummer); Sie können sich nicht selbst einladen. Der Gutschein wird vom Bestellbetrag abgezogen; pro Bestellung kann ein Rabatt genutzt werden, Rabatte lassen sich nicht kombinieren. Ein Gutschein kann auch für Verlängerungen und Hervorhebungen verwendet werden. Die genauen Bedingungen stehen in den Allgemeinen Geschäftsbedingungen:",
+            invStatInvited: "Eingeladene Unternehmen",
+            invStatPaid: "Zahlende Eingeladene",
+            invStatCoupons: "Verfügbare Gutscheine",
+            invCouponsTitle: "Ihre Gutscheine",
+            invCouponsEmpty: "Sie haben noch keine Gutscheine. Den ersten erhalten Sie, wenn ein eingeladenes Unternehmen sein erstes Anzeigenpaket kauft.",
+            invCouponName: (sz) => `${sz}% Rabatt`,
+            invCouponFrom: (nev) => `eingeladenes Unternehmen: ${nev}`,
+            invCouponState: { elerheto: "Verfügbar", foglalt: "Bei offener Zahlung", felhasznalva: "Eingelöst" },
+            invListTitle: "Eingeladene Unternehmen",
+            invListEmpty: "Mit Ihrem Code hat sich noch niemand registriert.",
+            invListState: { regisztralt: "Registriert", fizetett: "Bezahlt" },
+            invLoadErr: "Die Einladungsdaten können derzeit nicht geladen werden. Bitte versuchen Sie es später erneut oder aktualisieren Sie die Seite.",
+            bDiscount: (sz) => `Rabatt (−${sz}%)`,
+            pubTitle: "Die VJob-Community",
+            pubCompanies: "Unternehmen",
+            pubWorkers: "Arbeitnehmer",
+            pubAds: "Aktive Anzeigen",
+            pubFounderTitle: "Gründerplätze",
+            pubFounderOpen: (szabad, osszes, nap) => `Freie Plätze: ${szabad} / ${osszes}. Die ersten ${osszes} Unternehmen können ihre erste Anzeige ${nap} Tage kostenlos nutzen.`,
+            pubFounderFull: "Alle Gründerplätze sind vergeben.",
+            pubFounderAria: (f, o) => `${f} von ${o} Gründerplätzen vergeben`,
+            refTitle: "Sie wurden zu VJob eingeladen",
+            refText: "Ein Unternehmen hat Sie eingeladen. Die Registrierung als Unternehmen erfolgt in der VJob-App: Geben Sie diesen Code beim Erstellen Ihres Kontos im Feld „Einladungscode (optional)“ ein.",
+            refLogin: "Wenn Sie bereits ein Konto haben, melden Sie sich unten an."
         }
     };
 
@@ -1113,6 +1462,19 @@
         bank: null,
         pdfBusy: null,       // a most letöltés alatt álló PDF kulcsa: "<közlemény>|<típus>"
         loginEmail: "",
+        prog: null,           // a programAdatok válasza (Meghívás fül, sávok, alapító kártya); null, ha nem tölthető be
+        pub: null,            // a nyilvanosSzamlalok válasza (belépő oldal, bejelentkezés nélkül)
+        pubTried: false,
+        preview: null,        // az arElonezet válasza a kiválasztott vásárláshoz
+        previewKey: "",
+        previewBusy: false,
+        previewHiba: false,
+        useDiscount: true,    // a felkínált kedvezményt felhasználja-e (alapból igen)
+        fordAdozas: null,     // az utolsó árelőnézet szerint uniós, fordított adózású-e a cég (null: még nem tudjuk)
+        founderConfirm: null, // annak a hirdetésnek az azonosítója, amelynek az ingyenes aktiválását megerősítésre várjuk
+        founderBusy: false,
+        founderErr: null,
+        refKod: refKodBeolvas(),
         eloValasztottHirdetes: new URLSearchParams(location.search).get("hirdetes")
     };
     // Az e-mailben kapott hivatkozás (?hirdetes=…) egyből a vásárláshoz visz.
@@ -1175,14 +1537,13 @@
     function adInfo(x) {
         const now = Date.now();
         const nyitottak = x.nyitottFizetesek || [];
-        const csomagNyitott = nyitottak.some((f) => f.vasarlasTipus !== "kiemeles");
-        const kiemelesNyitott = nyitottak.some((f) => f.vasarlasTipus === "kiemeles" || f.kiemelesKod);
+        const vanNyitott = nyitottak.length > 0; // egy hirdetésre egyszerre egy nyitott fizetés lehet (csomag vagy kiemelés)
         const hatralevoNap = x.lejaratMs > now ? Math.ceil((x.lejaratMs - now) / DAY) : 0;
         return {
             nyitottak,
             hatralevoNap,
-            csomagElerheto: !csomagNyitott,
-            kiemelesElerheto: x.aktiv === true && !kiemelesNyitott
+            csomagElerheto: !vanNyitott,
+            kiemelesElerheto: x.aktiv === true && !vanNyitott
         };
     }
 
@@ -1205,8 +1566,8 @@
         if (S.mode === "kiemeles" && !S.hl) S.hl = (d.arak.kiemelesek[0] || {}).kod || "";
     }
 
-    const TABS = ["ov", "buy", "ads", "pay", "co"];
-    const TAB_LABEL = { ov: "tabOv", buy: "tabBuy", ads: "tabAds", pay: "tabPay", co: "tabCo" };
+    const TABS = ["ov", "buy", "ads", "pay", "inv", "co"];
+    const TAB_LABEL = { ov: "tabOv", buy: "tabBuy", ads: "tabAds", pay: "tabPay", inv: "tabInv", co: "tabCo" };
     const SOON_DAYS = 3; // ennyi napon belül lejáró hirdetést "hamarosan lejár"-nak jelzünk
 
     /** Hány nyitott (még kifizetésre váró, le nem járt) fizetése van a cégnek. */
@@ -1286,13 +1647,20 @@
             PAYMENT_ALREADY_OPEN: L.pAlreadyOpen,
             TOO_MANY_OPEN_PAYMENTS: L.pTooMany,
             TEMPORARY_ERROR_TRY_AGAIN: L.pTemp,
-            PAYMENT_START_FAILED: L.pFailed
+            PAYMENT_START_FAILED: L.pFailed,
+            DISCOUNT_NOT_AVAILABLE: L.pDiscGone,
+            FOUNDER_ALREADY_USED: L.pFounderUsed,
+            FOUNDER_SLOTS_FULL: L.pFounderFull,
+            FOUNDER_AD_NOT_ELIGIBLE: L.pFounderAd,
+            FOUNDER_COMPANY_ONLY: L.pFounderCo,
+            TOO_MANY_REQUESTS: L.pTooFast
         };
         if (map[m]) return map[m];
         if (code === "functions/unauthenticated") return L.pSession;
         if (code === "functions/not-found") return L.pNotFound;
         if (code === "functions/invalid-argument") return L.pInvalid;
         if (code === "functions/deadline-exceeded" || code === "functions/unavailable") return L.pTimeout;
+        if (code === "functions/resource-exhausted") return L.pTooFast;
         return L.pFailed;
     }
 
@@ -1332,6 +1700,276 @@
         }
         S.pdfBusy = null;
         if (S.view === "account" && S.tab === "pay") render();
+    }
+
+    // ───────────────────────── Program: kedvezmények, alapító program, meghívás ─────────────────────────
+    // A számokat és szabályokat a szerver adja (programAdatok, arElonezet); itt csak megjelenítés van. A PROG_ALAP csak tartalék,
+    // amíg a szerver válasza nem érkezett meg.
+    const PROG_ALAP = { alapitoHelyek: 30, ingyenesNap: 30, udvozloSzazalek: 15, udvozloNap: 30, kuponDb: 2, kuponSzazalek: 15, kuponHonap: 3 };
+
+    function pb() {
+        return { ...PROG_ALAP, ...((S.prog && S.prog.beallitasok) || {}) };
+    }
+
+    /** A meghívó linkből (?ref=KOD) érkező kód: csak betű, szám és kötőjel, rövidítve; a weboldal csak megjeleníti. */
+    function refKodBeolvas() {
+        const nyers = new URLSearchParams(location.search).get("ref") || "";
+        const kod = nyers.toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 24);
+        return kod.length >= 4 ? kod : "";
+    }
+
+    /** Uniós, fordított adózású cég-e (tipp az ár-kártyákhoz az árelőnézet megérkezéséig; a végleges választ a szerver adja). */
+    function reverseHint() {
+        const c = (S.data && S.data.cegAdatok) || {};
+        return !!c.kozossegiAdoszam && !!c.orszag && c.orszag !== "Magyarország";
+    }
+    function isReverse() { return S.fordAdozas === null ? reverseHint() : S.fordAdozas; }
+    /** Az uniós cég ugyanannyi NETTÓT fizet, mint a magyar (a szerver is így számol: bruttó / 1,27, kerekítve). */
+    const netOf = (bruttoHu) => Math.round(bruttoHu / 1.27);
+    const listShown = (bruttoHu) => (isReverse() ? netOf(bruttoHu) : bruttoHu);
+
+    /** Az alapító program ingyenes aktiválására jogosult-e ez a hirdetés (még sosem volt aktív, nincs nyitott fizetése). */
+    function founderEligibleAd(x) {
+        const al = S.prog && S.prog.alapito;
+        return !!al && al.jogosult === true && al.aktivalva !== true && !x.aktiv && !(x.lejaratMs > 0) && adInfo(x).nyitottak.length === 0;
+    }
+
+    function couponCount() {
+        const now = Date.now();
+        return S.prog && !S.prog.munkavallalo ? (S.prog.kuponok || []).filter((k) => k.allapot === "elerheto" && k.lejarMs > now).length : 0;
+    }
+
+    // ── Árelőnézet (a szerver számolja: nettó / ÁFA / összesen és a felhasználható kedvezmény) ──
+    /** A kiválasztott vásárlás paraméterei (az árelőnézet és a fizetés kérésének közös alapja); null, ha nincs mit venni. */
+    function purchaseParams() {
+        const x = ad();
+        if (!x) return null;
+        const info = adInfo(x);
+        if (S.mode === "csomag" ? !info.csomagElerheto : !info.kiemelesElerheto) return null;
+        const csomagKod = S.mode === "csomag" ? S.pack : null;
+        const kiemelesKod = S.hl || null;
+        if (!csomagKod && !kiemelesKod) return null;
+        return { hirdetesId: x.id, csomagKod, kiemelesKod };
+    }
+
+    const previewKeyOf = (p) => (p ? `${p.hirdetesId}|${p.csomagKod || ""}|${p.kiemelesKod || ""}` : "");
+
+    /** A kiválasztott vásárláshoz tartozó, megérkezett árelőnézet (vagy null). */
+    function currentPreview() {
+        const p = purchaseParams();
+        return p && S.previewKey === previewKeyOf(p) && S.preview ? S.preview : null;
+    }
+
+    /** Elindítja az árelőnézetet, ha a kiválasztás megváltozott; a válasz megérkezésekor újrarajzol. A régi válasz nem írja felül az újat. */
+    async function ensurePreview(force) {
+        const p = purchaseParams();
+        const key = previewKeyOf(p);
+        if (!p) { S.preview = null; S.previewKey = ""; S.previewBusy = false; S.previewHiba = false; return; }
+        if (!force && S.previewKey === key) return;
+        S.previewKey = key; S.preview = null; S.previewBusy = true; S.previewHiba = false;
+        try {
+            const r = await call("arElonezet", p);
+            if (S.previewKey !== key) return;
+            S.preview = r;
+            if (r && typeof r.fordAdozas === "boolean") S.fordAdozas = r.fordAdozas;
+        } catch (e) {
+            if (S.previewKey !== key) return;
+            if (e && e.code === "functions/unauthenticated") { await signOut(auth); return; }
+            S.previewHiba = true;
+        }
+        S.previewBusy = false;
+        if (S.view === "account" && S.tab === "buy") render();
+    }
+
+    // ── Alapító program: ingyenes aktiválás ──
+    function founderCard(x, info) {
+        const L = t();
+        const al = S.prog && S.prog.alapito;
+        if (!al || !founderEligibleAd(x)) return null;
+        const b = pb();
+        const megerosit = S.founderConfirm === x.id;
+        return h("div", { class: "founder" },
+            h("div", { class: "sec" }, L.founderLeft(al.szabad, al.osszes)),
+            h("h3", null, L.founderTitle(b.ingyenesNap)),
+            h("p", null, megerosit ? L.founderConfirm(b.ingyenesNap) : L.founderText(b.ingyenesNap)),
+            S.founderErr ? h("div", { class: "error-box", role: "alert" }, S.founderErr) : null,
+            megerosit
+                ? h("div", { class: "founder-actions" },
+                    h("button", { class: "btn", type: "button", disabled: S.founderBusy, onclick: () => activateFounder(x) }, S.founderBusy ? L.founderBusy : L.founderConfirmBtn),
+                    h("button", { class: "btn secondary", type: "button", disabled: S.founderBusy, onclick: () => { S.founderConfirm = null; render(); } }, L.founderCancel))
+                : h("button", { class: "btn", type: "button", onclick: () => { S.founderErr = null; S.founderConfirm = x.id; render(); } }, L.founderBtn));
+    }
+
+    async function activateFounder(x) {
+        if (S.founderBusy) return;
+        S.founderBusy = true; S.founderErr = null; render();
+        try {
+            const r = await call("alapitoAktival", { hirdetesId: x.id });
+            S.founderBusy = false; S.founderConfirm = null;
+            await refreshQuietly();
+            S.tab = "ov";
+            setMsg("ok", t().founderDone(dateText(r.lejaratMs)));
+            show("account");
+        } catch (e) {
+            S.founderBusy = false; S.founderConfirm = null;
+            if (e && e.code === "functions/unauthenticated") { await signOut(auth); return; }
+            S.founderErr = payError(e);
+            const m = (e && e.message) || "";
+            if (m.startsWith("FOUNDER_")) await refreshQuietly();
+            render();
+        }
+    }
+
+    // ── Áttekintés: visszaszámláló sávok ──
+    function programBanners() {
+        const L = t();
+        const pr = S.prog;
+        if (!pr || pr.munkavallalo) return null;
+        const now = Date.now();
+        const b = pb();
+        const d = S.data;
+        const lista = [];
+        const gomb = (felirat, fn, elsodleges) => h("button", { class: "mbtn" + (elsodleges ? " primary" : ""), type: "button", onclick: fn }, felirat);
+        const sav = (arany) => h("div", { class: "bar", role: "presentation" }, h("i", { style: `width:${Math.round(Math.min(1, Math.max(0, arany)) * 100)}%` }));
+        const banner = (osztaly, jel, cim, meta, savEl, gombok) => h("div", { class: `banner ${osztaly}` },
+            h("div", { class: "bi", "aria-hidden": "true" }, jel),
+            h("div", { class: "bb" },
+                h("div", { class: "bt" }, cim),
+                meta ? h("div", { class: "bm" }, meta) : null,
+                savEl || null,
+                gombok && gombok.length ? h("div", { class: "bx" }, gombok) : null));
+
+        const al = pr.alapito;
+        const u = pr.udvozlo;
+        const szabadIdoBanner = !!al && al.aktivalva === true && al.ingyenesVegeMs > now;
+        if (szabadIdoBanner) {
+            const nap = daysUntil(al.ingyenesVegeMs);
+            lista.push(banner("ok", "★", L.bnFreeTitle(nap),
+                L.bnFreeMeta(dateText(al.ingyenesVegeMs), b.udvozloSzazalek, u && u.lejarMs > now ? dateText(u.lejarMs) : ""),
+                sav((al.ingyenesVegeMs - now) / (b.ingyenesNap * DAY)),
+                [gomb(L.btnShop, () => goTab("buy"))]));
+        }
+
+        // Az üdvözlő kedvezmény külön sávja csak akkor kell, ha az ingyenes időszak sávja nem említi már.
+        if (!szabadIdoBanner && u && u.elerheto === true && u.lejarMs > now) {
+            const nap = daysUntil(u.lejarMs);
+            lista.push(banner(nap <= 7 ? "warn" : "pro", "%", L.bnWelcomeTitle(u.szazalek, nap), L.bnWelcomeMeta(dateText(u.lejarMs)),
+                sav((u.lejarMs - now) / (b.udvozloNap * DAY)),
+                [gomb(L.btnShop, () => goTab("buy"), true)]));
+        }
+
+        const kuponok = (pr.kuponok || []).filter((k) => k.allapot === "elerheto" && k.lejarMs > now).sort((x, y) => x.lejarMs - y.lejarMs);
+        if (kuponok.length) {
+            const elso = kuponok[0];
+            const nap = daysUntil(elso.lejarMs);
+            const surgos = nap <= 14;
+            lista.push(banner(surgos ? "warn" : "pro", "%", L.bnCouponTitle(kuponok.length, elso.szazalek),
+                L.bnCouponMeta(dateText(elso.lejarMs), nap) + (surgos ? ` ${L.bnCouponSoon(b.kuponDb)}` : ""),
+                sav((elso.lejarMs - now) / (b.kuponHonap * 30.4 * DAY)),
+                [gomb(L.btnShop, () => goTab("buy"), true), gomb(L.btnInvite, () => goTab("inv"))]));
+        }
+
+        if (al && al.jogosult === true && al.aktivalva !== true) {
+            const elsoHirdetes = d.hirdetesek.find((x) => founderEligibleAd(x));
+            lista.push(banner("ok", "★", L.bnFounderTitle(b.ingyenesNap),
+                `${L.founderLeft(al.szabad, al.osszes)}. ${elsoHirdetes ? L.bnFounderTextAd : L.bnFounderTextNoAd}`, null,
+                elsoHirdetes ? [gomb(L.btnActivateFree, () => goBuy(elsoHirdetes, "csomag"), true)] : null));
+        }
+
+        if (!kuponok.length && pr.meghivo) {
+            lista.push(banner("pro", "✉", L.bnInviteTitle, L.bnInviteText(b.kuponDb, b.kuponSzazalek), null, [gomb(L.btnInvite, () => goTab("inv"))]));
+        }
+        return lista.length ? h("div", { class: "banners" }, lista) : null;
+    }
+
+    // ── Meghívás fül ──
+    function tabInv() {
+        const L = t();
+        const pr = S.prog;
+        const b = pb();
+        if (!pr || !pr.meghivo) {
+            return h("div", null, topline(L.invTitle, L.invSub(b.kuponDb, b.kuponSzazalek)), h("div", { class: "error-box", role: "alert" }, L.invLoadErr));
+        }
+        const now = Date.now();
+        const kuponok = pr.kuponok || [];
+        const meghivottak = pr.meghivottak || [];
+        const fizetett = meghivottak.filter((m) => m.allapot === "fizetett").length;
+        const elerheto = kuponok.filter((k) => k.allapot === "elerheto" && k.lejarMs > now).length;
+        const statCsempe = (kulcs, ertek, szin) => h("div", { class: "tile static" }, h("div", { class: "tk" }, kulcs), h("div", { class: "tv" + (szin ? ` ${szin}` : "") }, String(ertek)));
+
+        const lepesek = L.invSteps(b.kuponDb, b.kuponSzazalek, b.kuponHonap);
+        const folyamat = h("div", { class: "flow inv-steps" }, lepesek.map((l, i) => h("div", { class: "flow-st" + (i === lepesek.length - 1 ? " last" : "") },
+            h("div", { class: "flow-num" }, String(i + 1)),
+            h("div", null, h("b", null, l[0]), h("div", { class: "d" }, l[1])))));
+
+        const kuponSorok = kuponok.map((k) => h("div", { class: "lrow" },
+            h("div", { class: "lrow-main" },
+                h("div", { class: "lrow-v" }, L.invCouponName(k.szazalek)),
+                h("div", { class: "lrow-meta" }, [L.discExpires(dateText(k.lejarMs)), k.meghivottCegNev ? L.invCouponFrom(k.meghivottCegNev) : null].filter(Boolean).join(" · "))),
+            h("div", { class: "lrow-side" },
+                h("span", { class: "badge " + (k.allapot === "elerheto" ? "b-active" : k.allapot === "foglalt" ? "b-pending" : "b-expired") }, L.invCouponState[k.allapot] || k.allapot))));
+
+        const meghivottSorok = meghivottak.map((m) => h("div", { class: "lrow" },
+            h("div", { class: "lrow-main" },
+                h("div", { class: "lrow-v" }, m.cegNev || "—"),
+                m.ms > 0 ? h("div", { class: "lrow-meta" }, dateText(m.ms)) : null),
+            h("div", { class: "lrow-side" },
+                h("span", { class: "badge " + (m.allapot === "fizetett" ? "b-active" : "b-pending") }, L.invListState[m.allapot] || m.allapot))));
+
+        return h("div", null,
+            topline(L.invTitle, L.invSub(b.kuponDb, b.kuponSzazalek)),
+            h("div", { class: "kv inv-link" }, kv(L.invLinkKey, pr.meghivo.link, { masol: true }), kv(L.invCodeKey, pr.meghivo.kod, { masol: true, nagy: true })),
+            h("div", { class: "sec" }, L.invHowTitle),
+            folyamat,
+            h("div", { class: "tiles three" },
+                statCsempe(L.invStatInvited, meghivottak.length, ""),
+                statCsempe(L.invStatPaid, fizetett, "g"),
+                statCsempe(L.invStatCoupons, elerheto, "p")),
+            h("div", { class: "sec" }, L.invCouponsTitle),
+            kuponSorok.length ? h("div", { class: "card" }, kuponSorok) : emptyBox(L.invCouponsTitle, L.invCouponsEmpty),
+            h("div", { class: "sec", style: "margin-top:26px" }, L.invListTitle),
+            meghivottSorok.length ? h("div", { class: "card" }, meghivottSorok) : emptyBox(L.invListTitle, L.invListEmpty),
+            h("div", { class: "info-note" }, h("span", { "aria-hidden": "true" }, "ⓘ"),
+                h("span", null, `${L.invRules} `, h("a", { href: "../terms.html" }, L.terms))));
+    }
+
+    // ── Belépés oldal: meghívó kártya (?ref=) és élő, valós számlálók ──
+    function refBanner() {
+        const L = t();
+        if (!S.refKod) return null;
+        return h("div", { class: "ref-box" },
+            h("b", null, L.refTitle),
+            h("p", null, L.refText),
+            h("div", { class: "kv" }, kv(L.invCodeKey, S.refKod, { masol: true, nagy: true })),
+            h("p", { class: "fine" }, L.refLogin));
+    }
+
+    /** A nyilvános számlálók egyszer töltődnek be oldalbetöltésenként; ha nem érhetők el, a kártya egyszerűen nem jelenik meg. */
+    async function loadPub() {
+        if (S.pubTried) return;
+        S.pubTried = true;
+        try { S.pub = await call("nyilvanosSzamlalok"); } catch (e) { S.pub = null; }
+        if (S.view === "login") render();
+    }
+
+    function pubCard() {
+        const L = t();
+        const p = S.pub;
+        if (!p) return null;
+        const fmt = (n) => new Intl.NumberFormat(LOCALE[S.lang]).format(Number(n) || 0);
+        const a = p.alapito || { osszes: 0, foglalt: 0, szabad: 0 };
+        const nap = pb().ingyenesNap;
+        const negyzetek = [];
+        for (let i = 0; i < a.osszes; i++) negyzetek.push(h("span", { class: "slot" + (i < a.foglalt ? " taken" : "") }));
+        return h("div", { class: "pub-card" },
+            h("div", { class: "sec" }, L.pubTitle),
+            h("div", { class: "pub-tiles" },
+                [[L.pubCompanies, p.cegek], [L.pubWorkers, p.munkavallalok], [L.pubAds, p.aktivHirdetesek]].map(([k, v]) =>
+                    h("div", { class: "pub-t" }, h("div", { class: "pv" }, fmt(v)), h("div", { class: "pk" }, k)))),
+            a.osszes > 0 ? h("div", { class: "pub-founder" },
+                h("div", { class: "pf-h" }, h("span", null, L.pubFounderTitle), h("span", { class: "pf-n" }, `${fmt(a.foglalt)} / ${fmt(a.osszes)}`)),
+                h("div", { class: "slots", role: "img", "aria-label": L.pubFounderAria(a.foglalt, a.osszes) }, negyzetek),
+                h("div", { class: "pf-t" }, a.szabad > 0 ? L.pubFounderOpen(a.szabad, a.osszes, nap) : L.pubFounderFull)) : null);
     }
 
     // ───────────────────────── Nézetek ─────────────────────────
@@ -1392,12 +2030,14 @@
         nav.replaceChildren();
         if (!lathato) return;
         const nyitott = openPaymentCount();
+        const kuponDb = couponCount();
         nav.append(h("div", { class: "nav-inner", role: "tablist", "aria-label": L.tabsLabel },
             TABS.map((k) => h("button", {
                 class: "tab" + (S.tab === k ? " active" : ""), type: "button", role: "tab",
                 "aria-selected": S.tab === k ? "true" : "false", "data-tab": k,
                 onclick: () => goTab(k)
-            }, L[TAB_LABEL[k]], k === "pay" && nyitott > 0 ? h("span", { class: "tab-badge" }, L.openBadge(nyitott)) : null))));
+            }, L[TAB_LABEL[k]], k === "pay" && nyitott > 0 ? h("span", { class: "tab-badge" }, L.openBadge(nyitott)) : null,
+                k === "inv" && kuponDb > 0 ? h("span", { class: "tab-badge ok" }, String(kuponDb)) : null))));
         // Keskeny képernyőn a fülsor görgethető: az aktív fület a látható sávba hozzuk.
         const sor = nav.firstChild;
         const aktiv = sor && sor.querySelector(".tab.active");
@@ -1454,7 +2094,10 @@
                 render();
             }
         });
-        return h("div", { class: "center-card" }, h("h1", null, L.loginTitle), h("p", { class: "sub" }, L.loginSub), form);
+        return h("div", null,
+            refBanner(),
+            h("div", { class: "center-card" }, h("h1", null, L.loginTitle), h("p", { class: "sub" }, L.loginSub), form),
+            pubCard());
     }
 
     function viewForgot() {
@@ -1499,7 +2142,7 @@
     }
 
     function viewAccount() {
-        const fulek = { ov: tabOv, buy: tabBuy, ads: tabAds, pay: tabPay, co: tabCo };
+        const fulek = { ov: tabOv, buy: tabBuy, ads: tabAds, pay: tabPay, inv: tabInv, co: tabCo };
         return h("div", { role: "tabpanel", id: "panel" }, (fulek[S.tab] || tabOv)());
     }
 
@@ -1599,8 +2242,10 @@
                 sorok.push(sor("+", "r", L.todoExpired(e.x.pozicio || "—"), `${L.adExpiredOn(dateText(e.x.lejaratMs))} · ${L.todoReappear}`,
                     e.info.csomagElerheto ? gombEl(L.btnExtend, () => goBuy(e.x, "csomag"), true) : null));
             } else if (e.allapot === "inactive") {
+                const ingyen = founderEligibleAd(e.x) ? gombEl(L.btnActivateFree, () => goBuy(e.x, "csomag"), true) : null;
+                const vasarol = e.info.csomagElerheto ? gombEl(L.btnBuyPack, () => goBuy(e.x, "csomag"), !ingyen) : null;
                 sorok.push(sor("+", "r", L.todoInactive(e.x.pozicio || "—"), L.todoInactiveMeta,
-                    e.info.csomagElerheto ? gombEl(L.btnBuyPack, () => goBuy(e.x, "csomag"), true) : null));
+                    ingyen || vasarol ? h("div", { class: "todo-btns" }, ingyen, vasarol) : null));
             }
         });
         // A szüneteltetett hirdetés csak tájékoztatás (nincs teendő vele a weben), ezért a lista végére kerül.
@@ -1615,7 +2260,9 @@
 
         return h("div", null,
             topline(L.ovTitle(d.cegNev || ""), L.ovSub),
+            msgBox(),
             csempek,
+            programBanners(),
             h("div", { class: "sec" }, L.todoTitle),
             teendok);
     }
@@ -1675,18 +2322,18 @@
             const csomagGrid = h("div", { class: "grid4" }, d.arak.csomagok.map((c) => h("button", {
                 class: "pkg" + (S.pack === c.kod ? " sel" : ""), type: "button", "aria-pressed": S.pack === c.kod ? "true" : "false",
                 onclick: () => { S.pack = c.kod; setMsg(null); render(); }
-            }, h("div", { class: "n" }, packName(c.kod)), h("div", { class: "d" }, durationText(c.nap)), h("div", { class: "pr" }, money(c.ar)))));
+            }, h("div", { class: "n" }, packName(c.kod)), h("div", { class: "d" }, durationText(c.nap)), h("div", { class: "pr" }, money(listShown(c.ar))), h("div", { class: "pn" }, isReverse() ? L.netSuffix : L.grossSuffix))));
             const hlOpciok = [];
             if (S.mode === "csomag") {
                 hlOpciok.push(h("button", {
                     class: "pkg" + (S.hl === "" ? " sel" : ""), type: "button", "aria-pressed": S.hl === "" ? "true" : "false",
                     onclick: () => { S.hl = ""; setMsg(null); render(); }
-                }, h("div", { class: "n" }, L.none), h("div", { class: "d" }, " "), h("div", { class: "pr" }, money(0))));
+                }, h("div", { class: "n" }, L.none), h("div", { class: "d" }, " "), h("div", { class: "pr" }, money(0)), h("div", { class: "pn" }, "\u00a0")));
             }
             d.arak.kiemelesek.forEach((k) => hlOpciok.push(h("button", {
                 class: "pkg" + (S.hl === k.kod ? " sel" : ""), type: "button", "aria-pressed": S.hl === k.kod ? "true" : "false",
                 onclick: () => { S.hl = k.kod; setMsg(null); render(); }
-            }, h("div", { class: "n" }, durationText(k.nap)), h("div", { class: "d" }, " "), h("div", { class: "pr" }, money(k.ar)))));
+            }, h("div", { class: "n" }, durationText(k.nap)), h("div", { class: "d" }, " "), h("div", { class: "pr" }, money(listShown(k.ar))), h("div", { class: "pn" }, isReverse() ? L.netSuffix : L.grossSuffix))));
             vasarlasResz = h("div", null,
                 S.mode === "csomag" ? [h("div", { class: "step" }, L.step2), csomagGrid] : null,
                 h("div", { class: "step" }, S.mode === "csomag" ? L.step3 : L.step2hl),
@@ -1696,11 +2343,49 @@
         // Összegzés
         const csomag = lehetoseg.length > 0 && S.mode === "csomag" ? ar(d.arak.csomagok, S.pack) : null;
         const kiemeles = lehetoseg.length > 0 && S.hl ? ar(d.arak.kiemelesek, S.hl) : null;
-        const lehetVenni = lehetoseg.length > 0 && hianyzik.length === 0 && (S.mode === "csomag" ? !!csomag : !!kiemeles);
-        const osszeg = (csomag ? csomag.ar : 0) + (kiemeles ? kiemeles.ar : 0);
+        ensurePreview();
+        const pv = currentPreview();
+        const kedv = pv && pv.kedvezmeny && pv.arKedvezmennyel ? pv.kedvezmeny : null;
+        const hasznal = !!kedv && S.useDiscount;
+        const A = pv ? (hasznal ? pv.arKedvezmennyel : pv.ar) : null;
+        // A szerver figyelmeztetése (pl. a külföldi cég uniós adószáma még nincs jóváhagyva): ilyenkor a fizetés nem indítható.
+        const figy = pv && pv.figyelmeztetes && pv.figyelmeztetes !== "BILLING_DETAILS_MISSING" ? pv.figyelmeztetes : null;
+        const lehetVenni = lehetoseg.length > 0 && hianyzik.length === 0 && (S.mode === "csomag" ? !!csomag : !!kiemeles) && !S.previewBusy && !figy;
+        const cimkek = [];
+        if (csomag) cimkek.push(L.packageLine(packName(csomag.kod), durationText(csomag.nap)));
+        if (kiemeles) cimkek.push(L.highlightLine(durationText(kiemeles.nap)));
+        const sor = (cimke, ertek, osztaly) => h("div", { class: "sum-row" + (osztaly ? ` ${osztaly}` : "") }, h("span", null, cimke), h("span", null, ertek));
         const sorok = [h("div", { class: "sum-row" }, h("span", { class: "sum-ad" }, [kivalasztott.pozicio || "—", kivalasztott.helyszin ? ` – ${kivalasztott.helyszin}` : ""].join("")))];
-        if (csomag) sorok.push(h("div", { class: "sum-row" }, h("span", null, L.packageLine(packName(csomag.kod), durationText(csomag.nap))), h("span", null, money(csomag.ar))));
-        if (kiemeles) sorok.push(h("div", { class: "sum-row" }, h("span", null, L.highlightLine(durationText(kiemeles.nap))), h("span", null, money(kiemeles.ar))));
+        let osszeg;
+        if (A) {
+            // A tételek és az összegek a szerver árelőnézetéből jönnek; a feliratot itt, a kiválasztott nyelven adjuk.
+            const tetelek = A.sorok.filter((s) => !s.kedvezmeny);
+            const kedvSor = A.sorok.find((s) => s.kedvezmeny);
+            sorok.push(h("div", { class: "sum-sub" }, A.fordAdozas ? L.itemsNet : L.itemsGross));
+            tetelek.forEach((s, i) => sorok.push(sor(cimkek[i] || s.nev, money(s.osszeg))));
+            if (hasznal && kedvSor) {
+                sorok.push(sor(L.discLine(kedv.tipus === "udvozlo" ? L.discWelcome : L.discCoupon, kedv.szazalek), `−${money(Math.abs(kedvSor.osszeg))}`, "neg"));
+            }
+            sorok.push(h("div", { class: "sum-div" }));
+            sorok.push(sor(L.net, money(A.netto), "muted"));
+            sorok.push(sor(A.fordAdozas ? L.vatReverse : L.vatLine(A.afaSzazalek), money(A.afa), "muted"));
+            osszeg = A.osszeg;
+        } else {
+            // Amíg az árelőnézet tölt (vagy nem érhető el), a listaárat mutatjuk; a fizetendő összeget a szerver a díjbekérőn állítja elő.
+            if (csomag) sorok.push(sor(cimkek[0], money(listShown(csomag.ar))));
+            if (kiemeles) sorok.push(sor(cimkek[csomag ? 1 : 0], money(listShown(kiemeles.ar))));
+            osszeg = (csomag ? listShown(csomag.ar) : 0) + (kiemeles ? listShown(kiemeles.ar) : 0);
+        }
+        const kapcsolo = kedv ? h("button", {
+            class: "disc-toggle " + (hasznal ? "on" : "off"), type: "button", role: "switch", "aria-checked": hasznal ? "true" : "false",
+            onclick: () => { S.useDiscount = !S.useDiscount; setMsg(null); render(); }
+        },
+            h("span", { class: "cb", "aria-hidden": "true" }, "✓"),
+            h("span", null,
+                h("b", null, L.discToggleTitle(kedv.tipus === "udvozlo" ? L.discWelcome : L.discCoupon, kedv.szazalek)),
+                h("span", { class: "s" }, [L.discExpires(dateText(kedv.lejarMs)), kedv.tipus === "udvozlo" ? L.discFirstPack : null,
+                    pv.elerhetoKedvezmenyDb > 1 ? L.discMore(pv.elerhetoKedvezmenyDb - 1) : null].filter(Boolean).join(" · ")),
+                hasznal ? null : h("span", { class: "s" }, L.discOffHint))) : null;
         const jegyzetek = [];
         if (csomag && info.hatralevoNap > 0) jegyzetek.push(h("div", { class: "note" }, L.extendNote(info.hatralevoNap)));
         // A szerver ugyanígy számol (szamoldAktivalast): a kiemelés vége = a mostani kiemelés vége és a MA közül a későbbi + a kiemelés napjai,
@@ -1712,8 +2397,17 @@
             if (ujKiemelesMs > ujLejaratMs) jegyzetek.push(h("div", { class: "note" }, L.hlCapNote));
         }
 
+        if (A && A.fordAdozas) jegyzetek.push(h("div", { class: "note" }, L.euNote));
+        if (figy) jegyzetek.push(h("div", { class: "error-box", role: "alert" }, payError({ message: figy })));
+        if (S.previewBusy) {
+            jegyzetek.push(h("div", { class: "sum-load" }, L.previewWait));
+        } else if (S.previewHiba && lehetoseg.length > 0) {
+            jegyzetek.push(h("div", { class: "note" }, `${L.previewFail} `,
+                h("button", { class: "link-btn", type: "button", onclick: () => { ensurePreview(true); render(); } }, L.previewRetry)));
+        }
+
         const osszegzes = h("div", { class: "sum" },
-            h("h3", null, L.summary), sorok,
+            h("h3", null, L.summary), kapcsolo, sorok,
             h("div", { class: "tot" }, h("span", null, L.total), h("span", null, money(osszeg))),
             jegyzetek,
             msgBox(),
@@ -1728,7 +2422,7 @@
             h("div", { class: "layout" },
                 h("div", null,
                     h("div", { class: "step first" }, L.step1), hirdetesLista,
-                    nyitottBlokkok, modok, vasarlasResz),
+                    nyitottBlokkok, founderCard(kivalasztott, info), modok, vasarlasResz),
                 h("aside", { class: "side" }, osszegzes, trustLines())));
     }
 
@@ -1761,8 +2455,11 @@
 
                 const gombok = [];
                 if (info.csomagElerheto) {
+                    if (!nyitott && founderEligibleAd(x)) {
+                        gombok.push(h("button", { class: "mbtn primary", type: "button", onclick: () => goBuy(x, "csomag") }, L.btnActivateFree));
+                    }
                     gombok.push(h("button", {
-                        class: "mbtn" + (hasIdeje ? "" : " primary"), type: "button", onclick: () => goBuy(x, "csomag")
+                        class: "mbtn" + (hasIdeje || founderEligibleAd(x) ? "" : " primary"), type: "button", onclick: () => goBuy(x, "csomag")
                     }, hasIdeje ? L.btnExtend : L.btnBuyPack));
                 }
                 if (allapot === "active" && info.kiemelesElerheto) {
@@ -1810,6 +2507,7 @@
                 };
                 const metaReszek = [];
                 if (p.letrehozvaMs > 0) metaReszek.push(dateText(p.letrehozvaMs));
+                if (p.kedvezmenySzazalek > 0) metaReszek.push(L.discBadge(p.kedvezmenySzazalek));
                 if (nyitott) metaReszek.push(L.payDeadline(dateText(nyitott.f.lejarMs)));
                 return h("div", { class: "lrow" },
                     h("div", { class: "lrow-main" },
@@ -1891,9 +2589,17 @@
         const L = t();
         const b = S.bank;
         const fizetendo = b.hatralevo > 0 ? b.hatralevo : b.osszeg;
-        const sorok = b.befizetve > 0
-            ? [kv(L.alreadyPaid, money(b.befizetve)), kv(L.remaining, money(fizetendo), { nagy: true })]
-            : [kv(L.amount, money(fizetendo), { nagy: true })];
+        // Az összeg részletezése (mint a díjbekérőn): csak ha a szerver adta (régi fizetéseknél hiányzik) és nincs részleges befizetés.
+        const reszletes = !(b.befizetve > 0) && Number.isFinite(b.netto) && Number.isFinite(b.afa);
+        const sorok = [];
+        if (reszletes) {
+            if (b.kedvezmenySzazalek > 0 && Number.isFinite(b.listaAr)) {
+                sorok.push(kv(L.listPrice(b.fordAdozas), money(b.listaAr)), kv(L.bDiscount(b.kedvezmenySzazalek), `−${money(b.kedvezmenyOsszeg)}`));
+            }
+            sorok.push(kv(L.net, money(b.netto)), kv(b.fordAdozas ? L.vatReverse : L.vatLine(27), money(b.afa)));
+        }
+        if (b.befizetve > 0) sorok.push(kv(L.alreadyPaid, money(b.befizetve)), kv(L.remaining, money(fizetendo), { nagy: true }));
+        else sorok.push(kv(L.amount, money(fizetendo), { nagy: true }));
         sorok.push(
             kv(L.beneficiary, "Infinity Gold Kft."),
             kv(L.bankName, b.bankNev),
@@ -1907,6 +2613,9 @@
             h("div", { class: "kv" }, sorok),
             h("p", { class: "note" }, L.refMust),
             h("p", { class: "note" }, L.afterPay),
+            S.prog && S.prog.meghivo ? h("div", { class: "invite-card" },
+                h("div", null, h("b", null, L.bnInviteTitle), h("span", null, L.bnInviteText(pb().kuponDb, pb().kuponSzazalek))),
+                h("button", { class: "mbtn", type: "button", onclick: () => goTab("inv") }, L.btnInvite)) : null,
             h("button", { class: "btn", type: "button", onclick: () => goTab(b.from || "buy") },
                 b.from === "ads" ? L.backAdsTab : b.from === "pay" ? L.backPayTab : b.from === "ov" ? L.backOvTab : L.backToAds));
     }
@@ -1916,6 +2625,8 @@
             hirdetesCim: [hirdetes.pozicio, hirdetes.helyszin].filter(Boolean).join(" – "),
             vasarlasTipus: f.vasarlasTipus, csomagKod: f.csomagKod, kiemelesKod: f.kiemelesKod,
             osszeg: f.osszeg, befizetve: f.befizetve || 0, hatralevo: f.hatralevo,
+            netto: f.netto, afa: f.afa, listaAr: f.listaAr, fordAdozas: f.fordAdozas === true,
+            kedvezmenySzazalek: f.kedvezmenySzazalek || 0, kedvezmenyOsszeg: f.kedvezmenyOsszeg || 0,
             bankNev: f.bankNev, bankszamlaszam: f.bankszamlaszam, kozlemeny: f.kozlemeny, lejarMs: f.lejarMs,
             from: S.tab
         };
@@ -1930,15 +2641,21 @@
         const kiemelesKod = S.hl || null;
         S.busy = true; setMsg(null); render();
         try {
-            const r = await call("createAtutalasosFizetes", { hirdetesId: hirdetes.id, csomagKod, kiemelesKod });
+            // Kedvezményt csak akkor kérünk, ha az árelőnézet felkínálta és a cég nem kapcsolta ki; a szerver újra ellenőrzi és csak ekkor foglalja le.
+            const pv = currentPreview();
+            const kedvezmenyKer = !!(pv && pv.kedvezmeny && pv.arKedvezmennyel && S.useDiscount);
+            const r = await call("createAtutalasosFizetes", { hirdetesId: hirdetes.id, csomagKod, kiemelesKod, kedvezmenyKer });
             S.bank = {
                 hirdetesCim: [hirdetes.pozicio, hirdetes.helyszin].filter(Boolean).join(" – "),
                 vasarlasTipus: csomagKod ? "alapcsomag" : "kiemeles", csomagKod, kiemelesKod,
                 osszeg: r.osszeg, befizetve: 0, hatralevo: r.osszeg,
+                netto: r.netto, afa: r.afa, listaAr: r.listaAr, fordAdozas: r.fordAdozas === true,
+                kedvezmenySzazalek: r.kedvezmeny ? r.kedvezmeny.szazalek : 0, kedvezmenyOsszeg: r.kedvezmeny ? r.kedvezmeny.osszeg : 0,
                 bankNev: r.bankNev, bankszamlaszam: r.bankszamlaszam, kozlemeny: r.kozlemeny, lejarMs: r.lejar || Date.now() + 10 * DAY,
                 from: "buy"
             };
             S.busy = false;
+            S.useDiscount = true;
             show("bank");
             refreshQuietly();
         } catch (e) {
@@ -1946,14 +2663,17 @@
             setMsg("hiba", payError(e));
             render();
             const m = (e && e.message) || "";
-            if (m === "PAYMENT_ALREADY_OPEN" || m === "HIGHLIGHT_NEEDS_ACTIVE_AD") refreshQuietly(true);
+            if (m === "PAYMENT_ALREADY_OPEN" || m === "HIGHLIGHT_NEEDS_ACTIVE_AD" || m === "DISCOUNT_NOT_AVAILABLE") refreshQuietly(true);
         }
     }
 
     /** A lista újratöltése a háttérben (a nézet marad). */
     async function refreshQuietly(rajzol) {
         try {
-            S.data = await call("listazCegHirdeteseit");
+            const [adat, prog] = await Promise.all([call("listazCegHirdeteseit"), call("programAdatok").catch(() => null)]);
+            S.data = adat;
+            if (prog) S.prog = prog;
+            S.previewKey = ""; S.preview = null; // a kedvezmények változhattak: az árelőnézetet újra kérjük
             ensureSelection();
             if (rajzol || S.view === "account") render(); else renderNav();
         } catch (e) { /* a következő megnyitáskor úgyis újratölt */ }
@@ -1962,7 +2682,11 @@
     async function loadData() {
         show("loading");
         try {
-            S.data = await call("listazCegHirdeteseit");
+            // A program adatai (kedvezmények, alapító hely, meghívás) kiegészítők: ha nem töltődnek be, a vásárlás és a lista így is működik.
+            const [adat, prog] = await Promise.all([call("listazCegHirdeteseit"), call("programAdatok").catch(() => null)]);
+            S.data = adat;
+            S.prog = prog;
+            S.previewKey = ""; S.preview = null;
             if (S.data.munkavallalo) { show("worker"); return; }
             ensureSelection();
             show("account");
@@ -1989,7 +2713,10 @@
         S.busy = false;
         if (!user) {
             S.data = null; S.adId = null; S.bank = null; S.tab = kezdoFul(); setMsg(null);
+            S.prog = null; S.preview = null; S.previewKey = ""; S.previewBusy = false; S.fordAdozas = null; S.useDiscount = true;
+            S.founderConfirm = null; S.founderErr = null; S.founderBusy = false;
             show("login");
+            loadPub();
             return;
         }
         loadData();
