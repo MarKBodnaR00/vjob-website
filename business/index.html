@@ -1961,11 +1961,15 @@
         const nap = pb().ingyenesNap;
         const negyzetek = [];
         for (let i = 0; i < a.osszes; i++) negyzetek.push(h("span", { class: "slot" + (i < a.foglalt ? " taken" : "") }));
+        // A három közösségi számot (cég, munkavállaló, aktív hirdetés) csak akkor mutatjuk, ha a szerver kiadja (a szerveroldali
+        // kapcsoló KI-állapotában nem adja ki): hiányzó szám helyett sosem jelenik meg „0”. Az alapító helyek számlálója mindig látszik.
+        const vanKozossegi = [p.cegek, p.munkavallalok, p.aktivHirdetesek].every((v) => typeof v === "number");
+        if (!vanKozossegi && !(a.osszes > 0)) return null;
         return h("div", { class: "pub-card" },
-            h("div", { class: "sec" }, L.pubTitle),
-            h("div", { class: "pub-tiles" },
+            vanKozossegi ? h("div", { class: "sec" }, L.pubTitle) : null,
+            vanKozossegi ? h("div", { class: "pub-tiles" },
                 [[L.pubCompanies, p.cegek], [L.pubWorkers, p.munkavallalok], [L.pubAds, p.aktivHirdetesek]].map(([k, v]) =>
-                    h("div", { class: "pub-t" }, h("div", { class: "pv" }, fmt(v)), h("div", { class: "pk" }, k)))),
+                    h("div", { class: "pub-t" }, h("div", { class: "pv" }, fmt(v)), h("div", { class: "pk" }, k)))) : null,
             a.osszes > 0 ? h("div", { class: "pub-founder" },
                 h("div", { class: "pf-h" }, h("span", null, L.pubFounderTitle), h("span", { class: "pf-n" }, `${fmt(a.foglalt)} / ${fmt(a.osszes)}`)),
                 h("div", { class: "slots", role: "img", "aria-label": L.pubFounderAria(a.foglalt, a.osszes) }, negyzetek),
