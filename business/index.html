@@ -905,7 +905,8 @@
             invCouponsTitle: "Az Ön kuponjai",
             invCouponsEmpty: "Még nincs kuponja. Az első kupont akkor kapja meg, amikor egy meghívott cég megvásárolja az első hirdetési csomagját.",
             invCouponName: (sz) => `${sz}% kedvezmény`,
-            invCouponFrom: (nev) => `meghívott cég: ${nev}`,
+            invListItem: (n) => `${n}. meghívott cég`,
+            invPrivacyNote: "Adatvédelmi okból a meghívott cégek nevét nem jelenítjük meg, csak azt, hogy hányan regisztráltak és fizettek.",
             invCouponState: { elerheto: "Felhasználható", foglalt: "Nyitott fizetésen", felhasznalva: "Felhasználva" },
             invListTitle: "Meghívott cégek",
             invListEmpty: "Még senki nem regisztrált az Ön kódjával.",
@@ -1195,7 +1196,8 @@
             invCouponsTitle: "Your coupons",
             invCouponsEmpty: "You have no coupons yet. You get the first coupon when an invited company buys its first advertising package.",
             invCouponName: (sz) => `${sz}% discount`,
-            invCouponFrom: (nev) => `invited company: ${nev}`,
+            invListItem: (n) => `Invited company #${n}`,
+            invPrivacyNote: "For privacy reasons we do not show the names of invited companies, only how many have registered and paid.",
             invCouponState: { elerheto: "Available", foglalt: "On an open payment", felhasznalva: "Used" },
             invListTitle: "Invited companies",
             invListEmpty: "Nobody has registered with your code yet.",
@@ -1485,7 +1487,8 @@
             invCouponsTitle: "Ihre Gutscheine",
             invCouponsEmpty: "Sie haben noch keine Gutscheine. Den ersten erhalten Sie, wenn ein eingeladenes Unternehmen sein erstes Anzeigenpaket kauft.",
             invCouponName: (sz) => `${sz}% Rabatt`,
-            invCouponFrom: (nev) => `eingeladenes Unternehmen: ${nev}`,
+            invListItem: (n) => `Eingeladenes Unternehmen Nr. ${n}`,
+            invPrivacyNote: "Aus Datenschutzgründen zeigen wir die Namen eingeladener Unternehmen nicht an, nur wie viele sich registriert und bezahlt haben.",
             invCouponState: { elerheto: "Verfügbar", foglalt: "Bei offener Zahlung", felhasznalva: "Eingelöst" },
             invListTitle: "Eingeladene Unternehmen",
             invListEmpty: "Mit Ihrem Code hat sich noch niemand registriert.",
@@ -1989,13 +1992,14 @@
         const kuponSorok = kuponok.map((k) => h("div", { class: "lrow" },
             h("div", { class: "lrow-main" },
                 h("div", { class: "lrow-v" }, L.invCouponName(k.szazalek)),
-                h("div", { class: "lrow-meta" }, [L.discExpires(dateText(k.lejarMs)), k.meghivottCegNev ? L.invCouponFrom(k.meghivottCegNev) : null].filter(Boolean).join(" · "))),
+                h("div", { class: "lrow-meta" }, L.discExpires(dateText(k.lejarMs)))),
             h("div", { class: "lrow-side" },
                 h("span", { class: "badge " + (k.allapot === "elerheto" ? "b-active" : k.allapot === "foglalt" ? "b-pending" : "b-expired") }, L.invCouponState[k.allapot] || k.allapot))));
 
-        const meghivottSorok = meghivottak.map((m) => h("div", { class: "lrow" },
+        // A szerver a meghívott cég nevét nem adja ki (adatminimalizálás): csak sorszám, dátum és állapot. A régi szerverválasz sem tud nevet mutatni.
+        const meghivottSorok = meghivottak.map((m, i) => h("div", { class: "lrow" },
             h("div", { class: "lrow-main" },
-                h("div", { class: "lrow-v" }, m.cegNev || "—"),
+                h("div", { class: "lrow-v" }, L.invListItem(Number.isFinite(m.sorszam) && m.sorszam > 0 ? m.sorszam : i + 1)),
                 m.ms > 0 ? h("div", { class: "lrow-meta" }, dateText(m.ms)) : null),
             h("div", { class: "lrow-side" },
                 h("span", { class: "badge " + (m.allapot === "fizetett" ? "b-active" : "b-pending") }, L.invListState[m.allapot] || m.allapot))));
@@ -2013,6 +2017,7 @@
             kuponSorok.length ? h("div", { class: "card" }, kuponSorok) : emptyBox(L.invCouponsTitle, L.invCouponsEmpty),
             h("div", { class: "sec", style: "margin-top:26px" }, L.invListTitle),
             meghivottSorok.length ? h("div", { class: "card" }, meghivottSorok) : emptyBox(L.invListTitle, L.invListEmpty),
+            meghivottSorok.length ? h("div", { class: "info-note" }, h("span", { "aria-hidden": "true" }, "ⓘ"), h("span", null, L.invPrivacyNote)) : null,
             h("div", { class: "info-note" }, h("span", { "aria-hidden": "true" }, "ⓘ"),
                 h("span", null, `${L.invRules} `, h("a", { href: "../terms.html" }, L.terms))));
     }
