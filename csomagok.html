@@ -363,11 +363,57 @@
         .prog-card .fine a { color: #C084FC; }
         .prog-card .prog-cta { margin-top: auto; }
 
-        .live { font-size: 13px; font-weight: 700; color: #00eda0; }
-        .slots { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; }
-        .slots[hidden], .live[hidden] { display: none; }
-        .slot { aspect-ratio: 1; border-radius: 6px; border: 1.5px dashed rgba(255,255,255,0.18); }
-        .slot.taken { border: 1.5px solid transparent; background: linear-gradient(135deg, #8B2FC9, #D946EF); }
+        [data-when][hidden], .fk-slot[hidden] { display: none !important; }
+
+        /* ── Alapító helyek: élő számláló kártya. Csak akkor jelenik meg, ha a szerver kiadja az adatot (a program lezárása után nem adja). ── */
+        .fk-slot { max-width: 460px; margin: 0 auto 22px; }
+        .fk { --h: #fff; --mut2: rgba(255,255,255,.5); --mut3: rgba(255,255,255,.66); --line2: rgba(255,255,255,.12); --line3: rgba(255,255,255,.16); --acc: #C084FC; --ok: #00eda0;
+            --g1: #8B2FC9; --g2: #D946EF; --fk-tint: rgba(139,47,201,.28); --fk-tint2: rgba(217,70,239,.14); --fk-bd: rgba(136,0,255,.25); --fk-sh: rgba(139,47,201,.16);
+            position: relative; overflow: hidden; border-radius: 22px; padding: 20px 20px 18px; text-align: left;
+            border: 1px solid var(--fk-bd); box-shadow: 0 10px 36px var(--fk-sh);
+            background: radial-gradient(120% 90% at 0% 0%, var(--fk-tint), transparent 55%), radial-gradient(90% 80% at 100% 100%, var(--fk-tint2), transparent 60%), #0D0B1A; }
+        .fk.sur { --g1: #F59E0B; --g2: #F43F5E; --fk-tint: rgba(245,158,11,.20); --fk-tint2: rgba(244,63,94,.14); --fk-bd: rgba(245,158,11,.45); --fk-sh: rgba(244,63,94,.14); }
+        .fk.tele { --g1: #FBBF24; --g2: #F472B6; --fk-tint: rgba(251,191,36,.16); --fk-tint2: rgba(244,114,182,.14); --fk-bd: rgba(251,191,36,.40); --fk-sh: rgba(251,191,36,.12); }
+        .fk-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .fk-badge { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #fff; padding: 6px 11px; border-radius: 999px; background: linear-gradient(135deg, var(--g1), var(--g2)); }
+        .fk-live { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ok); }
+        .fk-live i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); animation: fkPulz 1.8s infinite; }
+        .fk.tele .fk-live { color: var(--mut2); } .fk.tele .fk-live i { background: var(--mut2); animation: none; }
+        @keyframes fkPulz { 0% { box-shadow: 0 0 0 0 rgba(0,237,160,.55); } 70% { box-shadow: 0 0 0 9px rgba(0,237,160,0); } 100% { box-shadow: 0 0 0 0 rgba(0,237,160,0); } }
+        .fk-hero { display: flex; align-items: center; gap: 14px; margin: 4px 0 18px; }
+        .fk-big { font-size: 72px; font-weight: 900; line-height: .9; letter-spacing: -.04em; min-width: .9em; background: linear-gradient(135deg, var(--g1), var(--g2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .fk.sur .fk-big { animation: fkDob 1.6s ease-in-out infinite; }
+        @keyframes fkDob { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .fk-ht { font-size: 20px; font-weight: 800; line-height: 1.15; color: var(--h); }
+        .fk-ht small { display: block; font-size: 13.5px; font-weight: 500; color: var(--mut3); margin-top: 3px; }
+        .fk-end { font-size: 30px; font-weight: 900; line-height: 1.1; letter-spacing: -.02em; margin: 4px 0 6px; background: linear-gradient(135deg, var(--g1), var(--g2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .fk-endsub { color: var(--mut3); margin-bottom: 18px; font-size: 14px; }
+        .fk-seats { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; }
+        .fk-seat { aspect-ratio: 1; border-radius: 8px; display: grid; place-items: center; font-size: 11px; font-weight: 700; color: var(--mut2); opacity: .75; border: 1.5px dashed var(--line3); }
+        .fk-seat.f { opacity: 1; color: #fff; border: 1.5px solid transparent; background: linear-gradient(135deg, var(--g1), var(--g2)); box-shadow: 0 2px 10px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.25); animation: fkBe .45s cubic-bezier(.2,.9,.3,1.3) backwards; animation-delay: calc(var(--i) * 28ms); }
+        @keyframes fkBe { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .fk-seat.next { opacity: 1; color: var(--h); border: 1.5px solid var(--g2); animation: fkFeny 1.8s ease-in-out infinite; }
+        @keyframes fkFeny { 0%, 100% { box-shadow: 0 0 0 0 rgba(217,70,239,0); } 50% { box-shadow: 0 0 14px 2px rgba(217,70,239,.5); } }
+        .fk.sur .fk-seat:not(.f) { border-color: rgba(245,158,11,.6); }
+        .fk.sur .fk-seat.next { animation-name: fkFeny2; }
+        @keyframes fkFeny2 { 0%, 100% { box-shadow: 0 0 0 0 rgba(244,63,94,0); } 50% { box-shadow: 0 0 14px 2px rgba(244,63,94,.6); } }
+        .fk.tele .fk-seat.f { position: relative; }
+        .fk.tele .fk-seat.f::after { content: ""; position: absolute; inset: 0; border-radius: 7px; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%); background-size: 250% 100%; animation: fkCsill 3.2s linear infinite; animation-delay: calc(var(--i) * 70ms); }
+        @keyframes fkCsill { from { background-position: 150% 0; } to { background-position: -100% 0; } }
+        .fk-bar { height: 7px; border-radius: 99px; background: var(--line2); overflow: hidden; margin: 14px 0 8px; }
+        .fk-bar b { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--g1), var(--g2)); width: var(--w); }
+        .fk-barl { display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 700; color: var(--mut3); }
+        .fk-barl strong { color: var(--h); }
+        .fk-offer { margin-top: 16px; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--h); }
+        .fk-cond { margin-top: 6px; font-size: 12.5px; color: var(--mut2); line-height: 1.5; }
+        .fk details { margin-top: 12px; border-top: 1px solid var(--line2); padding-top: 10px; }
+        .fk summary { cursor: pointer; font-size: 12.5px; font-weight: 700; color: var(--acc); list-style: none; display: flex; align-items: center; gap: 6px; }
+        .fk summary::-webkit-details-marker { display: none; }
+        .fk summary::before { content: "+"; display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--acc); font-size: 12px; line-height: 1; }
+        .fk details[open] summary::before { content: "\2013"; }
+        .fk details p { margin-top: 8px; font-size: 12.5px; color: var(--mut2); line-height: 1.55; }
+        @media (max-width: 460px) { .fk-seats { grid-template-columns: repeat(6, minmax(0, 1fr)); } .fk-big { font-size: 62px; } }
+        @media (prefers-reduced-motion: reduce) { .fk *, .fk *::after { animation: none !important; transition: none !important; } }
 
         @media (max-width: 700px) {
             .prog-grid { grid-template-columns: 1fr; }
@@ -589,14 +635,16 @@
 
     <div class="price-note">Az árak bruttó árak, a 27% ÁFÁ-t tartalmazzák. Másik uniós tagállami, közösségi adószámmal rendelkező cégnél ugyanezek nettó összege a fizetendő (fordított adózás).</div>
 
+    <div class="fk-slot" data-fk="hu" hidden></div>
+
     <div class="prog-grid">
         <div class="prog-card founder">
-            <h3>Alapító program: az első hirdetése 30 napig ingyenes</h3>
-            <p>Az első 30 cég az első hirdetését 30 napig ingyen használhatja (az ingyenes időszak az aktiváláskor indul, adószámonként egyszer vehető igénybe). Minden új cég 15% üdvözlő kedvezményt kap az első hirdetési csomagjára (az alapítók az ingyenes időszak végétől, a többiek a regisztrációtól számított 30 napig).</p>
-            <div class="live" data-live-text="Szabad alapító helyek: {szabad} / {osszes}" data-live-full="Az alapító helyek elfogytak." hidden></div>
-            <div class="slots" data-slots hidden></div>
+            <h3 data-when="open" hidden>Alapító program: az első hirdetése 30 napig ingyenes</h3>
+            <h3 data-when="closed">Üdvözlő kedvezmény: 15% az első hirdetési csomagra</h3>
+            <p data-when="open" hidden>Az első 30 cég az első hirdetését 30 napig ingyen használhatja (az ingyenes időszak az aktiváláskor indul, adószámonként egyszer vehető igénybe). Minden új cég 15% üdvözlő kedvezményt kap az első hirdetési csomagjára (az alapítók az ingyenes időszak végétől, a többiek a regisztrációtól számított 30 napig).</p>
+            <p data-when="closed">Minden új cég 15% üdvözlő kedvezményt kap az első hirdetési csomagjára a regisztrációtól számított 30 napig.</p>
             <p class="fine">A részletes feltételeket az <a href="terms.html">ÁSZF</a> tartalmazza.</p>
-            <div class="prog-cta"><a class="store-btn" href="business/?lang=hu">Belépés és aktiválás</a></div>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=hu" data-when="open" hidden>Belépés és aktiválás</a><a class="store-btn" href="business/?lang=hu" data-when="closed">Belépés</a></div>
         </div>
         <div class="prog-card">
             <h3>Hívjon meg egy céget, és kapjon kupont</h3>
@@ -673,14 +721,16 @@
 
     <div class="price-note">Prices are gross prices and include 27% VAT. For companies from another EU member state with an EU VAT number, the same amount net of VAT is payable (reverse charge).</div>
 
+    <div class="fk-slot" data-fk="en" hidden></div>
+
     <div class="prog-grid">
         <div class="prog-card founder">
-            <h3>Founder programme: your first ad is free for 30 days</h3>
-            <p>The first 30 companies can use their first ad free of charge for 30 days (the free period starts at activation and can be used once per tax number). Every new company gets a 15% welcome discount on its first advertising package (founders from the end of the free period, everyone else for 30 days from registration).</p>
-            <div class="live" data-live-text="Founder places left: {szabad} / {osszes}" data-live-full="All founder places are taken." hidden></div>
-            <div class="slots" data-slots hidden></div>
+            <h3 data-when="open" hidden>Founder programme: your first ad is free for 30 days</h3>
+            <h3 data-when="closed">Welcome discount: 15% off your first advertising package</h3>
+            <p data-when="open" hidden>The first 30 companies can use their first ad free of charge for 30 days (the free period starts at activation and can be used once per tax number). Every new company gets a 15% welcome discount on its first advertising package (founders from the end of the free period, everyone else for 30 days from registration).</p>
+            <p data-when="closed">Every new company gets a 15% welcome discount on its first advertising package for 30 days from registration.</p>
             <p class="fine">The detailed conditions are in the <a href="terms.html">Terms</a></p>
-            <div class="prog-cta"><a class="store-btn" href="business/?lang=en">Sign in and activate</a></div>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=en" data-when="open" hidden>Sign in and activate</a><a class="store-btn" href="business/?lang=en" data-when="closed">Sign in</a></div>
         </div>
         <div class="prog-card">
             <h3>Invite a company and get coupons</h3>
@@ -757,14 +807,16 @@
 
     <div class="price-note">Die Preise sind Bruttopreise und enthalten 27 % MwSt. Für Unternehmen aus einem anderen EU-Mitgliedstaat mit EU-Umsatzsteuer-ID ist derselbe Betrag netto zu zahlen (Reverse-Charge-Verfahren).</div>
 
+    <div class="fk-slot" data-fk="de" hidden></div>
+
     <div class="prog-grid">
         <div class="prog-card founder">
-            <h3>Gründerprogramm: Ihre erste Anzeige ist 30 Tage kostenlos</h3>
-            <p>Die ersten 30 Unternehmen können ihre erste Anzeige 30 Tage lang kostenlos nutzen (der kostenlose Zeitraum beginnt mit der Aktivierung und ist pro Steuernummer einmal nutzbar). Jedes neue Unternehmen erhält 15 % Willkommensrabatt auf sein erstes Anzeigenpaket (Gründer ab Ende des kostenlosen Zeitraums, alle anderen 30 Tage ab der Registrierung).</p>
-            <div class="live" data-live-text="Freie Gründerplätze: {szabad} / {osszes}" data-live-full="Alle Gründerplätze sind vergeben." hidden></div>
-            <div class="slots" data-slots hidden></div>
+            <h3 data-when="open" hidden>Gründerprogramm: Ihre erste Anzeige ist 30 Tage kostenlos</h3>
+            <h3 data-when="closed">Willkommensrabatt: 15 % auf Ihr erstes Anzeigenpaket</h3>
+            <p data-when="open" hidden>Die ersten 30 Unternehmen können ihre erste Anzeige 30 Tage lang kostenlos nutzen (der kostenlose Zeitraum beginnt mit der Aktivierung und ist pro Steuernummer einmal nutzbar). Jedes neue Unternehmen erhält 15 % Willkommensrabatt auf sein erstes Anzeigenpaket (Gründer ab Ende des kostenlosen Zeitraums, alle anderen 30 Tage ab der Registrierung).</p>
+            <p data-when="closed">Jedes neue Unternehmen erhält 15 % Willkommensrabatt auf sein erstes Anzeigenpaket, 30 Tage ab der Registrierung.</p>
             <p class="fine">Die genauen Bedingungen stehen in den <a href="terms.html">AGB</a></p>
-            <div class="prog-cta"><a class="store-btn" href="business/?lang=de">Anmelden und aktivieren</a></div>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=de" data-when="open" hidden>Anmelden und aktivieren</a><a class="store-btn" href="business/?lang=de" data-when="closed">Anmelden</a></div>
         </div>
         <div class="prog-card">
             <h3>Laden Sie ein Unternehmen ein und erhalten Sie Gutscheine</h3>
@@ -821,9 +873,91 @@
 </script>
 
 <script type="module">
-    // Élő, valós számláló az alapító helyekről. Ha nem érhető el, a kártya számok nélkül, a statikus szöveggel marad.
+    // Élő, valós számláló az alapító helyekről. Az alapító program kártyái CSAK akkor jelennek meg, ha a szerver kiadja az adatot
+    // (a program lezárása után nem adja ki, ilyenkor vagy ha a lekérés sikertelen, csak az üdvözlő kedvezmény szövege látszik).
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
     import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-functions.js";
+
+    const NAP = 30;
+    const T = {
+        hu: { badge: "Alapító program", live: "Élő adat", closed: "Lezárult", tip: "A számláló a szerver tényleges foglalási nyilvántartását mutatja",
+            free: "szabad hely", of: (o) => `a ${o} alapító helyből`, last: (n) => `Már csak ${n} hely!`, taken: "lefoglalva", left: (n) => `még ${n} szabad`,
+            offer: (o) => `Az első ${o} cég az első hirdetését ${NAP} napig ingyen használhatja.`,
+            cond: "Feltételek: érvényes adószám és számlázási adatok, adószámonként egy alkalom (ÁSZF 10/A pont).",
+            how: "Hogyan számoljuk?",
+            howText: "Egy hely akkor foglalódik le, amikor egy cég az első ingyenes hirdetését aktiválja (nem a regisztrációkor). A számot az oldal betöltésekor kérdezzük le a VJob szerverétől, és a szerver foglalási nyilvántartásából jön: minden foglalás automatikusan, sorszámmal és időponttal rögzül. A sorrendet az aktiválás időpontja dönti el.",
+            end: "Betelt! Köszönjük a bizalmat.", endSub: (o) => `A ${o} alapító hely elfogyott, az alapító program lezárult.`,
+            aria: (f, o) => `${o} alapító helyből ${f} foglalt`, locale: "hu-HU" },
+        en: { badge: "Founder programme", live: "Live data", closed: "Closed", tip: "The counter shows the server's actual booking records",
+            free: "places left", of: (o) => `of ${o} founder places`, last: (n) => `Only ${n} left!`, taken: "taken", left: (n) => `${n} left`,
+            offer: (o) => `The first ${o} companies can use their first ad free for ${NAP} days.`,
+            cond: "Conditions: a valid tax number and billing details, once per tax number (Terms, section 10/A).",
+            how: "How do we count?",
+            howText: "A place is taken when a company activates its first free ad (not at registration). We query the number from the VJob server when the page loads, and it comes from the server's booking records: every booking is recorded automatically with a sequence number and a timestamp. The order is decided by the time of activation.",
+            end: "All taken! Thank you for your trust.", endSub: (o) => `All ${o} founder places are taken; the founder programme has closed.`,
+            aria: (f, o) => `${f} of ${o} founder places taken`, locale: "en-GB" },
+        de: { badge: "Gründerprogramm", live: "Live-Daten", closed: "Beendet", tip: "Der Zähler zeigt die tatsächlichen Buchungen auf dem Server",
+            free: "freie Plätze", of: (o) => `von ${o} Gründerplätzen`, last: (n) => (n === 1 ? "Nur noch 1 Platz!" : `Nur noch ${n} Plätze!`), taken: "vergeben", left: (n) => `noch ${n} frei`,
+            offer: (o) => `Die ersten ${o} Unternehmen können ihre erste Anzeige ${NAP} Tage kostenlos nutzen.`,
+            cond: "Bedingungen: gültige Steuernummer und Rechnungsdaten, einmal pro Steuernummer (AGB, Punkt 10/A).",
+            how: "Wie zählen wir?",
+            howText: "Ein Platz wird vergeben, wenn ein Unternehmen seine erste kostenlose Anzeige aktiviert (nicht bei der Registrierung). Die Zahl wird beim Laden der Seite vom VJob-Server abgefragt und stammt aus den Buchungsdaten des Servers: Jede Buchung wird automatisch mit laufender Nummer und Zeitstempel erfasst. Die Reihenfolge richtet sich nach dem Zeitpunkt der Aktivierung.",
+            end: "Ausgebucht! Danke für Ihr Vertrauen.", endSub: (o) => `Alle ${o} Gründerplätze sind vergeben; das Gründerprogramm ist beendet.`,
+            aria: (f, o) => `${f} von ${o} Gründerplätzen vergeben`, locale: "de-DE" }
+    };
+
+    function el(tag, cls, text, attrs) {
+        const e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (text !== undefined && text !== null) e.textContent = text;
+        if (attrs) for (const k of Object.keys(attrs)) e.setAttribute(k, attrs[k]);
+        return e;
+    }
+
+    function kartya(a, L) {
+        const fmt = (n) => new Intl.NumberFormat(L.locale).format(n);
+        const osszes = a.osszes;
+        const foglalt = Math.min(Math.max(0, a.foglalt), osszes);
+        const szabad = osszes - foglalt;
+        const tele = szabad <= 0, surgos = !tele && szabad <= 5;
+        const k = el("div", "fk" + (tele ? " tele" : surgos ? " sur" : ""));
+        const top = el("div", "fk-top");
+        top.append(el("span", "fk-badge", L.badge));
+        const live = el("span", "fk-live", null, { title: L.tip });
+        live.append(el("i"), document.createTextNode(tele ? L.closed : L.live));
+        top.append(live);
+        k.append(top);
+        if (tele) {
+            k.append(el("div", "fk-end", L.end), el("div", "fk-endsub", L.endSub(fmt(osszes))));
+        } else {
+            const hero = el("div", "fk-hero");
+            const ht = el("div", "fk-ht", surgos ? L.last(szabad) : L.free);
+            ht.append(el("small", null, L.of(fmt(osszes))));
+            hero.append(el("div", "fk-big", fmt(szabad)), ht);
+            k.append(hero);
+        }
+        const seats = el("div", "fk-seats", null, { role: "img", "aria-label": L.aria(foglalt, osszes) });
+        for (let i = 1; i <= osszes; i++) {
+            const s = el("span", "fk-seat" + (i <= foglalt ? " f" : "") + (!tele && i === foglalt + 1 ? " next" : ""), String(i));
+            s.style.setProperty("--i", i);
+            seats.append(s);
+        }
+        const bar = el("div", "fk-bar");
+        const b = el("b");
+        b.style.setProperty("--w", (osszes ? foglalt / osszes * 100 : 0) + "%");
+        bar.append(b);
+        const barl = el("div", "fk-barl");
+        const bal = el("span");
+        bal.append(el("strong", null, fmt(foglalt) + " / " + fmt(osszes)), document.createTextNode(" " + L.taken));
+        barl.append(bal, el("span", null, tele ? "" : L.left(fmt(szabad))));
+        k.append(seats, bar, barl);
+        if (!tele) k.append(el("div", "fk-offer", L.offer(fmt(osszes))), el("div", "fk-cond", L.cond));
+        const d = el("details");
+        d.append(el("summary", null, L.how), el("p", null, L.howText));
+        k.append(d);
+        return k;
+    }
+
     try {
         const app = initializeApp({
             apiKey: "AIzaSyDsQ_0jpIyuy04SGQCn8VMEx3-0qzZxQdc",
@@ -834,23 +968,19 @@
         const fn = httpsCallable(getFunctions(app, "europe-west1"), "nyilvanosSzamlalok", { timeout: 15000 });
         const r = (await fn()).data;
         const a = r && r.alapito;
-        if (a && Number.isFinite(a.osszes) && a.osszes > 0) {
-            document.querySelectorAll(".live").forEach((el) => {
-                el.textContent = a.szabad > 0
-                    ? el.dataset.liveText.replace("{szabad}", a.szabad).replace("{osszes}", a.osszes)
-                    : el.dataset.liveFull;
-                el.hidden = false;
-            });
-            document.querySelectorAll("[data-slots]").forEach((el) => {
-                for (let i = 0; i < a.osszes; i++) {
-                    const n = document.createElement("span");
-                    n.className = "slot" + (i < a.foglalt ? " taken" : "");
-                    el.append(n);
-                }
-                el.hidden = false;
+        if (a && Number.isFinite(a.osszes) && a.osszes > 0 && Number.isFinite(a.foglalt)) {
+            // Az "ingyenes első hirdetés" szöveg csak addig látszik, amíg van szabad hely; betelés után az üdvözlő kedvezmény szövege marad.
+            const nyitva = a.foglalt < a.osszes;
+            document.querySelectorAll('[data-when="open"]').forEach((e) => { e.hidden = !nyitva; });
+            document.querySelectorAll('[data-when="closed"]').forEach((e) => { e.hidden = nyitva; });
+            document.querySelectorAll("[data-fk]").forEach((box) => {
+                const L = T[box.dataset.fk];
+                if (!L) return;
+                box.replaceChildren(kartya(a, L));
+                box.hidden = false;
             });
         }
-    } catch (e) { /* a számláló nélkül is teljes az oldal */ }
+    } catch (e) { /* számláló nélkül is teljes az oldal: csak az üdvözlő kedvezmény szövege látszik */ }
 </script>
 
 </body>
