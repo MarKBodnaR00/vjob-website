@@ -363,7 +363,7 @@
         .prog-card .fine a { color: #C084FC; }
         .prog-card .prog-cta { margin-top: auto; }
 
-        [data-when][hidden], .fk-slot[hidden] { display: none !important; }
+        [data-when][hidden], [data-prog][hidden], .fk-slot[hidden] { display: none !important; }
 
         /* ── Alapító helyek: élő számláló kártya. Csak akkor jelenik meg, ha a szerver kiadja az adatot (a program lezárása után nem adja). ── */
         .fk-slot { max-width: 460px; margin: 0 auto 22px; }
@@ -638,17 +638,16 @@
     <div class="fk-slot" data-fk="hu" hidden></div>
 
     <div class="prog-grid">
-        <div class="prog-card founder">
-            <h3 data-when="open" hidden>Alapító program: az első hirdetése 30 napig ingyenes</h3>
-            <h3 data-when="closed">Üdvözlő kedvezmény: 15% az első hirdetési csomagra</h3>
-            <p data-when="open" hidden>Az első 30 cég az első hirdetését 30 napig ingyen használhatja (az ingyenes időszak az aktiváláskor indul, adószámonként egyszer vehető igénybe). Minden új cég 15% üdvözlő kedvezményt kap az első hirdetési csomagjára (az alapítók az ingyenes időszak végétől, a többiek a regisztrációtól számított 60 napig; adószámonként egyszer jár).</p>
-            <p data-when="closed">Minden új cég 15% üdvözlő kedvezményt kap az első hirdetési csomagjára a regisztrációtól számított 60 napig (adószámonként egyszer jár).</p>
+        <div class="prog-card founder" data-when="open" hidden>
+            <h3>Alapító program: az első hirdetése 30 napig ingyenes</h3>
+            <p>Az első 30 cég az első hirdetését 30 napig ingyen használhatja (az ingyenes időszak az aktiváláskor indul, adószámonként egyszer vehető igénybe). Utána a hirdetés a szokásos módon inaktívvá válik, a folytatáshoz csomagot kell vásárolni; az ingyenes időszak nem alakul át automatikusan fizetős szolgáltatássá.</p>
             <p class="fine">A részletes feltételeket az <a href="terms.html">ÁSZF</a> tartalmazza.</p>
-            <div class="prog-cta"><a class="store-btn" href="business/?lang=hu" data-when="open" hidden>Belépés és aktiválás</a><a class="store-btn" href="business/?lang=hu" data-when="closed">Belépés</a></div>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=hu">Belépés és aktiválás</a></div>
         </div>
-        <div class="prog-card">
+        <div class="prog-card" data-prog="invite" hidden>
             <h3>Hívjon meg egy céget, és kapjon kupont</h3>
-            <p>Amikor a meghívott cég megvásárolja az első hirdetési csomagját, Ön 2 db 15%-os kupont kap (3 hónapig érvényes, rendelésenként egy kedvezmény használható). A meghívó linkjét belépés után a Meghívás fülön találja.</p>
+            <p>Ha az Ön által meghívott cég a regisztrációtól számított 14 napon belül megrendeli és kifizeti az első hirdetési csomagját, Ön 2 db, a meghívott cég 1 db 15%-os kupont kap (60 napig érvényes, rendelésenként egy kupon használható). A meghívás az első fizetett csomag aktiválása után nyílik meg, mindenki számára ugyanabban a meghatározott időszakban működik, és meghívásokkal legfeljebb 10 kupont szerezhet. A meghívó linkjét belépés után a Meghívás fülön találja.</p>
+            <p class="fine">A részletes feltételeket az <a href="terms.html">ÁSZF</a> tartalmazza.</p>
             <div class="prog-cta"><a class="store-btn" href="business/?lang=hu">Belépés</a></div>
         </div>
     </div>
@@ -724,17 +723,16 @@
     <div class="fk-slot" data-fk="en" hidden></div>
 
     <div class="prog-grid">
-        <div class="prog-card founder">
-            <h3 data-when="open" hidden>Founder programme: your first ad is free for 30 days</h3>
-            <h3 data-when="closed">Welcome discount: 15% off your first advertising package</h3>
-            <p data-when="open" hidden>The first 30 companies can use their first ad free of charge for 30 days (the free period starts at activation and can be used once per tax number). Every new company gets a 15% welcome discount on its first advertising package (founders from the end of the free period, everyone else for 60 days from registration; once per tax number).</p>
-            <p data-when="closed">Every new company gets a 15% welcome discount on its first advertising package for 60 days from registration (once per tax number).</p>
+        <div class="prog-card founder" data-when="open" hidden>
+            <h3>Founder programme: your first ad is free for 30 days</h3>
+            <p>The first 30 companies can use their first ad free of charge for 30 days (the free period starts at activation and can be used once per tax number). After that the ad becomes inactive in the usual way and a package must be purchased to continue; the free period does not turn into a paid service automatically.</p>
             <p class="fine">The detailed conditions are in the <a href="terms.html">Terms</a></p>
-            <div class="prog-cta"><a class="store-btn" href="business/?lang=en" data-when="open" hidden>Sign in and activate</a><a class="store-btn" href="business/?lang=en" data-when="closed">Sign in</a></div>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=en">Sign in and activate</a></div>
         </div>
-        <div class="prog-card">
+        <div class="prog-card" data-prog="invite" hidden>
             <h3>Invite a company and get coupons</h3>
-            <p>When the invited company buys its first advertising package, you get 2 coupons worth 15% each (valid for 3 months, one discount per order). You can find your invite link in the Invite tab after signing in.</p>
+            <p>If the company you invite orders and pays for its first advertising package within 14 days of registering, you get 2 coupons and the invited company gets 1 coupon, worth 15% each (valid for 60 days, one coupon per order). Inviting opens after the activation of your first paid package, runs in the same fixed period for everyone, and you can earn at most 10 coupons through invitations. You can find your invite link in the Invite tab after signing in.</p>
+            <p class="fine">The detailed conditions are in the <a href="terms.html">Terms</a></p>
             <div class="prog-cta"><a class="store-btn" href="business/?lang=en">Sign in</a></div>
         </div>
     </div>
@@ -810,17 +808,16 @@
     <div class="fk-slot" data-fk="de" hidden></div>
 
     <div class="prog-grid">
-        <div class="prog-card founder">
-            <h3 data-when="open" hidden>Gründerprogramm: Ihre erste Anzeige ist 30 Tage kostenlos</h3>
-            <h3 data-when="closed">Willkommensrabatt: 15 % auf Ihr erstes Anzeigenpaket</h3>
-            <p data-when="open" hidden>Die ersten 30 Unternehmen können ihre erste Anzeige 30 Tage lang kostenlos nutzen (der kostenlose Zeitraum beginnt mit der Aktivierung und ist pro Steuernummer einmal nutzbar). Jedes neue Unternehmen erhält 15 % Willkommensrabatt auf sein erstes Anzeigenpaket (Gründer ab Ende des kostenlosen Zeitraums, alle anderen 60 Tage ab der Registrierung; pro Steuernummer einmal).</p>
-            <p data-when="closed">Jedes neue Unternehmen erhält 15 % Willkommensrabatt auf sein erstes Anzeigenpaket, 60 Tage ab der Registrierung (pro Steuernummer einmal).</p>
+        <div class="prog-card founder" data-when="open" hidden>
+            <h3>Gründerprogramm: Ihre erste Anzeige ist 30 Tage kostenlos</h3>
+            <p>Die ersten 30 Unternehmen können ihre erste Anzeige 30 Tage lang kostenlos nutzen (der kostenlose Zeitraum beginnt mit der Aktivierung und ist pro Steuernummer einmal nutzbar). Danach wird die Anzeige wie üblich inaktiv, und zur Fortsetzung muss ein Paket gekauft werden; der kostenlose Zeitraum wird nicht automatisch zu einer kostenpflichtigen Leistung.</p>
             <p class="fine">Die genauen Bedingungen stehen in den <a href="terms.html">AGB</a></p>
-            <div class="prog-cta"><a class="store-btn" href="business/?lang=de" data-when="open" hidden>Anmelden und aktivieren</a><a class="store-btn" href="business/?lang=de" data-when="closed">Anmelden</a></div>
+            <div class="prog-cta"><a class="store-btn" href="business/?lang=de">Anmelden und aktivieren</a></div>
         </div>
-        <div class="prog-card">
+        <div class="prog-card" data-prog="invite" hidden>
             <h3>Laden Sie ein Unternehmen ein und erhalten Sie Gutscheine</h3>
-            <p>Sobald das eingeladene Unternehmen sein erstes Anzeigenpaket kauft, erhalten Sie 2 Gutscheine über je 15 % (3 Monate gültig, ein Rabatt pro Bestellung). Ihren Einladungslink finden Sie nach der Anmeldung im Tab „Einladen“.</p>
+            <p>Bestellt und bezahlt das von Ihnen eingeladene Unternehmen sein erstes Anzeigenpaket innerhalb von 14 Tagen nach der Registrierung, erhalten Sie 2 Gutscheine und das eingeladene Unternehmen 1 Gutschein über je 15 % (60 Tage gültig, ein Gutschein pro Bestellung). Das Einladen wird nach der Aktivierung Ihres ersten bezahlten Pakets freigeschaltet, läuft für alle im selben festen Zeitraum, und durch Einladungen können Sie höchstens 10 Gutscheine erwerben. Ihren Einladungslink finden Sie nach der Anmeldung im Tab „Einladen“.</p>
+            <p class="fine">Die genauen Bedingungen stehen in den <a href="terms.html">AGB</a></p>
             <div class="prog-cta"><a class="store-btn" href="business/?lang=de">Anmelden</a></div>
         </div>
     </div>
@@ -873,8 +870,9 @@
 </script>
 
 <script type="module">
-    // Élő, valós számláló az alapító helyekről. Az alapító program kártyái CSAK akkor jelennek meg, ha a szerver kiadja az adatot
-    // (a program lezárása után nem adja ki, ilyenkor vagy ha a lekérés sikertelen, csak az üdvözlő kedvezmény szövege látszik).
+    // Élő, valós számláló az alapító helyekről, és a szerver élő jelzése a meghívó programról. Az alapító program kártyái CSAK akkor jelennek
+    // meg, ha a szerver kiadja az adatot és van szabad hely; a meghívó kártya CSAK akkor, ha a szerver kifejezetten aktívnak jelzi a programot
+    // (főkapcsoló BE és a közös meghívási időszakon belül vagyunk). Ha a lekérés sikertelen, egyik kártya sem látszik (nem ígérünk hamis jutalmat).
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
     import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-functions.js";
 
@@ -968,11 +966,12 @@
         const fn = httpsCallable(getFunctions(app, "europe-west1"), "nyilvanosSzamlalok", { timeout: 15000 });
         const r = (await fn()).data;
         const a = r && r.alapito;
+        // A meghívó kártya csak kifejezetten aktív programnál látszik.
+        document.querySelectorAll('[data-prog="invite"]').forEach((e) => { e.hidden = !(r && r.meghivasAktiv === true); });
         if (a && Number.isFinite(a.osszes) && a.osszes > 0 && Number.isFinite(a.foglalt)) {
-            // Az "ingyenes első hirdetés" szöveg csak addig látszik, amíg van szabad hely; betelés után az üdvözlő kedvezmény szövege marad.
+            // Az "ingyenes első hirdetés" kártya csak addig látszik, amíg van szabad hely.
             const nyitva = a.foglalt < a.osszes;
             document.querySelectorAll('[data-when="open"]').forEach((e) => { e.hidden = !nyitva; });
-            document.querySelectorAll('[data-when="closed"]').forEach((e) => { e.hidden = nyitva; });
             document.querySelectorAll("[data-fk]").forEach((box) => {
                 const L = T[box.dataset.fk];
                 if (!L) return;
@@ -980,7 +979,13 @@
                 box.hidden = false;
             });
         }
-    } catch (e) { /* számláló nélkül is teljes az oldal: csak az üdvözlő kedvezmény szövege látszik */ }
+    } catch (e) { /* számláló nélkül is teljes az oldal: a program-kártyák egyike sem látszik */ }
+    // Ha egy nyelv blokkjában egy kártya sem látszik, a rács eltűnik; ha egy látszik, teljes szélességű.
+    document.querySelectorAll(".prog-grid").forEach((g) => {
+        const lathato = g.querySelectorAll(".prog-card:not([hidden])").length;
+        g.style.display = lathato === 0 ? "none" : "";
+        g.style.gridTemplateColumns = lathato === 1 ? "1fr" : "";
+    });
 </script>
 
 </body>

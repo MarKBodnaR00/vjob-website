@@ -460,9 +460,58 @@
         .invite-card span { font-size: 12.5px; color: var(--mut3); line-height: 1.45; }
         .info-note a { color: var(--acc); }
 
+        /* ── Meghívás: állapotsávok, kuponmérő, belépő kártya lépései ── */
+        .banner.err { border-color: var(--err-bd); background: var(--err-bg); }
+        .banner.err .bi { background: var(--err-bg); color: var(--err-tx); }
+        .banner.static { margin: 12px 0 18px; }
+        .inv-code { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 15px 18px; margin-bottom: 20px; border: 1px dashed var(--line3); border-radius: 14px; }
+        .inv-code b { font-size: 20px; letter-spacing: 0.1em; color: var(--mut2); overflow-wrap: anywhere; }
+        .inv-code span { font-size: 12.5px; font-weight: 700; color: var(--mut2); }
+        .inv-code.full span { color: var(--err-tx); }
+        .inv-lock-btn { max-width: 320px; margin-top: 4px; }
+        .inv-lock-btn + .note { margin-bottom: 24px; }
+        .inv-meter { border: 1px solid var(--cardb2); background: var(--card); border-radius: 16px; padding: 18px 20px 16px; margin-bottom: 22px; }
+        .inv-meter.warn { border-color: var(--warn-bd); }
+        .inv-meter.full { border-color: var(--err-bd); }
+        .inv-mhead { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+        .inv-mcount { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--mut3); }
+        .inv-mcount b { font-size: 22px; color: var(--h); }
+        .inv-meter.warn .inv-mcount b { color: var(--warn-t); }
+        .inv-meter.full .inv-mcount b { color: var(--err-tx); }
+        .inv-i { width: 22px; height: 22px; padding: 0; border-radius: 50%; border: 1px solid var(--err-bd); background: var(--err-bg); color: var(--err-tx); font-family: inherit; font-size: 12px; font-weight: 700; line-height: 1; cursor: pointer; }
+        .inv-i:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+        .inv-pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 12px; white-space: nowrap; }
+        .inv-pill.ok { color: var(--ok); background: var(--ok-bg); }
+        .inv-pill.warn { color: var(--warn-t); background: var(--warn-bg); border: 1px solid var(--warn-bd); }
+        .inv-pill.err { color: var(--err-tx); background: var(--err-bg); border: 1px solid var(--err-bd); letter-spacing: 0.6px; }
+        .inv-pill.note { color: var(--mut); background: var(--chip); }
+        .inv-seg, .inv-scale { display: grid; gap: 12px; }
+        .inv-seg { padding: 5px; border-radius: 10px; }
+        .inv-meter.warn .inv-seg { box-shadow: 0 0 0 2px var(--warn-bd); }
+        .inv-meter.full .inv-seg { box-shadow: 0 0 0 2px var(--err-bd); }
+        .inv-scale { margin-top: 6px; padding: 0 5px; }
+        .inv-scale span { text-align: center; font-size: 11px; color: var(--mut2); }
+        .inv-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+        .inv-pair i { display: block; height: 16px; border-radius: 4px; background: var(--surf2); border: 1px solid var(--line2); }
+        .inv-pair i.paid, .inv-key .k-paid { background: linear-gradient(90deg, #0DAA70, #00EDA0); border-color: transparent; }
+        .inv-pair i.pend, .inv-key .k-pend { background: repeating-linear-gradient(45deg, #C084FC 0 3px, #4B2C6B 3px 6px); border-color: transparent; }
+        html[data-theme="light"] .inv-pair i.pend, html[data-theme="light"] .inv-key .k-pend { background: repeating-linear-gradient(45deg, #8B2FC9 0 3px, #D9C4F5 3px 6px); }
+        .inv-key { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 14px; font-size: 12.5px; color: var(--mut3); }
+        .inv-key i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+        .inv-mnote { margin-top: 12px; font-size: 12.5px; color: var(--mut2); line-height: 1.5; }
+        .inv-tip { margin-top: 14px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--err-bd); background: var(--err-bg); font-size: 13px; line-height: 1.55; color: var(--mut3); }
+        .inv-tip b { display: block; margin-bottom: 4px; color: var(--err-tx); }
+        .note.ok-note { padding: 11px 13px; border-radius: 12px; border: 1px solid var(--okb-bd); background: var(--okb-bg); color: var(--okb-tx); }
+        .ref-box > b { color: var(--h); font-size: 16px; }
+        .ref-steps { display: grid; gap: 8px; margin: 14px 0 4px; }
+        .ref-st { display: flex; gap: 11px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line2); background: var(--surf); border-radius: 12px; }
+        .ref-n { flex: 0 0 22px; height: 22px; border-radius: 50%; background: var(--acc); color: #1A0B2E; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        html[data-theme="light"] .ref-n { color: #fff; }
+        .ref-st strong { display: block; font-size: 13.5px; color: var(--h); }
+        .ref-st .t { display: block; margin-top: 2px; font-size: 12.5px; color: var(--mut3); line-height: 1.45; }
+
         .ref-box { max-width: 430px; margin: 24px auto 0; border: 1px solid var(--note-bd); background: var(--note-bg); border-radius: 20px; padding: 22px 24px; }
         .ref-box + .center-card { margin-top: 16px; }
-        .ref-box b { color: var(--h); font-size: 16px; }
         .ref-box p { font-size: 13.5px; color: var(--mut3); line-height: 1.55; margin-top: 6px; }
         .ref-box .kv { margin-top: 12px; }
         .pub-card { max-width: 430px; margin: 18px auto 0; border: 1px solid var(--cardb3); background: var(--card3); border-radius: 20px; padding: 22px 24px; }
@@ -645,6 +694,8 @@
 
     // ───────────────────────── Szövegek ─────────────────────────
     // Cégeknek szóló szöveg: magyarul magázás, németül Sie-forma.
+    const plural = (n, egy, tobb) => (n === 1 ? egy : tobb);
+
     const T = {
         hu: {
             pageTitle: "VJob Business – Céges fiók",
@@ -847,12 +898,10 @@
             previewWait: "Az összeg számítása…",
             previewFail: "Az összeg részletezése most nem tölthető be. A fizetendő összeget a díjbekérő tartalmazza; kedvezmény nélkül indul a fizetés.",
             previewRetry: "Újrapróbálás",
-            discWelcome: "Üdvözlő kedvezmény",
             discCoupon: "Meghívási kupon",
             discLine: (nev, sz) => `${nev} – ${sz}%`,
             discToggleTitle: (nev, sz) => `${nev}: −${sz}% felhasználása`,
             discExpires: (d) => `Lejárat: ${d}`,
-            discFirstPack: "az első hirdetési csomagra érvényes",
             discMore: (n) => `még ${n} további kedvezménye van`,
             discOffHint: "Ha kikapcsolja, a kedvezmény megmarad a lejáratáig.",
             discBadge: (sz) => `−${sz}% kedvezmény`,
@@ -873,9 +922,6 @@
             founderBusy: "Aktiválás…",
             founderDone: (d) => `A hirdetése aktív. Az ingyenes időszak vége: ${d}`,
             bnFreeTitle: (n) => `Ingyenes időszak: még ${n} nap`,
-            bnFreeMeta: (vege, sz, udv) => `Az ingyenes időszak vége: ${vege} Utána a hosszabbítás fizetős.${udv ? ` Az első csomagjára ${sz}% üdvözlő kedvezményt kap, lejárata: ${udv}` : ""}`,
-            bnWelcomeTitle: (sz, n) => `${sz}% üdvözlő kedvezmény: még ${n} nap`,
-            bnWelcomeMeta: (d) => `Az első hirdetési csomagja árából a vásárlásnál felajánljuk. Lejárat: ${d}`,
             bnCouponTitle: (db, sz) => `${db} db ${sz}%-os meghívási kuponja van`,
             bnCouponMeta: (d, n) => `A legkorábbi kupon lejárata: ${d} (még ${n} nap). Hosszabbításra és kiemelésre is felhasználható.`,
             bnCouponSoon: (db) => `Használja fel a következő vásárlásánál, és hívjon meg gyorsan még egy céget: minden sikeres meghívásért újabb ${db} kupont kap.`,
@@ -889,28 +935,16 @@
             btnActivateFree: "Ingyenes aktiválás",
             tabInv: "Meghívás",
             invTitle: "Meghívás",
-            invSub: (db, sz) => `Hívjon meg másik céget a VJobra. Amikor a meghívott cég megvásárolja az első hirdetési csomagját, Ön ${db} db ${sz}%-os kupont kap.`,
             invLinkKey: "Meghívó link",
             invCodeKey: "Meghívó kód",
             invHowTitle: "Hogyan működik?",
-            invSteps: (db, sz, ho) => [
-                ["Elküldi a linket", "Küldje el a meghívó linkjét a meghívni kívánt cégnek."],
-                ["A cég regisztrál", "A cég a VJob alkalmazásban hozza létre a céges fiókját, és megadja az Ön meghívó kódját."],
-                ["Ön kupont kap", `Amikor a meghívott cég megvásárolja az első hirdetési csomagját, Ön ${db} db ${sz}%-os kupont kap, ${ho} hónapig érvényeset.`]
-            ],
-            invRules: "Egy cég csak egyszer lehet meghívott (adószám alapján), saját magát nem hívhatja meg. A kupon a rendelés végösszegéből vonódik le; rendelésenként egy kedvezmény használható, a kedvezmények nem vonhatók össze. A kupon hosszabbításra és kiemelésre is felhasználható. A részletes feltételeket az ÁSZF tartalmazza:",
-            invStatInvited: "Meghívott cég",
-            invStatPaid: "Fizető meghívott",
-            invStatCoupons: "Felhasználható kupon",
             invCouponsTitle: "Az Ön kuponjai",
-            invCouponsEmpty: "Még nincs kuponja. Az első kupont akkor kapja meg, amikor egy meghívott cég megvásárolja az első hirdetési csomagját.",
             invCouponName: (sz) => `${sz}% kedvezmény`,
             invListItem: (n) => `${n}. meghívott cég`,
             invPrivacyNote: "Adatvédelmi okból a meghívott cégek nevét nem jelenítjük meg, csak azt, hogy hányan regisztráltak és fizettek.",
             invCouponState: { elerheto: "Felhasználható", foglalt: "Nyitott fizetésen", felhasznalva: "Felhasználva" },
             invListTitle: "Meghívott cégek",
             invListEmpty: "Még senki nem regisztrált az Ön kódjával.",
-            invListState: { regisztralt: "Regisztrált", fizetett: "Fizetett" },
             invLoadErr: "A meghívási adatok most nem tölthetők be. Kérjük, próbálja meg később, vagy frissítse az oldalt.",
             bDiscount: (sz) => `Kedvezmény (−${sz}%)`,
             pubTitle: "A VJob közössége",
@@ -933,6 +967,65 @@
             fkEnd: "Betelt! Köszönjük a bizalmat.",
             fkEndSub: (o) => `A ${o} alapító hely elfogyott, az alapító program lezárult.`,
             pubFounderAria: (f, o) => `${o} alapító helyből ${f} foglalt`,
+            bnFreeMeta: (vege) => `Az ingyenes időszak vége: ${vege} Utána a hosszabbítás fizetős.`,
+            invSub: (b) => `Hívjon meg másik céget a VJobra. Amikor a meghívott cég kifizeti az első hirdetési csomagját, Ön ${b.kuponDb} db, a meghívott ${b.meghivottKuponDb} db ${b.kuponSzazalek}%-os kupont kap.`,
+            invSteps: (b) => [
+                ["Elküldi a linket", "Küldje el a meghívó linkjét a meghívni kívánt cégnek."],
+                ["A cég regisztrál", `A cég a VJob alkalmazásban hozza létre a céges fiókját, és a fiók létrehozásától számított ${b.meghivottRendelesNap} napon belül megadja az Ön meghívó kódját.`],
+                ["Ön és a meghívott is kupont kap", `Amikor a meghívott cég kifizeti az első hirdetési csomagját (a regisztrációtól számított ${b.meghivottRendelesNap} napon belül megrendelve), Ön ${b.kuponDb} db, ő ${b.meghivottKuponDb} db ${b.kuponSzazalek}%-os kupont kap, ${b.kuponNap} napig érvényeset.`]
+            ],
+            invRules: (b) => `Egy cég csak egyszer lehet meghívott (adószám alapján), saját magát nem hívhatja meg. A meghívott a teljes árat fizeti; a kuponokat az első csomagja kifizetése után írjuk jóvá. Egy cég legfeljebb ${b.kuponMax} db meghívási kupont szerezhet. A kupon a rendelés végösszegéből vonódik le; rendelésenként egy kedvezmény használható, a kedvezmények nem vonhatók össze. A kupon hosszabbításra és kiemelésre is felhasználható. A részletes feltételeket az ÁSZF tartalmazza:`,
+            invCouponsEmpty: "Még nincs kuponja. A kuponokat akkor írjuk jóvá, amikor egy meghívott cég kifizeti az első hirdetési csomagját.",
+            invListState: { regisztralt: "Regisztrált", fizetett: "Fizetett", lejart: "Lejárt" },
+            invListRegMeta: (n) => `még ${n} nap a rendelésre`,
+            invListPaidMeta: (db) => `${db} db kupon jóváírva`,
+            invListExpMeta: (nap) => `nem rendelt ${nap} napon belül, a hely felszabadult`,
+            invPeriod: (k, v) => (k && v ? `A meghívási időszak mindenkinél ugyanaz: ${k} – ${v}` : v ? `A meghívási időszak mindenkinél ugyanaz, utolsó napja: ${v}` : k ? `A meghívási időszak mindenkinél ugyanaz, kezdete: ${k}` : ""),
+            invLockedTitle: "A meghívás az első fizetett csomagja aktiválása után nyílik meg.",
+            invLockedText: (b) => `Ha egy meghívott cég kifizeti az első csomagját, Ön ${b.kuponDb} db, ő ${b.meghivottKuponDb} db ${b.kuponSzazalek}%-os kupont kap.`,
+            invLockedNote: "Az ingyenes alapító hirdetés nem nyitja meg a menüt, csak az első fizetett hirdetési csomag.",
+            invLockedBtn: "Csomagot vásárolok",
+            invCodeLocked: "Zárolva",
+            invSoonTitle: "A meghívási időszak még nem indult el.",
+            invSoonText: (k) => `A meghívás kezdete: ${k} A meghívó kódja ekkor jelenik meg; addig nem fogad regisztrálót.`,
+            invCodeSoon: "Hamarosan",
+            invEndedTitle: "A meghívási időszak véget ért.",
+            invEndedText: (v) => `Az utolsó nap ${v} volt. Új cégeket már nem lehet meghívni. A már regisztrált meghívottakért a jutalom továbbra is jár, a megszerzett kuponok a lejáratukig felhasználhatók.`,
+            invOffTitle: "A meghívás jelenleg nem elérhető.",
+            invOffText: "Új cégeket most nem lehet meghívni. A már megszerzett kuponjai a lejáratukig felhasználhatók.",
+            invCodeFull: "Betelt",
+            invEndTitle: (n) => `Még ${n} nap a meghívásra`,
+            invEndText: (v) => `A meghívási időszak utolsó napja: ${v} Utána a kódja új cégeket már nem fogad (mindenkinél ugyanekkor). A már regisztráltak még rendelhetnek, és a jutalom nekik is jár.`,
+            invMeterUnit: "kupon",
+            invPillRoom: (n) => (n === 1 ? "már csak 1 meghívott fér be" : `még ${n} meghívott fér be`),
+            invPillFull: "MAXIMUM ELÉRVE",
+            invPillEnded: "lezárva",
+            invFullTitle: "Maximum elérve",
+            invFullText: "A kódja most nem fogad új regisztrálót.",
+            invTipBtn: "Mit jelent a maximum?",
+            invTip: (b) => `Egy cég legfeljebb ${b.kuponMax} db meghívási kupont szerezhet (meghívottanként ${b.kuponDb} db, azaz legfeljebb ${Math.floor(b.kuponMax / b.kuponDb)} meghívott). A már felhasznált kuponok is beleszámítanak. Ha egy regisztrált meghívott ${b.meghivottRendelesNap} napon belül nem rendel, a helye felszabadul, és a kód újra fogad.`,
+            invKeyPaid: (n, k) => `${n} fizetett · ${k} kupon jóváírva`,
+            invKeyPend: (n, k) => `${n} regisztrált · ${k} kupon lefoglalva`,
+            invMeterNote: (b) => `A kuponok egyenként ${b.kuponSzazalek}%-osak, ${b.kuponNap} napig érvényesek, rendelésenként egy használható.`,
+            invMeterAria: (f, m) => `${m} kuponhelyből ${f} foglalt`,
+            guestTitle: (n, b) => `Rendeljen még ${n} napon belül: az első fizetése után ${b.meghivottKuponDb} db ${b.kuponSzazalek}%-os kupont kap`,
+            guestMeta: (d, b) => `Az első csomagot teljes áron fizeti. A kupont a következő rendelésénél használhatja (${b.kuponNap} napig érvényes). A rendelés (díjbekérő) leadásának határideje: ${d} Az átutalás utána is beérhet.`,
+            guestWarnTitle: (n) => `Még ${n} nap: ha addig nem rendel, a kupon elmarad`,
+            guestWarnMeta: (d) => `A rendelés (díjbekérő) leadásának határideje: ${d} Ha addig nem rendeli meg az első csomagját, a meghívás lejár, és a kupon elmarad.`,
+            guestOrderedTitle: (b) => `A rendelését rögzítettük: a kifizetés után ${b.meghivottKuponDb} db ${b.kuponSzazalek}%-os kupont kap`,
+            guestOrderedMeta: (b) => `Az átutalás beérkezése után a kupont automatikusan jóváírjuk. Az átutalás a ${b.meghivottRendelesNap} napos határidő után is beérhet, amíg a fizetési adatok érvényesek.`,
+            guestExpTitle: "A meghívással járó kupon elmaradt",
+            guestExpMeta: (b) => `A rendelést a regisztrációtól számított ${b.meghivottRendelesNap} napon belül kellett volna leadni. Minden más változatlanul működik.`,
+            guestBuyNote: (n, b) => `Meghívással regisztrált: a kifizetés után ${b.meghivottKuponDb} db ${b.kuponSzazalek}%-os kupont kap. A kupont a következő rendelésénél használhatja, ${b.kuponNap} napig érvényes. A rendelést még ${n} napig adhatja le.`,
+            guestBankNote: (b) => `A rendelését rögzítettük. Az átutalás beérkezése után automatikusan jóváírunk Önnek ${b.meghivottKuponDb} db ${b.kuponSzazalek}%-os kupont. Az átutalás a ${b.meghivottRendelesNap} napos határidő után is beérhet, amíg a fizetési adatok érvényesek.`,
+            refBenefit: (b) => `Ha az első hirdetési csomagját a regisztrációtól számított ${b.meghivottRendelesNap} napon belül megrendeli, és ki is fizeti, ${b.meghivottKuponDb} db ${b.kuponSzazalek}%-os kupont kap a következő rendeléséhez (${b.kuponNap} napig érvényes).`,
+            refSteps: [
+                ["Töltse le az appot", "A VJob Android-alkalmazást"],
+                ["Hozza létre a céges fiókot", "A „Meghívó kód (nem kötelező)” mezőbe írja be a kódot"],
+                ["Hirdetés és csomag", "Itt, a weboldalon rendelheti meg"]
+            ],
+            refClosedTitle: "A meghívó már nem érvényes",
+            refClosedText: "A meghívási program jelenleg nem elérhető, ezért ez a kód nem használható. A VJobra ettől még a megszokott módon regisztrálhat.",
             refTitle: "Meghívót kapott a VJobra",
             refText: "Egy cég meghívta Önt. A céges regisztráció a VJob alkalmazásban történik: a fiók létrehozásakor adja meg ezt a kódot a „Meghívó kód (nem kötelező)” mezőben.",
             refLogin: "Ha már van fiókja, jelentkezzen be lent."
@@ -1138,12 +1231,10 @@
             previewWait: "Calculating the amount…",
             previewFail: "The price breakdown cannot be loaded right now. The amount payable is shown on the proforma invoice; the payment will start without a discount.",
             previewRetry: "Try again",
-            discWelcome: "Welcome discount",
             discCoupon: "Referral coupon",
             discLine: (nev, sz) => `${nev} – ${sz}%`,
             discToggleTitle: (nev, sz) => `Use the ${nev.toLowerCase()}: −${sz}%`,
             discExpires: (d) => `Expires: ${d}`,
-            discFirstPack: "valid for your first advertising package",
             discMore: (n) => `${n} more ${n === 1 ? "discount is" : "discounts are"} available`,
             discOffHint: "If you switch it off, the discount stays available until it expires.",
             discBadge: (sz) => `−${sz}% discount`,
@@ -1164,9 +1255,6 @@
             founderBusy: "Activating…",
             founderDone: (d) => `Your ad is now active. The free period ends on ${d}.`,
             bnFreeTitle: (n) => `Free period: ${n} ${n === 1 ? "day" : "days"} left`,
-            bnFreeMeta: (vege, sz, udv) => `The free period ends on ${vege}. After that, extending the ad is paid.${udv ? ` You get a ${sz}% welcome discount on your first package, valid until ${udv}.` : ""}`,
-            bnWelcomeTitle: (sz, n) => `${sz}% welcome discount: ${n} ${n === 1 ? "day" : "days"} left`,
-            bnWelcomeMeta: (d) => `It is offered at checkout on the price of your first advertising package. Expires: ${d}.`,
             bnCouponTitle: (db, sz) => `You have ${db} referral ${db === 1 ? "coupon" : "coupons"} (${sz}%)`,
             bnCouponMeta: (d, n) => `The earliest coupon expires on ${d} (${n} ${n === 1 ? "day" : "days"} left). It can be used for extensions and highlights too.`,
             bnCouponSoon: (db) => `Use it on your next purchase, and quickly invite another company: you get ${db} new coupons for every successful invitation.`,
@@ -1180,28 +1268,16 @@
             btnActivateFree: "Activate for free",
             tabInv: "Invite",
             invTitle: "Invite a company",
-            invSub: (db, sz) => `Invite another company to VJob. When the invited company buys its first advertising package, you get ${db} coupons worth ${sz}% each.`,
             invLinkKey: "Invite link",
             invCodeKey: "Invite code",
             invHowTitle: "How does it work?",
-            invSteps: (db, sz, ho) => [
-                ["Send the link", "Send your invite link to the company you want to invite."],
-                ["The company registers", "The company creates its company account in the VJob app and enters your invite code."],
-                ["You get coupons", `When the invited company buys its first advertising package, you get ${db} coupons worth ${sz}% each, valid for ${ho} months.`]
-            ],
-            invRules: "A company can only be invited once (by tax number), and you cannot invite yourself. The coupon is deducted from the order total; one discount can be used per order and discounts cannot be combined. A coupon can also be used for extensions and highlights. The detailed conditions are in the Terms and Conditions:",
-            invStatInvited: "Invited companies",
-            invStatPaid: "Paying invitees",
-            invStatCoupons: "Coupons available",
             invCouponsTitle: "Your coupons",
-            invCouponsEmpty: "You have no coupons yet. You get the first coupon when an invited company buys its first advertising package.",
             invCouponName: (sz) => `${sz}% discount`,
             invListItem: (n) => `Invited company #${n}`,
             invPrivacyNote: "For privacy reasons we do not show the names of invited companies, only how many have registered and paid.",
             invCouponState: { elerheto: "Available", foglalt: "On an open payment", felhasznalva: "Used" },
             invListTitle: "Invited companies",
             invListEmpty: "Nobody has registered with your code yet.",
-            invListState: { regisztralt: "Registered", fizetett: "Paid" },
             invLoadErr: "The invitation data cannot be loaded right now. Please try again later or refresh the page.",
             bDiscount: (sz) => `Discount (−${sz}%)`,
             pubTitle: "The VJob community",
@@ -1224,6 +1300,65 @@
             fkEnd: "All taken! Thank you for your trust.",
             fkEndSub: (o) => `All ${o} founder places are taken; the founder programme has closed.`,
             pubFounderAria: (f, o) => `${f} of ${o} founder places taken`,
+            bnFreeMeta: (vege) => `The free period ends on ${vege}. After that, extending the ad is paid.`,
+            invSub: (b) => `Invite another company to VJob. When the invited company pays for its first advertising package, you get ${b.kuponDb} ${plural(b.kuponDb, "coupon", "coupons")} and the invited company gets ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "coupon", "coupons")}, worth ${b.kuponSzazalek}% each.`,
+            invSteps: (b) => [
+                ["Send the link", "Send your invite link to the company you want to invite."],
+                ["The company registers", `The company creates its company account in the VJob app and enters your invite code within ${b.meghivottRendelesNap} days of creating the account.`],
+                ["You both get coupons", `When the invited company pays for its first advertising package (ordered within ${b.meghivottRendelesNap} days of registering), you get ${b.kuponDb} ${plural(b.kuponDb, "coupon", "coupons")} and the invited company gets ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "coupon", "coupons")}, worth ${b.kuponSzazalek}% each and valid for ${b.kuponNap} days.`]
+            ],
+            invRules: (b) => `A company can only be invited once (by tax number), and you cannot invite yourself. The invited company pays the full price; coupons are credited after its first package has been paid. A company can collect at most ${b.kuponMax} referral coupons. The coupon is deducted from the order total; one discount can be used per order and discounts cannot be combined. A coupon can also be used for extensions and highlights. The detailed conditions are in the Terms and Conditions:`,
+            invCouponsEmpty: "You have no coupons yet. Coupons are credited when an invited company pays for its first advertising package.",
+            invListState: { regisztralt: "Registered", fizetett: "Paid", lejart: "Expired" },
+            invListRegMeta: (n) => `${n} ${n === 1 ? "day" : "days"} left to order`,
+            invListPaidMeta: (db) => `${db} ${plural(db, "coupon", "coupons")} credited`,
+            invListExpMeta: (nap) => `did not order within ${nap} days; the place is free again`,
+            invPeriod: (k, v) => (k && v ? `The invitation period is the same for everyone: ${k} – ${v}.` : v ? `The invitation period is the same for everyone; its last day is ${v}.` : k ? `The invitation period is the same for everyone; it starts on ${k}.` : ""),
+            invLockedTitle: "Inviting opens after your first paid package is activated.",
+            invLockedText: (b) => `When an invited company pays for its first package, you get ${b.kuponDb} ${plural(b.kuponDb, "coupon", "coupons")} and it gets ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "coupon", "coupons")}, worth ${b.kuponSzazalek}% each.`,
+            invLockedNote: "The free founder ad does not open the menu, only your first paid advertising package does.",
+            invLockedBtn: "Buy a package",
+            invCodeLocked: "Locked",
+            invSoonTitle: "The invitation period has not started yet.",
+            invSoonText: (k) => `Inviting starts on ${k}. Your invite code appears then; until then it does not accept registrations.`,
+            invCodeSoon: "Coming soon",
+            invEndedTitle: "The invitation period has ended.",
+            invEndedText: (v) => `The last day was ${v}. New companies can no longer be invited. Rewards are still due for invitees who have already registered, and coupons you have earned can be used until they expire.`,
+            invOffTitle: "Inviting is not available at the moment.",
+            invOffText: "New companies cannot be invited right now. Coupons you have already earned can be used until they expire.",
+            invCodeFull: "Full",
+            invEndTitle: (n) => `${n} ${n === 1 ? "day" : "days"} left to invite`,
+            invEndText: (v) => `The last day of the invitation period is ${v}. After that, your code no longer accepts new companies (for everyone at the same time). Companies that have already registered can still order, and the rewards still apply.`,
+            invMeterUnit: "coupons",
+            invPillRoom: (n) => (n === 1 ? "room for 1 more invitee" : `room for ${n} more invitees`),
+            invPillFull: "MAXIMUM REACHED",
+            invPillEnded: "closed",
+            invFullTitle: "Maximum reached",
+            invFullText: "Your code does not accept new registrations right now.",
+            invTipBtn: "What does the maximum mean?",
+            invTip: (b) => `A company can collect at most ${b.kuponMax} referral coupons (${b.kuponDb} per invitee, i.e. at most ${Math.floor(b.kuponMax / b.kuponDb)} invitees). Coupons already used count too. If a registered invitee does not order within ${b.meghivottRendelesNap} days, its place is freed and the code accepts registrations again.`,
+            invKeyPaid: (n, k) => `${n} paid · ${k} ${plural(k, "coupon", "coupons")} credited`,
+            invKeyPend: (n, k) => `${n} registered · ${k} ${plural(k, "coupon", "coupons")} reserved`,
+            invMeterNote: (b) => `Each coupon is worth ${b.kuponSzazalek}% and valid for ${b.kuponNap} days; one coupon can be used per order.`,
+            invMeterAria: (f, m) => `${f} of ${m} coupon places taken`,
+            guestTitle: (n, b) => `Order within ${n} ${n === 1 ? "day" : "days"}: after your first payment you get ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "coupon", "coupons")} worth ${b.kuponSzazalek}%`,
+            guestMeta: (d, b) => `You pay the full price for your first package. You can use the coupon on your next order (valid for ${b.kuponNap} days). The deadline to place the order (proforma invoice) is ${d}. The transfer may arrive later.`,
+            guestWarnTitle: (n) => `${n} ${n === 1 ? "day" : "days"} left: if you do not order by then, the coupon is lost`,
+            guestWarnMeta: (d) => `The deadline to place the order (proforma invoice) is ${d}. If you do not order your first package by then, the invitation expires and the coupon is lost.`,
+            guestOrderedTitle: (b) => `Your order is recorded: after payment you get ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "coupon", "coupons")} worth ${b.kuponSzazalek}%`,
+            guestOrderedMeta: (b) => `We credit the coupon automatically once the transfer arrives. The transfer may arrive after the ${b.meghivottRendelesNap}-day deadline, as long as the payment details are valid.`,
+            guestExpTitle: "The coupon for the invitation was lost",
+            guestExpMeta: (b) => `The order had to be placed within ${b.meghivottRendelesNap} days of registering. Everything else works as usual.`,
+            guestBuyNote: (n, b) => `You registered with an invitation: after payment you get ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "coupon", "coupons")} worth ${b.kuponSzazalek}%. You can use it on your next order (valid for ${b.kuponNap} days). You can still place this order for ${n} ${n === 1 ? "day" : "days"}.`,
+            guestBankNote: (b) => `Your order is recorded. Once the transfer arrives, we automatically credit ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "coupon", "coupons")} worth ${b.kuponSzazalek}% to you. The transfer may arrive after the ${b.meghivottRendelesNap}-day deadline, as long as the payment details are valid.`,
+            refBenefit: (b) => `If you order your first advertising package within ${b.meghivottRendelesNap} days of registering and pay for it, you get ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "coupon", "coupons")} worth ${b.kuponSzazalek}% for your next order (valid for ${b.kuponNap} days).`,
+            refSteps: [
+                ["Get the app", "The VJob Android app"],
+                ["Create the company account", "Enter the code in the “Invite code (optional)” field"],
+                ["Ad and package", "Order it here, on the website"]
+            ],
+            refClosedTitle: "This invitation is no longer valid",
+            refClosedText: "The invitation programme is not available at the moment, so this code cannot be used. You can still register for VJob the usual way.",
             refTitle: "You have been invited to VJob",
             refText: "A company has invited you. Company registration is done in the VJob app: when creating your account, enter this code in the “Invite code (optional)” field.",
             refLogin: "If you already have an account, log in below."
@@ -1429,12 +1564,10 @@
             previewWait: "Betrag wird berechnet…",
             previewFail: "Die Aufschlüsselung des Betrags kann derzeit nicht geladen werden. Der zu zahlende Betrag steht auf der Proforma-Rechnung; die Zahlung wird ohne Rabatt gestartet.",
             previewRetry: "Erneut versuchen",
-            discWelcome: "Willkommensrabatt",
             discCoupon: "Einladungs-Gutschein",
             discLine: (nev, sz) => `${nev} – ${sz}%`,
             discToggleTitle: (nev, sz) => `${nev} verwenden: −${sz}%`,
             discExpires: (d) => `Gültig bis: ${d}`,
-            discFirstPack: "gilt für das erste Anzeigenpaket",
             discMore: (n) => `${n} weitere${n === 1 ? "r Rabatt ist" : " Rabatte sind"} verfügbar`,
             discOffHint: "Wenn Sie ihn ausschalten, bleibt der Rabatt bis zum Ablauf erhalten.",
             discBadge: (sz) => `−${sz}% Rabatt`,
@@ -1455,9 +1588,6 @@
             founderBusy: "Wird aktiviert…",
             founderDone: (d) => `Ihre Anzeige ist aktiv. Der kostenlose Zeitraum endet am ${d}.`,
             bnFreeTitle: (n) => `Kostenloser Zeitraum: noch ${n} ${n === 1 ? "Tag" : "Tage"}`,
-            bnFreeMeta: (vege, sz, udv) => `Der kostenlose Zeitraum endet am ${vege}. Danach ist die Verlängerung kostenpflichtig.${udv ? ` Für Ihr erstes Paket erhalten Sie ${sz}% Willkommensrabatt, gültig bis ${udv}.` : ""}`,
-            bnWelcomeTitle: (sz, n) => `${sz}% Willkommensrabatt: noch ${n} ${n === 1 ? "Tag" : "Tage"}`,
-            bnWelcomeMeta: (d) => `Er wird beim Kauf auf den Preis Ihres ersten Anzeigenpakets angeboten. Gültig bis: ${d}.`,
             bnCouponTitle: (db, sz) => `Sie haben ${db} ${db === 1 ? "Einladungs-Gutschein" : "Einladungs-Gutscheine"} (${sz}%)`,
             bnCouponMeta: (d, n) => `Der früheste Gutschein läuft am ${d} ab (noch ${n} ${n === 1 ? "Tag" : "Tage"}). Er kann auch für Verlängerungen und Hervorhebungen verwendet werden.`,
             bnCouponSoon: (db) => `Nutzen Sie ihn bei Ihrem nächsten Kauf und laden Sie schnell noch ein Unternehmen ein: Für jede erfolgreiche Einladung erhalten Sie ${db} neue Gutscheine.`,
@@ -1471,28 +1601,16 @@
             btnActivateFree: "Kostenlos aktivieren",
             tabInv: "Einladen",
             invTitle: "Unternehmen einladen",
-            invSub: (db, sz) => `Laden Sie ein anderes Unternehmen zu VJob ein. Sobald das eingeladene Unternehmen sein erstes Anzeigenpaket kauft, erhalten Sie ${db} Gutscheine über je ${sz}%.`,
             invLinkKey: "Einladungslink",
             invCodeKey: "Einladungscode",
             invHowTitle: "So funktioniert es",
-            invSteps: (db, sz, ho) => [
-                ["Link senden", "Senden Sie Ihren Einladungslink an das Unternehmen, das Sie einladen möchten."],
-                ["Das Unternehmen registriert sich", "Das Unternehmen erstellt sein Unternehmenskonto in der VJob-App und gibt Ihren Einladungscode ein."],
-                ["Sie erhalten Gutscheine", `Sobald das eingeladene Unternehmen sein erstes Anzeigenpaket kauft, erhalten Sie ${db} Gutscheine über je ${sz}%, gültig für ${ho} Monate.`]
-            ],
-            invRules: "Ein Unternehmen kann nur einmal eingeladen werden (nach Steuernummer); Sie können sich nicht selbst einladen. Der Gutschein wird vom Bestellbetrag abgezogen; pro Bestellung kann ein Rabatt genutzt werden, Rabatte lassen sich nicht kombinieren. Ein Gutschein kann auch für Verlängerungen und Hervorhebungen verwendet werden. Die genauen Bedingungen stehen in den Allgemeinen Geschäftsbedingungen:",
-            invStatInvited: "Eingeladene Unternehmen",
-            invStatPaid: "Zahlende Eingeladene",
-            invStatCoupons: "Verfügbare Gutscheine",
             invCouponsTitle: "Ihre Gutscheine",
-            invCouponsEmpty: "Sie haben noch keine Gutscheine. Den ersten erhalten Sie, wenn ein eingeladenes Unternehmen sein erstes Anzeigenpaket kauft.",
             invCouponName: (sz) => `${sz}% Rabatt`,
             invListItem: (n) => `Eingeladenes Unternehmen Nr. ${n}`,
             invPrivacyNote: "Aus Datenschutzgründen zeigen wir die Namen eingeladener Unternehmen nicht an, nur wie viele sich registriert und bezahlt haben.",
             invCouponState: { elerheto: "Verfügbar", foglalt: "Bei offener Zahlung", felhasznalva: "Eingelöst" },
             invListTitle: "Eingeladene Unternehmen",
             invListEmpty: "Mit Ihrem Code hat sich noch niemand registriert.",
-            invListState: { regisztralt: "Registriert", fizetett: "Bezahlt" },
             invLoadErr: "Die Einladungsdaten können derzeit nicht geladen werden. Bitte versuchen Sie es später erneut oder aktualisieren Sie die Seite.",
             bDiscount: (sz) => `Rabatt (−${sz}%)`,
             pubTitle: "Die VJob-Community",
@@ -1515,6 +1633,65 @@
             fkEnd: "Ausgebucht! Danke für Ihr Vertrauen.",
             fkEndSub: (o) => `Alle ${o} Gründerplätze sind vergeben; das Gründerprogramm ist beendet.`,
             pubFounderAria: (f, o) => `${f} von ${o} Gründerplätzen vergeben`,
+            bnFreeMeta: (vege) => `Der kostenlose Zeitraum endet am ${vege}. Danach ist die Verlängerung kostenpflichtig.`,
+            invSub: (b) => `Laden Sie ein anderes Unternehmen zu VJob ein. Sobald das eingeladene Unternehmen sein erstes Anzeigenpaket bezahlt hat, erhalten Sie ${b.kuponDb} ${plural(b.kuponDb, "Gutschein", "Gutscheine")}, das eingeladene Unternehmen ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "Gutschein", "Gutscheine")} über je ${b.kuponSzazalek}%.`,
+            invSteps: (b) => [
+                ["Link senden", "Senden Sie Ihren Einladungslink an das Unternehmen, das Sie einladen möchten."],
+                ["Das Unternehmen registriert sich", `Das Unternehmen erstellt sein Unternehmenskonto in der VJob-App und gibt Ihren Einladungscode innerhalb von ${b.meghivottRendelesNap} Tagen nach Erstellung des Kontos ein.`],
+                ["Sie beide erhalten Gutscheine", `Sobald das eingeladene Unternehmen sein erstes Anzeigenpaket bezahlt hat (bestellt innerhalb von ${b.meghivottRendelesNap} Tagen nach der Registrierung), erhalten Sie ${b.kuponDb} ${plural(b.kuponDb, "Gutschein", "Gutscheine")} und das eingeladene Unternehmen ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "Gutschein", "Gutscheine")} über je ${b.kuponSzazalek}%, gültig für ${b.kuponNap} Tage.`]
+            ],
+            invRules: (b) => `Ein Unternehmen kann nur einmal eingeladen werden (nach Steuernummer); Sie können sich nicht selbst einladen. Das eingeladene Unternehmen zahlt den vollen Preis; die Gutscheine werden nach Bezahlung seines ersten Pakets gutgeschrieben. Ein Unternehmen kann höchstens ${b.kuponMax} Einladungs-Gutscheine sammeln. Der Gutschein wird vom Bestellbetrag abgezogen; pro Bestellung kann ein Rabatt genutzt werden, Rabatte lassen sich nicht kombinieren. Ein Gutschein kann auch für Verlängerungen und Hervorhebungen verwendet werden. Die genauen Bedingungen stehen in den Allgemeinen Geschäftsbedingungen:`,
+            invCouponsEmpty: "Sie haben noch keine Gutscheine. Sie werden gutgeschrieben, sobald ein eingeladenes Unternehmen sein erstes Anzeigenpaket bezahlt hat.",
+            invListState: { regisztralt: "Registriert", fizetett: "Bezahlt", lejart: "Abgelaufen" },
+            invListRegMeta: (n) => `noch ${n} ${n === 1 ? "Tag" : "Tage"} zum Bestellen`,
+            invListPaidMeta: (db) => `${db} ${plural(db, "Gutschein", "Gutscheine")} gutgeschrieben`,
+            invListExpMeta: (nap) => `hat nicht innerhalb von ${nap} Tagen bestellt; der Platz ist wieder frei`,
+            invPeriod: (k, v) => (k && v ? `Der Einladungszeitraum ist für alle gleich: ${k} – ${v}.` : v ? `Der Einladungszeitraum ist für alle gleich; letzter Tag: ${v}.` : k ? `Der Einladungszeitraum ist für alle gleich; Beginn: ${k}.` : ""),
+            invLockedTitle: "Das Einladen wird nach der Aktivierung Ihres ersten bezahlten Pakets freigeschaltet.",
+            invLockedText: (b) => `Sobald ein eingeladenes Unternehmen sein erstes Paket bezahlt hat, erhalten Sie ${b.kuponDb} ${plural(b.kuponDb, "Gutschein", "Gutscheine")} und das Unternehmen ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "Gutschein", "Gutscheine")} über je ${b.kuponSzazalek}%.`,
+            invLockedNote: "Die kostenlose Gründeranzeige schaltet das Menü nicht frei, nur Ihr erstes bezahltes Anzeigenpaket.",
+            invLockedBtn: "Paket kaufen",
+            invCodeLocked: "Gesperrt",
+            invSoonTitle: "Der Einladungszeitraum hat noch nicht begonnen.",
+            invSoonText: (k) => `Das Einladen beginnt am ${k}. Ihr Einladungscode erscheint dann; bis dahin nimmt er keine Registrierungen an.`,
+            invCodeSoon: "Demnächst",
+            invEndedTitle: "Der Einladungszeitraum ist beendet.",
+            invEndedText: (v) => `Der letzte Tag war der ${v}. Neue Unternehmen können nicht mehr eingeladen werden. Für bereits registrierte Eingeladene steht die Belohnung weiterhin zu, und bereits erhaltene Gutscheine sind bis zum Ablauf nutzbar.`,
+            invOffTitle: "Das Einladen ist derzeit nicht verfügbar.",
+            invOffText: "Neue Unternehmen können derzeit nicht eingeladen werden. Bereits erhaltene Gutscheine sind bis zum Ablauf nutzbar.",
+            invCodeFull: "Voll",
+            invEndTitle: (n) => `Noch ${n} ${n === 1 ? "Tag" : "Tage"} zum Einladen`,
+            invEndText: (v) => `Der letzte Tag des Einladungszeitraums ist der ${v}. Danach nimmt Ihr Code keine neuen Unternehmen mehr an (für alle zum selben Zeitpunkt). Bereits registrierte Unternehmen können noch bestellen, und die Belohnungen gelten weiterhin.`,
+            invMeterUnit: "Gutscheine",
+            invPillRoom: (n) => (n === 1 ? "noch 1 Eingeladener möglich" : `noch ${n} Eingeladene möglich`),
+            invPillFull: "MAXIMUM ERREICHT",
+            invPillEnded: "beendet",
+            invFullTitle: "Maximum erreicht",
+            invFullText: "Ihr Code nimmt derzeit keine neuen Registrierungen an.",
+            invTipBtn: "Was bedeutet das Maximum?",
+            invTip: (b) => `Ein Unternehmen kann höchstens ${b.kuponMax} Einladungs-Gutscheine sammeln (${b.kuponDb} pro Eingeladenem, also höchstens ${Math.floor(b.kuponMax / b.kuponDb)} Eingeladene). Bereits eingelöste Gutscheine zählen mit. Bestellt ein registrierter Eingeladener nicht innerhalb von ${b.meghivottRendelesNap} Tagen, wird sein Platz frei, und der Code nimmt wieder Registrierungen an.`,
+            invKeyPaid: (n, k) => `${n} bezahlt · ${k} ${plural(k, "Gutschein", "Gutscheine")} gutgeschrieben`,
+            invKeyPend: (n, k) => `${n} registriert · ${k} ${plural(k, "Gutschein", "Gutscheine")} reserviert`,
+            invMeterNote: (b) => `Jeder Gutschein beträgt ${b.kuponSzazalek}% und ist ${b.kuponNap} Tage gültig; pro Bestellung kann ein Gutschein genutzt werden.`,
+            invMeterAria: (f, m) => `${f} von ${m} Gutschein-Plätzen belegt`,
+            guestTitle: (n, b) => `Bestellen Sie innerhalb von ${n} ${n === 1 ? "Tag" : "Tagen"}: Nach Ihrer ersten Zahlung erhalten Sie ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "Gutschein", "Gutscheine")} über ${b.kuponSzazalek}%`,
+            guestMeta: (d, b) => `Ihr erstes Paket zahlen Sie zum vollen Preis. Den Gutschein können Sie bei Ihrer nächsten Bestellung nutzen (${b.kuponNap} Tage gültig). Die Frist für die Bestellung (Proforma-Rechnung) ist der ${d}. Die Überweisung kann danach eingehen.`,
+            guestWarnTitle: (n) => `Noch ${n} ${n === 1 ? "Tag" : "Tage"}: Ohne Bestellung bis dahin verfällt der Gutschein`,
+            guestWarnMeta: (d) => `Die Frist für die Bestellung (Proforma-Rechnung) ist der ${d}. Bestellen Sie Ihr erstes Paket bis dahin nicht, läuft die Einladung ab und der Gutschein verfällt.`,
+            guestOrderedTitle: (b) => `Ihre Bestellung ist erfasst: Nach der Zahlung erhalten Sie ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "Gutschein", "Gutscheine")} über ${b.kuponSzazalek}%`,
+            guestOrderedMeta: (b) => `Wir schreiben den Gutschein automatisch gut, sobald die Überweisung eingegangen ist. Die Überweisung kann auch nach der ${b.meghivottRendelesNap}-Tage-Frist eingehen, solange die Zahlungsdaten gültig sind.`,
+            guestExpTitle: "Der Gutschein zur Einladung ist verfallen",
+            guestExpMeta: (b) => `Die Bestellung hätte innerhalb von ${b.meghivottRendelesNap} Tagen nach der Registrierung erfolgen müssen. Alles andere funktioniert wie gewohnt.`,
+            guestBuyNote: (n, b) => `Sie haben sich mit einer Einladung registriert: Nach der Zahlung erhalten Sie ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "Gutschein", "Gutscheine")} über ${b.kuponSzazalek}%. Den Gutschein können Sie bei Ihrer nächsten Bestellung nutzen (${b.kuponNap} Tage gültig). Diese Bestellung können Sie noch ${n} ${n === 1 ? "Tag" : "Tage"} lang aufgeben.`,
+            guestBankNote: (b) => `Ihre Bestellung ist erfasst. Sobald die Überweisung eingegangen ist, schreiben wir Ihnen automatisch ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "Gutschein", "Gutscheine")} über ${b.kuponSzazalek}% gut. Die Überweisung kann auch nach der ${b.meghivottRendelesNap}-Tage-Frist eingehen, solange die Zahlungsdaten gültig sind.`,
+            refBenefit: (b) => `Wenn Sie Ihr erstes Anzeigenpaket innerhalb von ${b.meghivottRendelesNap} Tagen nach der Registrierung bestellen und bezahlen, erhalten Sie ${b.meghivottKuponDb} ${plural(b.meghivottKuponDb, "Gutschein", "Gutscheine")} über ${b.kuponSzazalek}% für Ihre nächste Bestellung (${b.kuponNap} Tage gültig).`,
+            refSteps: [
+                ["App laden", "Die VJob-Android-App"],
+                ["Unternehmenskonto erstellen", "Geben Sie den Code im Feld „Einladungscode (optional)“ ein"],
+                ["Anzeige und Paket", "Bestellen Sie hier auf der Website"]
+            ],
+            refClosedTitle: "Diese Einladung ist nicht mehr gültig",
+            refClosedText: "Das Einladungsprogramm ist derzeit nicht verfügbar, daher kann dieser Code nicht verwendet werden. Sie können sich trotzdem wie gewohnt bei VJob registrieren.",
             refTitle: "Sie wurden zu VJob eingeladen",
             refText: "Ein Unternehmen hat Sie eingeladen. Die Registrierung als Unternehmen erfolgt in der VJob-App: Geben Sie diesen Code beim Erstellen Ihres Kontos im Feld „Einladungscode (optional)“ ein.",
             refLogin: "Wenn Sie bereits ein Konto haben, melden Sie sich unten an."
@@ -1551,6 +1728,7 @@
         prog: null,           // a programAdatok válasza (Meghívás fül, sávok, alapító kártya); null, ha nem tölthető be
         pub: null,            // a nyilvanosSzamlalok válasza (belépő oldal, bejelentkezés nélkül)
         pubTried: false,
+        pubKesz: false,        // a nyilvanosSzamlalok hívása lezajlott (sikerrel vagy sikertelenül)
         preview: null,        // az arElonezet válasza a kiválasztott vásárláshoz
         previewKey: "",
         previewBusy: false,
@@ -1560,6 +1738,7 @@
         founderConfirm: null, // annak a hirdetésnek az azonosítója, amelynek az ingyenes aktiválását megerősítésre várjuk
         founderBusy: false,
         founderErr: null,
+        invTip: false,        // a kuponmérő „Mit jelent a maximum?” magyarázata nyitva van-e
         refKod: refKodBeolvas(),
         eloValasztottHirdetes: new URLSearchParams(location.search).get("hirdetes")
     };
@@ -1607,6 +1786,11 @@
 
     function dateText(ms) {
         return new Date(ms).toLocaleDateString(LOCALE[S.lang], { year: "numeric", month: "long", day: "numeric" });
+    }
+
+    /** A meghívási időszak napjai budapesti naptár szerint (a határnapot nem csúsztatja el a böngésző időzónája). */
+    function dateTextBp(ms) {
+        return new Date(ms).toLocaleDateString(LOCALE[S.lang], { year: "numeric", month: "long", day: "numeric", timeZone: "Europe/Budapest" });
     }
 
     function daysUntil(ms) {
@@ -1792,7 +1976,10 @@
     // ───────────────────────── Program: kedvezmények, alapító program, meghívás ─────────────────────────
     // A számokat és szabályokat a szerver adja (programAdatok, arElonezet); itt csak megjelenítés van. A PROG_ALAP csak tartalék,
     // amíg a szerver válasza nem érkezett meg.
-    const PROG_ALAP = { alapitoHelyek: 30, ingyenesNap: 30, udvozloSzazalek: 15, udvozloNap: 60, kuponDb: 2, kuponSzazalek: 15, kuponHonap: 3 };
+    const PROG_ALAP = {
+        alapitoHelyek: 30, ingyenesNap: 30, kuponDb: 2, meghivottKuponDb: 1, kuponSzazalek: 15, kuponNap: 60, kuponMax: 10,
+        meghivasKezdetMs: null, meghivasVegeMs: null, meghivasFigyelmeztetesNap: 7, meghivottRendelesNap: 14
+    };
 
     function pb() {
         return { ...PROG_ALAP, ...((S.prog && S.prog.beallitasok) || {}) };
@@ -1917,43 +2104,50 @@
         const d = S.data;
         const lista = [];
         const gomb = (felirat, fn, elsodleges) => h("button", { class: "mbtn" + (elsodleges ? " primary" : ""), type: "button", onclick: fn }, felirat);
-        const sav = (arany) => h("div", { class: "bar", role: "presentation" }, h("i", { style: `width:${Math.round(Math.min(1, Math.max(0, arany)) * 100)}%` }));
-        const banner = (osztaly, jel, cim, meta, savEl, gombok) => h("div", { class: `banner ${osztaly}` },
-            h("div", { class: "bi", "aria-hidden": "true" }, jel),
-            h("div", { class: "bb" },
-                h("div", { class: "bt" }, cim),
-                meta ? h("div", { class: "bm" }, meta) : null,
-                savEl || null,
-                gombok && gombok.length ? h("div", { class: "bx" }, gombok) : null));
+        const sav = mkBar;
+        const banner = mkBanner;
+
+        // A meghívott cég saját meghívása: visszaszámláló a rendelési határidőről (a szerver adja; kikapcsolt programnál nincs).
+        const sm = pr.sajatMeghivas;
+        if (sm) {
+            if (sm.allapot === "regisztralt" && sm.hataridoMs > now) {
+                const nap = daysUntil(sm.hataridoMs);
+                if (sm.rendelve === true) {
+                    lista.push(banner("ok", "✓", L.guestOrderedTitle(b), L.guestOrderedMeta(b), null, [gomb(L[TAB_LABEL.pay], () => goTab("pay"), true)]));
+                } else {
+                    const surgos = nap <= 3;
+                    lista.push(banner(surgos ? "warn" : "ok", "%",
+                        surgos ? L.guestWarnTitle(nap) : L.guestTitle(nap, b),
+                        surgos ? L.guestWarnMeta(dateText(sm.hataridoMs)) : L.guestMeta(dateText(sm.hataridoMs), b),
+                        sav((sm.hataridoMs - now) / (b.meghivottRendelesNap * DAY)),
+                        [gomb(L.btnShop, () => goTab("buy"), true)]));
+                }
+            } else if (sm.allapot === "lejart" && now <= sm.hataridoMs + 7 * DAY) {
+                lista.push(banner("pro", "ⓘ", L.guestExpTitle, L.guestExpMeta(b)));
+            }
+        }
 
         const al = pr.alapito;
-        const u = pr.udvozlo;
         const szabadIdoBanner = !!al && al.aktivalva === true && al.ingyenesVegeMs > now;
         if (szabadIdoBanner) {
             const nap = daysUntil(al.ingyenesVegeMs);
             lista.push(banner("ok", "★", L.bnFreeTitle(nap),
-                L.bnFreeMeta(dateText(al.ingyenesVegeMs), b.udvozloSzazalek, u && u.lejarMs > now ? dateText(u.lejarMs) : ""),
+                L.bnFreeMeta(dateText(al.ingyenesVegeMs)),
                 sav((al.ingyenesVegeMs - now) / (b.ingyenesNap * DAY)),
                 [gomb(L.btnShop, () => goTab("buy"))]));
         }
 
-        // Az üdvözlő kedvezmény külön sávja csak akkor kell, ha az ingyenes időszak sávja nem említi már.
-        if (!szabadIdoBanner && u && u.elerheto === true && u.lejarMs > now) {
-            const nap = daysUntil(u.lejarMs);
-            lista.push(banner(nap <= 7 ? "warn" : "pro", "%", L.bnWelcomeTitle(u.szazalek, nap), L.bnWelcomeMeta(dateText(u.lejarMs)),
-                sav((u.lejarMs - now) / (b.udvozloNap * DAY)),
-                [gomb(L.btnShop, () => goTab("buy"), true)]));
-        }
-
+        const mg = pr.meghivas;
+        const nyitottMenu = !!mg && mg.allapot === "nyitott";
         const kuponok = (pr.kuponok || []).filter((k) => k.allapot === "elerheto" && k.lejarMs > now).sort((x, y) => x.lejarMs - y.lejarMs);
         if (kuponok.length) {
             const elso = kuponok[0];
             const nap = daysUntil(elso.lejarMs);
             const surgos = nap <= 14;
             lista.push(banner(surgos ? "warn" : "pro", "%", L.bnCouponTitle(kuponok.length, elso.szazalek),
-                L.bnCouponMeta(dateText(elso.lejarMs), nap) + (surgos ? ` ${L.bnCouponSoon(b.kuponDb)}` : ""),
-                sav((elso.lejarMs - now) / (b.kuponHonap * 30.4 * DAY)),
-                [gomb(L.btnShop, () => goTab("buy"), true), gomb(L.btnInvite, () => goTab("inv"))]));
+                L.bnCouponMeta(dateText(elso.lejarMs), nap) + (surgos && nyitottMenu ? ` ${L.bnCouponSoon(b.kuponDb)}` : ""),
+                sav((elso.lejarMs - now) / (b.kuponNap * DAY)),
+                [gomb(L.btnShop, () => goTab("buy"), true)].concat(nyitottMenu ? [gomb(L.btnInvite, () => goTab("inv"))] : [])));
         }
 
         if (al && al.jogosult === true && al.aktivalva !== true) {
@@ -1963,31 +2157,138 @@
                 elsoHirdetes ? [gomb(L.btnActivateFree, () => goBuy(elsoHirdetes, "csomag"), true)] : null));
         }
 
-        if (!kuponok.length && pr.meghivo) {
+        // A közös meghívási időszak utolsó napjai: visszaszámláló (mindenkinél ugyanaz a záró nap).
+        const vegeNap = nyitottMenu && mg.vegeMs > now ? daysUntil(mg.vegeMs) : 0;
+        const vegeKozel = vegeNap > 0 && vegeNap <= b.meghivasFigyelmeztetesNap && mg.kuponSzabad > 0;
+        if (vegeKozel) {
+            lista.push(banner("warn", "⏳", L.invEndTitle(vegeNap), L.invEndText(dateTextBp(mg.vegeMs)),
+                sav((mg.vegeMs - now) / (b.meghivasFigyelmeztetesNap * DAY)),
+                [gomb(L.btnInvite, () => goTab("inv"), true)]));
+        } else if (!kuponok.length && nyitottMenu && pr.meghivo && mg.kuponSzabad > 0) {
             lista.push(banner("pro", "✉", L.bnInviteTitle, L.bnInviteText(b.kuponDb, b.kuponSzazalek), null, [gomb(L.btnInvite, () => goTab("inv"))]));
         }
         return lista.length ? h("div", { class: "banners" }, lista) : null;
     }
 
+    /** A sáv (banner) és az idősáv közös építői (Áttekintés és Meghívás fül). */
+    function mkBar(arany) {
+        return h("div", { class: "bar", role: "presentation" }, h("i", { style: `width:${Math.round(Math.min(1, Math.max(0, arany)) * 100)}%` }));
+    }
+    function mkBanner(osztaly, jel, cim, meta, savEl, gombok) {
+        return h("div", { class: `banner ${osztaly}` },
+            h("div", { class: "bi", "aria-hidden": "true" }, jel),
+            h("div", { class: "bb" },
+                h("div", { class: "bt" }, cim),
+                meta ? h("div", { class: "bm" }, meta) : null,
+                savEl || null,
+                gombok && gombok.length ? h("div", { class: "bx" }, gombok) : null));
+    }
+
+    /** A Meghívás fül csak akkor kell, ha van mit mutatni: kikapcsolt programnál kupon vagy meghívott nélkül elrejtjük. */
+    function inviteTabVisible() {
+        const pr = S.prog;
+        if (!pr || pr.munkavallalo || !pr.meghivas) return true; // betöltési hiba esetén a fül mutatja a hibát
+        if (pr.meghivas.allapot !== "kikapcsolva") return true;
+        return (pr.kuponok || []).length > 0 || (pr.meghivottak || []).length > 0;
+    }
+
     // ── Meghívás fül ──
+    /** A kuponmérő: 10 szegmens, meghívottanként 2 (fizetett: zöld, regisztrált: csíkos, szabad: üres); 8–9 foglaltnál sárga, 10-nél piros. */
+    function invMeter(pr, b, lezart) {
+        const L = t();
+        const mg = pr.meghivas;
+        const meghivottak = pr.meghivottak || [];
+        const max = Math.max(1, Number(b.kuponMax) || 10);
+        const db = Math.max(1, Number(b.kuponDb) || 2);
+        const helyek = Math.max(1, Math.floor(max / db));
+        const fizetett = meghivottak.filter((m) => m.allapot === "fizetett").length;
+        const fuggo = meghivottak.filter((m) => m.allapot === "regisztralt").length;
+        const foglalt = Math.min(max, Number(mg.kuponFoglalt) || 0);
+        const szabadHely = Math.max(0, Math.floor((max - foglalt) / db));
+        const tele = foglalt >= max;
+        const sarga = !tele && foglalt >= max - db;
+        const allapot = lezart ? "" : tele ? " full" : sarga ? " warn" : "";
+        const oszlopok = `grid-template-columns:repeat(${helyek}, minmax(0, 1fr))`;
+        // A kitöltött párok száma a szerver kuponszámából jön (így a sáv mindig egyezik a kiírt számmal); a fizetett és a függő arányát a lista adja.
+        const kitoltott = Math.min(helyek, Math.ceil(foglalt / db));
+        const fizetettPar = Math.min(fizetett, kitoltott);
+        const parok = [];
+        for (let i = 0; i < helyek; i++) {
+            const osztaly = i < fizetettPar ? "paid" : i < kitoltott ? "pend" : "";
+            parok.push(h("span", { class: "inv-pair" }, h("i", { class: osztaly }), h("i", { class: osztaly })));
+        }
+        const pill = lezart ? h("span", { class: "inv-pill note" }, L.invPillEnded)
+            : tele ? h("span", { class: "inv-pill err" }, L.invPillFull)
+            : h("span", { class: "inv-pill " + (sarga ? "warn" : "ok") }, L.invPillRoom(szabadHely));
+        const infoGomb = !lezart && tele
+            ? h("button", { class: "inv-i", type: "button", "aria-label": L.invTipBtn, "aria-expanded": S.invTip ? "true" : "false", onclick: () => { S.invTip = !S.invTip; render(); } }, "i")
+            : null;
+        return h("div", { class: "inv-meter" + allapot },
+            h("div", { class: "inv-mhead" },
+                h("div", { class: "inv-mcount" }, h("span", null, h("b", null, String(foglalt)), ` / ${max} ${L.invMeterUnit}`), infoGomb),
+                pill),
+            h("div", { class: "inv-seg", style: oszlopok, role: "img", "aria-label": L.invMeterAria(foglalt, max) }, parok),
+            h("div", { class: "inv-scale", style: oszlopok, "aria-hidden": "true" }, parok.map((_, i) => h("span", null, String(i + 1)))),
+            fizetett + fuggo > 0 ? h("div", { class: "inv-key" },
+                fizetett > 0 ? h("span", null, h("i", { class: "k-paid" }), L.invKeyPaid(fizetett, fizetett * db)) : null,
+                fuggo > 0 ? h("span", null, h("i", { class: "k-pend" }), L.invKeyPend(fuggo, fuggo * db)) : null) : null,
+            h("div", { class: "inv-mnote" }, L.invMeterNote(b)),
+            !lezart && tele && S.invTip ? h("div", { class: "inv-tip" }, h("b", null, L.invTipBtn), L.invTip(b)) : null);
+    }
+
     function tabInv() {
         const L = t();
         const pr = S.prog;
         const b = pb();
-        if (!pr || !pr.meghivo) {
-            return h("div", null, topline(L.invTitle, L.invSub(b.kuponDb, b.kuponSzazalek)), h("div", { class: "error-box", role: "alert" }, L.invLoadErr));
+        if (!pr || !pr.meghivas) {
+            return h("div", null, topline(L.invTitle, L.invSub(b)), h("div", { class: "error-box", role: "alert" }, L.invLoadErr));
         }
+        const mg = pr.meghivas;
+        const allapot = mg.allapot;
         const now = Date.now();
         const kuponok = pr.kuponok || [];
         const meghivottak = pr.meghivottak || [];
-        const fizetett = meghivottak.filter((m) => m.allapot === "fizetett").length;
-        const elerheto = kuponok.filter((k) => k.allapot === "elerheto" && k.lejarMs > now).length;
-        const statCsempe = (kulcs, ertek, szin) => h("div", { class: "tile static" }, h("div", { class: "tk" }, kulcs), h("div", { class: "tv" + (szin ? ` ${szin}` : "") }, String(ertek)));
+        const kezdet = mg.kezdetMs > 0 ? dateTextBp(mg.kezdetMs) : "";
+        const vege = mg.vegeMs > 0 ? dateTextBp(mg.vegeMs) : "";
+        const nyitott = allapot === "nyitott";
+        const tele = nyitott && mg.kuponSzabad <= 0;
+        const vegeNap = nyitott && mg.vegeMs > now ? daysUntil(mg.vegeMs) : 0;
+        const vegeKozel = vegeNap > 0 && vegeNap <= b.meghivasFigyelmeztetesNap;
 
-        const lepesek = L.invSteps(b.kuponDb, b.kuponSzazalek, b.kuponHonap);
+        // Állapotsáv a fül tetején
+        let felso = null;
+        if (allapot === "kikapcsolva") felso = mkBanner("pro static", "ⓘ", L.invOffTitle, L.invOffText);
+        else if (allapot === "lezart") felso = mkBanner("pro static", "🔒", L.invEndedTitle, L.invEndedText(vege));
+        else if (allapot === "zarolt") felso = mkBanner("pro static", "🔒", L.invLockedTitle, [L.invLockedText(b), L.invPeriod(kezdet, vege)].filter(Boolean).join(" "));
+        else if (allapot === "hamarosan") felso = mkBanner("pro static", "⏳", L.invSoonTitle, L.invSoonText(kezdet));
+        else if (tele) felso = mkBanner("err static", "⛔", L.invFullTitle, L.invFullText);
+        else if (vegeKozel) {
+            felso = mkBanner("warn static", "⏳", L.invEndTitle(vegeNap), L.invEndText(vege),
+                mkBar((mg.vegeMs - now) / (b.meghivasFigyelmeztetesNap * DAY)));
+        }
+
+        // A kód: csak nyitott menünél látszik; zárolt, hamarosan és betelt állapotban halvány, nem másolható.
+        const halvany = (kod, felirat, osztaly) => h("div", { class: "inv-code dis" + (osztaly ? ` ${osztaly}` : "") }, h("b", null, kod), h("span", null, felirat));
+        let kodResz = null;
+        if (nyitott && pr.meghivo) {
+            kodResz = tele
+                ? halvany(pr.meghivo.kod, L.invCodeFull, "full")
+                : h("div", { class: "kv inv-link" }, kv(L.invLinkKey, pr.meghivo.link, { masol: true }), kv(L.invCodeKey, pr.meghivo.kod, { masol: true, nagy: true }));
+        } else if (allapot === "zarolt") {
+            kodResz = h("div", null, halvany("••••-••••", L.invCodeLocked),
+                h("button", { class: "btn inv-lock-btn", type: "button", onclick: () => goTab("buy") }, L.invLockedBtn),
+                h("p", { class: "note" }, L.invLockedNote));
+        } else if (allapot === "hamarosan") {
+            kodResz = halvany("••••-••••", L.invCodeSoon);
+        }
+
+        const meter = nyitott || allapot === "lezart" ? invMeter(pr, b, allapot === "lezart") : null;
+
+        const lepesek = L.invSteps(b);
         const folyamat = h("div", { class: "flow inv-steps" }, lepesek.map((l, i) => h("div", { class: "flow-st" + (i === lepesek.length - 1 ? " last" : "") },
             h("div", { class: "flow-num" }, String(i + 1)),
             h("div", null, h("b", null, l[0]), h("div", { class: "d" }, l[1])))));
+        const mutatLepeseket = allapot === "zarolt" || allapot === "hamarosan" || nyitott;
 
         const kuponSorok = kuponok.map((k) => h("div", { class: "lrow" },
             h("div", { class: "lrow-main" },
@@ -1996,40 +2297,54 @@
             h("div", { class: "lrow-side" },
                 h("span", { class: "badge " + (k.allapot === "elerheto" ? "b-active" : k.allapot === "foglalt" ? "b-pending" : "b-expired") }, L.invCouponState[k.allapot] || k.allapot))));
 
-        // A szerver a meghívott cég nevét nem adja ki (adatminimalizálás): csak sorszám, dátum és állapot. A régi szerverválasz sem tud nevet mutatni.
+        // A szerver a meghívott cég nevét nem adja ki (adatminimalizálás): csak sorszám, dátum és állapot (regisztrált / fizetett / lejárt).
+        const allapotMeta = (m) => (m.allapot === "regisztralt" ? L.invListRegMeta(daysUntil(m.hataridoMs))
+            : m.allapot === "fizetett" ? L.invListPaidMeta(b.kuponDb) : L.invListExpMeta(b.meghivottRendelesNap));
         const meghivottSorok = meghivottak.map((m, i) => h("div", { class: "lrow" },
             h("div", { class: "lrow-main" },
                 h("div", { class: "lrow-v" }, L.invListItem(Number.isFinite(m.sorszam) && m.sorszam > 0 ? m.sorszam : i + 1)),
-                m.ms > 0 ? h("div", { class: "lrow-meta" }, dateText(m.ms)) : null),
+                h("div", { class: "lrow-meta" }, [m.ms > 0 ? dateText(m.ms) : null, allapotMeta(m)].filter(Boolean).join(" · "))),
             h("div", { class: "lrow-side" },
-                h("span", { class: "badge " + (m.allapot === "fizetett" ? "b-active" : "b-pending") }, L.invListState[m.allapot] || m.allapot))));
+                h("span", { class: "badge " + (m.allapot === "fizetett" ? "b-active" : m.allapot === "regisztralt" ? "b-pending" : "b-expired") }, L.invListState[m.allapot] || m.allapot))));
+        const mutatLista = meghivottSorok.length > 0 || nyitott || allapot === "lezart";
+        const mutatKuponokat = kuponSorok.length > 0 || nyitott || allapot === "lezart" || allapot === "hamarosan";
 
         return h("div", null,
-            topline(L.invTitle, L.invSub(b.kuponDb, b.kuponSzazalek)),
-            h("div", { class: "kv inv-link" }, kv(L.invLinkKey, pr.meghivo.link, { masol: true }), kv(L.invCodeKey, pr.meghivo.kod, { masol: true, nagy: true })),
-            h("div", { class: "sec" }, L.invHowTitle),
-            folyamat,
-            h("div", { class: "tiles three" },
-                statCsempe(L.invStatInvited, meghivottak.length, ""),
-                statCsempe(L.invStatPaid, fizetett, "g"),
-                statCsempe(L.invStatCoupons, elerheto, "p")),
-            h("div", { class: "sec" }, L.invCouponsTitle),
-            kuponSorok.length ? h("div", { class: "card" }, kuponSorok) : emptyBox(L.invCouponsTitle, L.invCouponsEmpty),
-            h("div", { class: "sec", style: "margin-top:26px" }, L.invListTitle),
-            meghivottSorok.length ? h("div", { class: "card" }, meghivottSorok) : emptyBox(L.invListTitle, L.invListEmpty),
-            meghivottSorok.length ? h("div", { class: "info-note" }, h("span", { "aria-hidden": "true" }, "ⓘ"), h("span", null, L.invPrivacyNote)) : null,
+            topline(L.invTitle, L.invSub(b)),
+            felso,
+            kodResz,
+            meter,
+            mutatLepeseket ? [h("div", { class: "sec" }, L.invHowTitle), folyamat] : null,
+            mutatKuponokat ? [
+                h("div", { class: "sec" }, L.invCouponsTitle),
+                kuponSorok.length ? h("div", { class: "card" }, kuponSorok) : emptyBox(L.invCouponsTitle, L.invCouponsEmpty)] : null,
+            mutatLista ? [
+                h("div", { class: "sec", style: "margin-top:26px" }, L.invListTitle),
+                meghivottSorok.length ? h("div", { class: "card" }, meghivottSorok) : emptyBox(L.invListTitle, L.invListEmpty),
+                meghivottSorok.length ? h("div", { class: "info-note" }, h("span", { "aria-hidden": "true" }, "ⓘ"), h("span", null, L.invPrivacyNote)) : null] : null,
             h("div", { class: "info-note" }, h("span", { "aria-hidden": "true" }, "ⓘ"),
-                h("span", null, `${L.invRules} `, h("a", { href: "../terms.html" }, L.terms))));
+                h("span", null, `${L.invRules(b)} `, h("a", { href: "../terms.html" }, L.terms))));
     }
 
     // ── Belépés oldal: meghívó kártya (?ref=) és élő, valós számlálók ──
+    /**
+     * A meghívó linkről érkező kártya. A szöveg a szerver élő jelzésétől függ (nyilvanosSzamlalok.meghivasAktiv): aktív programnál a
+     * jutalommal együtt, lezárt programnál (főkapcsoló KI vagy a közös időszakon kívül) tájékoztatással; ha a szerver nem válaszolt,
+     * jutalom-ígéret nélkül. Amíg a jelzés meg nem érkezett, nem jelenik meg (nem villan fel hamis szöveg).
+     */
     function refBanner() {
         const L = t();
-        if (!S.refKod) return null;
+        if (!S.refKod || !S.pubKesz) return null;
+        const b = pb();
+        const aktiv = S.pub && typeof S.pub.meghivasAktiv === "boolean" ? S.pub.meghivasAktiv : null; // jutalom-ígéret csak kifejezett "aktív" jelzésnél
+        if (aktiv === false) return h("div", { class: "ref-box" }, h("b", null, L.refClosedTitle), h("p", null, L.refClosedText));
         return h("div", { class: "ref-box" },
             h("b", null, L.refTitle),
-            h("p", null, L.refText),
+            h("p", null, aktiv === true ? L.refBenefit(b) : L.refText),
             h("div", { class: "kv" }, kv(L.invCodeKey, S.refKod, { masol: true, nagy: true })),
+            h("div", { class: "ref-steps" }, L.refSteps.map((l, i) => h("div", { class: "ref-st" },
+                h("span", { class: "ref-n", "aria-hidden": "true" }, String(i + 1)),
+                h("div", null, h("strong", null, l[0]), h("span", { class: "t" }, l[1]))))),
             h("p", { class: "fine" }, L.refLogin));
     }
 
@@ -2038,6 +2353,7 @@
         if (S.pubTried) return;
         S.pubTried = true;
         try { S.pub = await call("nyilvanosSzamlalok"); } catch (e) { S.pub = null; }
+        S.pubKesz = true;
         if (S.view === "login") render();
     }
 
@@ -2160,7 +2476,7 @@
         const nyitott = openPaymentCount();
         const kuponDb = couponCount();
         nav.append(h("div", { class: "nav-inner", role: "tablist", "aria-label": L.tabsLabel },
-            TABS.map((k) => h("button", {
+            TABS.filter((k) => k !== "inv" || inviteTabVisible()).map((k) => h("button", {
                 class: "tab" + (S.tab === k ? " active" : ""), type: "button", role: "tab",
                 "aria-selected": S.tab === k ? "true" : "false", "data-tab": k,
                 onclick: () => goTab(k)
@@ -2270,6 +2586,7 @@
     }
 
     function viewAccount() {
+        if (S.tab === "inv" && !inviteTabVisible()) S.tab = "ov";
         const fulek = { ov: tabOv, buy: tabBuy, ads: tabAds, pay: tabPay, inv: tabInv, co: tabCo };
         return h("div", { role: "tabpanel", id: "panel" }, (fulek[S.tab] || tabOv)());
     }
@@ -2492,7 +2809,7 @@
             sorok.push(h("div", { class: "sum-sub" }, A.fordAdozas ? L.itemsNet : L.itemsGross));
             tetelek.forEach((s, i) => sorok.push(sor(cimkek[i] || s.nev, money(s.osszeg))));
             if (hasznal && kedvSor) {
-                sorok.push(sor(L.discLine(kedv.tipus === "udvozlo" ? L.discWelcome : L.discCoupon, kedv.szazalek), `−${money(Math.abs(kedvSor.osszeg))}`, "neg"));
+                sorok.push(sor(L.discLine(L.discCoupon, kedv.szazalek), `−${money(Math.abs(kedvSor.osszeg))}`, "neg"));
             }
             sorok.push(h("div", { class: "sum-div" }));
             sorok.push(sor(L.net, money(A.netto), "muted"));
@@ -2510,8 +2827,8 @@
         },
             h("span", { class: "cb", "aria-hidden": "true" }, "✓"),
             h("span", null,
-                h("b", null, L.discToggleTitle(kedv.tipus === "udvozlo" ? L.discWelcome : L.discCoupon, kedv.szazalek)),
-                h("span", { class: "s" }, [L.discExpires(dateText(kedv.lejarMs)), kedv.tipus === "udvozlo" ? L.discFirstPack : null,
+                h("b", null, L.discToggleTitle(L.discCoupon, kedv.szazalek)),
+                h("span", { class: "s" }, [L.discExpires(dateText(kedv.lejarMs)),
                     pv.elerhetoKedvezmenyDb > 1 ? L.discMore(pv.elerhetoKedvezmenyDb - 1) : null].filter(Boolean).join(" · ")),
                 hasznal ? null : h("span", { class: "s" }, L.discOffHint))) : null;
         const jegyzetek = [];
@@ -2525,6 +2842,11 @@
             if (ujKiemelesMs > ujLejaratMs) jegyzetek.push(h("div", { class: "note" }, L.hlCapNote));
         }
 
+        // B: a meghívással regisztrált cég a csomag mellett látja, hogy a kifizetés után kupont kap (a szerver adja: kikapcsolt programnál nincs).
+        const sajatMeghivas = S.prog && S.prog.sajatMeghivas;
+        if (csomag && sajatMeghivas && sajatMeghivas.allapot === "regisztralt" && sajatMeghivas.hataridoMs > Date.now()) {
+            jegyzetek.push(h("div", { class: "note ok-note" }, L.guestBuyNote(daysUntil(sajatMeghivas.hataridoMs), pb())));
+        }
         if (A && A.fordAdozas) jegyzetek.push(h("div", { class: "note" }, L.euNote));
         if (figy) jegyzetek.push(h("div", { class: "error-box", role: "alert" }, payError({ message: figy })));
         if (S.previewBusy) {
@@ -2741,7 +3063,10 @@
             h("div", { class: "kv" }, sorok),
             h("p", { class: "note" }, L.refMust),
             h("p", { class: "note" }, L.afterPay),
-            S.prog && S.prog.meghivo ? h("div", { class: "invite-card" },
+            // C: a meghívással regisztrált cég a rendelés után is látja, hogy a kifizetés után kupont írunk jóvá.
+            (S.prog && S.prog.sajatMeghivas && S.prog.sajatMeghivas.allapot === "regisztralt" && b.vasarlasTipus !== "kiemeles")
+                ? h("div", { class: "note ok-note" }, L.guestBankNote(pb())) : null,
+            (S.prog && S.prog.meghivo && S.prog.meghivas && S.prog.meghivas.allapot === "nyitott" && S.prog.meghivas.kuponSzabad > 0) ? h("div", { class: "invite-card" },
                 h("div", null, h("b", null, L.bnInviteTitle), h("span", null, L.bnInviteText(pb().kuponDb, pb().kuponSzazalek))),
                 h("button", { class: "mbtn", type: "button", onclick: () => goTab("inv") }, L.btnInvite)) : null,
             h("button", { class: "btn", type: "button", onclick: () => goTab(b.from || "buy") },
