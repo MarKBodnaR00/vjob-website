@@ -1792,7 +1792,7 @@
     // ───────────────────────── Program: kedvezmények, alapító program, meghívás ─────────────────────────
     // A számokat és szabályokat a szerver adja (programAdatok, arElonezet); itt csak megjelenítés van. A PROG_ALAP csak tartalék,
     // amíg a szerver válasza nem érkezett meg.
-    const PROG_ALAP = { alapitoHelyek: 30, ingyenesNap: 30, udvozloSzazalek: 15, udvozloNap: 30, kuponDb: 2, kuponSzazalek: 15, kuponHonap: 3 };
+    const PROG_ALAP = { alapitoHelyek: 30, ingyenesNap: 30, udvozloSzazalek: 15, udvozloNap: 60, kuponDb: 2, kuponSzazalek: 15, kuponHonap: 3 };
 
     function pb() {
         return { ...PROG_ALAP, ...((S.prog && S.prog.beallitasok) || {}) };
