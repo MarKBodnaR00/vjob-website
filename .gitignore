@@ -1,0 +1,6 @@
+# Claude Code: a gépre szabott, személyes beállítások (pl. az app mappájának útvonala)
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Helyi eszközök
+node_modules/

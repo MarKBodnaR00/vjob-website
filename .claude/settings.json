@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash(git push *)",
+      "PowerShell(git push *)",
+      "Bash(git reset --hard *)",
+      "PowerShell(git reset --hard *)",
+      "Bash(git clean *)",
+      "PowerShell(git clean *)",
+      "Bash(git checkout main*)",
+      "PowerShell(git checkout main*)",
+      "Bash(git merge *)",
+      "PowerShell(git merge *)",
+      "Bash(firebase *)",
+      "PowerShell(firebase *)",
+      "Bash(gcloud *)",
+      "PowerShell(gcloud *)"
+    ],
+    "deny": [
+      "Read(//c/business/**)",
+      "Edit(//c/business/**)",
+      "Read(**/*.jks)",
+      "Read(**/*.keystore)",
+      "Bash(*vjob-keystore*)",
+      "PowerShell(*vjob-keystore*)"
+    ]
+  }
+}
