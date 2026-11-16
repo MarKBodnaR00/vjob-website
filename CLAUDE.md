@@ -1,6 +1,6 @@
 # VJob weboldal és business portál – átadó jegyzet Claude Code-nak
 
-Ezt a fájlt a Claude Code minden indításkor elolvassa. Utoljára frissítve: 2026-11-16 (első változat).
+Ezt a fájlt a Claude Code minden indításkor elolvassa. Utoljára frissítve: 2026-11-16 (a `csomagok.html` számlálója, a `fizetes-eredmeny.html` hibája).
 
 ## A projekt
 
@@ -23,13 +23,15 @@ Ezt a fájlt a Claude Code minden indításkor elolvassa. Utoljára frissítve: 
 | `business/index.html` | céges portál: Áttekintés, Csomagvásárlás, Hirdetéseim, Fizetések, Meghívás, Cégadatok (`const T`, `TABS`) |
 | `terms.html`, `privacy-policy.html` | ÁSZF és adatvédelmi tájékoztató – **jogi szöveg**, csak Márk kérésére változhat |
 | `delete-account.html`, `verify.html`, `reset-password.html` | fióktörlés, e-mail-megerősítés, jelszó-visszaállítás (az app e-mailjei ide mutatnak) |
-| `fizetes-eredmeny.html`, `vasarlas.html` | fizetés utáni oldal; régi cím, átirányít a portálra (régi e-mailek miatt kell) |
+| `fizetes-eredmeny.html` | a régi Barion-fizetés eredményoldala. **Ismert hiba:** a 2026-11-13-án törölt `paymentStatusPublic` függvényt hívja (élesben is); hogy mi legyen vele, Márk dönti el |
+| `vasarlas.html` | régi cím, átirányít a portálra (a régi e-mailek miatt kell) |
 
 ## A portál és a szerver kapcsolata (a logika az app repójában van)
 
 - A portál Firebase Auth-tal lép be (ugyanaz a `vjob-549b5` projekt, mint az appé), és **csak** ezeket a hívható
   szerverfüggvényeket használja (`europe-west1`): `listazCegHirdeteseit`, `arElonezet`, `createAtutalasosFizetes`, `alapitoAktival`,
   `programAdatok`, `nyilvanosSzamlalok`, `letoltCegDokumentumot`, `kuldJelszoVisszaallitasEmail`.
+  A `csomagok.html` is hívja a `nyilvanosSzamlalok`-t (az alapító helyek élő számlálója).
 - Ezek forrása az app repójában van (`functions/`). Mielőtt egy hívás bemenetéhez vagy válaszához nyúlsz, olvasd el ott a függvényt
   és a tesztjét. A szerverfüggvényt **ebből a repóból ne módosítsd**: ha szerverváltozás kell, írd le Márknak, és az az app repójában készül.
 - Az árakat, kedvezményeket, kuponokat **mindig a szerver számolja** (`arElonezet`). A portál soha ne számoljon saját árat.

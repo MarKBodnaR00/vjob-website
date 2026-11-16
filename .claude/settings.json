@@ -3,6 +3,10 @@
     "ask": [
       "Bash(git push *)",
       "PowerShell(git push *)",
+      "Bash(git -C * push*)",
+      "PowerShell(git -C * push*)",
+      "Bash(git -c * push*)",
+      "PowerShell(git -c * push*)",
       "Bash(git reset --hard *)",
       "PowerShell(git reset --hard *)",
       "Bash(git clean *)",
